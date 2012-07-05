@@ -6,6 +6,10 @@
 --==============================================================
 
 require 'src/defines'
+require 'src/resource_cache'
+require 'src/room'
+require 'src/rooms/dummy'
+require 'src/game'
 
 MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
 
@@ -13,3 +17,10 @@ MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
 viewport = MOAIViewport.new ()
 viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
 viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
+
+function main ()
+  game:start ()
+end
+
+gameThread = MOAIThread.new ()
+gameThread:run ( main )
