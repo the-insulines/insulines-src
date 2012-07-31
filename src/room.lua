@@ -14,7 +14,7 @@ function new (name)
   
   room.name = name
   
-  room.setupBackground = function ( self, name, filename, width, height )
+  function room:setupBackground ( name, filename, width, height )
     -- Create background prop
     local bkg_gfx = resource_cache.loadImage( name .. "Background", filename, -width/2, -height/2, width/2, height/2)
     local bkg_prop = MOAIProp2D.new ()
@@ -25,7 +25,13 @@ function new (name)
     bkg_layer = MOAILayer2D.new ()
     bkg_layer:insertProp ( bkg_prop )
     self.layers[1] = bkg_layer
-    
+  end
+  
+  function room:setupRoomLayer ( name, filename, width, height, parallax )
+    -- Create prop for the layer
+    local gfx = resource_cache.loadImage ( name, filename, -width/2, -height/2, width/2, height/2)
+    local prop = MoaiProp2D.new ()
+    prop:setDeck ( gfx )
   end
   
   return room

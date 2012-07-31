@@ -8,7 +8,7 @@
 dummy_room = room.new ()
 
 dummy_room.initialize = function ()
-  dummy_room:setupBackground("Dummy", "../insulines-gfx/dummy_background.png", 3146, 960)
+  dummy_room:setupBackground("Dummy", "../insulines-gfx/background.jpeg", 3146, 960)
   game.camera:setLoc(600,0)
 end
 

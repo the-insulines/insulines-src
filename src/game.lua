@@ -9,7 +9,8 @@ module ( "game", package.seeall )
 
 current_scene = nil
 
-camera = MOAICamera2D.new()
+camera = MOAICamera2D.new ()
+
 
 function loadScene ( self, scene )
   -- Cache scene
