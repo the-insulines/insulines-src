@@ -6,6 +6,13 @@
 --==============================================================
 
 objects = {
+  background = {
+    resource_name = 'c01s01_background',
+    layer_name = 'background',
+    x = 0,
+    y = 0,
+    render_at_start = true,
+  },
   cellphone = {
     resource_name = "c01s01_cellphone",
     layer_name = "objects",

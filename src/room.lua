@@ -22,7 +22,11 @@ function new (name)
   room.layers = function (self)
     local result = {}
     
-    for k,v in pairs ( self.layer_objects ) do table.insert ( result, v ) end
+    -- -- for k,v in pairs ( self.layer_objects ) do table.insert ( result, v ) end
+    -- for k,v in pairs ( self.layer_objects ) do print ( k) end
+    
+    table.insert ( result, self.layer_objects.background )
+    table.insert ( result, self.layer_objects.objects )
     
     return result
   end

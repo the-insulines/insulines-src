@@ -50,11 +50,18 @@ resources = {
     tileMapSize = {2, 1}
   },    
     
-  c01s01_cellphone = {
+  c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s01/cellphone.png', 
-    width = 190, 
-    height = 39
+    fileName = 'c01s01/background.png', 
+    width = 1920, 
+    height = 1080
+  },
+  
+  c01s01_cellphone = {
+    type = RESOURCE_TYPE_TILED_IMAGE, 
+    fileName = 'c01s01/cellphone/cellphone_tiles.png', 
+    width = 74, height = 70,
+    tileMapSize = {2, 2}
   },
   
   c01s01_clothes_heap = {
