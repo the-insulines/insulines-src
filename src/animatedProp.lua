@@ -35,7 +35,7 @@ end
 function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameTime)
   local lastFrame = startFrame + frameCount
   
-  -- create the animation curve and set equally timed frames starting on frameCount and lasting frameCount frames
+  -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
   local curve = MOAIAnimCurve.new ()
   curve:reserveKeys (2)
   curve:setKey (1, 0, startFrame, MOAIEaseType.LINEAR)
@@ -52,8 +52,18 @@ function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameT
 end
 
 
+function AnimatedProp:applyAnimation (name, t0, tn)
+  self.animations[name]:apply (t0, tn)
+end
+
+
 function AnimatedProp:startAnimation (name)
   MOAICoroutine.blockOnAction (self.animations[name]:start ())
+end
+
+
+function AnimatedProp:stopAnimation (name)
+  MOAICoroutine.blockOnAction (self.animations[name]:stop ())
 end
 
 

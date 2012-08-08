@@ -8,15 +8,13 @@
 require 'src/defines'
 require 'src/resource_cache'
 require 'src/room'
-require 'src/rooms/dummy'
+require 'src/characters/main_character'
+require 'src/hud/inventory'
+require 'src/input_manager'
+require 'src/rooms/c01s01'
 require 'src/game'
 
 MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
-
--- Setup viewport
-viewport = MOAIViewport.new ()
-viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
-viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
 
 function main ()
   game:start ()
