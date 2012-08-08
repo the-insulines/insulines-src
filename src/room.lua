@@ -14,10 +14,19 @@ function new (name)
   
   room.layer_objects = {
     background = MOAILayer2D.new (),
+    background_shadows = MOAILayer2D.new (),
+    background_highlights = MOAILayer2D.new (),
     objects = MOAILayer2D.new (),
     character = MOAILayer2D.new (),
-    walk_behind = MOAILayer2D.new ()
+    walk_behind = MOAILayer2D.new (),
+    walk_behind_shadows = MOAILayer2D.new (),
+    walk_behind_highlights = MOAILayer2D.new (),
   }
+  
+  room.layer_objects.background_highlights:setBlendMode(MOAIProp2D.BLEND_ADD)
+  room.layer_objects.background_shadows:setBlendMode(MOAIProp2D.BLEND_MULTIPLY)
+  room.layer_objects.walk_behind_highlights:setBlendMode(MOAIProp2D.BLEND_ADD)
+  room.layer_objects.walk_behind_shadows:setBlendMode(MOAIProp2D.BLEND_MULTIPLY)
   
   room.layers = function (self)
     local result = {}
@@ -26,8 +35,13 @@ function new (name)
     -- for k,v in pairs ( self.layer_objects ) do print ( k) end
     
     table.insert ( result, self.layer_objects.background )
+    table.insert ( result, self.layer_objects.background_shadows )
+    table.insert ( result, self.layer_objects.background_highlights )
     table.insert ( result, self.layer_objects.objects )
-    
+    table.insert ( result, self.layer_objects.character )
+    table.insert ( result, self.layer_objects.walk_behind )
+    table.insert ( result, self.layer_objects.walk_behind_highlights )
+    table.insert ( result, self.layer_objects.walk_behind_shadows )
     return result
   end
   
@@ -39,6 +53,9 @@ function new (name)
   
   room.initialize = function ( self )
     self.before_initialize ()
+    
+    game.camera:setLoc(self.initialCameraX, self.initialCameraY)
+    game.camera:setScl(self.initialCameraScl)
     
     self.after_initialize ()
   end
@@ -96,6 +113,11 @@ function new (name)
 
       -- Collision detection
       local object = self:objectAt ( x, y )
+      if object then
+        MOAILogMgr.log("Tap at: " .. x .. ", " .. y .. " " .. object.resource_name .. "\n")
+      else 
+        MOAILogMgr.log("Tap at: " .. x .. ", " .. y .. "\n")
+      end
 
       if object then
         -- dialog_manager:displayText ( object.name )
@@ -121,7 +143,7 @@ function new (name)
   
       local objX, objY = object.prop:worldToModel ( x, y )
   
-      if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) then
+      if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) then
         return object
       end
   

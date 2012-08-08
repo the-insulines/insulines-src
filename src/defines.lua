@@ -12,6 +12,11 @@ WORLD_RESOLUTION_Y = 1080
 SCREEN_RESOLUTION_X = 960
 SCREEN_RESOLUTION_Y = 540
 
+CAMERA_SCALE = 1.0
+
+CAMERA_MAX_DELTA_X = 5
+CAMERA_MAX_DELTA_Y = 15
+
 -- Debugging
 DEBUG = false
 
@@ -28,6 +33,7 @@ LANGUAGE = "en"
 -- Resources
 -- resource type constants
 IMAGES_PATH = '../insulines-gfx/'
+--IMAGES_PATH = './'
 TILED_IMAGES_PATH = IMAGES_PATH
 
 RESOURCE_TYPE_IMAGE = 0
@@ -52,7 +58,21 @@ resources = {
     
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s01/background.png', 
+    fileName = 'c01s01/c01s01_background_B.png', 
+    width = 1920, 
+    height = 1080
+  },
+
+  c01s01_lights_off_highlights_B = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/c01s01_lights_off_highlights_B.png', 
+    width = 1920, 
+    height = 1080
+  },
+  
+  c01s01_lights_off_shadows_B = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/c01s01_lights_off_shadows_B.png', 
     width = 1920, 
     height = 1080
   },

@@ -10,17 +10,17 @@ local pointerX, pointerY = nil, nil
 
 -- Set callback for mouse and touches
 if MOAIInputMgr.device.pointer then
-
-	local pointerCallback = function ( x, y )
-		
-		pointerX, pointerY = x, y
-		
-		if touchCallbackFunc then
-			touchCallbackFunc ( MOAITouchSensor.TOUCH_MOVE, 1, pointerX, pointerY, 1 )
-		end
-	end
-
-	MOAIInputMgr.device.pointer:setCallback ( pointerCallback )
+  local pointerCallback = function ( x, y )
+   
+   pointerX, pointerY = x, y
+   
+   if touchCallbackFunc then
+     touchCallbackFunc ( MOAITouchSensor.TOUCH_MOVE, 1, pointerX, pointerY, 1 )
+   end
+  end
+  
+  MOAIInputMgr.device.pointer:setCallback ( pointerCallback )
+    
 end
 
 ----------------------------------------------------------------
@@ -51,4 +51,8 @@ function getTouch ()
 	
 		return pointerX, pointerY, 1
 	end
+end
+
+function wheel_delta ()
+  
 end

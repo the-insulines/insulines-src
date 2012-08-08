@@ -11,6 +11,12 @@ current_scene = nil
 
 camera = MOAICamera2D.new ()
 
+-- camera:setScl( CAMERA_SCALE )
+
+cameraDeltaX = 0
+cameraDeltaY = 0
+
+
 function loadScene ( self, scene )
   -- Cache scene
   self.current_scene = scene
@@ -28,6 +34,7 @@ function loadScene ( self, scene )
   -- Load HUD
   self:displayHUD ()
 
+  
 end
 
 
@@ -52,6 +59,12 @@ function start ( self )
   -- -- If there is a scene loaded we gather input and update everyhing
   while true do
     coroutine.yield ()
+    
+    -- Camera animation
+    self.cameraThread = MOAIThread.new ()
+    self.cameraThread:run ( cameraAnimation )
+    
+    
     if self.current_scene then
       if type ( self.current_scene.onInput ) == "function" then
         self.current_scene:onInput ()
@@ -63,6 +76,28 @@ function start ( self )
     end
   end
 
+end
+
+function cameraAnimation ( )
+  while true do
+    
+    local x = math.random(-1, 1)
+    local y = math.random(-1, 1)
+    
+    if (cameraDeltaX + x > CAMERA_MAX_DELTA_X) or (cameraDeltaX + x < -CAMERA_MAX_DELTA_X) then
+      x = 0
+    end
+
+    if (cameraDeltaY + y > CAMERA_MAX_DELTA_Y) or (cameraDeltaY + y < -CAMERA_MAX_DELTA_Y) then
+      y = 0
+    end
+    
+    cameraDeltaX = cameraDeltaX + x
+    cameraDeltaY = cameraDeltaY + y
+    
+    MOAICoroutine.blockOnAction ( camera:moveLoc(x, y, 4) )
+    
+  end
 end
 
 function displayHUD ( self )
