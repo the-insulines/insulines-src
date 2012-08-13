@@ -13,7 +13,7 @@ if MOAIInputMgr.device.pointer then
   local pointerCallback = function ( x, y )
    
    pointerX, pointerY = x, y
-   
+
    if touchCallbackFunc then
      touchCallbackFunc ( MOAITouchSensor.TOUCH_MOVE, 1, pointerX, pointerY, 1 )
    end
@@ -26,6 +26,10 @@ end
 ----------------------------------------------------------------
 -- exposed functions
 ----------------------------------------------------------------
+
+function position ()
+  return pointerX, pointerY
+end
 function down ( )
 	
 	if MOAIInputMgr.device.touch then	

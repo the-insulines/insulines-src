@@ -1,0 +1,52 @@
+-- --==============================================================
+-- -- Three in a row.
+-- -- Copyright (c) 2010-2012 Francisco Tufró
+-- -- All Rights Reserved. 
+-- -- http://franciscotufro.com.ar // http://quov.is
+-- --==============================================================
+-- module ( "dialogManager", package.seeall )
+-- 
+-- local layer = MOAILayer2D.new()
+-- local font =  MOAIFont.new ()
+-- local textbox = MOAITextBox.new ()
+-- local dialogViewport = MOAIViewport.new ()
+-- 
+-- function initialize(self)
+--   -- dialog layer
+--   dialogViewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
+--   dialogViewport:setScale ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_X )
+--   layer:setViewport ( dialogViewport )
+--   MOAIRenderMgr.pushRenderPass ( layer )
+--   
+--   -- dialog layer background
+--   bkgGfx = resource_cache.loadImage("Dialog Background", "resources/images/dialog_layer_background.png", -(SCREEN_RESOLUTION_X / 2), -20, SCREEN_RESOLUTION_X / 2, 20)
+--   bkgProp = MOAIProp2D.new()
+--   bkgProp:setDeck ( bkgGfx )
+--   bkgProp:setLoc (0, (SCREEN_RESOLUTION_X / 2) - 20)
+--   
+--   layer:insertProp( bkgProp )
+-- 
+--   -- load font
+--   font:loadFromTTF ("resources/fonts/arialbd.ttf", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?! ", 26, 160 )
+-- 
+--   -- text box
+--   textbox:setFont ( font )
+--   textbox:setTextSize ( 26 )
+--   textbox:setYFlip( true )
+--   textbox:setRect ( -SCREEN_RESOLUTION_X/2 + (SCREEN_RESOLUTION_X * 0.01), -(SCREEN_RESOLUTION_Y/2),SCREEN_RESOLUTION_X/2,SCREEN_RESOLUTION_Y/2 + (SCREEN_RESOLUTION_Y * 0.24))
+--   layer:insertProp ( textbox )
+--   
+-- end
+-- 
+-- function clear ( self )
+--   self:displayText('')
+-- end
+-- 
+-- function displayText(self, text)
+--   textbox:setString ( text )
+--   textbox:spool ()
+-- end
+-- 
+-- function getLayer ()
+--   return layer
+-- end

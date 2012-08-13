@@ -35,7 +35,7 @@ function mainCharacter:stopCurrentAction ()
 end
 
 
-function mainCharacter:moveTo ( x, y )
+function mainCharacter:moveTo ( x, y, zoomFactor )
   self:stopCurrentAction ()
   ------------------ DEBUG
   checkMem( false )
@@ -48,14 +48,20 @@ function mainCharacter:moveTo ( x, y )
   
   local time = math.sqrt ( delta_x * delta_x + delta_y * delta_y) / MOVEMENT_PIXELS_PER_SECOND
   
-  self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )  
+  -- create the movement displacement action
+  self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )
   
-  for i = 1, 10 do
-    self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
-  end
+  -- add the walking animation action
+  self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
   
+  -- add the zoom action
+  local zoom = zoomFactor * delta_y
+  self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
+  
+  -- start
   self.currentAction:start ()
 end
+
 
 function mainCharacter:walkAnimation ( delta_x, time )
   if delta_x > 0 then

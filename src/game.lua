@@ -7,7 +7,7 @@
 
 module ( "game", package.seeall )
 
-current_scene = nil
+currentScene = nil
 
 camera = MOAICamera2D.new ()
 
@@ -19,7 +19,7 @@ cameraDeltaY = 0
 
 function loadScene ( self, scene )
   -- Cache scene
-  self.current_scene = scene
+  self.currentScene = scene
   
   -- Initialize scene
   scene:initialize ()
@@ -64,13 +64,26 @@ function start ( self )
   while true do
     coroutine.yield ()
     
-    if self.current_scene then
-      if type ( self.current_scene.onInput ) == "function" then
-        self.current_scene:onInput ()
+    if self.currentScene then
+      if type ( self.currentScene.onInput ) == "function" then
+        self.currentScene:onInput ()
       end
 
       if type ( inventory.onInput ) == "function" then
         inventory:onInput ()
+      end
+      
+      if DEBUG then
+        
+        local x, y = input_manager.position ()
+
+        if x and y then
+
+          debugHUD:setMouseWindowPosition(x,y)
+
+          x, y = self.currentScene.layer_objects.background:wndToWorld ( x, y )
+          debugHUD:setMouseWorldPosition(x,y)
+        end
       end
     end
   end
@@ -114,4 +127,9 @@ function displayHUD ( self )
   -- Inventory
   inventory.inventory_layer:setViewport ( viewport )
   MOAIRenderMgr.pushRenderPass ( inventory.inventory_layer )
+  
+  -- Debug
+  if DEBUG then
+    debugHUD:initialize ()
+  end
 end

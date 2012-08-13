@@ -7,9 +7,11 @@
 
 c01s01 = room.new ( "Bedroom" )
 
-c01s01.initialCameraX = 100
-c01s01.initialCameraY = 100
-c01s01.initialCameraScl = 0.6
+c01s01.initialCameraX = 0
+c01s01.initialCameraY = 0
+c01s01.initialCameraScl = 0.8
+
+
 
 objects = {
   background = {
@@ -130,7 +132,7 @@ c01s01.after_initialize = function ( self )
     MOAILogMgr.log ( "Objects" )
     MOAILogMgr.log ( "---------------------------------" )
     dump ( c01s01.objects )
-    MOAILogMgr.log ( "---------------------------------" )
+    MOAILogMgr.log ( "---------------------------------\n" )
   end
 end
 

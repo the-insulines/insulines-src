@@ -7,10 +7,10 @@
 
 -- Viewport constants
 WORLD_RESOLUTION_X = 1920
-WORLD_RESOLUTION_Y = 1080
+WORLD_RESOLUTION_Y = 1280
 
 SCREEN_RESOLUTION_X = 960
-SCREEN_RESOLUTION_Y = 540
+SCREEN_RESOLUTION_Y = 640
 
 
 -- Camera
@@ -27,7 +27,7 @@ CAMERA_MOVEMENT_DURATION = 1.6
 
 
 -- Debugging
-DEBUG = false
+DEBUG = true
 
 
 -- Inventory constants
@@ -55,14 +55,23 @@ MOVEMENT_SECONDS_PER_FRAME = 0.025
 IMAGES_PATH = '../insulines-gfx/'
 --IMAGES_PATH = './'
 TILED_IMAGES_PATH = IMAGES_PATH
+FONTS_PATH = IMAGES_PATH .. 'fonts/'
 
 RESOURCE_TYPE_IMAGE = 0
 RESOURCE_TYPE_TILED_IMAGE = 1
-RESOURCE_TYPE_SOUND = 2
+RESOURCE_TYPE_FONT = 2
 
 
 resources = {
   
+  debug_font = {
+    type = RESOURCE_TYPE_FONT,
+    fileName = 'arialbd.ttf',
+    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
+    fontSize = 26,
+    dpi = 160
+  },
+
   main_character = {
     type = RESOURCE_TYPE_TILED_IMAGE,
     fileName = 'characters/walk_cycle2.png',

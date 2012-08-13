@@ -15,6 +15,10 @@ require 'src/input_manager'
 require 'src/rooms/c01s01'
 require 'src/game'
 
+if DEBUG then
+  require 'src/hud/debugHUD'
+end
+
 MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
 
 function main ()
