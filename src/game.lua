@@ -7,7 +7,7 @@
 
 module ( "game", package.seeall )
 
-current_scene = nil
+currentScene = nil
 
 camera = MOAICamera2D.new ()
 
@@ -19,7 +19,7 @@ cameraDeltaY = 0
 
 function loadScene ( self, scene )
   -- Cache scene
-  self.current_scene = scene
+  self.currentScene = scene
   
   -- Initialize scene
   scene:initialize ()
@@ -64,13 +64,26 @@ function start ( self )
   while true do
     coroutine.yield ()
     
-    if self.current_scene then
-      if type ( self.current_scene.onInput ) == "function" then
-        self.current_scene:onInput ()
+    if self.currentScene then
+      if type ( self.currentScene.onInput ) == "function" then
+        self.currentScene:onInput ()
       end
 
       if type ( inventory.onInput ) == "function" then
         inventory:onInput ()
+      end
+      
+      if DEBUG then
+        
+        local x, y = input_manager.position ()
+
+        if x and y then
+
+          debugHUD:setMouseWindowPosition(x,y)
+
+          x, y = self.currentScene.layer_objects.background:wndToWorld ( x, y )
+          debugHUD:setMouseWorldPosition(x,y)
+        end
       end
     end
   end
@@ -80,33 +93,23 @@ end
 
 function cameraAnimation ()
   while true do
-    local x = CAMERA_MIN_MOVEMENT_X + math.random (0, 2)
-    local y = CAMERA_MIN_MOVEMENT_Y + math.random (0, 2)
-    if math.random () > 0.5 then
-      x = -x
-    end
-    if math.random () > 0.5 then
-      y = -y
-    end
-    
+    local x = math.random (CAMERA_MIN_MOVEMENT_X, CAMERA_MAX_MOVEMENT_X)
+    local y = math.random (CAMERA_MIN_MOVEMENT_Y, CAMERA_MAX_MOVEMENT_Y)
+        
     if (cameraDeltaX + x > CAMERA_MAX_DELTA_X) or (cameraDeltaX + x < -CAMERA_MAX_DELTA_X) then
-      print ('camera bounce x')
       x = -x
     end
     
     if (cameraDeltaY + y > CAMERA_MAX_DELTA_Y) or (cameraDeltaY + y < -CAMERA_MAX_DELTA_Y) then
-      print ('camera bounce y')
       y = -y
     end
     
     cameraDeltaX = cameraDeltaX + x
     cameraDeltaY = cameraDeltaY + y
     
-    print ( 'camera movement: ', x, ' ; ', y )
-    
-    local action = camera:moveLoc(x, y, 1.5)
+    local action = camera:moveLoc(x, y, CAMERA_MOVEMENT_DURATION)
+
     MOAICoroutine.blockOnAction ( action )
-    -- action:setListener ( MOAIAction.EVENT_STOP, cameraAnimation )
   end
 end
 
@@ -115,4 +118,10 @@ function displayHUD ( self )
   -- Inventory
   inventory.inventory_layer:setViewport ( viewport )
   MOAIRenderMgr.pushRenderPass ( inventory.inventory_layer )
+
+  -- Debug
+  if DEBUG then
+    debugHUD:initialize ()
+  end
+
 end

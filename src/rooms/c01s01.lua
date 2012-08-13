@@ -7,9 +7,9 @@
 
 c01s01 = room.new ( "Bedroom" )
 
-c01s01.initialCameraX = 100
-c01s01.initialCameraY = 100
-c01s01.initialCameraScl = 1
+c01s01.initialCameraX = 0
+c01s01.initialCameraY = 0
+c01s01.initialCameraScl = 0.8
 
 objects = {
   background = {
@@ -26,7 +26,7 @@ objects = {
     layer_name = 'walk_behind_shadows',
     x = 0,
     y = 0,
-    render_at_start = true,
+    render_at_start = false,
     avoid_clicks = true
   },
   
@@ -35,7 +35,7 @@ objects = {
     layer_name = 'background_highlights',
     x = 0,
     y = 0,
-    render_at_start = true,
+    render_at_start = false,
     avoid_clicks = true
   },
   
@@ -130,33 +130,6 @@ c01s01.after_initialize = function ( self )
     MOAILogMgr.log ( "Objects" )
     MOAILogMgr.log ( "---------------------------------" )
     dump ( c01s01.objects )
-    MOAILogMgr.log ( "---------------------------------" )
+    MOAILogMgr.log ( "---------------------------------\n" )
   end
 end
-
-
-
-
-
--- Walk path
-
--- nodes
-local bed
-bed.position = {30, 30}
-local clothes
-clothes.position = {200, 200}
-
--- links between nodes
-bed.next = {clothes}
-clothes.next = {bed}
-
--- path
-local walkPath = [bed, clothes]
-
-
-
-
-
-
-
-

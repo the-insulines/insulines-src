@@ -12,6 +12,14 @@ function new (name)
   
   room.name = name
   
+  -- perspective attributes
+  room.frontCharacterZoom = 1
+  room.bottomCharacterZoomThreshold = -200
+  
+  room.backCharacterZoom = 0.4
+  room.topCharacterZoomThreshold = 200
+  
+  
   room.layer_objects = {
     background = MOAILayer2D.new (),
     background_shadows = MOAILayer2D.new (),
@@ -49,13 +57,14 @@ function new (name)
   
   room.objects = {}
   
-  room.name = name
-  
   room.initialize = function ( self )
     self.before_initialize ()
     
     game.camera:setLoc(self.initialCameraX, self.initialCameraY)
     game.camera:setScl(self.initialCameraScl)
+    
+    -- calculate the perspective factor to apply zoom
+    self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
     
     self.after_initialize ()
   end
@@ -142,7 +151,7 @@ function new (name)
       -- Walk
       local char = self.objects.main_character
       if char then
-        char:moveTo (x, y)
+        char:moveTo (x, y, self.perspectiveZoomFactor)
       end
 
       -- Collision detection

@@ -14,7 +14,12 @@ local cache = {}
 
 ----------------------------------------------------------------
 -- exposed functions
-
+function loadFont ( fileUrl, glyphs, fontSize, dpi )
+  local font = MOAIFont.new ()
+  font:loadFromTTF (fileUrl, glyphs, fontSize, dpi )
+  return font
+end
+  
 function loadImage ( fileUrl, imageAttributes )
   local image
   if imageAttributes.imageRect then
@@ -71,6 +76,9 @@ function load ( key )
   
     elseif (resourceAttributes.type == RESOURCE_TYPE_TILED_IMAGE) then
       resource = loadTiledImage (TILED_IMAGES_PATH .. resourceAttributes.fileName, resourceAttributes)
+      
+    elseif (resourceAttributes.type == RESOURCE_TYPE_FONT) then
+      resource = loadFont ( FONTS_PATH .. resourceAttributes.fileName, resourceAttributes.glyphs, resourceAttributes.fontSize, resourceAttributes.dpi )
     end
   
     -- store the loaded resource on cache
