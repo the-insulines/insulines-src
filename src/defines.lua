@@ -12,13 +12,19 @@ WORLD_RESOLUTION_Y = 1080
 SCREEN_RESOLUTION_X = 960
 SCREEN_RESOLUTION_Y = 540
 
+
+-- Camera
 CAMERA_SCALE = 1.0
 
-CAMERA_MAX_DELTA_X = 5
+CAMERA_MIN_MOVEMENT_X = 0.5
+CAMERA_MIN_MOVEMENT_Y = 0.5
+CAMERA_MAX_DELTA_X = 10
 CAMERA_MAX_DELTA_Y = 15
+
 
 -- Debugging
 DEBUG = false
+
 
 -- Inventory constants
 INVENTORY_OPEN_X = 960 - 200
@@ -27,10 +33,20 @@ INVENTORY_CLOSED_X = 960 + 200
 INVENTORY_CLOSED_Y = 0
 INVENTORY_ANIMATION_LENGTH = 1
 
+
 -- Language
 LANGUAGE = "en"
 
+
+-- Movement
+MOVEMENT_PIXELS_PER_SECOND = 150
+MOVEMENT_SECONDS_PER_FRAME = 0.025
+
+
+
+
 -- Resources
+
 -- resource type constants
 IMAGES_PATH = '../insulines-gfx/'
 --IMAGES_PATH = './'
@@ -40,29 +56,37 @@ RESOURCE_TYPE_IMAGE = 0
 RESOURCE_TYPE_TILED_IMAGE = 1
 RESOURCE_TYPE_SOUND = 2
 
-resources = { 
+
+resources = {
+  
+  main_character = {
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'characters/walk_cycle2.png',
+    width = 576*5, height = 768*5,
+    tileMapSize = {9, 8}
+  },
   
   inventory_background = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'inventory_background.png', 
     width = 400, height = 1080, 
     tileMapSize = {1, 1}
-  },    
-
+  },
+  
   inventory_backpack = {
-    type = RESOURCE_TYPE_TILED_IMAGE, 
-    fileName = 'backpack.png', 
-    width = 256, height = 128, 
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'backpack.png',
+    width = 256, height = 128,
     tileMapSize = {2, 1}
-  },    
-    
+  },
+  
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 
     width = 1920, 
     height = 1080
   },
-
+  
   c01s01_lights_off_highlights_B = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_lights_off_highlights_B.png', 
@@ -148,4 +172,35 @@ function tabs (n)
     counter = counter - 1
   end
   return result
+end
+
+function performWithDelay ( delay, fund,repeats, ...)
+  local t = MOAITimer.new ()
+  t:setSpan (delay/100)
+  t:setListener ( MOAITimer.EVENT_TIMER_LOOP,
+  function ()      t:stop ()
+    t = nil
+    func ( unpack ( arg ))
+    if repeats then
+      if repeats > 1 then
+        performWithDelay(delay, func, repeats - 1, unpack ( arg ))
+      elseif repeats == 0 then
+        performWithDelay(delay, func, 0, unpack( arg ))
+      end
+    end
+  end
+  )
+  t:start ()
+end
+
+
+local collect = collectgarbage
+local lastCheck = {sysMem = 0}
+function checkMem (say)
+   collect()
+   local sysMem = collect("count") * .001
+   if say == true or lastCheck.sysMem ~= sysMem then
+      lastCheck.sysMem = sysMem
+      print( "Mem: " .. math.floor(sysMem*1000)*.001 .. "MB \t" )
+   end
 end
