@@ -133,12 +133,13 @@ function new (name)
       -- Add to layer
       object.layer = self.layer_objects[object.layer_name]
       if object.render_at_start then
-        object.layer:insertProp ( object.prop )
+        self:startRendering( k )
       end
       
       -- Add dimensions
       object.half_width = resources[v.resource_name].width / 2
       object.half_height = resources[v.resource_name].height / 2
+      
     end
   end
   
@@ -148,12 +149,6 @@ function new (name)
       local x, y = input_manager.getTouch ()
       x, y = self.layer_objects.objects:wndToWorld ( x, y )
       
-      -- Walk
-      local char = self.objects.main_character
-      if char then
-        char:moveTo (x, y, self.perspectiveZoomFactor)
-      end
-
       -- Collision detection
       local object = self:objectAt ( x, y )
 
@@ -162,13 +157,31 @@ function new (name)
         if type (object.onClick) == "function" then
           object.onClick ()
         end
+      else
+        -- Walk
+        local char = self.objects.main_character
+        if char then
+          char:moveTo (x, y, self.perspectiveZoomFactor)
+        end
       end
     end
   end
   
   room.stopRendering = function ( self, object )
     local o = self.objects[object]
-    o.layer:removeProp ( o.prop )
+    if o then
+      o.layer:removeProp ( o.prop )
+      o.rendering = false
+    end
+  end
+
+  room.startRendering = function ( self, object )
+    local o = self.objects[object]
+
+    if o then
+      o.layer:insertProp ( o.prop )
+      o.rendering = true
+    end
   end
 
   ----------------------------------------------------------------
@@ -187,7 +200,7 @@ function new (name)
   
       local objX, objY = object.prop:worldToModel ( x, y )
   
-      if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) then
+      if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) and object.rendering then
         return object
       end
   

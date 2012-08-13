@@ -69,28 +69,39 @@ objects = {
 
   clothes_heap = {
     resource_name = "c01s01_clothes_heap",
-    layer_name = "objects",
-    x = -400,
-    y = -100,
+    layer_name = "walk_behind",
+    x = 0,
+    y = -300,
     render_at_start = true,
     dressed = false,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
         if not c01s01.objects.clothes_heap.dressed then
-          MOAILogMgr.log ( "Dressing..." )
+          print ( "Dressing..." )
           c01s01.objects.clothes_heap.dressed = true
-        else
-          MOAILogMgr.log ( "Say: I gave the Laundry Lady the Year Off" )
+          c01s01:stopRendering ( "clothes_heap" )
+          c01s01:startRendering ( "clothes_on_heap" )
         end
       end
+    end
+  },
+
+  clothes_on_heap = {
+    resource_name = "c01s01_clothes_on_heap",
+    layer_name = "walk_behind",
+    x = 0,
+    y = -300,
+    render_at_start = false,
+    onClick = function ()
+      print ( "Say: I gave the Laundry Lady the Year Off" )
     end
   },
   
   window = {
     resource_name = "c01s01_window",
     layer_name = "objects",
-    x = 400,
-    y = 100,
+    x = 720,
+    y = -65,
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then

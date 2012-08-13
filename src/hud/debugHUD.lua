@@ -10,6 +10,8 @@ local layer = MOAILayer2D.new()
 local font =  MOAIFont.new ()
 local mouseWorldPositionTextbox = MOAITextBox.new ()
 local mouseWindowPositionTextbox = MOAITextBox.new ()
+local memoryTextbox = MOAITextBox.new ()
+
 local dialogViewport = MOAIViewport.new ()
 
 function initialize(self)
@@ -24,6 +26,8 @@ function initialize(self)
 
   -- setup
   self:setupMousePosition ()
+  self:setupMemory ()  
+  
 end
 
 
@@ -41,9 +45,20 @@ function setupMousePosition ( self )
   layer:insertProp ( mouseWindowPositionTextbox )
 end
 
-function clear ( self )
-  self:displayText('')
+function setupMemory( self )
+  memoryTextbox:setFont ( font )
+  memoryTextbox:setTextSize ( 12 )
+  memoryTextbox:setYFlip( true )
+  memoryTextbox:setRect ( - SCREEN_RESOLUTION_X / 2 + 5 , SCREEN_RESOLUTION_Y / 2 - 30, - SCREEN_RESOLUTION_X / 2 + 120, SCREEN_RESOLUTION_Y / 2 - 30 - 14)
+  layer:insertProp ( memoryTextbox )
+
+  self.memoryTimer = MOAITimer.new ()
+  self.memoryTimer:setSpan (0.01)
+  self.memoryTimer:setMode (MOAITimer.LOOP)
+  self.memoryTimer:setListener ( MOAITimer.EVENT_TIMER_LOOP, displayMemory)
+  self.memoryTimer:start ()
 end
+
 
 function setMouseWorldPosition(self, x,y)
   mouseWorldPositionTextbox:setString ( "World: (" .. math.floor(x) .. "," .. math.floor(y) .. ")" )
@@ -53,11 +68,9 @@ function setMouseWindowPosition(self, x,y)
   mouseWindowPositionTextbox:setString ( "Window: (" .. x .. "," .. y .. ")" )
 end
 
-function displayText(self, text)
-  textbox:setString ( text )
-  textbox:spool ()
+function displayMemory ( timer, n)
+  memoryTextbox:setString ("Memory: " .. checkMem( true ) .. " MB ") 
 end
-
 function getLayer ()
   return layer
 end

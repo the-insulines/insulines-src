@@ -11,6 +11,7 @@ mainCharacter.gfx = resource_cache.get ( 'main_character' )
 
 mainCharacter.animation = AnimatedProp.new ()
 mainCharacter.animation.currentAction = nil
+mainCharacter.avoid_clicks = true
 
 -- initialize the character animations
 mainCharacter.animation:setDeck (  mainCharacter.gfx )
@@ -38,9 +39,6 @@ end
 function mainCharacter:moveTo ( x, y, zoomFactor )
 
   self:stopCurrentAction ()
-  ------------------ DEBUG
-  checkMem( false )
-  ------------------ DEBUG
   
   local curX, curY = self.prop:getLoc ()
   

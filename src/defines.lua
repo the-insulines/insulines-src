@@ -124,15 +124,22 @@ resources = {
   c01s01_clothes_heap = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/clothes_heap.png', 
-    width = 252, 
-    height = 39
+    width = 477, 
+    height = 273
+  },
+
+  c01s01_clothes_on_heap = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/clothes_on_heap.png', 
+    width = 477,
+    height = 273
   },
   
   c01s01_window = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/window.png', 
-    width = 148, 
-    height = 31
+    width = 481, 
+    height = 895
   },
   
   c01s01_room_door = {
@@ -187,7 +194,7 @@ function tabs (n)
   return result
 end
 
-function performWithDelay ( delay, fund,repeats, ...)
+function performWithDelay ( delay, func, repeats, ... )
   local t = MOAITimer.new ()
   t:setSpan (delay/100)
   t:setListener ( MOAITimer.EVENT_TIMER_LOOP,
@@ -214,6 +221,6 @@ function checkMem (say)
    local sysMem = collect("count") * .001
    if say == true or lastCheck.sysMem ~= sysMem then
       lastCheck.sysMem = sysMem
-      print( "Mem: " .. math.floor(sysMem*1000)*.001 .. "MB \t" )
+      return math.floor(sysMem*1000)*.001
    end
 end
