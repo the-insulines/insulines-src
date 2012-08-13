@@ -184,6 +184,20 @@ function new (name)
     end
   end
 
+
+  room.fadeOut = function ( self )
+    for k,layer in pairs ( self.layer_objects ) do
+      layer:seekColor ( 0, 0, 0, 1, 1)
+    end
+  end
+  
+
+  room.fadeIn = function ( self )
+    for k,layer in pairs ( self.layer_objects ) do
+      layer:seekColor ( 1, 1, 1, 1, 1)
+    end
+  end
+  
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------

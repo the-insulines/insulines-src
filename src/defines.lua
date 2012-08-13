@@ -163,6 +163,18 @@ resources = {
     height = 308
   },
   
+  c01s01_poster_barbarullo = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/c01s01_poster_barbarullo.png', 
+    width = 180, 
+    height = 200
+  },
+  c01s01_poster_star_floyd = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/c01s01_poster_star_floyd.png', 
+    width = 219, 
+    height = 302
+  },
   -- dummyRoomBackgroundImage = {type = IMAGE, fileName = 'background.jpeg', width = 3146, height = 960},
   -- guybrushTiledImage = {type = TILED_IMAGE, fileName = 'gb_walk.png', width = 624, height = 450, tileMapSize = {6, 3}},
   -- cityBackgroundImage0 = {type = IMAGE, fileName = 'b2_l0.png', width = 1920, height = 1200},
@@ -212,6 +224,7 @@ end
 function performWithDelay ( delay, func, repeats, ... )
   local t = MOAITimer.new ()
   t:setSpan (delay/100)
+  t:setMode (MOAITimer.LOOP)
   t:setListener ( MOAITimer.EVENT_TIMER_LOOP,
   function ()      t:stop ()
     t = nil

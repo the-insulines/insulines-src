@@ -9,7 +9,7 @@ c01s01 = room.new ( "Bedroom" )
 
 c01s01.initialCameraX = 0
 c01s01.initialCameraY = 0
-c01s01.initialCameraScl = 0.8
+c01s01.initialCameraScl = 1
 
 objects = {
   background = {
@@ -84,12 +84,18 @@ objects = {
     render_at_start = true,
     dressed = false,
     onClick = function ()
+      local fadeIn = function ()
+        print( "Called" )
+        c01s01:fadeIn ()
+        c01s01:stopRendering ( "clothes_heap" )
+        c01s01:startRendering ( "clothes_on_heap" )
+      end
+      
       if c01s01.objects.cellphone.woke then
         if not c01s01.objects.clothes_heap.dressed then
-          print ( "Dressing..." )
+          c01s01:fadeOut ()
+          performWithDelay (100, fadeIn, 1, c01s01)
           c01s01.objects.clothes_heap.dressed = true
-          c01s01:stopRendering ( "clothes_heap" )
-          c01s01:startRendering ( "clothes_on_heap" )
         end
       end
     end
@@ -118,6 +124,23 @@ objects = {
       end
     end
   },
+
+  floyd = {
+    resource_name = "c01s01_poster_star_floyd",
+    layer_name = "objects",
+    x = 383,
+    y = 265,
+    render_at_start = true,
+  },
+
+  barbarullo = {
+    resource_name = "c01s01_poster_barbarullo",
+    layer_name = "objects",
+    x = -336,
+    y = 328,
+    render_at_start = true,
+  },
+  
   room_door = {
     resource_name = "c01s01_room_door",
     layer_name = "objects",
@@ -131,7 +154,7 @@ objects = {
         else
           c01s01:stopRendering( "room_door" )
           c01s01:startRendering( "room_door_open" )
-          
+          c01s01:fadeOut ()
           print ( "Goto: c01s02" )
         end
       end
