@@ -145,9 +145,24 @@ resources = {
   c01s01_room_door = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/room_door.png', 
-    width = 203, 
-    height = 31
+    width = 182, 
+    height = 608
   },
+
+  c01s01_room_door_open = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/room_door_open.png', 
+    width = 173, 
+    height = 641
+  },
+  
+  c01s01_walk_behind = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/c01s01_walk_behind_B.png', 
+    width = 977, 
+    height = 308
+  },
+  
   -- dummyRoomBackgroundImage = {type = IMAGE, fileName = 'background.jpeg', width = 3146, height = 960},
   -- guybrushTiledImage = {type = TILED_IMAGE, fileName = 'gb_walk.png', width = 624, height = 450, tileMapSize = {6, 3}},
   -- cityBackgroundImage0 = {type = IMAGE, fileName = 'b2_l0.png', width = 1920, height = 1200},

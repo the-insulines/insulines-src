@@ -39,6 +39,15 @@ objects = {
     avoid_clicks = true
   },
   
+  walk_behind = {
+    resource_name = 'c01s01_walk_behind',
+    layer_name = 'walk_behind',
+    x = -400,
+    y = -386,
+    render_at_start = true,
+    avoid_clicks = true
+  },
+
   cellphone = {
     resource_name = "c01s01_cellphone",
     layer_name = "objects",
@@ -112,19 +121,41 @@ objects = {
   room_door = {
     resource_name = "c01s01_room_door",
     layer_name = "objects",
-    x = 400,
-    y = -100,
+    x = -870,
+    y = 180,
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
         if not c01s01.objects.clothes_heap.dressed then 
           MOAILogMgr.log ( "Say: I should dress first" )
         else
-          MOAILogMgr.log ( "Goto: c01s02" )
+          c01s01:stopRendering( "room_door" )
+          c01s01:startRendering( "room_door_open" )
+          
+          print ( "Goto: c01s02" )
+        end
+      end
+    end
+  },
+  
+  room_door_open = {
+    resource_name = "c01s01_room_door_open",
+    layer_name = "objects",
+    x = -872,
+    y = 165,
+    render_at_start = false,
+    onClick = function ()
+      if c01s01.objects.cellphone.woke then
+        if not c01s01.objects.clothes_heap.dressed then 
+          MOAILogMgr.log ( "Say: I should dress first" )
+        else
+          c01s01:stopRendering( "room_door_open" )
+          c01s01:startRendering( "room_door" )
         end
       end
     end
   }
+  
 }
 
 c01s01:addObjects ( objects )
