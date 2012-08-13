@@ -14,6 +14,7 @@ AnimatedProp.__index = AnimatedProp
 function AnimatedProp.new ()
   local newObj = {}
     newObj.animations = {}
+    newObj.currentAnimation = nil
     newObj.prop = MOAIProp2D.new ()
     newObj.remapper = nil
   
@@ -22,17 +23,19 @@ function AnimatedProp.new ()
 end
 
 
-function AnimatedProp:setSpriteSheet (spriteSheetDeck)
+function AnimatedProp:setDeck (spriteSheetDeck)
   self.prop:setDeck (spriteSheetDeck)
   
   -- create the remapper
   self.remapper = MOAIDeckRemapper.new ()
   self.remapper:reserve (1)
+  
   self.prop:setRemapper (self.remapper)
 end
 
 
 function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameTime)
+
   local lastFrame = startFrame + frameCount
   
   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
@@ -44,6 +47,7 @@ function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameT
   -- create the animation that links the animation curve with the remapper
   local anim = MOAIAnim:new ()
   anim:reserveLinks (1)
+  
   anim:setLink (1, curve, self.remapper, 1)
   anim:setMode (MOAITimer.LOOP)
   
@@ -52,23 +56,32 @@ function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameT
 end
 
 
-function AnimatedProp:applyAnimation (name, t0, tn)
-  self.animations[name]:apply (t0, tn)
+function AnimatedProp:getAnimation ( name )
+  return self.animations[name]
 end
 
 
-function AnimatedProp:startAnimation (name)
-  MOAICoroutine.blockOnAction (self.animations[name]:start ())
+function AnimatedProp:startAnimation ( name )
+  self.currentAnimation = self:getAnimation ( name )
+  self.currentAnimation:start ()
 end
 
 
-function AnimatedProp:stopAnimation (name)
-  MOAICoroutine.blockOnAction (self.animations[name]:stop ())
+function AnimatedProp:stopCurrentAnimation ()
+  if self.currentAnimation then
+    self.currentAnimation:stop ()
+  end
+end
+
+
+function AnimatedProp:stopAnimation ( name )
+  MOAICoroutine.blockOnAction ( self.animations[name]:stop () )
+  self.currentAnimation = nil
 end
 
 
 ---- methods forwarded to MOAIProp2D
 
-function AnimatedProp:setLoc (...)
-  self.prop:setLoc (unpack (arg))
+function AnimatedProp:setLoc ( ... )
+  self.prop:setLoc ( unpack (arg) )
 end

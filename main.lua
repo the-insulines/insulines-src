@@ -8,6 +8,7 @@
 require 'src/defines'
 require 'src/resource_cache'
 require 'src/room'
+require 'src/animatedProp'
 require 'src/characters/main_character'
 require 'src/hud/inventory'
 require 'src/input_manager'

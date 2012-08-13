@@ -23,17 +23,16 @@ function loadScene ( self, scene )
   
   -- Initialize scene
   scene:initialize ()
-
+  
   -- Load all layers
   for k, layer in pairs( scene:layers() ) do 
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
     MOAIRenderMgr.pushRenderPass ( layer )
   end
-
+  
   -- Load HUD
   self:displayHUD ()
-
   
 end
 
@@ -45,25 +44,25 @@ function initialize ( self )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
   
   inventory:initialize ( )
-  
+
   self:loadScene ( c01s01 )
 
 end
+
 
 function start ( self )
 
   -- Initialize game
   self:initialize ()
   
+  -- Camera animation
+  self.cameraThread = MOAIThread.new ()
+  self.cameraThread:run ( cameraAnimation )
+  
   -- -- Game loop
   -- -- If there is a scene loaded we gather input and update everyhing
   while true do
     coroutine.yield ()
-    
-    -- Camera animation
-    self.cameraThread = MOAIThread.new ()
-    self.cameraThread:run ( cameraAnimation )
-    
     
     if self.current_scene then
       if type ( self.current_scene.onInput ) == "function" then
@@ -78,27 +77,38 @@ function start ( self )
 
 end
 
-function cameraAnimation ( )
+
+function cameraAnimation ()
   while true do
+    local x = math.random (CAMERA_MIN_MOVEMENT_X, CAMERA_MAX_MOVEMENT_X)
+    local y = math.random (CAMERA_MIN_MOVEMENT_Y, CAMERA_MAX_MOVEMENT_Y)
     
-    local x = math.random(-1, 1)
-    local y = math.random(-1, 1)
+    --[[
+    if math.random () > CAMERA_MOVEMENT_DIRECTION_CHANGE_PROBABILITY then
+      x = -x
+    end
+    if math.random () > CAMERA_MOVEMENT_DIRECTION_CHANGE_PROBABILITY then
+      y = -y
+    end
+    ]]--
     
     if (cameraDeltaX + x > CAMERA_MAX_DELTA_X) or (cameraDeltaX + x < -CAMERA_MAX_DELTA_X) then
-      x = 0
+      x = -x
     end
-
+    
     if (cameraDeltaY + y > CAMERA_MAX_DELTA_Y) or (cameraDeltaY + y < -CAMERA_MAX_DELTA_Y) then
-      y = 0
+      y = -y
     end
     
     cameraDeltaX = cameraDeltaX + x
     cameraDeltaY = cameraDeltaY + y
     
-    MOAICoroutine.blockOnAction ( camera:moveLoc(x, y, 4) )
-    
+    local action = camera:moveLoc(x, y, CAMERA_MOVEMENT_DURATION)
+    MOAICoroutine.blockOnAction ( action )
+    -- action:setListener ( MOAIAction.EVENT_STOP, cameraAnimation )
   end
 end
+
 
 function displayHUD ( self )
   -- Inventory

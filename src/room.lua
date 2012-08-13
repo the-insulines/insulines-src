@@ -81,6 +81,21 @@ function new (name)
     end
   end
   
+  function room:loadCharacter ( object )
+    -- Add to layer
+    object.layer = self.layer_objects.character
+    if object.render_at_start then
+      object.layer:insertProp ( object.prop )
+    end
+
+    -- Add dimensions
+    object.half_width = resources[object.name].width / 2
+    object.half_height = resources[object.name].height / 2
+
+    self.objects[object.name] = object
+    
+  end
+  
   room.loadObjects = function ( self )
     for k,v in pairs ( self.objects ) do
       local object = self.objects[k]
@@ -89,9 +104,22 @@ function new (name)
       object.gfx = resource_cache.get ( v.resource_name )
 
       -- Create prop
-      object.prop = MOAIProp2D.new ()
-      object.prop:setDeck ( object.gfx )
+      if object.animated then
+        -- create an animated prop
+        object.animation = AnimatedProp.new ()
+        object.animation:setDeck ( object.gfx )
+        object.prop = object.animation.prop
+      else
+        object.prop = MOAIProp2D.new ()
+        object.prop:setDeck ( object.gfx )
+      end
+      
       object.prop:setLoc ( object.x, object.y )
+      
+      -- Load animations for animated prop
+      if object.animated then
+        self:loadAnimations ( object.animation, object.animations )
+      end
       
       -- Add to layer
       object.layer = self.layer_objects[object.layer_name]
@@ -110,14 +138,15 @@ function new (name)
 
       local x, y = input_manager.getTouch ()
       x, y = self.layer_objects.objects:wndToWorld ( x, y )
+      
+      -- Walk
+      local char = self.objects.main_character
+      if char then
+        char:moveTo (x, y)
+      end
 
       -- Collision detection
       local object = self:objectAt ( x, y )
-      if object then
-        MOAILogMgr.log("Tap at: " .. x .. ", " .. y .. " " .. object.resource_name .. "\n")
-      else 
-        MOAILogMgr.log("Tap at: " .. x .. ", " .. y .. "\n")
-      end
 
       if object then
         -- dialog_manager:displayText ( object.name )
@@ -136,7 +165,13 @@ function new (name)
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------
-
+  
+  function room:loadAnimations ( animatedProp, animations )
+    for k,v in pairs ( animations ) do
+      animatedProp:addConstantAnimation ( unpack ( v ) )
+    end
+  end
+  
   room.objectAt = function ( self, x, y )
   
     for k, object in pairs( self.objects ) do

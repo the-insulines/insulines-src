@@ -9,7 +9,7 @@ c01s01 = room.new ( "Bedroom" )
 
 c01s01.initialCameraX = 100
 c01s01.initialCameraY = 100
-c01s01.initialCameraScl = 0.8
+c01s01.initialCameraScl = 0.6
 
 objects = {
   background = {
@@ -26,22 +26,27 @@ objects = {
     layer_name = 'walk_behind_shadows',
     x = 0,
     y = 0,
-    render_at_start = true,
+    render_at_start = false,
     avoid_clicks = true
   },
   
   lights_off_highlights = {
     resource_name = 'c01s01_lights_off_highlights_B',
-    layer_name = 'walk_behind_highlights',
+    layer_name = 'background_highlights',
     x = 0,
     y = 0,
-    render_at_start = true,
+    render_at_start = false,
     avoid_clicks = true
   },
   
   cellphone = {
     resource_name = "c01s01_cellphone",
     layer_name = "objects",
+    animated = true,
+    animations = {
+      {'stand_by', 1, 2, 1},
+      --{'calling', 3, 2, 1},
+    },
     x = -30,
     y = 110,
     render_at_start = true,
@@ -108,7 +113,6 @@ objects = {
         end
       end
     end
-    
   }
 }
 
@@ -116,9 +120,11 @@ c01s01:addObjects ( objects )
 
 c01s01.before_initialize = function ( self )
   c01s01:loadObjects ()
+  c01s01.objects.cellphone.animation:startAnimation ( 'stand_by' )
+  c01s01:loadCharacter( mainCharacter )
 end
 
-c01s01.after_initialize = function ( self ) 
+c01s01.after_initialize = function ( self )
   if DEBUG then
     MOAILogMgr.log ( "---------------------------------" )
     MOAILogMgr.log ( "Objects" )
@@ -127,3 +133,30 @@ c01s01.after_initialize = function ( self )
     MOAILogMgr.log ( "---------------------------------" )
   end
 end
+
+
+
+
+--[[
+-- Walk path
+
+-- nodes
+local bed
+bed.position = {30, 30}
+local clothes
+clothes.position = {200, 200}
+
+-- links between nodes
+bed.next = {clothes}
+clothes.next = {bed}
+
+-- path
+local walkPath = [bed, clothes]
+]]--
+
+
+
+
+
+
+
