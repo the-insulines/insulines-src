@@ -188,8 +188,6 @@ resources = {
 
 
 
-
-
 -- function used to dump tables to screen
 function dump ( value, key, level )
   -- start from level 0
@@ -223,10 +221,11 @@ end
 
 function performWithDelay ( delay, func, repeats, ... )
   local t = MOAITimer.new ()
-  t:setSpan (delay/100)
-  t:setMode (MOAITimer.LOOP)
+  t:setSpan ( delay/100 )
+  t:setMode ( MOAITimer.LOOP )
   t:setListener ( MOAITimer.EVENT_TIMER_LOOP,
-  function ()      t:stop ()
+  function ()
+    t:stop ()
     t = nil
     func ( unpack ( arg ))
     if repeats then

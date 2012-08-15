@@ -58,7 +58,7 @@ function new (name)
   room.objects = {}
   
   room.initialize = function ( self )
-    self.before_initialize ()
+    self:beforeInitialize ()
     
     game.camera:setLoc(self.initialCameraX, self.initialCameraY)
     game.camera:setScl(self.initialCameraScl)
@@ -66,7 +66,7 @@ function new (name)
     -- calculate the perspective factor to apply zoom
     self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
     
-    self.after_initialize ()
+    self:afterInitialize ()
   end
   
   -- To do initializations on your room use these callbacks.
@@ -145,13 +145,13 @@ function new (name)
   
   room.onInput = function ( self )
     if input_manager.down () then
-
+      
       local x, y = input_manager.getTouch ()
       x, y = self.layer_objects.objects:wndToWorld ( x, y )
       
       -- Collision detection
       local object = self:objectAt ( x, y )
-
+      
       if object then
         -- dialog_manager:displayText ( object.name )
         if type (object.onClick) == "function" then
@@ -198,6 +198,16 @@ function new (name)
     end
   end
   
+  function room:loadPath ( graph )
+    
+    self.path = Path.new ( graph )
+
+    if DEBUG then
+      self.path:debug( self.layer_objects.objects )
+    end
+    
+  end
+  
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------
@@ -220,7 +230,8 @@ function new (name)
   
     end
     return nil
-  end  
+  end
+  
 
   return room
   

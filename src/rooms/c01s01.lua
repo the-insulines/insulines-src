@@ -183,18 +183,46 @@ objects = {
 
 c01s01:addObjects ( objects )
 
-c01s01.before_initialize = function ( self )
-  c01s01:loadObjects ()
-  c01s01.objects.cellphone.animation:startAnimation ( 'stand_by' )
-  c01s01:loadCharacter( mainCharacter )
+function c01s01:beforeInitialize ()
+  self:loadObjects ()
+  self.objects.cellphone.animation:startAnimation ( 'stand_by' )
+  self:loadCharacter( mainCharacter )
 end
 
-c01s01.after_initialize = function ( self )
-  if DEBUG then
-    MOAILogMgr.log ( "---------------------------------" )
-    MOAILogMgr.log ( "Objects" )
-    MOAILogMgr.log ( "---------------------------------" )
-    dump ( c01s01.objects )
-    MOAILogMgr.log ( "---------------------------------\n" )
-  end
+function c01s01:afterInitialize ()
+  -- if DEBUG then
+  --   MOAILogMgr.log ( "---------------------------------" )
+  --   MOAILogMgr.log ( "Objects" )
+  --   MOAILogMgr.log ( "---------------------------------" )
+  --   --dump ( c01s01.objects )
+  --   MOAILogMgr.log ( "---------------------------------\n" )
+  --   
+  -- end
 end
+
+
+local path = {
+  bed = {
+    position = point (-120, -10),
+    neighbors = { 'clothes', 'door' }
+  },
+  
+  clothes = {
+    position = point (0, -180),
+    neighbors = { 'bed', 'door' }
+  },
+  
+  door = {
+    position = point (-788, -120),
+    neighbors = { 'bed', 'clothes' }
+  },
+
+  window = {
+    position = point (450, -260),
+    neighbors = { 'clothes' }
+  },
+  
+}
+
+-- Walk path
+c01s01:loadPath(path)

@@ -5,6 +5,8 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
+require 'src/math/point2d'
+require 'src/path'
 require 'src/defines'
 require 'src/resource_cache'
 require 'src/room'
@@ -22,8 +24,10 @@ end
 MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
 
 function main ()
+  
   game:start ()
 end
+
 
 gameThread = MOAIThread.new ()
 gameThread:run ( main )
