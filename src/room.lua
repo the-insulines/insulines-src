@@ -160,8 +160,11 @@ function new (name)
       else
         -- Walk
         local char = self.objects.main_character
+
         if char then
-          char:moveTo (x, y, self.perspectiveZoomFactor)
+          local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
+          char:moveThroughSteps( steps, self.perspectiveZoomFactor )
+          -- char:moveTo ( steps[1].x, steps[1].y, self.perspectiveZoomFactor )
         end
       end
     end

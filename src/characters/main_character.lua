@@ -23,6 +23,7 @@ mainCharacter.animation:addConstantAnimation ( 'stop_right', 9*5 + 1, 0, MOVEMEN
 mainCharacter.animation:addConstantAnimation ( 'walk_top', 9*7 + 1, 9, MOVEMENT_SECONDS_PER_FRAME )
 
 mainCharacter.prop = mainCharacter.animation.prop
+mainCharacter.prop:setPiv ( 0, MAIN_CHARACTER_PIVOT )
 
 mainCharacter.name = "main_character"
 
@@ -35,6 +36,13 @@ function mainCharacter:stopCurrentAction ()
   end
 end
 
+function mainCharacter:moveThroughSteps ( steps, zoomFactor )
+
+  for k, step in pairs ( steps ) do
+    MOAICoroutine.blockOnAction ( mainCharacter:moveTo ( step.x, step.y, zoomFactor ) )
+  end
+  
+end
 
 function mainCharacter:moveTo ( x, y, zoomFactor )
 
@@ -49,7 +57,7 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- create the movement displacement action
   self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )
-  
+
   -- add the walking animation action
   self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
   
@@ -59,6 +67,7 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- start
   self.currentAction:start ()
+  return self.currentAction
 end
 
 function mainCharacter:walkAnimation ( delta_x, time )

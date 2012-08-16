@@ -209,7 +209,7 @@ local path = {
   
   clothes = {
     position = point (0, -180),
-    neighbors = { 'bed', 'door' }
+    neighbors = { 'bed', 'door', 'window' }
   },
   
   door = {

@@ -12,9 +12,145 @@ function new (graph)
   local path = {}
   
   path.graph = graph
+
+  function path:steps ( sourcePoint, targetPoint )
+    local sourcePointOnPath, sourceSegment = self:nearestPointOnPath ( sourcePoint )
+    local targetPointOnPath, targetSegment = self:nearestPointOnPath ( targetPoint )
+
+    local steps = {}
+    
+    local sourceNode = self:nearestNodeNameToPoint ( sourceSegment, sourcePointOnPath )
+    
+    local targetNode = self:nearestNodeNameToPoint ( targetSegment, targetPointOnPath )
+    
+    local visited = {}
+    local previous = {}
+    
+    -- Setup initital distances to nil
+    local distances = {}
+    distances[sourceNode] = 0
   
-  -- function path:nearestPathPointToPoint ( x, y )
-  -- end
+    local nodes = self:nodeNames ()
+
+    while #nodes > 0 do
+      
+      local nearestNodeIndex, nearestNodeName = self:nodeWithSmallestDistance(nodes, distances)
+      
+      if nearestNodeName == targetSegment then
+        break
+      end
+      
+      table.remove(nodes, nearestNodeIndex)
+      
+      for index, neighbor in pairs ( self.graph[nearestNodeName].neighbors) do
+        local nearestDistance = distances[nearestNodeName] + (self.graph[nearestNodeName].position - self.graph[neighbor].position):len ()
+        
+        if distances[neighbor] == nil or nearestDistance < distances[neighbor] then
+          distances[neighbor] = nearestDistance
+          previous[neighbor] = nearestNodeName
+        end
+        
+      end
+      
+    end
+
+    -- Build list of steps
+    local currentNode = targetNode
+
+    while ( currentNode ~= sourceNode ) do
+      table.insert ( steps, self.graph[currentNode].position )
+      currentNode = previous[currentNode]
+    end
+        
+    if #steps > 0 then
+      table.insert ( steps, self.graph[sourceNode].position )
+    end
+
+    steps = table.reverse ( steps )
+    
+    if #steps >= 2 then
+      local previousNode = steps[#steps - 1]
+      
+      if previousNode == targetSegment.p1 or previousNode == targetSegment.p2 then
+        table.remove ( steps, #steps )
+      end
+    end
+    
+    table.insert(steps, targetPointOnPath)
+    
+    return steps
+  end  
+  
+  function path:nodeWithSmallestDistance(nodes, distances)
+    local node = nil
+    local index = nil
+    
+    for k, v in pairs ( nodes ) do
+      if distances[v] and ((node == nil) or (distances[node] > distances[v])) then
+        node = v
+        index = k
+      end
+    end
+    
+    return index, node
+  end
+  
+  function path:nodeNames ()
+    local names = {}
+    
+    for k, v in pairs (self.graph) do
+      table.insert(names, k)
+    end
+    
+    return names
+  end
+  
+  function path:nodeNameForPoint ( point )
+  
+    for k, v in pairs (self.graph) do
+      if v.position == point then
+        return k
+      end
+    end
+  
+  end
+  
+  function path:nearestNodeToPoint ( segment, point )
+    local p1_delta = (segment.p1 - point):squaredLen ()
+    local p2_delta = (segment.p2 - point):squaredLen ()
+    
+    if p1_delta < p2_delta then
+      return segment.p1
+    else
+      return segment.p2
+    end
+  end
+  
+  function path:nearestNodeNameToPoint( segment, point )
+    return self:nodeNameForPoint( self:nearestNodeToPoint ( segment, point ) )
+  end
+  
+  function path:nearestPointOnPath ( targetPoint )
+    local nearestPoint = nil
+    local nearestSegment = nil
+    local nearestPointDistanceSquare = nil
+    
+    for k, node in pairs ( graph ) do
+      for j = 1, table.getn ( node.neighbors ) do
+        local nextNode = graph[node.neighbors[j]]
+        local segment = { p1 = node.position, p2 = nextNode.position }
+        local localNearest, localDistanceSquare = path:nearestPointToPointInSegment ( segment, targetPoint )
+
+        if nearestPoint == nil or nearestPointDistanceSquare > localDistanceSquare then
+          nearestPoint = localNearest
+          nearestPointDistanceSquare = localDistanceSquare
+          nearestSegment = segment
+        end
+      end
+    end
+
+    return nearestPoint, nearestSegment
+  end
     
   function path:nearestPointToPointInSegment ( segment, targetPoint )
     
@@ -58,8 +194,6 @@ function new (graph)
   
   return path
 end
-
-
 
 
 function drawPath ( path, point, layer )

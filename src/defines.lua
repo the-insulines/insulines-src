@@ -13,6 +13,8 @@ SCREEN_RESOLUTION_X = 960
 SCREEN_RESOLUTION_Y = 640
 
 
+MAIN_CHARACTER_PIVOT = - 768 / 4
+
 -- Camera
 CAMERA_SCALE = 1.0
 
@@ -204,6 +206,8 @@ function dump ( value, key, level )
     print (tabs(level) .. "[userdata]")
   elseif type (value) == "function" then
     print (tabs(level) .. "[function]")
+  elseif value == nil then
+    print (tabs(level) .. "nil")
   else
       print (tabs(level) .. value)
   end
@@ -250,4 +254,14 @@ function checkMem (say)
       lastCheck.sysMem = sysMem
       return math.floor(sysMem*1000)*.001
    end
+end
+
+table.reverse = function ( aTable )
+  local n = #aTable
+  local resultTable = {}
+  while n > 0 do
+    table.insert(resultTable, aTable[n])
+    n = n - 1
+  end
+  return resultTable
 end
