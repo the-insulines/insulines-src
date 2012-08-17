@@ -223,6 +223,9 @@ function tabs (n)
   return result
 end
 
+function debug_line ()
+  print ('-------------------------------')
+end
 function performWithDelay ( delay, func, repeats, ... )
   local t = MOAITimer.new ()
   t:setSpan ( delay/100 )

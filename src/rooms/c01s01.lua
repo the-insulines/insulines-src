@@ -187,6 +187,7 @@ function c01s01:beforeInitialize ()
   self:loadObjects ()
   self.objects.cellphone.animation:startAnimation ( 'stand_by' )
   self:loadCharacter( mainCharacter )
+  self.objects.main_character.prop:setLoc(620, -265)
 end
 
 function c01s01:afterInitialize ()

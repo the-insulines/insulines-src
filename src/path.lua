@@ -8,41 +8,66 @@
 module ( "Path", package.seeall )
 
 function new (graph)
-
+  
   local path = {}
   
   path.graph = graph
-
+  
   function path:steps ( sourcePoint, targetPoint )
     local sourcePointOnPath, sourceSegment = self:nearestPointOnPath ( sourcePoint )
     local targetPointOnPath, targetSegment = self:nearestPointOnPath ( targetPoint )
-
-    local steps = {}
-    
-    local sourceNode = self:nearestNodeNameToPoint ( sourceSegment, sourcePointOnPath )
     
     local targetNode = self:nearestNodeNameToPoint ( targetSegment, targetPointOnPath )
     
+    -- calculate the minimum path starting on each node of the source segment
+    local sourceNode1 = self:nodeNameForPoint (sourceSegment.p1)
+    local sourceNode2 = self:nodeNameForPoint (sourceSegment.p2)
+    local distances1, previous1 = self:findMinimumPath ( sourceNode1, targetNode )
+    local distances2, previous2 = self:findMinimumPath ( sourceNode2, targetNode )
+    
+    -- choose the minimum between both previous paths
+    local distances, previous
+    local sourceNode
+    if distances1[targetNode] < distances2[targetNode] then
+      distances = distances1
+      previous = previous1
+      sourceNode = sourceNode1
+    else
+      distances = distances2
+      previous = previous2
+      sourceNode = sourceNode2
+    end
+    
+    local steps = self:assemblePath ( previous, sourceNode, targetNode, sourceSegment, targetSegment, targetPointOnPath )
+    
+    return steps
+  end
+  
+  
+  function path:findMinimumPath ( sourceNode, targetNode )
+    
+    local nodes = self:nodeNames ()
     local visited = {}
     local previous = {}
-    
-    -- Setup initital distances to nil
     local distances = {}
+    
+    -- Setup initital distance to source to 0 and the others to nil (infinite distance)
     distances[sourceNode] = 0
-  
-    local nodes = self:nodeNames ()
-
+    
     while #nodes > 0 do
       
       local nearestNodeIndex, nearestNodeName = self:nodeWithSmallestDistance(nodes, distances)
       
+      -- if the target node was selected, it has the shortest path and it won't have a shorter one
       if nearestNodeName == targetSegment then
         break
       end
       
-      table.remove(nodes, nearestNodeIndex)
+      -- remove the selected node from the list
+      table.remove ( nodes, nearestNodeIndex )
       
-      for index, neighbor in pairs ( self.graph[nearestNodeName].neighbors) do
+      -- for every neighbor, update the shortest distance
+      for index, neighbor in pairs ( self.graph[nearestNodeName].neighbors ) do
         local nearestDistance = distances[nearestNodeName] + (self.graph[nearestNodeName].position - self.graph[neighbor].position):len ()
         
         if distances[neighbor] == nil or nearestDistance < distances[neighbor] then
@@ -53,21 +78,38 @@ function new (graph)
       end
       
     end
-
-    -- Build list of steps
+    
+    return distances, previous
+  end
+  
+  
+  function path:assemblePath ( previous, sourceNode, targetNode, sourceSegment, targetSegment, targetPointOnPath )
+    local steps = {}
+    
+    -- build list of steps
     local currentNode = targetNode
-
+    
+    -- loop through the path nodes (starting on the target and finishing when reaching the source)
+    -- adding them to steps
     while ( currentNode ~= sourceNode ) do
       table.insert ( steps, self.graph[currentNode].position )
       currentNode = previous[currentNode]
     end
-        
-    if #steps > 0 then
+    
+    -- if the source and target nodes are on the same segment, the path souldn't contain any path nodes
+    local targetSegmentNode1 = self:nodeNameForPoint ( targetSegment.p1 )
+    local targetSegmentNode2 = self:nodeNameForPoint ( targetSegment.p2 )
+    
+    if not (( sourceSegment.p1 == targetSegment.p1 and sourceSegment.p2 == targetSegment.p2 )
+        or ( sourceSegment.p1 == targetSegment.p2 and sourceSegment.p2 == targetSegment.p1 )) then
       table.insert ( steps, self.graph[sourceNode].position )
     end
-
-    steps = table.reverse ( steps )
     
+    -- reverse the path so the nodes on it are stored in the order in which they will be traversed
+    steps = table.reverse ( steps )
+
+    -- if the target node and the previous one are on the same segment, remove the target node
+    -- this is because we are interested in finding the target segment but we feed it just one node
     if #steps >= 2 then
       local previousNode = steps[#steps - 1]
       
@@ -76,12 +118,14 @@ function new (graph)
       end
     end
     
-    table.insert(steps, targetPointOnPath)
+    -- add the target point to the path, it wasn't added before because the algorithm just traverses the path nodes
+    table.insert ( steps, targetPointOnPath )
     
     return steps
-  end  
+  end
   
-  function path:nodeWithSmallestDistance(nodes, distances)
+  
+  function path:nodeWithSmallestDistance ( nodes, distances )
     local node = nil
     local index = nil
     
@@ -105,6 +149,7 @@ function new (graph)
     return names
   end
   
+  
   function path:nodeNameForPoint ( point )
   
     for k, v in pairs (self.graph) do
@@ -114,6 +159,7 @@ function new (graph)
     end
   
   end
+  
   
   function path:nearestNodeToPoint ( segment, point )
     local p1_delta = (segment.p1 - point):squaredLen ()
@@ -126,9 +172,11 @@ function new (graph)
     end
   end
   
+  
   function path:nearestNodeNameToPoint( segment, point )
     return self:nodeNameForPoint( self:nearestNodeToPoint ( segment, point ) )
   end
+  
   
   function path:nearestPointOnPath ( targetPoint )
     local nearestPoint = nil
@@ -151,7 +199,8 @@ function new (graph)
 
     return nearestPoint, nearestSegment
   end
-    
+  
+  
   function path:nearestPointToPointInSegment ( segment, targetPoint )
     
     -- get the normalized direction vector of the segment
@@ -159,7 +208,7 @@ function new (graph)
     
     -- determine the length of the projection (dot product) over the segment of
     -- the vector established by the point and one end of the segment
-    local projectionLength = ( targetPoint - segment.p2 ) .. segmentVector
+    local projectionLength = ( targetPoint - segment.p2 ):dotProduct (segmentVector)
     projectionLength = projectionLength / ( segmentVector:squaredLen () )
     
     -- trim the projection to the ends of the segment so it sticks to the distance against a segment, not a line

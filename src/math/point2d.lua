@@ -53,8 +53,16 @@ function Point2d:__div ( s )
 end
 
 
--- dot product is '..'
 function Point2d:__concat ( p )
+  if self.x or self.y then
+    return p .. '(' .. self.x .. ',' .. self.y .. ')'
+  else
+    return p
+  end
+end
+
+
+function Point2d:dotProduct ( p )
   return self.x * p.x + self.y * p.y
 end
 

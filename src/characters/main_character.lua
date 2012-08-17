@@ -57,7 +57,7 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- create the movement displacement action
   self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )
-
+  
   -- add the walking animation action
   self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
   
