@@ -24,6 +24,7 @@ function new (name)
     background = MOAILayer2D.new (),
     background_shadows = MOAILayer2D.new (),
     background_highlights = MOAILayer2D.new (),
+    back_objects = MOAILayer2D.new (),
     objects = MOAILayer2D.new (),
     character = MOAILayer2D.new (),
     walk_behind = MOAILayer2D.new (),
@@ -39,12 +40,10 @@ function new (name)
   room.layers = function (self)
     local result = {}
     
-    -- -- for k,v in pairs ( self.layer_objects ) do table.insert ( result, v ) end
-    -- for k,v in pairs ( self.layer_objects ) do print ( k) end
-    
     table.insert ( result, self.layer_objects.background )
     table.insert ( result, self.layer_objects.background_shadows )
     table.insert ( result, self.layer_objects.background_highlights )
+    table.insert ( result, self.layer_objects.back_objects )
     table.insert ( result, self.layer_objects.objects )
     table.insert ( result, self.layer_objects.character )
     table.insert ( result, self.layer_objects.walk_behind )
@@ -91,10 +90,16 @@ function new (name)
   end
   
   function room:loadCharacter ( object )
+    
     -- Add to layer
     object.layer = self.layer_objects.character
+    
     if object.render_at_start then
       object.layer:insertProp ( object.prop )
+      if object.dialogTextBox then
+        object.layer:insertProp ( object.shadowTextBox )
+        object.layer:insertProp ( object.dialogTextBox )
+      end
     end
 
     -- Add dimensions

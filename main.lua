@@ -5,17 +5,23 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
+require 'src/shaders/blur'
+
 require 'src/math/point2d'
 require 'src/path'
-require 'src/defines'
 require 'src/resource_cache'
+require 'src/defines'
 require 'src/room'
 require 'src/animatedProp'
+require 'src/game'
+
 require 'src/characters/main_character'
+
 require 'src/hud/inventory'
 require 'src/input_manager'
+
 require 'src/rooms/c01s01'
-require 'src/game'
+
 
 if DEBUG then
   require 'src/hud/debugHUD'

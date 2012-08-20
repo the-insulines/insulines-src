@@ -5,6 +5,8 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
+-- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
+
 -- Viewport constants
 WORLD_RESOLUTION_X = 1920
 WORLD_RESOLUTION_Y = 1280
@@ -14,6 +16,7 @@ SCREEN_RESOLUTION_Y = 640
 
 
 MAIN_CHARACTER_PIVOT = - 768 / 4
+MAIN_CHARACTER_TEXT_LOCATION_OFFSET = { x = 0, y = MAIN_CHARACTER_PIVOT * 2 }
 
 -- Camera
 CAMERA_SCALE = 1.0
@@ -28,10 +31,17 @@ CAMERA_MAX_DELTA_Y = 15 + 5
 CAMERA_MOVEMENT_DURATION = 1.6
 
 -- Debugging
-DEBUG = true
+DEBUG = false
 
+-- Animations
+JOSH_SLEEPING_SECONDS_PER_FRAME = 0.10
+JOSH_WAKES_SECONDS_PER_FRAME = 0.10
+JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.09
+JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
 
-
+-- Dialog colors
+MAIN_CHARACTER_DIALOG_COLOR = { 0.4, 0.8, 1, 1 }
+MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
 -- Inventory constants
 INVENTORY_OPEN_X = 960 - 200
 INVENTORY_OPEN_Y = 0
@@ -58,11 +68,11 @@ IMAGES_PATH = '../insulines-gfx/'
 --IMAGES_PATH = './'
 TILED_IMAGES_PATH = IMAGES_PATH
 FONTS_PATH = IMAGES_PATH .. 'fonts/'
+SOUNDS_PATH = IMAGES_PATH .. 'sounds/'
 
 RESOURCE_TYPE_IMAGE = 0
 RESOURCE_TYPE_TILED_IMAGE = 1
 RESOURCE_TYPE_FONT = 2
-
 
 resources = {
   
@@ -74,11 +84,40 @@ resources = {
     dpi = 160
   },
 
+  hitchcock = {
+    type = RESOURCE_TYPE_FONT,
+    fileName = 'hitchcock.ttf',
+    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
+    fontSize = 40,
+    dpi = 160
+  },
+
   main_character = {
     type = RESOURCE_TYPE_TILED_IMAGE,
     fileName = 'characters/walk_cycle2.png',
     width = 576*5, height = 768*5,
     tileMapSize = {9, 8}
+  },
+
+  josh_sleeping = {
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'characters/josh_sleeping.png',
+    width = 8000, height = 4000,
+    tileMapSize = {10, 8}
+  },
+
+  josh_grabs_cellphone = {
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'characters/josh_grabs_cellphone.png',
+    width = 9200, height = 2520,
+    tileMapSize = {10, 6}
+  },
+
+  josh_wakes_up = {
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'characters/josh_wakes_up.png',
+    width = 7000, height = 1800,
+    tileMapSize = {10, 3}
   },
   
   inventory_background = {
@@ -118,16 +157,28 @@ resources = {
   
   c01s01_cellphone = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
-    fileName = 'c01s01/cellphone/cellphone_tiles.png', 
-    width = 74, height = 70,
-    tileMapSize = {2, 2}
+    fileName = 'c01s01/cellphone/cellphone_ring.png', 
+    width = 1100, height = 100,
+    tileMapSize = {11, 1}
+  },
+
+  c01s01_cellphone_ringtone = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s01/cellphone/ringtone_loop_long.wav', 
+    loop = true,
+    volume = 0.6
+  },
+
+  c01s01_nightstand = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s01/nightstand.png', 
+    width = 163, height = 173
   },
   
   c01s01_clothes_heap = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/clothes_heap.png', 
-    width = 477, 
-    height = 273
+    width = 477, height = 273
   },
 
   c01s01_clothes_on_heap = {
@@ -177,14 +228,6 @@ resources = {
     width = 219, 
     height = 302
   },
-  -- dummyRoomBackgroundImage = {type = IMAGE, fileName = 'background.jpeg', width = 3146, height = 960},
-  -- guybrushTiledImage = {type = TILED_IMAGE, fileName = 'gb_walk.png', width = 624, height = 450, tileMapSize = {6, 3}},
-  -- cityBackgroundImage0 = {type = IMAGE, fileName = 'b2_l0.png', width = 1920, height = 1200},
-  -- cityBackgroundImage1 = {type = IMAGE, fileName = 'b2_l1.png', width = 1920, height = 1200},
-  -- cityBackgroundImage2 = {type = IMAGE, fileName = 'b2_l2.png', width = 1920, height = 1200},
-  -- cityBackgroundImage3 = {type = IMAGE, fileName = 'b2_l3.png', width = 1920, height = 1200},
-  -- cityBackgroundShadowsImage = {type = IMAGE, fileName = 'b2_shadows.png', width = 1920, height = 1200},
-  -- cityBackgroundLightsImage = {type = IMAGE, fileName = 'b2_lights.png', width = 1920, height = 1200},
 }
 
 

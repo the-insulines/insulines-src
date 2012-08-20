@@ -34,8 +34,10 @@ function AnimatedProp:setDeck (spriteSheetDeck)
 end
 
 
-function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameTime)
-
+function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameTime, animationMode)
+  
+  if not animationMode then animationMode = MOAITimer.LOOP end
+  
   local lastFrame = startFrame + frameCount
   
   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
@@ -49,7 +51,7 @@ function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameT
   anim:reserveLinks (1)
   
   anim:setLink (1, curve, self.remapper, 1)
-  anim:setMode (MOAITimer.LOOP)
+  anim:setMode (animationMode)
   
   -- store it under the name of the animation
   self.animations[name] = anim
@@ -64,6 +66,7 @@ end
 function AnimatedProp:startAnimation ( name )
   self.currentAnimation = self:getAnimation ( name )
   self.currentAnimation:start ()
+  return self.currentAnimation
 end
 
 

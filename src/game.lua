@@ -16,6 +16,7 @@ camera = MOAICamera2D.new ()
 cameraDeltaX = 0
 cameraDeltaY = 0
 
+defaultFont = resource_cache.get ( "hitchcock" )
 
 function loadScene ( self, scene )
   -- Cache scene
@@ -42,6 +43,9 @@ function initialize ( self )
   viewport = MOAIViewport.new ()
   viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
+  
+  -- Initialize sound
+  MOAIUntzSystem.initialize ()
   
   inventory:initialize ( )
 
@@ -89,7 +93,6 @@ function start ( self )
   end
 
 end
-
 
 function cameraAnimation ()
   while true do

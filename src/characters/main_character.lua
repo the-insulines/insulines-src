@@ -5,7 +5,6 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-
 mainCharacter = {}
 mainCharacter.gfx = resource_cache.get ( 'main_character' )
 
@@ -28,6 +27,37 @@ mainCharacter.prop:setPiv ( 0, MAIN_CHARACTER_PIVOT )
 mainCharacter.name = "main_character"
 
 mainCharacter.render_at_start = true
+
+
+mainCharacter.dialogTextBox = MOAITextBox.new ()
+mainCharacter.dialogTextBox:setFont ( game.defaultFont )
+mainCharacter.dialogTextBox:setTextSize ( 40 )
+mainCharacter.dialogTextBox:setYFlip( true )
+mainCharacter.dialogTextBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
+mainCharacter.dialogTextBox:setColor ( unpack ( MAIN_CHARACTER_DIALOG_COLOR ))
+
+mainCharacter.shadowTextBox = MOAITextBox.new ()
+mainCharacter.shadowTextBox:setFont ( game.defaultFont )
+mainCharacter.shadowTextBox:setTextSize ( 40 )
+mainCharacter.shadowTextBox:setYFlip( true )
+mainCharacter.shadowTextBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
+mainCharacter.shadowTextBox:setColor ( 0, 0, 0, 1)
+
+function mainCharacter:setLoc (x, y)
+  self.prop:setLoc ( x, y )
+  self.dialogTextBox:setRect ( 0, 0, 1000, 45)
+  self.shadowTextBox:setRect ( 0, 0, 1000, 45)
+  self.dialogTextBox:setLoc(x - 500 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x, y + 45 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y)
+  self.shadowTextBox:setLoc(x - 500 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x + MAIN_CHARACTER_DIALOG_SHADOW_OFFSET.x, y + 45 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y + MAIN_CHARACTER_DIALOG_SHADOW_OFFSET.y)
+end
+
+function mainCharacter:xTextboxLocation ()
+  return self.prop.getLoc.xLoc - 400
+end
+
+function mainCharacter:yTextboxLocation ()
+  return self.prop.getLoc.yLoc + 300
+end
 
 function mainCharacter:stopCurrentAction ()
   if self.currentAction then
@@ -63,7 +93,10 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- add the zoom action
   local zoom = zoomFactor * delta_y
+    
   self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
+  self.currentAction:addChild ( self.dialogTextBox:moveLoc ( delta_x - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x * zoom, delta_y - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y * zoom, 0, time, MOAIEaseType.LINEAR ) )
+  self.currentAction:addChild ( self.shadowTextBox:moveLoc ( delta_x - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x * zoom, delta_y - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y * zoom, 0, time, MOAIEaseType.LINEAR ) )
   
   -- start
   self.currentAction:start ()
@@ -76,4 +109,14 @@ function mainCharacter:walkAnimation ( delta_x, time )
   else
     return self.animation:getAnimation ( 'walk_left' )
   end
+end
+
+function mainCharacter:shutUp ()
+  self.dialogTextBox:setString ( "" )
+end
+
+function mainCharacter:say ( words )
+  self.dialogTextBox:setString ( words )
+  self.shadowTextBox:setString ( words )
+  print ( self.dialogTextBox:revealAll ())
 end

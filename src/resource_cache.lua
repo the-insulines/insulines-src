@@ -35,6 +35,15 @@ function loadImage ( fileUrl, imageAttributes )
   return image
 end
 
+function loadSound ( fileUrl, loop, volume )
+  print (fileUrl)
+  local sound = MOAIUntzSound.new ()
+  sound:load ( fileUrl )
+  sound:setVolume ( volume )
+  sound:setLooping ( loop )
+  return sound
+end
+
 
 function loadGfxQuad2D ( fileUrl, imageRect )
   local image = MOAIGfxQuad2D.new ()
@@ -79,6 +88,9 @@ function load ( key )
       
     elseif (resourceAttributes.type == RESOURCE_TYPE_FONT) then
       resource = loadFont ( FONTS_PATH .. resourceAttributes.fileName, resourceAttributes.glyphs, resourceAttributes.fontSize, resourceAttributes.dpi )
+
+    elseif (resourceAttributes.type == RESOURCE_TYPE_SOUND) then
+      resource = loadSound ( SOUNDS_PATH .. resourceAttributes.fileName, resourceAttributes.loop, resourceAttributes.volume )
     end
   
     -- store the loaded resource on cache
