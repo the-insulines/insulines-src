@@ -5,8 +5,6 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-require 'src/shaders/blur'
-
 require 'src/math/point2d'
 require 'src/path'
 require 'src/resource_cache'

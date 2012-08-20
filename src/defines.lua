@@ -66,11 +66,8 @@ LANGUAGE = "en"
 
 
 -- Movement
-MOVEMENT_PIXELS_PER_SECOND = 150
-MOVEMENT_SECONDS_PER_FRAME = 0.025
-
-
-
+MOVEMENT_PIXELS_PER_SECOND = 200
+MOVEMENT_SECONDS_PER_FRAME = 0.1
 
 -- Resources
 
@@ -130,9 +127,9 @@ resources = {
 
   main_character = {
     type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'characters/walk_cycle2.png',
-    width = 576*5, height = 768*5,
-    tileMapSize = {9, 8}
+    fileName = 'characters/josh_walk_cycle.png',
+    width = 6624 / 3, height = 3860 / 3,
+    tileMapSize = {8, 2}
   },
 
   josh_sleeping = {
@@ -161,6 +158,13 @@ resources = {
     fileName = 'c01s01/c01s01_background_B.png', 
     width = 1920, 
     height = 1080
+  },
+  
+  c01s01_theme = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s01/theme.mp3', 
+    loop = true,
+    volume = 0.6
   },
   
   c01s01_lights_off_highlights_B = {

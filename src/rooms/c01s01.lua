@@ -5,7 +5,7 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-c01s01 = room.new ( "Bedroom" )
+c01s01 = room.new ( "c01s01" )
 
 c01s01.initialCameraX = 0
 c01s01.initialCameraY = 0
@@ -75,9 +75,7 @@ objects = {
     render_at_start = false,
     avoid_clicks = true,
     onEnd = function () 
-
-      -- TODO: Add character that walks
-      c01s01.characterMovement = true
+      c01s01:stopRendering ( "josh_grabs_cellphone" )
       c01s01.objects.josh_wakes_up.animation:startAnimation("still")
     end
   },
@@ -185,12 +183,17 @@ objects = {
     render_at_start = true,
     dressed = false,
     onClick = function ()
+
       local fadeIn = function ()
         c01s01:fadeIn ()
+        c01s01:stopRendering ( "josh_wakes_up" )
         c01s01:stopRendering ( "clothes_heap" )
         c01s01:startRendering ( "clothes_on_heap" )
+        c01s01:startRendering ( "main_character" )
+        c01s01.characterMovement = true
+        c01s01:playThemeSong ()
       end
-      
+
       if c01s01.objects.cellphone.woke then
         if not c01s01.objects.clothes_heap.dressed then
           c01s01:fadeOut ()

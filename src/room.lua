@@ -16,7 +16,7 @@ function new (name)
   room.frontCharacterZoom = 1
   room.bottomCharacterZoomThreshold = -200
   
-  room.backCharacterZoom = 0.4
+  room.backCharacterZoom = 0.9
   room.topCharacterZoomThreshold = 200
   
   -- character movement flag
@@ -98,6 +98,7 @@ function new (name)
     
     if object.render_at_start then
       object.layer:insertProp ( object.prop )
+      object.rendering = true
     end
 
     -- Add dimensions
@@ -152,11 +153,10 @@ function new (name)
       local x, y = input_manager.getTouch ()
       x, y = self.layer_objects.objects:wndToWorld ( x, y )
       
-
       if self.characterMovement then
         local char = self.objects.main_character
 
-        if char then
+        if char and char.rendering then
           local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
           char:moveThroughSteps( steps, self.perspectiveZoomFactor )
         end
@@ -166,7 +166,6 @@ function new (name)
       local object = self:objectAt ( x, y )
       
       if object then
-        -- dialog_manager:displayText ( object.name )
         if type (object.onClick) == "function" then
           object.onClick ()
         end
@@ -216,6 +215,18 @@ function new (name)
     
   end
   
+  function room:playThemeSong ()
+    self.theme_song = resource_cache.get(self.name .. '_theme')
+    self.theme_song:setVolume ( 0 )
+    self.theme_song:play ()
+    self.theme_song:seekVolume ( 1, 1 )
+  end
+  
+  function room:stopThemeSong ()
+    if self.theme_song and self.theme_song:isPlaying () then
+      self.theme_song:stop ()
+    end
+  end  
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------

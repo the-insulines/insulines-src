@@ -14,34 +14,31 @@ mainCharacter.avoid_clicks = true
 
 -- initialize the character animations
 mainCharacter.animation:setDeck (  mainCharacter.gfx )
-mainCharacter.animation:addConstantAnimation ( 'walk_down', 10, 9, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'walk_left', 9*3 + 2, 8, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'stop_left', 9*3 + 1, 0, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'walk_right', 9*5 + 2, 8, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'stop_right', 9*5 + 1, 0, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'walk_top', 9*7 + 1, 9, MOVEMENT_SECONDS_PER_FRAME )
+mainCharacter.animation:addConstantAnimation ( 'walk_right', 1, 8, MOVEMENT_SECONDS_PER_FRAME )
+mainCharacter.animation:addConstantAnimation ( 'walk_left', 9, 8, MOVEMENT_SECONDS_PER_FRAME )
 
 mainCharacter.prop = mainCharacter.animation.prop
 mainCharacter.prop:setPiv ( 0, MAIN_CHARACTER_PIVOT )
 
 mainCharacter.name = "main_character"
 
-mainCharacter.render_at_start = true
+mainCharacter.render_at_start = false
+mainCharacter.rendering = false
 
 
-mainCharacter.dialogTextBox = MOAITextBox.new ()
-mainCharacter.dialogTextBox:setFont ( game.defaultFont )
-mainCharacter.dialogTextBox:setTextSize ( 40 )
-mainCharacter.dialogTextBox:setYFlip( true )
-mainCharacter.dialogTextBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
-mainCharacter.dialogTextBox:setColor ( unpack ( MAIN_CHARACTER_DIALOG_COLOR ))
-
-mainCharacter.shadowTextBox = MOAITextBox.new ()
-mainCharacter.shadowTextBox:setFont ( game.defaultFont )
-mainCharacter.shadowTextBox:setTextSize ( 40 )
-mainCharacter.shadowTextBox:setYFlip( true )
-mainCharacter.shadowTextBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
-mainCharacter.shadowTextBox:setColor ( 0, 0, 0, 1)
+-- mainCharacter.dialogTextBox = MOAITextBox.new ()
+-- mainCharacter.dialogTextBox:setFont ( game.defaultFont )
+-- mainCharacter.dialogTextBox:setTextSize ( 40 )
+-- mainCharacter.dialogTextBox:setYFlip( true )
+-- mainCharacter.dialogTextBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
+-- mainCharacter.dialogTextBox:setColor ( unpack ( MAIN_CHARACTER_DIALOG_COLOR ))
+-- 
+-- mainCharacter.shadowTextBox = MOAITextBox.new ()
+-- mainCharacter.shadowTextBox:setFont ( game.defaultFont )
+-- mainCharacter.shadowTextBox:setTextSize ( 40 )
+-- mainCharacter.shadowTextBox:setYFlip( true )
+-- mainCharacter.shadowTextBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
+-- mainCharacter.shadowTextBox:setColor ( 0, 0, 0, 1)
 
 function mainCharacter:setLoc (x, y)
   self.prop:setLoc ( x, y )
@@ -96,10 +93,7 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- add the zoom action
   local zoom = zoomFactor * delta_y
-    
   self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
-  self.currentAction:addChild ( self.dialogTextBox:moveLoc ( delta_x - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x * zoom, delta_y - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y * zoom, 0, time, MOAIEaseType.LINEAR ) )
-  self.currentAction:addChild ( self.shadowTextBox:moveLoc ( delta_x - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x * zoom, delta_y - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y * zoom, 0, time, MOAIEaseType.LINEAR ) )
   
   -- start
   self.currentAction:start ()
