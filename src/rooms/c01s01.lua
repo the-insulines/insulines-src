@@ -274,7 +274,7 @@ c01s01:addObjects ( objects )
 function c01s01:beforeInitialize ()
   self:loadObjects ()
   self.objects.cellphone.calling () 
-  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )  
+  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
   self:loadCharacter( mainCharacter )
   self.objects.main_character:setLoc(0,0)
 end

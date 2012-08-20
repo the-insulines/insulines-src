@@ -110,9 +110,21 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- create the movement displacement action
   self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )
+  
+  self.currentAction:setListener ( MOAIAction.EVENT_STOP, self.stopMove )
+  
+  if self.currentWalkAnimation then
+    self.currentWalkAnimation:pause ()
+  end
+  
+  if delta_x > 0 then
+    self.currentWalkAnimation = mainCharacter.animation:startAnimation ( 'walk_right' )
+  else
+    self.currentWalkAnimation = mainCharacter.animation:startAnimation ( 'walk_left' )
+  end
 
-  -- add the walking animation action
-  self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
+  -- -- add the walking animation action
+  -- self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
   
   -- add the zoom action
   local zoom = zoomFactor * delta_y
@@ -123,13 +135,17 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   return self.currentAction
 end
 
-function mainCharacter:walkAnimation ( delta_x, time )
-  if delta_x > 0 then
-    return self.animation:getAnimation ( 'walk_right' )
-  else
-    return self.animation:getAnimation ( 'walk_left' )
-  end
+function mainCharacter:stopMove ( char )
+  mainCharacter.currentWalkAnimation:pause ()
 end
+
+-- function mainCharacter:walkAnimation ( delta_x, time )
+--   if delta_x > 0 then
+--     return self.animation:getAnimation ( 'walk_right' )
+--   else
+--     return self.animation:getAnimation ( 'walk_left' )
+--   end
+-- end
 
 function mainCharacter:shutUp ()
   self.dialogTextBox:setString ( "" )
