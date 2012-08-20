@@ -92,7 +92,7 @@ function new (graph)
     -- loop through the path nodes (starting on the target and finishing when reaching the source)
     -- adding them to steps
     while ( currentNode ~= sourceNode ) do
-      table.insert ( steps, self.graph[currentNode].position )
+      table.insert ( steps, self.graph[currentNode] )
       currentNode = previous[currentNode]
     end
     
@@ -102,7 +102,7 @@ function new (graph)
     
     if not (( sourceSegment.p1 == targetSegment.p1 and sourceSegment.p2 == targetSegment.p2 )
         or ( sourceSegment.p1 == targetSegment.p2 and sourceSegment.p2 == targetSegment.p1 )) then
-      table.insert ( steps, self.graph[sourceNode].position )
+      table.insert ( steps, self.graph[sourceNode] )
     end
     
     -- reverse the path so the nodes on it are stored in the order in which they will be traversed
@@ -119,7 +119,7 @@ function new (graph)
     end
     
     -- add the target point to the path, it wasn't added before because the algorithm just traverses the path nodes
-    table.insert ( steps, targetPointOnPath )
+    table.insert ( steps, { position = targetPointOnPath } )
     
     return steps
   end
@@ -200,6 +200,12 @@ function new (graph)
     return nearestPoint, nearestSegment
   end
   
+  -- function path:getOffsets ()
+  --   local
+  --   for k, node in pairs ( graph ) do
+  --     
+  --   end
+  -- end
   
   function path:nearestPointToPointInSegment ( segment, targetPoint )
     

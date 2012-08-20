@@ -77,6 +77,7 @@ objects = {
     onEnd = function () 
       c01s01:stopRendering ( "josh_grabs_cellphone" )
       c01s01.objects.josh_wakes_up.animation:startAnimation("still")
+      c01s01.inputEnabled = true
     end
   },
 
@@ -143,8 +144,8 @@ objects = {
     onClick = function ()
       if not c01s01.objects.cellphone.woke then
         if c01s01.objects.cellphone.clicks == 2 then
-
           -- Wake up
+          c01s01.inputEnabled = false
           c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -20, 0, 3, MOAIEaseType.LINEAR )
           
           local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
@@ -278,7 +279,8 @@ function c01s01:beforeInitialize ()
   self.objects.main_character:setLoc(0,0)
 end
 
-function c01s01:afterInitialize ()
+function c01s01:afterInitialize ()  
+  game.autoFollow = true
   -- if DEBUG then
   --   MOAILogMgr.log ( "---------------------------------" )
   --   MOAILogMgr.log ( "Objects" )
@@ -289,26 +291,27 @@ function c01s01:afterInitialize ()
   -- end
 end
 
-
 local path = {
   bed = {
     position = point (-120, -10),
-    neighbors = { 'clothes', 'door' }
+    neighbors = { 'clothes', 'door' },
+    offsets = { x = -190, y = 0 }
   },
   
   clothes = {
     position = point (0, -180),
-    neighbors = { 'bed', 'door', 'window' }
+    neighbors = { 'bed', 'door', 'window' },
+    offsets = { x = 0, y = 0 }
   },
   
   door = {
     position = point (-788, -120),
-    neighbors = { 'bed', 'clothes' }
+    neighbors = { 'bed', 'clothes' },
   },
 
   window = {
     position = point (450, -260),
-    neighbors = { 'clothes' }
+    neighbors = { 'clothes' },
   },
   
 }

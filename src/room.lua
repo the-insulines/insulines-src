@@ -21,6 +21,7 @@ function new (name)
   
   -- character movement flag
   room.characterMovement = true
+  room.inputEnabled = true
   
   room.layer_objects = {
     background = MOAILayer2D.new (),
@@ -66,7 +67,7 @@ function new (name)
     
     -- calculate the perspective factor to apply zoom
     self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
-    
+        
     self:afterInitialize ()
   end
   
@@ -148,28 +149,43 @@ function new (name)
   end
   
   room.onInput = function ( self )
-    if input_manager.down () then
+    if self.inputEnabled then
+      if input_manager.down () then
       
-      local x, y = input_manager.getTouch ()
-      x, y = self.layer_objects.objects:wndToWorld ( x, y )
+        local x, y = input_manager.getTouch ()
+        x, y = self.layer_objects.objects:wndToWorld ( x, y )
       
-      if self.characterMovement then
-        local char = self.objects.main_character
+        -- Collision detection
+        local object = self:objectAt ( x, y )
+        local callback = nil
+        if object then
+          if type (object.onClick) == "function" then
+            if self.characterMovement then 
+              callback = { method = object.onClick, parent = object }
+            else
+              object:onClick ()
+            end
+          end
+        else
+        end
+      
+      
+      
+        if self.characterMovement then
+          local char = self.objects.main_character
 
-        if char and char.rendering then
-          local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
-          char:moveThroughSteps( steps, self.perspectiveZoomFactor )
+          if char and char.rendering then
+          
+            if self.characterMovementCoroutine then self.characterMovementCoroutine:stop () end
+          
+            local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
+            self.characterMovementCoroutine = MOAICoroutine.new ()
+            self.characterMovementCoroutine:run( char.moveThroughSteps, char, steps, self.perspectiveZoomFactor, callback )
+          
+          end
+        
         end
-      end
       
-      -- Collision detection
-      local object = self:objectAt ( x, y )
-      
-      if object then
-        if type (object.onClick) == "function" then
-          object.onClick ()
-        end
-      else
       end
     end
   end

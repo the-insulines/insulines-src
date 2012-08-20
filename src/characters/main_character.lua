@@ -63,12 +63,35 @@ function mainCharacter:stopCurrentAction ()
   end
 end
 
-function mainCharacter:moveThroughSteps ( steps, zoomFactor )
+function mainCharacter:moveThroughSteps ( steps, zoomFactor, callback )
 
   for k, step in pairs ( steps ) do
-    MOAICoroutine.blockOnAction ( mainCharacter:moveTo ( step.x, step.y, zoomFactor ) )
+
+    MOAICoroutine.blockOnAction ( mainCharacter:moveTo ( step.position.x, step.position.y, zoomFactor ) )
+    
+    -- Adjust camera if required
+    if game.autoFollow and step.offsets then
+      print ( "Move Camera" )
+      -- Translate
+      local camX, camY = game.camera:getLoc ()
+      local camScl = game.camera:getScl ()
+      local time = 1
+      local sclTime = 1
+      
+      if step.offsets.x  then camX = step.offsets.x end
+      if step.offsets.y  then camY = step.offsets.y end
+      if step.offsets.scl  then camScl = step.offsets.scl end
+      if step.offsets.time  then time = step.offsets.time end
+      if step.offsets.sclTime  then time = step.offsets.sclTime end
+      
+      game.camera:seekLoc (camX, camY, time, MOAIEaseType.LINEAR)
+      game.camera:seekScl (camScl, camScl, sclTime, MOAIEaseType.LINEAR)
+    end
   end
   
+  if callback then
+    callback.method( callback.parent )
+  end
 end
 
 function mainCharacter:moveTo ( x, y, zoomFactor )

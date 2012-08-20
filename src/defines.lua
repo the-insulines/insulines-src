@@ -7,6 +7,9 @@
 
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 
+-- Debugging
+DEBUG = true
+
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}
@@ -36,9 +39,6 @@ CAMERA_MOVEMENT_DIRECTION_CHANGE_PROBABILITY = 0.5
 CAMERA_MAX_DELTA_X = 10 + 5
 CAMERA_MAX_DELTA_Y = 15 + 5
 CAMERA_MOVEMENT_DURATION = 1.6
-
--- Debugging
-DEBUG = false
 
 -- Animations
 JOSH_SLEEPING_SECONDS_PER_FRAME = 0.10

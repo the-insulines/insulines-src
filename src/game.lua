@@ -18,6 +18,8 @@ cameraDeltaY = 0
 
 defaultFont = resource_cache.get ( "hitchcock" )
 
+autoFollow = false
+
 function loadScene ( self, scene )
   -- Cache scene
   self.currentScene = scene
