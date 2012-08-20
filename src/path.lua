@@ -111,7 +111,7 @@ function new (graph)
     -- if the target node and the previous one are on the same segment, remove the target node
     -- this is because we are interested in finding the target segment but we feed it just one node
     if #steps >= 2 then
-      local previousNode = steps[#steps - 1]
+      local previousNode = steps[#steps - 1].position
       
       if previousNode == targetSegment.p1 or previousNode == targetSegment.p2 then
         table.remove ( steps, #steps )

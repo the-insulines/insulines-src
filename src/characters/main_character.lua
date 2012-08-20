@@ -15,7 +15,7 @@ mainCharacter.avoid_clicks = true
 -- initialize the character animations
 mainCharacter.animation:setDeck (  mainCharacter.gfx )
 mainCharacter.animation:addConstantAnimation ( 'walk_right', 1, 8, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'walk_left', 9, 8, MOVEMENT_SECONDS_PER_FRAME )
+mainCharacter.animation:addConstantAnimation ( 'walk_left', 9, 8, MOVEMENT_SECONDS_PER_FRAME / 2 )
 
 mainCharacter.prop = mainCharacter.animation.prop
 mainCharacter.prop:setPiv ( 0, MAIN_CHARACTER_PIVOT )
