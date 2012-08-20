@@ -45,10 +45,10 @@ mainCharacter.shadowTextBox:setColor ( 0, 0, 0, 1)
 
 function mainCharacter:setLoc (x, y)
   self.prop:setLoc ( x, y )
-  self.dialogTextBox:setRect ( 0, 0, 1000, 45)
-  self.shadowTextBox:setRect ( 0, 0, 1000, 45)
-  self.dialogTextBox:setLoc(x - 500 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x, y + 45 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y)
-  self.shadowTextBox:setLoc(x - 500 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x + MAIN_CHARACTER_DIALOG_SHADOW_OFFSET.x, y + 45 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y + MAIN_CHARACTER_DIALOG_SHADOW_OFFSET.y)
+  -- self.dialogTextBox:setRect ( 0, 0, 1000, 45)
+  -- self.shadowTextBox:setRect ( 0, 0, 1000, 45)
+  -- self.dialogTextBox:setLoc(x - 500 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x, y + 45 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y)
+  -- self.shadowTextBox:setLoc(x - 500 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.x + MAIN_CHARACTER_DIALOG_SHADOW_OFFSET.x, y + 45 - MAIN_CHARACTER_TEXT_LOCATION_OFFSET.y + MAIN_CHARACTER_DIALOG_SHADOW_OFFSET.y)
 end
 
 function mainCharacter:xTextboxLocation ()
@@ -85,9 +85,12 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   local time = math.sqrt ( delta_x * delta_x + delta_y * delta_y) / MOVEMENT_PIXELS_PER_SECOND
   
+  -- If time == 0, moveLoc returns nil, which breaks the function
+  if time == 0 then time = .001 end
+  
   -- create the movement displacement action
   self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )
-  
+
   -- add the walking animation action
   self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
   

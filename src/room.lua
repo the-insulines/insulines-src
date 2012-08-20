@@ -19,6 +19,8 @@ function new (name)
   room.backCharacterZoom = 0.4
   room.topCharacterZoomThreshold = 200
   
+  -- character movement flag
+  room.characterMovement = true
   
   room.layer_objects = {
     background = MOAILayer2D.new (),
@@ -96,10 +98,6 @@ function new (name)
     
     if object.render_at_start then
       object.layer:insertProp ( object.prop )
-      if object.dialogTextBox then
-        object.layer:insertProp ( object.shadowTextBox )
-        object.layer:insertProp ( object.dialogTextBox )
-      end
     end
 
     -- Add dimensions
@@ -154,6 +152,16 @@ function new (name)
       local x, y = input_manager.getTouch ()
       x, y = self.layer_objects.objects:wndToWorld ( x, y )
       
+
+      if self.characterMovement then
+        local char = self.objects.main_character
+
+        if char then
+          local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
+          char:moveThroughSteps( steps, self.perspectiveZoomFactor )
+        end
+      end
+      
       -- Collision detection
       local object = self:objectAt ( x, y )
       
@@ -163,14 +171,6 @@ function new (name)
           object.onClick ()
         end
       else
-        -- Walk
-        local char = self.objects.main_character
-
-        if char then
-          local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
-          char:moveThroughSteps( steps, self.perspectiveZoomFactor )
-          -- char:moveTo ( steps[1].x, steps[1].y, self.perspectiveZoomFactor )
-        end
       end
     end
   end

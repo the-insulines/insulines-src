@@ -7,6 +7,13 @@
 
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 
+
+-- Locale
+LOCALE_LIST = {'es_AR', 'en_US'}
+
+LOCALE = 'en_US'
+
+
 -- Viewport constants
 WORLD_RESOLUTION_X = 1920
 WORLD_RESOLUTION_Y = 1280
@@ -39,9 +46,13 @@ JOSH_WAKES_SECONDS_PER_FRAME = 0.10
 JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.09
 JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
 
--- Dialog colors
-MAIN_CHARACTER_DIALOG_COLOR = { 0.4, 0.8, 1, 1 }
+-- Dialog
+DIALOG_ACTION_CLOSE = 0
+DEFAULT_DIALOG_COLOR = { 0.85, 0.12, 0.12, 1 }
+DEFAULT_OPTION_COLOR = { 1, 1, 1, 1 }
+MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
 MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
+
 -- Inventory constants
 INVENTORY_OPEN_X = 960 - 200
 INVENTORY_OPEN_Y = 0
@@ -92,6 +103,31 @@ resources = {
     dpi = 160
   },
 
+  inventory_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'inventory_background.png', 
+    width = 400, height = 1280, 
+  },
+  
+  inventory_backpack = {
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'backpack.png',
+    width = 256, height = 128,
+    tileMapSize = {2, 1}
+  },
+
+  dialog_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'dialog_background.png', 
+    width = 1880, height = 997, 
+  },
+
+  dialog_option_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'dialog_option_background.png', 
+    width = 455, height = 182, 
+  },
+
   main_character = {
     type = RESOURCE_TYPE_TILED_IMAGE,
     fileName = 'characters/walk_cycle2.png',
@@ -119,21 +155,7 @@ resources = {
     width = 7000, height = 1800,
     tileMapSize = {10, 3}
   },
-  
-  inventory_background = {
-    type = RESOURCE_TYPE_TILED_IMAGE, 
-    fileName = 'inventory_background.png', 
-    width = 400, height = 1080, 
-    tileMapSize = {1, 1}
-  },
-  
-  inventory_backpack = {
-    type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'backpack.png',
-    width = 256, height = 128,
-    tileMapSize = {2, 1}
-  },
-  
+    
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 
@@ -164,7 +186,7 @@ resources = {
 
   c01s01_cellphone_ringtone = {
     type = RESOURCE_TYPE_SOUND, 
-    fileName = 'c01s01/cellphone/ringtone_loop_long.wav', 
+    fileName = 'c01s01/cellphone/ringtone_loop_short.wav', 
     loop = true,
     volume = 0.6
   },

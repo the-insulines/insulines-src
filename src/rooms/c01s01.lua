@@ -11,6 +11,8 @@ c01s01.initialCameraX = 0
 c01s01.initialCameraY = 0
 c01s01.initialCameraScl = 0.8
 
+c01s01.characterMovement = false
+
 objects = {
   background = {
     resource_name = 'c01s01_background',
@@ -73,6 +75,9 @@ objects = {
     render_at_start = false,
     avoid_clicks = true,
     onEnd = function () 
+
+      -- TODO: Add character that walks
+      c01s01.characterMovement = true
       c01s01.objects.josh_wakes_up.animation:startAnimation("still")
     end
   },
@@ -147,7 +152,6 @@ objects = {
           local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
           anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_grabs_cellphone.wakingUp )
           c01s01.objects.cellphone.woke = true
-
         else
 
           if c01s01.objects.cellphone.clicks == 0 then
@@ -182,7 +186,6 @@ objects = {
     dressed = false,
     onClick = function ()
       local fadeIn = function ()
-        print( "Called" )
         c01s01:fadeIn ()
         c01s01:stopRendering ( "clothes_heap" )
         c01s01:startRendering ( "clothes_on_heap" )
@@ -205,7 +208,7 @@ objects = {
     y = -300,
     render_at_start = false,
     onClick = function ()
-      c01s01.objects.main_character:say ( "I gave the Laundry Lady the Year Off" )
+      dialog:load("c01s01_laundry")
     end
   },
   
@@ -217,7 +220,7 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        c01s01.objects.main_character:say( "This City Never Sleeps. It just lingers in a perpetual drowsiness" )
+        dialog:load("c01s01_never_sleeps")
       end
     end
   },
@@ -269,7 +272,7 @@ function c01s01:beforeInitialize ()
   self.objects.cellphone.calling () 
   self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )  
   self:loadCharacter( mainCharacter )
-  self.objects.main_character:setLoc(-10000, -10000)
+  self.objects.main_character:setLoc(0,0)
 end
 
 function c01s01:afterInitialize ()

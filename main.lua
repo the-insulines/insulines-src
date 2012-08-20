@@ -18,6 +18,9 @@ require 'src/game'
 require 'src/characters/main_character'
 
 require 'src/hud/inventory'
+require 'src/hud/dialog'
+require 'src/dialogTree'
+
 require 'src/input_manager'
 
 require 'src/rooms/c01s01'

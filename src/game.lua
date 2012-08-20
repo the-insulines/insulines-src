@@ -48,6 +48,7 @@ function initialize ( self )
   MOAIUntzSystem.initialize ()
   
   inventory:initialize ( )
+  dialog:initialize ( )
 
   self:loadScene ( c01s01 )
 
@@ -69,12 +70,16 @@ function start ( self )
     coroutine.yield ()
     
     if self.currentScene then
-      if type ( self.currentScene.onInput ) == "function" then
+      if type ( self.currentScene.onInput ) == "function" and not dialog.opened then
         self.currentScene:onInput ()
       end
 
-      if type ( inventory.onInput ) == "function" then
+      if type ( inventory.onInput ) == "function" and not dialog.opened then
         inventory:onInput ()
+      end
+
+      if dialog.opened then
+        dialog:onInput ()
       end
       
       if DEBUG then
@@ -120,7 +125,9 @@ end
 function displayHUD ( self )
   -- Inventory
   inventory.inventory_layer:setViewport ( viewport )
+  dialog.dialogLayer:setViewport ( viewport )
   MOAIRenderMgr.pushRenderPass ( inventory.inventory_layer )
+  MOAIRenderMgr.pushRenderPass ( dialog.dialogLayer )
 
   -- Debug
   if DEBUG then
