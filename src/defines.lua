@@ -42,7 +42,7 @@ CAMERA_MAX_DELTA_Y = 15 + 5
 CAMERA_MOVEMENT_DURATION = 1.6
 
 -- Animations
-JOSH_SLEEPING_SECONDS_PER_FRAME = 0.10
+JOSH_SLEEPING_SECONDS_PER_FRAME = 0.05
 JOSH_WAKES_SECONDS_PER_FRAME = 0.10
 JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.09
 JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
@@ -89,7 +89,7 @@ resources = {
   debug_font = {
     type = RESOURCE_TYPE_FONT,
     fileName = 'arialbd.ttf',
-    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
+    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!",
     fontSize = 26,
     dpi = 160
   },
@@ -97,15 +97,15 @@ resources = {
   hitchcock = {
     type = RESOURCE_TYPE_FONT,
     fileName = 'hitchcock.ttf',
-    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
+    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!",
     fontSize = 40,
     dpi = 160
   },
-
+  
   inventory_background = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'inventory_background.png', 
-    width = 400, height = 1280, 
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'inventory_background.png',
+    width = 400, height = 1280,
   },
   
   inventory_backpack = {
@@ -133,6 +133,12 @@ resources = {
     width = 6624 / 3, height = 3860 / 3,
     tileMapSize = {8, 2}
   },
+    
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- c01s02
+  --
+  -- ////////////////////////////////////////////////////////////
 
   josh_sleeping = {
     type = RESOURCE_TYPE_TILED_IMAGE,
@@ -154,14 +160,14 @@ resources = {
     width = 7000, height = 1800,
     tileMapSize = {10, 3}
   },
-    
+
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 
     width = 1920, 
     height = 1080
   },
-  
+
   c01s01_theme = {
     type = RESOURCE_TYPE_SOUND, 
     fileName = 'c01s01/theme.mp3', 
@@ -256,6 +262,63 @@ resources = {
     width = 219, 
     height = 302
   },
+  
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- c01s02
+  --
+  -- ////////////////////////////////////////////////////////////
+  
+  c01s02_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_background.png', 
+    width = 3720, 
+    height = 1467
+  },
+
+  c01s02_coffeemaker = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_coffeemaker.png', 
+    width = 69, 
+    height = 90
+  },
+  
+  c01s02_couch = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_couch.png', 
+    width = 1016, 
+    height = 455
+  },
+
+  c01s02_tv = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_tv.png', 
+    width = 1140, 
+    height = 325
+  },
+
+  c01s02_table = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_table.png', 
+    width = 977, 
+    height = 492
+  },
+
+  c01s02_chairs = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_chairs.png', 
+    width = 829, 
+    height = 474
+  },
+  
+  c01s01_answering_machine = {
+    type = RESOURCE_TYPE_TILED_IMAGE, 
+    fileName = 'c01s02/c01s02_answer_machine.png', 
+    width = 168, height = 108,
+    tileMapSize = {2, 1}
+  },
+  
+  
 }
 
 

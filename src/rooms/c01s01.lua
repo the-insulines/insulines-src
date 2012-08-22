@@ -30,7 +30,7 @@ objects = {
     y = 265,
     render_at_start = true,
   },
-
+  
   barbarullo = {
     resource_name = "c01s01_poster_barbarullo",
     layer_name = "back_objects",
@@ -38,7 +38,7 @@ objects = {
     y = 328,
     render_at_start = true,
   },
-    
+  
   josh_sleeping = {
     resource_name = "josh_sleeping",
     layer_name = "back_objects",
@@ -238,14 +238,10 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        if not c01s01.objects.clothes_heap.dressed then 
-          c01s01.objects.main_character:say ( "I should dress first" )
-        else
-          c01s01:stopRendering( "room_door" )
-          c01s01:startRendering( "room_door_open" )
-          c01s01:fadeOut ()
-          print ( "Goto: c01s02" )
-        end
+        c01s01:stopRendering( "room_door" )
+        c01s01:startRendering( "room_door_open" )
+        c01s01:unload ()
+        performWithDelay (100, game.loadScene, 1, game, c01s02)
       end
     end
   },
@@ -258,12 +254,8 @@ objects = {
     render_at_start = false,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        if not c01s01.objects.clothes_heap.dressed then 
-          c01s01.objects.main_character:say ( "I should dress first" )
-        else
-          c01s01:stopRendering( "room_door_open" )
-          c01s01:startRendering( "room_door" )
-        end
+        c01s01:stopRendering( "room_door_open" )
+        c01s01:startRendering( "room_door" )
       end
     end
   }
@@ -274,14 +266,14 @@ c01s01:addObjects ( objects )
 
 function c01s01:beforeInitialize ()
   self:loadObjects ()
-  self.objects.cellphone.calling ()
-  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
   self:loadCharacter( mainCharacter )
   self.objects.main_character:setLoc(0,0)
 end
 
 function c01s01:afterInitialize ()
   game.autoFollow = true
+  self.objects.cellphone.calling () 
+  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
   -- if DEBUG then
   --   MOAILogMgr.log ( "---------------------------------" )
   --   MOAILogMgr.log ( "Objects" )

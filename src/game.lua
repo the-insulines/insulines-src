@@ -18,25 +18,31 @@ cameraDeltaY = 0
 
 defaultFont = resource_cache.get ( "hitchcock" )
 
-autoFollow = false
+autoFollow = true
 
-function loadScene ( self, scene )
+function game:loadScene ( scene )
+
   -- Cache scene
   self.currentScene = scene
   
   -- Initialize scene
   scene:initialize ()
   
+  -- Hide all layers
+  
   -- Load all layers
   for k, layer in pairs( scene:layers() ) do 
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
     MOAIRenderMgr.pushRenderPass ( layer )
+    layer:setColor(0,0,0,0)
   end
+  
   
   -- Load HUD
   self:displayHUD ()
-  
+
+  performWithDelay ( 50, scene.fadeIn, 1, scene)
 end
 
 
@@ -53,7 +59,6 @@ function initialize ( self )
   dialog:initialize ( )
 
   self:loadScene ( c01s01 )
-
 end
 
 
