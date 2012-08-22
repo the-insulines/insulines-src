@@ -124,12 +124,13 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   else
     self.currentWalkAnimation = mainCharacter.animation:startAnimation ( 'walk_left' )
   end
-
-  -- -- add the walking animation action
+  
+  -- add the walking animation action
   -- self.currentAction:addChild ( self:walkAnimation ( delta_x, time ) )
   
-  -- add the zoom action
-  local zoom = zoomFactor * delta_y
+  -- shift the value zoomFactor units
+  -- increase it if the character is heading down (delta_y negative) and decrease it if he is heading up
+  local zoom = zoomFactor * -delta_y
   self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
   
   -- start

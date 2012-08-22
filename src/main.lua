@@ -12,15 +12,15 @@ require 'defines'
 require 'room'
 require 'animatedProp'
 require 'game'
-         
+
 require 'characters/main_character'
-         
+
 require 'hud/inventory'
 require 'hud/dialog'
 require 'dialogTree'
-         
+
 require 'input_manager'
-         
+
 require 'rooms/c01s01'
 
 

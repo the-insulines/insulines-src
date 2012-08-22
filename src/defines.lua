@@ -73,8 +73,9 @@ MOVEMENT_SECONDS_PER_FRAME = 0.1
 -- Resources
 
 -- resource type constants
--- IMAGES_PATH = '../insulines-gfx/'
-IMAGES_PATH = './'
+IMAGES_PATH = '../../insulines-gfx/'
+-- IMAGES_PATH = './'
+
 TILED_IMAGES_PATH = IMAGES_PATH
 FONTS_PATH = IMAGES_PATH .. 'fonts/'
 SOUNDS_PATH = IMAGES_PATH .. 'sounds/'
@@ -92,7 +93,7 @@ resources = {
     fontSize = 26,
     dpi = 160
   },
-
+  
   hitchcock = {
     type = RESOURCE_TYPE_FONT,
     fileName = 'hitchcock.ttf',

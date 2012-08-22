@@ -14,9 +14,10 @@ function new (name)
   
   -- perspective attributes
   room.frontCharacterZoom = 1
-  room.bottomCharacterZoomThreshold = -200
+  -- room.bottomCharacterZoomThreshold = -200
+  room.bottomCharacterZoomThreshold = -500
   
-  room.backCharacterZoom = 0.9
+  room.backCharacterZoom = 0.1
   room.topCharacterZoomThreshold = 200
   
   -- character movement flag
@@ -66,8 +67,8 @@ function new (name)
     game.camera:setScl(self.initialCameraScl)
     
     -- calculate the perspective factor to apply zoom
-    self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
-        
+    self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / math.abs (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
+    
     self:afterInitialize ()
   end
   
