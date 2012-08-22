@@ -71,7 +71,6 @@ function mainCharacter:moveThroughSteps ( steps, zoomFactor, callback )
     
     -- Adjust camera if required
     if game.autoFollow and step.offsets then
-      print ( "Move Camera" )
       -- Translate
       local camX, camY = game.camera:getLoc ()
       local camScl = game.camera:getScl ()
@@ -84,8 +83,11 @@ function mainCharacter:moveThroughSteps ( steps, zoomFactor, callback )
       if step.offsets.time  then time = step.offsets.time end
       if step.offsets.sclTime  then time = step.offsets.sclTime end
       
-      game.camera:seekLoc (camX, camY, time, MOAIEaseType.LINEAR)
-      game.camera:seekScl (camScl, camScl, sclTime, MOAIEaseType.LINEAR)
+      if self.currentCameraLocMovement then self.currentCameraLocMovement:stop () end
+      if self.currentCameraSclMovement then self.currentCameraSclMovement:stop () end
+      
+      self.currentCameraLocMovement = game.camera:seekLoc (camX, camY, time, MOAIEaseType.LINEAR)
+      self.currentCameraSclMovement = game.camera:seekScl (camScl, camScl, sclTime, MOAIEaseType.LINEAR)
     end
   end
   

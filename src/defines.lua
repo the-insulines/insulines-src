@@ -8,7 +8,8 @@
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 
 -- Debugging
-DEBUG = true
+DEBUG = false
+-- DEBUG = true
 
 
 -- Locale
@@ -25,7 +26,7 @@ SCREEN_RESOLUTION_X = 960
 SCREEN_RESOLUTION_Y = 640
 
 
-MAIN_CHARACTER_PIVOT = - 768 / 4
+MAIN_CHARACTER_PIVOT = -280
 MAIN_CHARACTER_TEXT_LOCATION_OFFSET = { x = 0, y = MAIN_CHARACTER_PIVOT * 2 }
 
 -- Camera
@@ -72,8 +73,8 @@ MOVEMENT_SECONDS_PER_FRAME = 0.1
 -- Resources
 
 -- resource type constants
-IMAGES_PATH = '../insulines-gfx/'
---IMAGES_PATH = './'
+-- IMAGES_PATH = '../insulines-gfx/'
+IMAGES_PATH = './'
 TILED_IMAGES_PATH = IMAGES_PATH
 FONTS_PATH = IMAGES_PATH .. 'fonts/'
 SOUNDS_PATH = IMAGES_PATH .. 'sounds/'

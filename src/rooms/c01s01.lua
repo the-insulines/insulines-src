@@ -39,15 +39,6 @@ objects = {
     render_at_start = true,
   },
     
-  walk_behind = {
-    resource_name = 'c01s01_walk_behind',
-    layer_name = 'walk_behind',
-    x = -400,
-    y = -386,
-    render_at_start = true,
-    avoid_clicks = true
-  },
-
   josh_sleeping = {
     resource_name = "josh_sleeping",
     layer_name = "back_objects",
@@ -179,8 +170,8 @@ objects = {
   clothes_heap = {
     resource_name = "c01s01_clothes_heap",
     layer_name = "walk_behind",
-    x = 0,
-    y = -300,
+    x = 40,
+    y = -350,
     render_at_start = true,
     dressed = false,
     onClick = function ()
@@ -207,9 +198,9 @@ objects = {
 
   clothes_on_heap = {
     resource_name = "c01s01_clothes_on_heap",
-    layer_name = "walk_behind",
-    x = 0,
-    y = -300,
+    layer_name = "objects",
+    x = 40,
+    y = -350,
     render_at_start = false,
     onClick = function ()
       dialog:load("c01s01_laundry")
@@ -227,6 +218,15 @@ objects = {
         dialog:load("c01s01_never_sleeps")
       end
     end
+  },
+
+  walk_behind = {
+    resource_name = 'c01s01_walk_behind',
+    layer_name = 'objects',
+    x = -400,
+    y = -386,
+    render_at_start = true,
+    avoid_clicks = true
   },
 
   room_door = {
@@ -293,20 +293,43 @@ end
 
 local path = {
   bed = {
-    position = point (-120, -10),
-    neighbors = { 'clothes', 'door' },
+    position = point (-170, -50),
+    neighbors = { 'bedBack', 'carpetPoint', 'dodgeBedPoint' },
+    offsets = { x = -190, y = 0 }
+  },
+
+  bedBack = {
+    position = point (-152, -60),
+    neighbors = { 'bed', 'clothes' },
+    offsets = { x = 0, y = 0 }
+  },
+
+  carpetPoint = {
+    position = point (-225, -121),
+    neighbors = { 'clothes', 'dodgeBedPoint', 'movePoint', 'bed' },
+    offsets = { x = -190, y = 0 }
+  },
+  
+  dodgeBedPoint = {
+    position = point (-410, -128),
+    neighbors = { 'bed', 'door', 'carpetPoint' },
+  },
+  
+  movePoint = {
+    position = point (-170, -200),
+    neighbors = { 'clothes', 'door', 'carpetPoint' },
     offsets = { x = -190, y = 0 }
   },
   
   clothes = {
-    position = point (0, -180),
-    neighbors = { 'bed', 'door', 'window' },
+    position = point (121, -144),
+    neighbors = { 'bedBack', 'movePoint', 'window', 'carpetPoint' },
     offsets = { x = 0, y = 0 }
   },
   
   door = {
     position = point (-788, -120),
-    neighbors = { 'bed', 'clothes' },
+    neighbors = { 'movePoint', 'dodgeBedPoint' },
   },
 
   window = {

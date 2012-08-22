@@ -78,7 +78,7 @@ function load ( key )
     print ( "Can't load " .. key)
   else
     local resource
-  
+    
     -- load the resource based on it's type
     if (resourceAttributes.type == RESOURCE_TYPE_IMAGE) then
       resource = loadImage (IMAGES_PATH .. resourceAttributes.fileName, resourceAttributes)

@@ -5,27 +5,27 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-require 'src/math/point2d'
-require 'src/path'
-require 'src/resource_cache'
-require 'src/defines'
-require 'src/room'
-require 'src/animatedProp'
-require 'src/game'
-
-require 'src/characters/main_character'
-
-require 'src/hud/inventory'
-require 'src/hud/dialog'
-require 'src/dialogTree'
-
-require 'src/input_manager'
-
-require 'src/rooms/c01s01'
+require 'math/point2d'
+require 'path'
+require 'resource_cache'
+require 'defines'
+require 'room'
+require 'animatedProp'
+require 'game'
+         
+require 'characters/main_character'
+         
+require 'hud/inventory'
+require 'hud/dialog'
+require 'dialogTree'
+         
+require 'input_manager'
+         
+require 'rooms/c01s01'
 
 
 if DEBUG then
-  require 'src/hud/debugHUD'
+  require 'hud/debugHUD'
 end
 
 MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
