@@ -9,7 +9,7 @@ c01s01 = room.new ( "c01s01" )
 
 c01s01.initialCameraX = 0
 c01s01.initialCameraY = 0
-c01s01.initialCameraScl = 0.8
+c01s01.initialCameraScl = 0.4
 
 c01s01.characterMovement = false
 
@@ -94,7 +94,9 @@ objects = {
       c01s01:stopRendering ( "cellphone" )
       c01s01:startRendering ( "nightstand" )
       c01s01:startRendering ( "josh_wakes_up" )
-      
+
+      game.camera:moveScl( 0.4, 0.4, 2, MOAIEaseType.LINEAR)
+
       c01s01.objects.cellphone.ringtone:stop ()
       
       local anim = c01s01.objects.josh_wakes_up.animation:startAnimation ( 'wakes_up' )
@@ -237,14 +239,10 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        if not c01s01.objects.clothes_heap.dressed then 
-          c01s01.objects.main_character:say ( "I should dress first" )
-        else
-          c01s01:stopRendering( "room_door" )
-          c01s01:startRendering( "room_door_open" )
-          c01s01:fadeOut ()
-          print ( "Goto: c01s02" )
-        end
+        c01s01:stopRendering( "room_door" )
+        c01s01:startRendering( "room_door_open" )
+        c01s01:unload ()
+        performWithDelay (100, game.loadScene, 1, game, c01s02)
       end
     end
   },
@@ -257,12 +255,8 @@ objects = {
     render_at_start = false,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        if not c01s01.objects.clothes_heap.dressed then 
-          c01s01.objects.main_character:say ( "I should dress first" )
-        else
-          c01s01:stopRendering( "room_door_open" )
-          c01s01:startRendering( "room_door" )
-        end
+        c01s01:stopRendering( "room_door_open" )
+        c01s01:startRendering( "room_door" )
       end
     end
   }
@@ -273,14 +267,14 @@ c01s01:addObjects ( objects )
 
 function c01s01:beforeInitialize ()
   self:loadObjects ()
-  self.objects.cellphone.calling () 
-  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
   self:loadCharacter( mainCharacter )
   self.objects.main_character:setLoc(0,0)
 end
 
 function c01s01:afterInitialize ()  
   game.autoFollow = true
+  self.objects.cellphone.calling () 
+  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
   -- if DEBUG then
   --   MOAILogMgr.log ( "---------------------------------" )
   --   MOAILogMgr.log ( "Objects" )

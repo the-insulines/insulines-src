@@ -31,3 +31,16 @@ dialogTree.c01s01_never_sleeps = {
     }
   }
 }
+
+dialogTree.c01s02_answering_machine_message = {
+  text = {
+    en_US = "This is a message for Mr. Sanchez from Dr. Porta's office. Mr. Sanchez has once again missed his appointment for his check-up this morning. Please have him call us at his earliest convenince to reschedule. I shouldn't have to stress how important regular controls are for a person of his condition. So please, contact Dr. Porta immediately.",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}

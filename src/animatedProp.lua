@@ -35,16 +35,15 @@ end
 
 
 function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameTime, animationMode)
-  
   if not animationMode then animationMode = MOAITimer.LOOP end
-  
+
   local lastFrame = startFrame + frameCount - 1
   
   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
   local curve = MOAIAnimCurve.new ()
   curve:reserveKeys (2)
   curve:setKey (1, 0, startFrame, MOAIEaseType.LINEAR)
-  curve:setKey (2, frameTime * lastFrame, lastFrame, MOAIEaseType.LINEAR)
+  curve:setKey (2, frameTime * (lastFrame - 1), lastFrame, MOAIEaseType.LINEAR)
   
   -- create the animation that links the animation curve with the remapper
   local anim = MOAIAnim:new ()
@@ -55,6 +54,7 @@ function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameT
   
   -- store it under the name of the animation
   self.animations[name] = anim
+  
 end
 
 

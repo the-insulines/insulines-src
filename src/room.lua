@@ -208,9 +208,10 @@ function new (name)
   end
 
 
-  room.fadeOut = function ( self )
+  room.fadeOut = function ( self, time )
+    if not time then time = 1 end
     for k,layer in pairs ( self.layer_objects ) do
-      layer:seekColor ( 0, 0, 0, 1, 1)
+      layer:seekColor ( 0, 0, 0, 1, time)
     end
   end
   
@@ -243,6 +244,17 @@ function new (name)
       self.theme_song:stop ()
     end
   end  
+  
+  function room:unload ()
+    self:fadeOut ()
+    performWithDelay ( 100, self.removeLayers, 1, self)
+  end
+  
+  function room:removeLayers ()
+    for k, layer in pairs ( self.layer_objects ) do
+      MOAIRenderMgr.removeRenderPass ( layer )
+    end
+  end
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------

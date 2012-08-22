@@ -22,7 +22,7 @@ require 'dialogTree'
 require 'input_manager'
          
 require 'rooms/c01s01'
-
+require 'rooms/c01s02'
 
 if DEBUG then
   require 'hud/debugHUD'
