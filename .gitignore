@@ -1,1 +1,4 @@
 .DS_Store
+hosts/ios/moai.xcodeproj/project.pbxproj
+hosts/ios/moai.xcodeproj/project.xcworkspace/*
+hosts/ios/moai.xcodeproj/xcshareddata/*
