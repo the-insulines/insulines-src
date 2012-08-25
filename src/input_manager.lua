@@ -7,11 +7,13 @@
 module ( "input_manager", package.seeall )
 
 local pointerX, pointerY = nil, nil
+local previousX, previousY = nil, nil
 
 -- Set callback for mouse and touches
 if MOAIInputMgr.device.pointer then
   local pointerCallback = function ( x, y )
-   
+
+   previousX, previousY = pointerX, pointerY
    pointerX, pointerY = x, y
 
    if touchCallbackFunc then
@@ -30,6 +32,15 @@ end
 function position ()
   return pointerX, pointerY
 end
+
+function previousPosition ()
+  return previousX, previousY
+end
+
+function deltaPosition ()
+  return pointerX - previousX, previousY - pointerY
+end
+
 function down ( )
 	
 	if MOAIInputMgr.device.touch then	
@@ -44,6 +55,21 @@ function down ( )
 	end
 	
 end
+
+function isDown ( )
+	
+	if MOAIInputMgr.device.touch then	
+		
+		return MOAIInputMgr.device.touch:isDown ()
+		
+	elseif MOAIInputMgr.device.pointer then
+		
+		return (	
+			MOAIInputMgr.device.mouseLeft:isDown ()
+		)
+	end
+end
+
 
 function getTouch ()
 	

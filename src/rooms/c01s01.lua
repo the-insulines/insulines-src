@@ -11,8 +11,16 @@ c01s01.initialCameraX = 0
 c01s01.initialCameraY = 0
 c01s01.initialCameraScl = 0.4
 
-c01s01.characterMovement = false
+-- perspective attributes
+c01s01.frontCharacterZoom = 0.8
+c01s01.bottomCharacterZoomThreshold = -500
+c01s01.backCharacterZoom = 0.2
+c01s01.topCharacterZoomThreshold = -66
 
+c01s01.initialCharacterZoom = 0.90
+c01s01.initialCharacterPosition = { -152, -60 }
+
+c01s01.characterMovement = false
 objects = {
   background = {
     resource_name = 'c01s01_background',
@@ -59,7 +67,7 @@ objects = {
     animated = true,
     animations = {
       {'wakes_up', 1, 30, JOSH_WAKES_SECONDS_PER_FRAME, MOAITimer.NORMAL},
-      {'still', 30, 0, JOSH_WAKES_SECONDS_PER_FRAME},
+      {'still', 30, 1, JOSH_WAKES_SECONDS_PER_FRAME},
     },
     x = -312,
     y = 180,
@@ -79,7 +87,7 @@ objects = {
     animations = {
       {'grabs_cellphone', 1, 30, JOSH_WAKES_SECONDS_PER_FRAME, MOAITimer.NORMAL},
       {'grabs_cellphone_loop', 31, 22, JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME, MOAITimer.NORMAL},
-      {'still', 30, 0, JOSH_WAKES_SECONDS_PER_FRAME},
+      {'still', 30, 1, JOSH_WAKES_SECONDS_PER_FRAME},
     },
     x = -279,
     y = 77,
@@ -90,7 +98,7 @@ objects = {
     end,
     wakingUp = function ()
       -- Get Cellphone
-      inventory:addObject ( "cellphone", c01s01.objects.cellphone )
+      inventory:addItem ( "cellphone", c01s01.objects.cellphone )
       c01s01:stopRendering ( "cellphone" )
       c01s01:startRendering ( "nightstand" )
       c01s01:startRendering ( "josh_wakes_up" )
@@ -109,7 +117,7 @@ objects = {
     x = -40,
     y = 54,
     render_at_start = true,
-    avoid_clicks = true
+    avoid_clicks = true,
   },
 
   cellphone = {
@@ -125,7 +133,6 @@ objects = {
     render_at_start = true,
     clicks = 0,
     woke = false,
-    
     calling = function ()
       c01s01.objects.cellphone.animation:startAnimation ( 'calling' )
       c01s01.objects.cellphone.ringtone = resource_cache.get('c01s01_cellphone_ringtone')
@@ -183,6 +190,8 @@ objects = {
         c01s01:stopRendering ( "clothes_heap" )
         c01s01:startRendering ( "clothes_on_heap" )
         c01s01:startRendering ( "main_character" )
+        c01s01.objects.main_character:setLoc(unpack (c01s01.initialCharacterPosition))
+        c01s01.objects.main_character:moveTo(unpack (c01s01.initialCharacterPosition), c01s01.perspectiveZoomFactor, 0.00001)
         c01s01.characterMovement = true
         c01s01:playThemeSong ()
       end
@@ -240,8 +249,7 @@ objects = {
       if c01s01.objects.cellphone.woke then
         c01s01:stopRendering( "room_door" )
         c01s01:startRendering( "room_door_open" )
-        c01s01:unload ()
-        performWithDelay (100, game.loadScene, 1, game, c01s02)
+        c01s01.objects.room_door_open.onClick ()
       end
     end
   },
@@ -253,10 +261,15 @@ objects = {
     y = 165,
     render_at_start = false,
     onClick = function ()
-      if c01s01.objects.cellphone.woke then
-        c01s01:stopRendering( "room_door_open" )
-        c01s01:startRendering( "room_door" )
-      end
+      c01s01.initialCameraX = -190
+      c01s01.initialCameraY = 0
+      c01s01.initialCameraScl = 0.8
+      c01s01.objects.main_character.render_at_start = true
+      c01s01:unload ()
+
+      performWithDelay (100, game.loadScene, 1, game, c01s02)
+      performWithDelay (110, c01s02.objects.main_character.moveTo, 1, c01s02.objects.main_character, 1120, -245, c01s01.perspectiveZoomFactor, 0.001)
+      
     end
   }
   
@@ -267,7 +280,7 @@ c01s01:addObjects ( objects )
 function c01s01:beforeInitialize ()
   self:loadObjects ()
   self:loadCharacter( mainCharacter )
-  self.objects.main_character:setLoc(0,0)
+  self:stopRendering( 'main_character' )
 end
 
 function c01s01:afterInitialize ()

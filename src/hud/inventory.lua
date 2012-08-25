@@ -7,7 +7,7 @@
 
 module ( "inventory", package.seeall )
 
-objects = {}
+items = {}
 
 inventory_layer = MOAILayer2D.new ()
 
@@ -15,7 +15,13 @@ opened = false
 
 currentAction = nil
 
-function initialize ( self, elements )
+newObject = false
+
+currentItem = nil
+
+hidden = true
+
+function inventory:initialize ( elements )
   
   if DEBUG then
     print ( "inventory.lua:21: Initializing inventory..." )
@@ -29,7 +35,7 @@ function initialize ( self, elements )
   self:initialize_hud ()
 end
 
-function initialize_hud ( self )
+function inventory:initialize_hud ()
 
   if DEBUG then
     print ( "inventory.lua:31: TODO: Move to resource cache..." )
@@ -38,9 +44,9 @@ function initialize_hud ( self )
   -- ICON
   if not self.icon then
     self.icon = {} 
-    self.icon.gfx = resource_cache.get ( "inventory_backpack" )
-    self.icon.half_width = 64
-    self.icon.half_height = 64
+    self.icon.gfx = resource_cache.get ( 'inventory_backpack' )
+    self.icon.half_width = INVENTORY_BACKPACK_HALF_WIDTH
+    self.icon.half_height = INVENTORY_BACKPACK_HALF_HEIGHT
     self.icon.gfx:setRect ( - self.icon.half_width, - self.icon.half_height, self.icon.half_width, self.icon.half_height)
   
     -- Create prop
@@ -49,8 +55,8 @@ function initialize_hud ( self )
     self.icon.prop:setIndex ( 2 )
     
     -- We want to locate the icon 20px away top right corner, 64 is half the width of the icon.
-    self.icon.x = ( WORLD_RESOLUTION_X / 2 ) - ( self.icon.half_width ) - 20
-    self.icon.y = ( WORLD_RESOLUTION_Y / 2 ) - ( self.icon.half_height) - 20
+    self.icon.x = INVENTORY_BACKPACK_POSITION_X
+    self.icon.y = INVENTORY_BACKPACK_POSITION_Y
 
     self.icon.prop:setLoc ( self.icon.x, self.icon.y )
   end
@@ -59,9 +65,9 @@ function initialize_hud ( self )
   -- Inventory
   if not self.background then
     self.background = {}
-    self.background.gfx = resource_cache.get ( "inventory_background" )
-    self.background.half_width = 200
-    self.background.half_height = 540
+    self.background.gfx = resource_cache.get ( 'inventory_background' )
+    self.background.half_width = INVENTORY_HALF_WIDTH
+    self.background.half_height = INVENTORY_HALF_HEIGHT
     self.background.gfx:setRect ( - self.background.half_width, - self.background.half_height, self.background.half_width, self.background.half_height)
 
     -- Create prop
@@ -76,27 +82,132 @@ function initialize_hud ( self )
   -- Add props in order
   self.inventory_layer:insertProp ( self.background.prop )
   self.inventory_layer:insertProp ( self.icon.prop )
+  
+  -- setup gfx for inventory items
+  self.intentoryItemBackground = {}
+  self.intentoryItemBackground.gfx = resource_cache.get ( 'inventory_item_background' )
+  self.intentoryItemBackground.half_width = INVENTORY_ITEM_HALF_WIDTH
+  self.intentoryItemBackground.half_height = INVENTORY_ITEM_HALF_HEIGHT
+  self.intentoryItemBackground.gfx:setRect ( - self.intentoryItemBackground.half_width, - self.intentoryItemBackground.half_height, self.intentoryItemBackground.half_width, self.intentoryItemBackground.half_height)
 
+  self.openAction = self.background.prop:moveLoc( INVENTORY_OPEN_DELTA_X, INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH )
+  self.openAction:stop ()
+
+  self.closeAction = self.background.prop:moveLoc( -INVENTORY_OPEN_DELTA_X, -INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH )
+  self.closeAction:stop ()
+  
 end
-function show ( self )
+
+function inventory:show ()
 end
 
-function onInput ( self )
-
-  if input_manager.down () then
+function inventory:onInput ()
     local x, y = input_manager.getTouch ()
-    x, y = self.inventory_layer:wndToWorld ( x, y )
+    if x and y then
+      x, y = self.inventory_layer:wndToWorld ( x, y )
+    end
     
-    -- If backpack was clicled toggle inventory
-    local iconX, iconY = self.icon.prop:worldToModel ( x, y )
-    if (iconX >= -self.icon.half_width) and (iconX <= self.icon.half_width) and (iconY >= -self.icon.half_height) and (iconY <= self.icon.half_height) then
-      self:toggleInventory ()
+
+    if input_manager.down () then
+      -- If backpack was clicled toggle inventory
+      local iconX, iconY = self.icon.prop:worldToModel ( x, y )
+      if (iconX >= -self.icon.half_width) and (iconX <= self.icon.half_width) and (iconY >= -self.icon.half_height) and (iconY <= self.icon.half_height) then
+        self:toggleInventory ()
+        return true
+      end
+      
+      -- If item was clicked, select it
+      local item = self:itemAt (x, y)
+      if item then
+        self:clickedOrDraggedItem ( item )
+        return true
+      end
+    end
+    
+    if self.currentItem then
+      if input_manager.isDown () then
+        self:clickedOrDraggedItem ( self.currentItem )
+      else
+        self:droppedCurrentItem ()
+      end
     end
 
+end
+
+function inventory:clickedOrDraggedItem ( item )
+  if self.currentItem == item then
+    -- move item through screen
+    self:moveItem ( self.currentItem )
+  else
+    self:selectItem ( item )
   end
 end
 
-function toggleInventory ( self )
+function inventory:moveItem ( item )
+  local x, y = input_manager.getTouch ()
+  local invX, invY = self.inventory_layer:wndToWorld ( x, y )
+  item.backProp:setLoc(invX, invY)
+  item.backProp:setPriority ( 10 )
+  
+  -- check if there is a possible interaction in this position
+  if game.currentScene:interactionForPosition (self.currentItem, x, y) or self:interactionForPosition ( invX, invY ) then
+    self.currentItem.backProp:setIndex ( 3 )
+  else
+    self.currentItem.backProp:setIndex ( 2 )
+  end
+  
+end
+
+function inventory:interactionForPosition ( x, y )
+  local target = self:itemAt(x, y)
+
+  if target and target.object.interactsWith then
+    for k, targetInteraction in pairs ( target.object.interactsWith ) do
+      if targetInteraction == self.currentItem.key then
+        return target
+      end
+    end
+  end
+end
+
+function inventory:unselectCurrentItem ()
+  if self.currentItem then
+    self.currentItem.backProp:setIndex ( 1 )
+    self.currentItem.backProp:setPriority ()
+    self.currentItem = nil
+    
+    self:updateItemsPosition ()
+    
+  end
+end
+
+function inventory:selectItem ( item )
+  self:unselectCurrentItem ()
+  
+  self.currentItem = item
+  self.currentItem.backProp:setIndex ( 2 )
+end
+
+function inventory:droppedCurrentItem ()
+  local x, y = input_manager.getTouch ()
+  local invX, invY = self.inventory_layer:wndToWorld ( x, y )
+  
+  local target = game.currentScene:interactionForPosition (self.currentItem, x, y)
+  local invTarget = self:interactionForPosition (invX, invX)
+
+  if not target and invTarget then
+    target = invTarget.object
+  end
+  
+  if target then
+    game.currentScene:interact (self.currentItem, target)
+  end
+  
+  self:unselectCurrentItem ()
+  
+end
+
+function inventory:toggleInventory ()
 
   if self.currentAction then
     self.currentAction:stop ()
@@ -109,16 +220,88 @@ function toggleInventory ( self )
   end
 end
 
-function openInventory ( self )
-  self.currentAction = self.background.prop:seekLoc( INVENTORY_OPEN_X, INVENTORY_OPEN_Y, INVENTORY_ANIMATION_LENGTH )
+function inventory:openInventory ()
+  if self.currentAction then self.currentAction:stop () end
+  
+  self:updateItemsPosition ()
+  
   self.opened = true
+
+  self.currentAction = self.openAction
+  MOAICoroutine.blockOnAction ( self.currentAction:start () )
+  
+
+  if self.newObject then
+    self.newObject = false
+    self.icon.prop:setIndex ( 2 )
+  end
+  
 end
 
-function closeInventory ( self )
-  self.currentAction = self.background.prop:seekLoc( INVENTORY_CLOSED_X, INVENTORY_CLOSED_Y, INVENTORY_ANIMATION_LENGTH )
+function inventory:closeInventory ()
+  if self.currentAction then self.currentAction:stop () end
+  self.currentAction = self.closeAction
+  MOAICoroutine.blockOnAction ( self.currentAction:start () )
+    
   self.opened = false
 end
 
-function addObject ( self, key, object )
-  self.objects[key] = object
+function inventory:addItem ( key, object )
+  local item = { key = key, object = object, backProp = MOAIProp2D.new () }
+
+  -- Create prop
+  item.backProp:setDeck ( self.intentoryItemBackground.gfx )
+  item.backProp:setIndex ( 1 )
+  table.insert ( self.items, item)
+
+  local i = # self.items
+  
+  local xPosition = INVENTORY_CLOSED_X  
+  if self.opened then xPosition = INVENTORY_OPEN_X end
+  
+  item.backProp:setLoc ( xPosition, INVENTORY_ITEMS_TOP + INVENTORY_ITEM_HALF_HEIGHT - i * INVENTORY_ITEM_HEIGHT - i * INVENTORY_ITEM_MARGIN )
+  self.inventory_layer:insertProp ( item.backProp )
+
+  self.newObject = true
+  self.icon.prop:setIndex ( 1 )
+  
+  inventory:updateItemsPosition ()
 end
+
+function inventory:removeItem (item)
+  for i, inventoryItem in pairs ( self.items ) do
+    if item.key == inventoryItem.key and item.object == inventoryItem.object then
+      self.inventory_layer:removeProp( item.backProp )
+      table.remove(self.items, i)
+      self:updateItemsPosition ()
+      return true
+    end
+  end
+end
+
+function inventory:updateItemsPosition ()
+  self.openAction:clear ()
+  self.closeAction:clear ()
+  for i, item in pairs ( self.items ) do
+    local itemTop = INVENTORY_ITEMS_TOP  + INVENTORY_ITEM_HALF_HEIGHT - i * INVENTORY_ITEM_HEIGHT - i * INVENTORY_ITEM_MARGIN
+    local xPosition = INVENTORY_CLOSED_X  
+    if self.opened then xPosition = INVENTORY_OPEN_X end
+    item.backProp:setLoc ( xPosition,  itemTop )
+    self.openAction:addChild ( item.backProp:moveLoc( INVENTORY_OPEN_DELTA_X, INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH  ) )
+    self.closeAction:addChild ( item.backProp:moveLoc( -INVENTORY_OPEN_DELTA_X, -INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH  ) )
+  end
+end
+
+function inventory:itemAt ( x, y )
+  for i, item in pairs ( self.items ) do
+
+    local itemX, itemY = item.backProp:worldToModel ( x, y )
+    
+    if (itemX >= -self.intentoryItemBackground.half_width) and (itemX <= self.intentoryItemBackground.half_width) and (itemY >= -self.intentoryItemBackground.half_height) and (itemY <= self.intentoryItemBackground.half_height) then
+      if not (item == self.currentItem) then 
+        return item 
+      end
+    end
+  end
+end
+

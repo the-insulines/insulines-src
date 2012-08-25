@@ -8,8 +8,8 @@
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 
 -- Debugging
-DEBUG = false
--- DEBUG = true
+-- DEBUG = false
+DEBUG = true
 
 
 -- Locale
@@ -55,11 +55,33 @@ MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
 MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
 
 -- Inventory constants
-INVENTORY_OPEN_X = 960 - 200
+INVENTORY_WIDTH = 237
+INVENTORY_HEIGHT = WORLD_RESOLUTION_Y
+INVENTORY_HALF_WIDTH = INVENTORY_WIDTH / 2
+INVENTORY_HALF_HEIGHT = INVENTORY_HEIGHT / 2
+INVENTORY_OPEN_X = SCREEN_RESOLUTION_X - INVENTORY_HALF_WIDTH
 INVENTORY_OPEN_Y = 0
-INVENTORY_CLOSED_X = 960 + 200
+INVENTORY_OPEN_DELTA_X = - INVENTORY_WIDTH
+INVENTORY_OPEN_DELTA_Y = 0
+
+INVENTORY_CLOSED_X = SCREEN_RESOLUTION_X + INVENTORY_HALF_WIDTH
 INVENTORY_CLOSED_Y = 0
 INVENTORY_ANIMATION_LENGTH = 1
+
+INVENTORY_BACKPACK_WIDTH = 89
+INVENTORY_BACKPACK_HEIGHT = 89
+INVENTORY_BACKPACK_HALF_WIDTH = INVENTORY_BACKPACK_WIDTH / 2
+INVENTORY_BACKPACK_HALF_HEIGHT = INVENTORY_BACKPACK_HEIGHT / 2
+INVENTORY_BACKPACK_POSITION_X = ( WORLD_RESOLUTION_X / 2 ) - ( INVENTORY_BACKPACK_HALF_WIDTH ) - 20
+INVENTORY_BACKPACK_POSITION_Y = ( WORLD_RESOLUTION_Y / 2 ) - ( INVENTORY_BACKPACK_HALF_HEIGHT ) - 20
+
+INVENTORY_ITEMS_TOP = WORLD_RESOLUTION_Y / 2 - 120
+
+INVENTORY_ITEM_WIDTH = 176
+INVENTORY_ITEM_HEIGHT = 176
+INVENTORY_ITEM_MARGIN = 10
+INVENTORY_ITEM_HALF_WIDTH = INVENTORY_ITEM_WIDTH / 2
+INVENTORY_ITEM_HALF_HEIGHT = INVENTORY_ITEM_HEIGHT / 2
 
 
 -- Language
@@ -93,7 +115,15 @@ resources = {
     fontSize = 26,
     dpi = 160
   },
-  
+
+  dialog_font = {
+    type = RESOURCE_TYPE_FONT,
+    fileName = 'arialbd.ttf',
+    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
+    fontSize = 50,
+    dpi = 160
+  },
+
   hitchcock = {
     type = RESOURCE_TYPE_FONT,
     fileName = 'hitchcock.ttf',
@@ -103,9 +133,9 @@ resources = {
   },
   
   inventory_background = {
-    type = RESOURCE_TYPE_IMAGE,
-    fileName = 'inventory_background.png',
-    width = 400, height = 1280,
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'inventory_background.png', 
+    width = 237, height = 1280, 
   },
   
   inventory_backpack = {
@@ -113,6 +143,13 @@ resources = {
     fileName = 'backpack.png',
     width = 256, height = 128,
     tileMapSize = {2, 1}
+  },
+
+  inventory_item_background = {
+    type = RESOURCE_TYPE_TILED_IMAGE,
+    fileName = 'inventory_item_bkg.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT * 3,
+    tileMapSize = {1, 3}
   },
 
   dialog_background = {
@@ -136,7 +173,7 @@ resources = {
     
   -- /////////////////////////////////////////////////////////////
   --
-  -- c01s02
+  -- c01s01
   --
   -- ////////////////////////////////////////////////////////////
 
@@ -174,21 +211,7 @@ resources = {
     loop = true,
     volume = 0.6
   },
-  
-  c01s01_lights_off_highlights_B = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s01/c01s01_lights_off_highlights_B.png', 
-    width = 1920, 
-    height = 1080
-  },
-  
-  c01s01_lights_off_shadows_B = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s01/c01s01_lights_off_shadows_B.png', 
-    width = 1920, 
-    height = 1080
-  },
-  
+    
   c01s01_cellphone = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s01/cellphone/cellphone_ring.png', 
@@ -276,6 +299,20 @@ resources = {
     height = 1467
   },
 
+  c01s02_bob_bedroom_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bob_bedroom_closed.png', 
+    width = 221, 
+    height = 452
+  },
+
+  c01s02_bedroom_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bedroom_opened.png', 
+    width = 198, 
+    height = 461
+  },
+
   c01s02_coffeemaker = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_coffeemaker.png', 
@@ -318,7 +355,61 @@ resources = {
     tileMapSize = {2, 1}
   },
   
+  c01s02_pantry_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_pantry_closed.png', 
+    width = 96, 
+    height = 128
+  },
   
+  c01s02_pantry_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_pantry_opened.png', 
+    width = 128, 
+    height = 152
+  },
+
+  c01s02_coffee = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_coffee.png', 
+    width = 30, 
+    height = 38
+  },
+  
+  c01s02_coffee_pot_empty = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_coffee_pot_empty.png', 
+    width = 59,
+    height = 42
+  },
+
+  c01s02_coffee_pot_full = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_cofee_pot_full.png', 
+    width = 58,
+    height = 44
+  },
+  
+  c01s02_mug_full = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_mug_full.png', 
+    width = 47,
+    height = 40
+  },
+
+  c01s02_mug_empty = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_mug_empty.png', 
+    width = 47,
+    height = 40
+  },
+    
+  c01s02_sink = {
+    type = RESOURCE_TYPE_TILED_IMAGE, 
+    fileName = 'c01s02/c01s02_sink.png', 
+    width = 298, height = 72,
+    tileMapSize = {2, 1}
+  }
 }
 
 

@@ -46,7 +46,7 @@ function initializeHUD ( self )
 
     -- TextBox
     self.dialogTextBox:setFont ( game.defaultFont )
-    self.dialogTextBox:setTextSize ( 60 )
+    self.dialogTextBox:setTextSize ( 90 )
     self.dialogTextBox:setYFlip( true )
     self.dialogTextBox:setColor ( unpack ( DEFAULT_DIALOG_COLOR ))
     self.dialogTextBox:setRect ( (-WORLD_RESOLUTION_X/2) + 70, (-WORLD_RESOLUTION_Y/2) + 250 , WORLD_RESOLUTION_X/2 - 70, WORLD_RESOLUTION_Y/2 - 40 )

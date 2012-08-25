@@ -22,7 +22,7 @@ mainCharacter.prop:setPiv ( 0, MAIN_CHARACTER_PIVOT )
 
 mainCharacter.name = "main_character"
 
-mainCharacter.render_at_start = false
+mainCharacter.render_at_start = true
 mainCharacter.rendering = false
 
 
@@ -96,8 +96,8 @@ function mainCharacter:moveThroughSteps ( steps, zoomFactor, callback )
   end
 end
 
-function mainCharacter:moveTo ( x, y, zoomFactor )
-
+function mainCharacter:moveTo ( x, y, zoomFactor, time )
+  print ( zoomFactor )
   self:stopCurrentAction ()
   
   local curX, curY = self.prop:getLoc ()
@@ -105,8 +105,9 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   local delta_x = x - curX
   local delta_y = y - curY
   
-  local time = math.sqrt ( delta_x * delta_x + delta_y * delta_y) / MOVEMENT_PIXELS_PER_SECOND
-  
+  if not time then
+    time = math.sqrt ( delta_x * delta_x + delta_y * delta_y) / MOVEMENT_PIXELS_PER_SECOND
+  end
   -- If time == 0, moveLoc returns nil, which breaks the function
   if time == 0 then time = .001 end
   
@@ -130,7 +131,7 @@ function mainCharacter:moveTo ( x, y, zoomFactor )
   
   -- shift the value zoomFactor units
   -- increase it if the character is heading down (delta_y negative) and decrease it if he is heading up
-  local zoom = zoomFactor * -delta_y
+  local zoom = zoomFactor * - delta_y
   self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
   
   -- start

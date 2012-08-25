@@ -16,7 +16,7 @@ camera = MOAICamera2D.new ()
 cameraDeltaX = 0
 cameraDeltaY = 0
 
-defaultFont = resource_cache.get ( "hitchcock" )
+defaultFont = resource_cache.get ( "dialog_font" )
 
 autoFollow = true
 
@@ -26,9 +26,18 @@ function game:loadScene ( scene )
   self.currentScene = scene
   
   -- Initialize scene
-  scene:initialize ()
+  if not scene.initialized then
+    scene:initialize ()
+  end
   
-  -- Hide all layers
+  -- Move camera
+  camera:setLoc ( scene.initialCameraX, scene.initialCameraY )
+  camera:setScl ( scene.initialCameraScl, scene.initialCameraScl )
+
+  -- Apply main character defaults
+  if scene.objects.main_character then
+    scene.objects.main_character.prop:setScl(scene.initialCharacterZoom)
+  end
   
   -- Load all layers
   for k, layer in pairs( scene:layers() ) do 
@@ -77,13 +86,17 @@ function start ( self )
     coroutine.yield ()
     
     if self.currentScene then
-      if type ( self.currentScene.onInput ) == "function" and not dialog.opened then
-        self.currentScene:onInput ()
+      if not dialog.opened then
+        local inventoryOpened = inventory:onInput ()
+        
+        if not inventoryOpened then
+          if type ( self.currentScene.onInput ) == "function" and not dialog.opened then
+            self.currentScene:onInput ()
+          end
+        end
       end
+      
 
-      if type ( inventory.onInput ) == "function" and not dialog.opened then
-        inventory:onInput ()
-      end
 
       if dialog.opened then
         dialog:onInput ()
@@ -131,11 +144,15 @@ end
 
 function displayHUD ( self )
   -- Inventory
+  MOAIRenderMgr.removeRenderPass ( inventory.inventory_layer )
   inventory.inventory_layer:setViewport ( viewport )
-  dialog.dialogLayer:setViewport ( viewport )
   MOAIRenderMgr.pushRenderPass ( inventory.inventory_layer )
+  inventory.hidden = false
+  
+  dialog.dialogLayer:setViewport ( viewport )
+  MOAIRenderMgr.removeRenderPass ( dialog.dialogLayer )
   MOAIRenderMgr.pushRenderPass ( dialog.dialogLayer )
-
+  
   -- Debug
   if DEBUG then
     debugHUD:initialize ()

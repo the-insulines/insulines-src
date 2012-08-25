@@ -13,13 +13,15 @@ function new (name)
   room.name = name
   
   -- perspective attributes
-  room.frontCharacterZoom = 1
+  room.frontCharacterZoom = 0.8
   -- room.bottomCharacterZoomThreshold = -200
   room.bottomCharacterZoomThreshold = -500
   
-  room.backCharacterZoom = 0.1
-  room.topCharacterZoomThreshold = 200
+  room.backCharacterZoom = 0.001
+  room.topCharacterZoomThreshold = -50
   
+  room.initialCharacterZoom = 1
+
   -- character movement flag
   room.characterMovement = true
   room.inputEnabled = true
@@ -33,13 +35,15 @@ function new (name)
     character = MOAILayer2D.new (),
     walk_behind = MOAILayer2D.new (),
     walk_behind_shadows = MOAILayer2D.new (),
-    walk_behind_highlights = MOAILayer2D.new (),
+    walk_behind_highlights = MOAILayer2D.new (),git
   }
   
   room.layer_objects.background_highlights:setBlendMode(MOAIProp2D.BLEND_ADD)
   room.layer_objects.background_shadows:setBlendMode(MOAIProp2D.BLEND_MULTIPLY)
   room.layer_objects.walk_behind_highlights:setBlendMode(MOAIProp2D.BLEND_ADD)
   room.layer_objects.walk_behind_shadows:setBlendMode(MOAIProp2D.BLEND_MULTIPLY)
+  
+  room.initialized = false
   
   room.layers = function (self)
     local result = {}
@@ -70,6 +74,7 @@ function new (name)
     self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / math.abs (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
     
     self:afterInitialize ()
+    self.initialized = true
   end
   
   -- To do initializations on your room use these callbacks.
@@ -130,7 +135,9 @@ function new (name)
       end
       
       object.prop:setLoc ( object.x, object.y )
-      
+      if object.renderPriority then
+        object.prop:setPriority ( object.renderPriority )
+      end
       -- Load animations for animated prop
       if object.animated then
         self:loadAnimations ( object.animation, object.animations )
@@ -256,6 +263,25 @@ function new (name)
       MOAIRenderMgr.removeRenderPass ( layer )
     end
   end
+  
+  function room:interactionForPosition (source, x, y)
+    if x and y then
+      local x, y = self.layer_objects.background:wndToWorld(x, y)
+      local target = self:objectAt(x, y)
+    
+      if target and target.interactsWith then
+        for k, targetInteraction in pairs ( target.interactsWith ) do
+          if targetInteraction == source.key then
+            return target
+          end
+        end
+      end
+    end
+  end
+  
+  function room:interact (source, target)
+    target:onInteractionWith(source)
+  end
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------
@@ -266,18 +292,26 @@ function new (name)
     end
   end
   
-  room.objectAt = function ( self, x, y )
-  
+  function room:objectAt ( x, y )
+    local resultObject = nil
+    local maxPriority = nil
     for k, object in pairs( self.objects ) do
-  
       local objX, objY = object.prop:worldToModel ( x, y )
   
       if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) and object.rendering then
-        return object
+        if not maxPriority then
+          resultObject = object
+          if object.priority then maxPriority = object.priority end
+        else
+          if object.priority and maxPriority < object.priority then
+            resultObject = object
+            maxPriority = object.priority
+          end
+        end
       end
-  
+      
     end
-    return nil
+    return resultObject
   end
   
 
