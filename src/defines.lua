@@ -145,6 +145,13 @@ resources = {
     tileMapSize = {2, 1}
   },
 
+  inventory_eye = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'inventory_eye.png', 
+    width = 89, height = 89, 
+  },
+
+
   inventory_item_background = {
     type = RESOURCE_TYPE_TILED_IMAGE,
     fileName = 'inventory_item_bkg.png',
@@ -313,6 +320,20 @@ resources = {
     height = 461
   },
 
+  c01s02_bathroom_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bathroom_closed.png', 
+    width = 129, 
+    height = 524
+  },
+
+  c01s02_bathroom_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bathroom_opened.png', 
+    width = 164, 
+    height = 444
+  },
+
   c01s02_coffeemaker = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_coffeemaker.png', 
@@ -337,15 +358,15 @@ resources = {
   c01s02_table = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_table.png', 
-    width = 977, 
-    height = 492
+    width = 977 * 0.9, 
+    height = 492 * 0.9
   },
 
   c01s02_chairs = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_chairs.png', 
-    width = 829, 
-    height = 474
+    width = 829 * 0.9, 
+    height = 474 * 0.9
   },
   
   c01s01_answering_machine = {

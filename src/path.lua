@@ -28,6 +28,7 @@ function new (graph)
     -- choose the minimum between both previous paths
     local distances, previous
     local sourceNode
+    
     if distances1[targetNode] < distances2[targetNode] then
       distances = distances1
       previous = previous1

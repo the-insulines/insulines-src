@@ -7,18 +7,14 @@
 
 c01s02 = room.new ( "c01s02" )
 
-c01s02.initialCameraX = 700
-c01s02.initialCameraY = 0
-c01s02.initialCameraScl = 0.8
-
-c01s02.frontCharacterZoom = 0.75
+c01s02.frontCharacterZoom = 0.9
 c01s02.bottomCharacterZoomThreshold = -611
 
-c01s02.backCharacterZoom = 0.30
+c01s02.backCharacterZoom = 0.70
 c01s02.topCharacterZoomThreshold = 323
 
-c01s02.initialCharacterZoom = 0.85
-
+c01s02.initialCameraPathNode = 'joshDoor'
+c01s02.initialCharacterPathNode = 'joshDoor'
 
 objects = {
   background = {
@@ -58,9 +54,10 @@ objects = {
     onClick = function ()
       c01s02:unload ()
       
+      c01s01.initialCharacterPathNode = 'door'
+      c01s01.initialCameraPathNode = 'door'
+      
       performWithDelay (100, game.loadScene, 1, game, c01s01)
-      performWithDelay (100, c01s01.loadCharacter, 1, c01s01, mainCharacter)
-      performWithDelay (110, c01s01.objects.main_character.moveTo, 1, c01s01.objects.main_character, -788, -120, c01s01.perspectiveZoomFactor, 0.001)
     end
   },
   
@@ -92,6 +89,7 @@ objects = {
   answering_machine = {
     resource_name = "c01s01_answering_machine",
     layer_name = "objects",
+    highlight = true,
     animated = true,
     animations = {
       -- BUG:
@@ -115,6 +113,93 @@ objects = {
     end
   },
   
+  -- ------------------------------------------------------
+  -- Bathroom Puzzle
+  -- ------------------------------------------------------
+  
+  bathroom_closed = {
+    resource_name = 'c01s02_bathroom_closed',
+    layer_name = 'objects',
+    x = 1798,
+    y = -217,
+    render_at_start = true,
+    visitedBathroom = false,
+    onClick = function ()
+      if not c01s02.objects.bathroom_closed.visitedBathroom then
+        -- TODO: Should we avoid clicks now?
+        c01s02.objects.bathroom_closed.visitedBathroom = true
+        
+        -- Open bathroom door
+        c01s02:stopRendering('bathroom_closed')
+        c01s02:startRendering('bathroom_opened')
+        -- Move character to bathroom
+        c01s02:moveCharacterToNode('bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
+      end
+    end
+  },
+  
+  bathroom_opened = {
+    resource_name = 'c01s02_bathroom_opened',
+    layer_name = 'walk_behind',
+    x = 1780,
+    y = -250,
+    render_at_start = false,
+
+    inBathroom = function ( self )
+
+      -- Close bathroom door
+      c01s02:stopRendering("main_character")
+      c01s02:stopRendering("bathroom_opened")
+      c01s02:startRendering("bathroom_closed")
+      inventory:openInventory ()
+      performWithDelay(10, self.objects.bathroom_opened.addBathroomItems, 1, self)
+    end,
+    
+    addBathroomItems = function ( self )
+      inventory:addItem( 'toothpaste', c01s02.objects.toothpaste )
+      inventory:addItem( 'toothbrush', c01s02.objects.toothbrush )
+      inventory:addItem( 'floss', c01s02.objects.floss )
+    end
+    
+  },
+  
+  toothpaste = {
+    render_at_start = false,
+    interactsWith = { 'toothbrush' },
+    onInteractionWith = function ( self, item )
+      inventory:removeItem(item)
+      if self.invTarget then
+        inventory:removeItem(self.invTarget)
+      else
+        inventory:removeItem(self)
+      end
+      inventory:addItem( 'toothbrush_with_toothpaste', c01s02.objects.toothbrush_with_toothpaste )
+    end
+  },
+  
+  toothbrush = {
+    render_at_start = false,
+    interactsWith = { 'toothpaste' },
+    onInteractionWith = function ( self, item )
+      if item.key == 'toothpaste' then
+        item.object.onInteractionWith(item, self.invTarget )
+      end
+    end
+  },
+
+  toothbrush_with_toothpaste = {
+    render_at_start = false,
+  },
+  
+  floss = {
+    render_at_start = false
+  },
+  
+  -- ------------------------------------------------------
+  -- End Bathroom Puzzle
+  -- ------------------------------------------------------
+  
+  
   -- -----------------------------------------------------------------
   -- Coffee Puzzle
   -- -----------------------------------------------------------------
@@ -128,6 +213,7 @@ objects = {
     -- onClick = function () 
     -- end,
     interactsWith = { 'coffeePackage', 'coffeePotEmpty' },
+    highlight = true,
     hasCoffee = false,
     hasWater = false,
     onClick = function ()
@@ -205,6 +291,7 @@ objects = {
     layer_name = 'objects',
     x = 439,
     y = 178,
+    highlight = true,
     render_at_start = true,
     water = false,
     onClick = function ()
@@ -262,7 +349,7 @@ objects = {
     },
     
     interactsWith = { 'coffeePotEmpty' },
-    
+    highlight = true,
     onInteractionWith = function ( self, item )
       if c01s02.objects.coffeePotEmpty.water then
         dialog:load("c01s02_coffee_pot_with_water")
@@ -309,16 +396,6 @@ end
 -- 
 function c01s02:afterInitialize ()  
   self.objects.answering_machine.animation:startAnimation ( 'blink' )
-  
---   game.autoFollow = true
-  -- if DEBUG then
-  --   MOAILogMgr.log ( "---------------------------------" )
-  --   MOAILogMgr.log ( "Objects" )
-  --   MOAILogMgr.log ( "---------------------------------" )
-  --   dump ( c01s02.objects )
-  --   MOAILogMgr.log ( "---------------------------------\n" )
-  --   
-  -- end
 end
 
 local path = {
@@ -385,7 +462,7 @@ local path = {
   kitchenRightOut = {
     position = point (740, -26),
     neighbors = { 'livingNodeRight', 'kitchenRight' },
-    offsets = { x = 600, y = 0, scl = 0.8 }
+    offsets = { x = 600, y = 0, scl = 0.9 }
   },
   
   livingNodeRight = {
@@ -396,7 +473,7 @@ local path = {
   joshDoor = {
     position = point (1130, -245),
     neighbors = { 'livingNodeRight', 'lamp' },
-    offsets = { x = 900, y = 0, 0.8 }
+    offsets = { x = 900, y = 0, scl = 0.9 }
   },
 
   lamp = {
@@ -406,9 +483,14 @@ local path = {
   },
   
   bathroomDoor = {
-    position = point (1742, -459),
-    neighbors = { 'lamp' },
+    position = point (1742, -429),
+    neighbors = { 'lamp', 'bathroom' },
     
+  },
+
+  bathroom = {
+    position = point (1842, -429),
+    neighbors = { 'bathroomDoor' },
   }
 
 }

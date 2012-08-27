@@ -13,15 +13,12 @@ function new (name)
   room.name = name
   
   -- perspective attributes
-  room.frontCharacterZoom = 0.8
-  -- room.bottomCharacterZoomThreshold = -200
-  room.bottomCharacterZoomThreshold = -500
+  -- room.frontCharacterZoom = 0.8
+  -- room.bottomCharacterZoomThreshold = -500
+  -- 
+  -- room.backCharacterZoom = 0.001
+  -- room.topCharacterZoomThreshold = -50
   
-  room.backCharacterZoom = 0.001
-  room.topCharacterZoomThreshold = -50
-  
-  room.initialCharacterZoom = 1
-
   -- character movement flag
   room.characterMovement = true
   room.inputEnabled = true
@@ -73,8 +70,45 @@ function new (name)
     -- calculate the perspective factor to apply zoom
     self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / math.abs (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
     
+    -- Apply default camera and character position
+    self:resetCamera ()
+    self:resetCharacter ()
+    -- 
+    -- game:setCamera()
+    
     self:afterInitialize ()
     self.initialized = true
+  end
+  
+  function room:resetCamera ( )
+    local offset = self.path.graph[self.initialCameraPathNode].offsets
+    camX = offset.x
+    camY = offset.y
+    camScl = offset.scl
+    game.camera:seekLoc (camX, camY, 0.001, MOAIEaseType.FLAT)
+    game.camera:seekScl (camScl, camScl, 0.001, MOAIEaseType.FLAT)
+  end
+  
+  function room:resetCharacter ( )
+    self.layer_objects.character:insertProp ( self.objects.main_character.prop )
+    
+    pos = self.path.graph[self.initialCharacterPathNode].position
+    self.objects.main_character:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
+    
+    local scl = 1
+    scl = self.backCharacterZoom + (self.topCharacterZoomThreshold - pos.y) * self.perspectiveZoomFactor
+    
+    if pos.y <= self.bottomCharacterZoomThreshold then 
+      scl = self.frontCharacterZoom
+    end
+
+    if pos.y >= self.topCharacterZoomThreshold then
+      scl = self.backCharacterZoom
+    end
+    
+    self.objects.main_character.prop:setScl ( scl )
+    
+    self.characterMovement = true
   end
   
   -- To do initializations on your room use these callbacks.
@@ -121,38 +155,39 @@ function new (name)
       local object = self.objects[k]
       
       -- Load resource
-      object.gfx = resource_cache.get ( v.resource_name )
+      if v.resource_name then
+        object.gfx = resource_cache.get ( v.resource_name )
 
-      -- Create prop
-      if object.animated then
-        -- create an animated prop
-        object.animation = AnimatedProp.new ()
-        object.animation:setDeck ( object.gfx )
-        object.prop = object.animation.prop
-      else
-        object.prop = MOAIProp2D.new ()
-        object.prop:setDeck ( object.gfx )
-      end
+        -- Create prop
+        if object.animated then
+          -- create an animated prop
+          object.animation = AnimatedProp.new ()
+          object.animation:setDeck ( object.gfx )
+          object.prop = object.animation.prop
+        else
+          object.prop = MOAIProp2D.new ()
+          object.prop:setDeck ( object.gfx )
+        end
       
-      object.prop:setLoc ( object.x, object.y )
-      if object.renderPriority then
-        object.prop:setPriority ( object.renderPriority )
-      end
-      -- Load animations for animated prop
-      if object.animated then
-        self:loadAnimations ( object.animation, object.animations )
-      end
+        object.prop:setLoc ( object.x, object.y )
+        if object.renderPriority then
+          object.prop:setPriority ( object.renderPriority )
+        end
+        -- Load animations for animated prop
+        if object.animated then
+          self:loadAnimations ( object.animation, object.animations )
+        end
       
-      -- Add to layer
-      object.layer = self.layer_objects[object.layer_name]
-      if object.render_at_start then
-        self:startRendering( k )
+        -- Add to layer
+        object.layer = self.layer_objects[object.layer_name]
+        if object.render_at_start then
+          self:startRendering( k )
+        end
+      
+        -- Add dimensions
+        object.half_width = resources[v.resource_name].width / 2
+        object.half_height = resources[v.resource_name].height / 2
       end
-      
-      -- Add dimensions
-      object.half_width = resources[v.resource_name].width / 2
-      object.half_height = resources[v.resource_name].height / 2
-      
     end
   end
   
@@ -168,7 +203,7 @@ function new (name)
         local callback = nil
         if object then
           if type (object.onClick) == "function" then
-            if self.characterMovement then 
+            if self.characterMovement then
               callback = { method = object.onClick, parent = object }
             else
               object:onClick ()
@@ -197,8 +232,23 @@ function new (name)
       end
     end
   end
+
+  function room:moveCharacterToNode (node, callback_method, callback_parent)
+    local position = self.path.graph[node].position
+    local steps = self.path:steps ( point ( self.objects.main_character.prop:getLoc () ),  position )
+    local char = self.objects.main_character
+    local callback = { method = callback_method, parent = callback_parent }
+
+    self.characterMovementCoroutine = MOAICoroutine.new ()
+    self.characterMovementCoroutine:run( char.moveThroughSteps, char, steps, self.perspectiveZoomFactor, callback )
+    
+  end
   
-  room.stopRendering = function ( self, object )
+  function room:reload ()
+    
+  end
+  
+  function room:stopRendering ( object )
     local o = self.objects[object]
     if o then
       o.layer:removeProp ( o.prop )
@@ -206,7 +256,7 @@ function new (name)
     end
   end
 
-  room.startRendering = function ( self, object )
+  function room:startRendering ( object )
     local o = self.objects[object]
 
     if o then
@@ -216,7 +266,7 @@ function new (name)
   end
 
 
-  room.fadeOut = function ( self, time )
+  function room:fadeOut ( time )
     if not time then time = 1 end
     for k,layer in pairs ( self.layer_objects ) do
       layer:seekColor ( 0, 0, 0, 1, time)
@@ -224,7 +274,7 @@ function new (name)
   end
   
 
-  room.fadeIn = function ( self )
+  function room:fadeIn ( )
     for k,layer in pairs ( self.layer_objects ) do
       layer:seekColor ( 1, 1, 1, 1, 1)
     end
@@ -282,6 +332,23 @@ function new (name)
   function room:interact (source, target)
     target:onInteractionWith(source)
   end
+  
+  function room:startHighlightingInteractions ()
+    for k, object in pairs ( self.objects ) do
+      if object.highlight then
+        object.prop:seekColor(1,0,0,1,0.5)
+      end
+    end
+  end
+
+  function room:stoptHighlightingInteractions ()
+    for k, object in pairs ( self.objects ) do
+      if object.highlight then
+        object.prop:moveColor(1,1,1,1,0.5)
+      end
+    end
+  end
+
   ----------------------------------------------------------------
   -- internal functions
   ----------------------------------------------------------------
@@ -296,20 +363,21 @@ function new (name)
     local resultObject = nil
     local maxPriority = nil
     for k, object in pairs( self.objects ) do
-      local objX, objY = object.prop:worldToModel ( x, y )
+      if object.prop then
+        local objX, objY = object.prop:worldToModel ( x, y )
   
-      if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) and object.rendering then
-        if not maxPriority then
-          resultObject = object
-          if object.priority then maxPriority = object.priority end
-        else
-          if object.priority and maxPriority < object.priority then
+        if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) and object.rendering then
+          if not maxPriority then
             resultObject = object
-            maxPriority = object.priority
+            if object.priority then maxPriority = object.priority end
+          else
+            if object.priority and maxPriority < object.priority then
+              resultObject = object
+              maxPriority = object.priority
+            end
           end
         end
       end
-      
     end
     return resultObject
   end

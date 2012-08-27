@@ -25,18 +25,13 @@ function game:loadScene ( scene )
   -- Cache scene
   self.currentScene = scene
   
-  -- Initialize scene
   if not scene.initialized then
+    -- Initialize scene
     scene:initialize ()
-  end
-  
-  -- Move camera
-  camera:setLoc ( scene.initialCameraX, scene.initialCameraY )
-  camera:setScl ( scene.initialCameraScl, scene.initialCameraScl )
-
-  -- Apply main character defaults
-  if scene.objects.main_character then
-    scene.objects.main_character.prop:setScl(scene.initialCharacterZoom)
+  else
+    -- Reset scene
+    scene:resetCamera ()
+    scene:resetCharacter ()
   end
   
   -- Load all layers

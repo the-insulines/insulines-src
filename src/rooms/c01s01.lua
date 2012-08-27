@@ -7,18 +7,15 @@
 
 c01s01 = room.new ( "c01s01" )
 
-c01s01.initialCameraX = 0
-c01s01.initialCameraY = 0
-c01s01.initialCameraScl = 0.4
 
 -- perspective attributes
-c01s01.frontCharacterZoom = 0.8
+c01s01.frontCharacterZoom = 0.9
 c01s01.bottomCharacterZoomThreshold = -500
-c01s01.backCharacterZoom = 0.2
+c01s01.backCharacterZoom = 0.85
 c01s01.topCharacterZoomThreshold = -66
 
-c01s01.initialCharacterZoom = 0.90
-c01s01.initialCharacterPosition = { -152, -60 }
+c01s01.initialCameraPathNode = 'bed'
+c01s01.initialCharacterPathNode = 'movePoint'
 
 c01s01.characterMovement = false
 objects = {
@@ -93,9 +90,11 @@ objects = {
     y = 77,
     render_at_start = false,
     avoid_clicks = true,
+    
     onEnd = function () 
       c01s01.objects.josh_grabs_cellphone.animation:startAnimation("still")
     end,
+    
     wakingUp = function ()
       -- Get Cellphone
       inventory:addItem ( "cellphone", c01s01.objects.cellphone )
@@ -103,7 +102,7 @@ objects = {
       c01s01:startRendering ( "nightstand" )
       c01s01:startRendering ( "josh_wakes_up" )
       
-      game.camera:moveScl ( 0.4, 0.4, 2, MOAIEaseType.LINEAR )
+      -- game.camera:moveScl ( 0.4, 0.4, 2, MOAIEaseType.LINEAR )
       c01s01.objects.cellphone.ringtone:stop ()
       
       local anim = c01s01.objects.josh_wakes_up.animation:startAnimation ( 'wakes_up' )
@@ -123,6 +122,7 @@ objects = {
   cellphone = {
     resource_name = "c01s01_cellphone",
     layer_name = "objects",
+    highlight = true,
     animated = true,
     animations = {
       {'calling', 1, 11, 0.10},
@@ -146,7 +146,7 @@ objects = {
           -- Wake up
           c01s01.inputEnabled = false
           c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -20, 0, 3, MOAIEaseType.LINEAR )
-          
+          c01s01.objects.clothes_heap.highlight = true
           local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
           anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_grabs_cellphone.wakingUp )
           c01s01.objects.cellphone.woke = true
@@ -190,10 +190,13 @@ objects = {
         c01s01:stopRendering ( "clothes_heap" )
         c01s01:startRendering ( "clothes_on_heap" )
         c01s01:startRendering ( "main_character" )
-        c01s01.objects.main_character:setLoc(unpack (c01s01.initialCharacterPosition))
-        c01s01.objects.main_character:moveTo(unpack (c01s01.initialCharacterPosition), c01s01.perspectiveZoomFactor, 0.00001)
-        c01s01.characterMovement = true
+        c01s01:resetCharacter ()
         c01s01:playThemeSong ()
+        c01s01.objects.clothes_on_heap.highlight = true
+        c01s01.objects.window.highlight = true
+        c01s01.objects.barbarullo.highlight = true
+        c01s01.objects.floyd.highlight = true
+        
       end
 
       if c01s01.objects.cellphone.woke then
@@ -246,7 +249,7 @@ objects = {
     y = 180,
     render_at_start = true,
     onClick = function ()
-      if c01s01.objects.cellphone.woke then
+      if c01s01.objects.clothes_heap.dressed then
         c01s01:stopRendering( "room_door" )
         c01s01:startRendering( "room_door_open" )
         c01s01.objects.room_door_open.onClick ()
@@ -261,15 +264,14 @@ objects = {
     y = 165,
     render_at_start = false,
     onClick = function ()
-      c01s01.initialCameraX = -190
-      c01s01.initialCameraY = 0
-      c01s01.initialCameraScl = 0.8
-      c01s01.objects.main_character.render_at_start = true
-      c01s01:unload ()
+      if c01s01.objects.clothes_heap.dressed then
+        c01s01:unload ()
 
-      performWithDelay (100, game.loadScene, 1, game, c01s02)
-      performWithDelay (110, c01s02.objects.main_character.moveTo, 1, c01s02.objects.main_character, 1120, -245, c01s01.perspectiveZoomFactor, 0.001)
-      
+        c01s02.initialCameraPathNode = 'joshDoor'
+        c01s02.initialCharacterPathNode = 'joshDoor'
+
+        performWithDelay (100, game.loadScene, 1, game, c01s02)
+      end
     end
   }
   
@@ -280,28 +282,20 @@ c01s01:addObjects ( objects )
 function c01s01:beforeInitialize ()
   self:loadObjects ()
   self:loadCharacter( mainCharacter )
-  self:stopRendering( 'main_character' )
 end
 
 function c01s01:afterInitialize ()
-  game.autoFollow = true
   self.objects.cellphone.calling () 
   self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
-  -- if DEBUG then
-  --   MOAILogMgr.log ( "---------------------------------" )
-  --   MOAILogMgr.log ( "Objects" )
-  --   MOAILogMgr.log ( "---------------------------------" )
-  --   --dump ( c01s01.objects )
-  --   MOAILogMgr.log ( "---------------------------------\n" )
-  --   
-  -- end
+  self:stopRendering( 'main_character' )
+  self.characterMovement = false
 end
 
 local path = {
   bed = {
     position = point (-170, -50),
     neighbors = { 'bedBack', 'carpetPoint', 'dodgeBedPoint' },
-    offsets = { x = -190, y = 0 }
+    offsets = { x = -190, y = 0, scl = 0.8 }
   },
 
   bedBack = {
@@ -336,6 +330,7 @@ local path = {
   door = {
     position = point (-788, -120),
     neighbors = { 'movePoint', 'dodgeBedPoint' },
+    offsets = { x = -190, y = 0, scl = 0.8 }
   },
 
   window = {
