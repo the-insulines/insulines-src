@@ -258,6 +258,10 @@ function new (name)
 
   function room:startRendering ( object )
     local o = self.objects[object]
+    
+    if o.renderPriority then
+      o.prop:setPriority ( o.renderPriority )
+    end
 
     if o then
       o.layer:insertProp ( o.prop )
@@ -336,7 +340,7 @@ function new (name)
   function room:startHighlightingInteractions ()
     for k, object in pairs ( self.objects ) do
       if object.highlight then
-        object.prop:seekColor(1,0,0,1,0.5)
+        object.prop:seekColor ( HIGHLIGHT_COLOR.r, HIGHLIGHT_COLOR.g, HIGHLIGHT_COLOR.b, HIGHLIGHT_COLOR.a, HIGHLIGHT_TIME )
       end
     end
   end
@@ -344,7 +348,7 @@ function new (name)
   function room:stoptHighlightingInteractions ()
     for k, object in pairs ( self.objects ) do
       if object.highlight then
-        object.prop:moveColor(1,1,1,1,0.5)
+        object.prop:moveColor(1,1,1,1,HIGHLIGHT_TIME)
       end
     end
   end

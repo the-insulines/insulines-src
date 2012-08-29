@@ -55,7 +55,7 @@ MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
 MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
 
 -- Inventory constants
-INVENTORY_WIDTH = 237
+INVENTORY_WIDTH = 566
 INVENTORY_HEIGHT = WORLD_RESOLUTION_Y
 INVENTORY_HALF_WIDTH = INVENTORY_WIDTH / 2
 INVENTORY_HALF_HEIGHT = INVENTORY_HEIGHT / 2
@@ -84,6 +84,9 @@ INVENTORY_ITEM_HALF_WIDTH = INVENTORY_ITEM_WIDTH / 2
 INVENTORY_ITEM_HALF_HEIGHT = INVENTORY_ITEM_HEIGHT / 2
 
 
+
+HIGHLIGHT_COLOR = { r = 0.92, g = 1, b = 0, a = 0.5 }
+HIGHLIGHT_TIME = 0.5
 -- Language
 LANGUAGE = "en"
 
@@ -134,20 +137,19 @@ resources = {
   
   inventory_background = {
     type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'inventory_background.png', 
-    width = 237, height = 1280, 
+    fileName = 'hud/inventory_background.png', 
+    width = 566, height = 1280, 
   },
   
   inventory_backpack = {
-    type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'backpack.png',
-    width = 256, height = 128,
-    tileMapSize = {2, 1}
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/backpack.png',
+    width = 89, height = 89,
   },
 
-  inventory_eye = {
+  highlight_duck = {
     type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'inventory_eye.png', 
+    fileName = 'hud/clickeables_off.png', 
     width = 89, height = 89, 
   },
 
@@ -430,7 +432,38 @@ resources = {
     fileName = 'c01s02/c01s02_sink.png', 
     width = 298, height = 72,
     tileMapSize = {2, 1}
-  }
+  },
+  
+  c01s02_freezer_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_freezer_closed.png', 
+    width = 169, height = 96
+  },
+
+  c01s02_freezer_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_freezer_opened.png', 
+    width = 162, height = 151
+  },
+
+  c01s02_fridge_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_fridge_closed.png', 
+    width = 169, height = 260
+  },
+
+  c01s02_fridge_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_fridge_opened.png', 
+    width = 157, height = 300
+  },
+
+  c01s02_cube_tray = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_cube_tray.png', 
+    width = 50, height = 43
+  },
+    
 }
 
 

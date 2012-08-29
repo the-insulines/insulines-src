@@ -14,7 +14,7 @@ local memoryTextbox = MOAITextBox.new ()
 
 local dialogViewport = MOAIViewport.new ()
 
-function initialize(self)
+function debugHUD:initialize ()
   -- dialog layer
   dialogViewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
   dialogViewport:setScale ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )

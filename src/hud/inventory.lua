@@ -9,7 +9,7 @@ module ( "inventory", package.seeall )
 
 items = {}
 
-inventory_layer = MOAILayer2D.new ()
+layer = MOAILayer2D.new ()
 
 opened = false 
 
@@ -34,10 +34,10 @@ function inventory:initialize ( elements )
   end
 
   -- Initialize HUD
-  self:initialize_hud ()
+  self:initializeHud ()
 end
 
-function inventory:initialize_hud ()
+function inventory:initializeHud ()
 
   if DEBUG then
     print ( "inventory.lua:31: TODO: Move to resource cache..." )
@@ -61,24 +61,7 @@ function inventory:initialize_hud ()
     self.icon.y = INVENTORY_BACKPACK_POSITION_Y
 
     self.icon.prop:setLoc ( self.icon.x, self.icon.y )
-    
-    self.eye = {} 
-    self.eye.gfx = resource_cache.get ( 'inventory_eye' )
-    self.eye.half_width = INVENTORY_BACKPACK_HALF_WIDTH
-    self.eye.half_height = INVENTORY_BACKPACK_HALF_HEIGHT
-    self.eye.gfx:setRect ( - self.eye.half_width, - self.eye.half_height, self.eye.half_width, self.eye.half_height)
-  
-    -- Create prop
-    self.eye.prop = MOAIProp2D.new ()
-    self.eye.prop:setDeck ( self.eye.gfx )
-    self.eye.prop:setIndex ( 2 )
-    
-    -- We want to locate the icon 20px away top right corner, 64 is half the width of the icon.
-    self.eye.x = INVENTORY_BACKPACK_POSITION_X - INVENTORY_BACKPACK_WIDTH
-    self.eye.y = INVENTORY_BACKPACK_POSITION_Y
 
-    self.eye.prop:setLoc ( self.eye.x, self.eye.y )
-    
   end
   -- End ICON
   
@@ -100,9 +83,8 @@ function inventory:initialize_hud ()
   -- End Inventory
 
   -- Add props in order
-  self.inventory_layer:insertProp ( self.background.prop )
-  self.inventory_layer:insertProp ( self.icon.prop )
-  self.inventory_layer:insertProp ( self.eye.prop )
+  self.layer:insertProp ( self.background.prop )
+  self.layer:insertProp ( self.icon.prop )
   
   -- setup gfx for inventory items
   self.intentoryItemBackground = {}
@@ -125,7 +107,7 @@ end
 function inventory:onInput ()
     local x, y = input_manager.getTouch ()
     if x and y then
-      x, y = self.inventory_layer:wndToWorld ( x, y )
+      x, y = self.layer:wndToWorld ( x, y )
     end
     
 
@@ -136,14 +118,6 @@ function inventory:onInput ()
         self:toggleInventory ()
         return true
       end
-      
-      -- If eye was clicled highlight objects
-      local eyeX, eyeY = self.eye.prop:worldToModel ( x, y )
-      if (eyeX >= -self.eye.half_width) and (eyeX <= self.eye.half_width) and (eyeY >= -self.eye.half_height) and (eyeY <= self.eye.half_height) then
-        self:highlightInteractions ()
-        return true
-      end
-      
 
       -- If item was clicked, select it
       local item = self:itemAt (x, y)
@@ -152,13 +126,7 @@ function inventory:onInput ()
         return true
       end
     end
-    
-    if self.highlightingInteractions then
-      if not input_manager.isDown () then
-        self:stopHighlightingInteractions ()
-      end
-    end
-    
+        
     if self.currentItem then
       if input_manager.isDown () then
         self:clickedOrDraggedItem ( self.currentItem )
@@ -168,16 +136,6 @@ function inventory:onInput ()
       return true
     end
 
-end
-
-function inventory:highlightInteractions ()
-  self.highlightingInteractions = true
-  game.currentScene:startHighlightingInteractions ()
-end
-
-function inventory:stopHighlightingInteractions ()
-  self.highlightingInteractions = false
-  game.currentScene:stoptHighlightingInteractions ()
 end
 
 function inventory:clickedOrDraggedItem ( item )
@@ -191,7 +149,7 @@ end
 
 function inventory:moveItem ( item )
   local x, y = input_manager.getTouch ()
-  local invX, invY = self.inventory_layer:wndToWorld ( x, y )
+  local invX, invY = self.layer:wndToWorld ( x, y )
   item.backProp:setLoc(invX, invY)
   item.backProp:setPriority ( 10 )
   
@@ -236,7 +194,7 @@ end
 
 function inventory:droppedCurrentItem ()
   local x, y = input_manager.getTouch ()
-  local invX, invY = self.inventory_layer:wndToWorld ( x, y )
+  local invX, invY = self.layer:wndToWorld ( x, y )
   
   local target = game.currentScene:interactionForPosition (self.currentItem, x, y)
   local invTarget = self:interactionForPosition (invX, invY)
@@ -307,7 +265,7 @@ function inventory:addItem ( key, object )
   if self.opened then xPosition = INVENTORY_OPEN_X end
   
   item.backProp:setLoc ( xPosition, INVENTORY_ITEMS_TOP + INVENTORY_ITEM_HALF_HEIGHT - i * INVENTORY_ITEM_HEIGHT - i * INVENTORY_ITEM_MARGIN )
-  self.inventory_layer:insertProp ( item.backProp )
+  self.layer:insertProp ( item.backProp )
 
   self.newObject = true
   self.icon.prop:setIndex ( 1 )
@@ -318,7 +276,7 @@ end
 function inventory:removeItem (item)
   for i, inventoryItem in pairs ( self.items ) do
     if item.key == inventoryItem.key and item.object == inventoryItem.object then
-      self.inventory_layer:removeProp( item.backProp )
+      self.layer:removeProp( item.backProp )
       table.remove(self.items, i)
       self:updateItemsPosition ()
       return true
@@ -329,7 +287,7 @@ end
 function inventory:findAndRemoveItem (key)
   for i, inventoryItem in pairs ( self.items ) do
     if item.key == inventoryItem.key and item.object == inventoryItem.object then
-      self.inventory_layer:removeProp( item.backProp )
+      self.layer:removeProp( item.backProp )
       table.remove(self.items, i)
       self:updateItemsPosition ()
       return true

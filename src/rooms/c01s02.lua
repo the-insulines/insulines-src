@@ -199,6 +199,83 @@ objects = {
   -- End Bathroom Puzzle
   -- ------------------------------------------------------
   
+  -- ------------------------------------------------------
+  -- Fridge
+  -- ------------------------------------------------------
+  
+  freezer_closed = {
+    resource_name = 'c01s02_freezer_closed',
+    layer_name = 'objects',
+    x = 752,
+    y = 296,
+    renderPriority = 100,
+    render_at_start = true,
+    highlight = true,
+    onClick = function ()
+      c01s02:stopRendering('freezer_closed')
+      c01s02:startRendering('freezer_opened')
+      -- c01s02:startRendering('cube_tray')
+    end
+  },
+
+  freezer_opened = {
+    resource_name = 'c01s02_freezer_opened',
+    layer_name = 'objects',
+    x = 754,
+    y = 277,
+    renderPriority = 100,
+    render_at_start = false,
+    highlight = true,
+    onClick = function ()
+      c01s02:stopRendering('freezer_opened')
+      c01s02:startRendering('freezer_closed')
+      -- c01s02:stopRendering('cube_tray')
+    end
+  },
+
+  cube_tray = {
+    resource_name = 'c01s02_cube_tray',
+    layer_name = 'objects',
+    x = 710,
+    y = 298,
+    renderPriority = 200,
+    render_at_start = false,
+    highlight = true,
+    onClick = function ()
+      c01s02:stopRendering('cube_tray')
+      inventory:addItem('cube_tray', c01s02.objects.cube_tray)
+    end
+  },
+
+  fridge_closed = {
+    resource_name = 'c01s02_fridge_closed',
+    layer_name = 'objects',
+    x = 751,
+    y = 129,
+    render_at_start = true,
+    highlight = true,
+    onClick = function ()
+      c01s02:stopRendering('fridge_closed')
+      c01s02:startRendering('fridge_opened')
+    end
+  },  
+
+  fridge_opened = {
+    resource_name = 'c01s02_fridge_opened',
+    layer_name = 'objects',
+    x = 751,
+    y = 108,
+    render_at_start = false,
+    highlight = true,
+    onClick = function ()
+      c01s02:stopRendering('fridge_opened')
+      c01s02:startRendering('fridge_closed')
+    end
+  },  
+  
+  -- ------------------------------------------------------
+  -- End Fridge
+  -- ------------------------------------------------------
   
   -- -----------------------------------------------------------------
   -- Coffee Puzzle
@@ -216,13 +293,15 @@ objects = {
     highlight = true,
     hasCoffee = false,
     hasWater = false,
+    madeCoffee = false,
     onClick = function ()
-      if c01s02.objects.coffeeMaker.hasWater and c01s02.objects.coffeeMaker.hasCoffee then
+      if c01s02.objects.coffeeMaker.hasWater and c01s02.objects.coffeeMaker.hasCoffee and not c01s02.objects.coffeeMaker.madeCoffee then
 
         local fadeIn = function ()
           c01s02:fadeIn ()
           c01s02:startRendering ( "coffeePotFull" )
           c01s02:startRendering ( "mug_full" )
+          c01s02.objects.coffeeMaker.madeCoffee = true
         end
         
         c01s02:fadeOut ()
@@ -257,10 +336,13 @@ objects = {
     x = 572,
     y = 65,
     render_at_start = true,
+    highlight = true,
     onClick = function ()
       c01s02:stopRendering ( 'pantry_closed' )
       c01s02:startRendering ( 'pantry_opened' )
-      c01s02:startRendering ( 'coffeePackage' )
+      if not c01s02.objects.coffeePackage.pickedUp then
+        c01s02:startRendering ( 'coffeePackage' )
+      end
     end
   },
   
@@ -271,10 +353,15 @@ objects = {
     y = 53,
     render_at_start = false,
     onClick = function ()
-      if c01s02.objects.coffeePackage.rendering then
+      if not c01s02.objects.coffeePackage.pickedUp then
         c01s02:stopRendering ( 'coffeePackage' )
         inventory:addItem ( "coffeePackage", c01s02.objects.coffeePackage )
+        c01s02.objects.coffeePackage.pickedUp = true
+      else
+        c01s02:stopRendering ( 'pantry_opened' )
+        c01s02:startRendering ( 'pantry_closed' )
       end
+      
     end
   },
 
@@ -283,7 +370,10 @@ objects = {
     layer_name = 'objects',
     x = 563,
     y = 53,
-    render_at_start = false
+    pickedUp = false,
+    render_at_start = false,
+    highlight = true,
+    avoid_clicks = true
   },
 
   coffeePotEmpty = {
@@ -455,19 +545,24 @@ local path = {
 
   kitchenRight = {
     position = point (737, -26),
-    neighbors = { 'kitchenLeft', 'kitchenRightOut' },
-    offsets = { x = 500, y = 200, scl = 0.6 }
+    neighbors = { 'kitchenLeft', 'zoomKitchenRight' },
   },
   
-  kitchenRightOut = {
-    position = point (740, -26),
-    neighbors = { 'livingNodeRight', 'kitchenRight' },
-    offsets = { x = 600, y = 0, scl = 0.9 }
+  zoomKitchenRight = {
+    position = point (728, -60),
+    neighbors = { 'kitchenRight', 'zoomKitchenRightOut' },
+    offsets = { x = 500, y = 200, scl = 0.6 }   
+  },
+  
+  zoomKitchenRightOut = {
+    position = point (720, -90),
+    neighbors = { 'zoomKitchenRight', 'livingNodeRight' },
+    offsets = { x = 900, y = 0, scl = 0.9 }
   },
   
   livingNodeRight = {
     position = point (645, -270),
-    neighbors = { 'kitchenRightOut', 'joshDoor' },
+    neighbors = { 'zoomKitchenRightOut', 'joshDoor' },
   },
   
   joshDoor = {

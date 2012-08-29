@@ -133,7 +133,7 @@ function dialog:show ( dialogText, option1, option2, option3, option4 )
 
   self.dialogLayer:moveColor ( 1, 1, 1, 1, 0.5, MOAIEaseType.LINEAR)
   
-  self.opened = true
+  -- self.opened = true
 end
 
 function dialog:setOption ( optionDefinition, option )

@@ -259,7 +259,7 @@ objects = {
   
   room_door_open = {
     resource_name = "c01s01_room_door_open",
-    layer_name = "objects",
+    layer_name = "walk_behind",
     x = -872,
     y = 165,
     render_at_start = false,

@@ -11,14 +11,14 @@ currentScene = nil
 
 camera = MOAICamera2D.new ()
 
--- camera:setScl( CAMERA_SCALE )
-
 cameraDeltaX = 0
 cameraDeltaY = 0
 
 defaultFont = resource_cache.get ( "dialog_font" )
 
 autoFollow = true
+
+gameRunning = true
 
 function game:loadScene ( scene )
 
@@ -62,7 +62,7 @@ function initialize ( self )
   inventory:initialize ( )
   dialog:initialize ( )
 
-  self:loadScene ( c01s01 )
+  self:loadScene ( c01s02 )
 end
 
 
@@ -77,39 +77,19 @@ function start ( self )
   
   -- -- Game loop
   -- -- If there is a scene loaded we gather input and update everyhing
-  while true do
-    coroutine.yield ()
-    
-    if self.currentScene then
-      if not dialog.opened then
-        local inventoryOpened = inventory:onInput ()
-        
-        if not inventoryOpened then
-          if type ( self.currentScene.onInput ) == "function" and not dialog.opened then
-            self.currentScene:onInput ()
-          end
-        end
-      end
-      
+  while self.gameRunning do
+    local stopInput = false
 
-
-      if dialog.opened then
-        dialog:onInput ()
-      end
-      
-      if DEBUG then
-        
-        local x, y = input_manager.position ()
-
-        if x and y then
-
-          debugHUD:setMouseWindowPosition(x,y)
-
-          x, y = self.currentScene.layer_objects.background:wndToWorld ( x, y )
-          debugHUD:setMouseWorldPosition(x,y)
-        end
-      end
+    -- Send input to HUD first
+    if hud.initialized then
+       stopInput = hud:onInput ()
     end
+    
+    if self.currentScene and not stopInput then
+      self.currentScene:onInput ()
+    end
+
+    coroutine.yield ()
   end
 
 end
@@ -138,19 +118,20 @@ end
 
 
 function displayHUD ( self )
-  -- Inventory
-  MOAIRenderMgr.removeRenderPass ( inventory.inventory_layer )
-  inventory.inventory_layer:setViewport ( viewport )
-  MOAIRenderMgr.pushRenderPass ( inventory.inventory_layer )
-  inventory.hidden = false
+  hud:initialize ()
   
-  dialog.dialogLayer:setViewport ( viewport )
-  MOAIRenderMgr.removeRenderPass ( dialog.dialogLayer )
-  MOAIRenderMgr.pushRenderPass ( dialog.dialogLayer )
-  
-  -- Debug
-  if DEBUG then
-    debugHUD:initialize ()
+  for k, layer in pairs (hud.layers) do
+    MOAIRenderMgr.removeRenderPass ( layer )
+    layer:setViewport ( viewport )
+    MOAIRenderMgr.pushRenderPass ( layer )
   end
+  -- dialog.dialogLayer:setViewport ( viewport )
+  -- MOAIRenderMgr.removeRenderPass ( dialog.dialogLayer )
+  -- MOAIRenderMgr.pushRenderPass ( dialog.dialogLayer )
+  -- 
+  -- -- Debug
+  -- if DEBUG then
+  --   debugHUD:initialize ()
+  -- end
 
 end
