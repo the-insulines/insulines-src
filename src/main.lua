@@ -16,7 +16,10 @@ require 'game'
 require 'characters/main_character'
 
 require 'hud/inventory'
+require 'hud/highlight'
 require 'hud/dialog'
+require 'hud/hud'
+
 require 'dialogTree'
 
 require 'input_manager'
@@ -31,7 +34,6 @@ end
 MOAISim.openWindow ( 'The Insulines', SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
 
 function main ()
-  
   game:start ()
 end
 

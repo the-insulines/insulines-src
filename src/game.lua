@@ -11,38 +11,55 @@ currentScene = nil
 
 camera = MOAICamera2D.new ()
 
--- camera:setScl( CAMERA_SCALE )
-
 cameraDeltaX = 0
 cameraDeltaY = 0
 
-defaultFont = resource_cache.get ( "hitchcock" )
+defaultFont = resource_cache.get ( "dialog_font" )
 
 autoFollow = true
 
-function game:loadScene ( scene )
+gameRunning = true
 
+function game:loadScene ( scene )
+  MOAIRenderMgr.clearRenderStack ()
+  -- Load HUD
+  self:displayHUD ()
+  
   -- Cache scene
   self.currentScene = scene
   
-  -- Initialize scene
-  scene:initialize ()
-  
-  -- Hide all layers
+  if not scene.initialized then
+    -- Initialize scene
+    scene:initialize ()
+  else
+    -- Reset scene
+    scene:resetCamera ()
+    scene:resetCharacter ()
+  end
   
   -- Load all layers
+  local renderTable = {}
+  
   for k, layer in pairs( scene:layers() ) do 
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
-    MOAIRenderMgr.pushRenderPass ( layer )
-    layer:setColor(0,0,0,0)
+    -- layer:setColor(0,0,0,0)
+    table.insert(renderTable, layer)
   end
   
+  -- Get Render Table
+  local currentRenderTable = MOAIRenderMgr.getRenderTable ()
   
-  -- Load HUD
-  self:displayHUD ()
-
-  performWithDelay ( 50, scene.fadeIn, 1, scene)
+  -- Append layers to future render table
+  for k, layer in pairs ( currentRenderTable ) do
+    table.insert(renderTable, layer)
+  end
+  
+  MOAIRenderMgr.setRenderTable ( renderTable )
+  
+  
+    
+  -- performWithDelay ( 50, scene.fadeIn, 1, scene)
 end
 
 
@@ -54,9 +71,6 @@ function initialize ( self )
   
   -- Initialize sound
   MOAIUntzSystem.initialize ()
-  
-  inventory:initialize ( )
-  dialog:initialize ( )
 
   self:loadScene ( c01s01 )
 end
@@ -73,35 +87,19 @@ function start ( self )
   
   -- -- Game loop
   -- -- If there is a scene loaded we gather input and update everyhing
-  while true do
-    coroutine.yield ()
-    
-    if self.currentScene then
-      if type ( self.currentScene.onInput ) == "function" and not dialog.opened then
-        self.currentScene:onInput ()
-      end
+  while self.gameRunning do
+    local stopInput = false
 
-      if type ( inventory.onInput ) == "function" and not dialog.opened then
-        inventory:onInput ()
-      end
-
-      if dialog.opened then
-        dialog:onInput ()
-      end
-      
-      if DEBUG then
-        
-        local x, y = input_manager.position ()
-
-        if x and y then
-
-          debugHUD:setMouseWindowPosition(x,y)
-
-          x, y = self.currentScene.layer_objects.background:wndToWorld ( x, y )
-          debugHUD:setMouseWorldPosition(x,y)
-        end
-      end
+    -- Send input to HUD first
+    if hud.initialized then
+       stopInput = hud:onInput ()
     end
+    
+    if self.currentScene and not stopInput then
+      self.currentScene:onInput ()
+    end
+
+    coroutine.yield ()
   end
 
 end
@@ -130,15 +128,19 @@ end
 
 
 function displayHUD ( self )
-  -- Inventory
-  inventory.inventory_layer:setViewport ( viewport )
-  dialog.dialogLayer:setViewport ( viewport )
-  MOAIRenderMgr.pushRenderPass ( inventory.inventory_layer )
-  MOAIRenderMgr.pushRenderPass ( dialog.dialogLayer )
-
-  -- Debug
-  if DEBUG then
-    debugHUD:initialize ()
+  if not hud.initialized then
+    hud:initialize ()
   end
+  
+  for k, layer in pairs (hud.layers) do
+    MOAIRenderMgr.removeRenderPass ( layer )
+    layer:setViewport ( viewport )
+    MOAIRenderMgr.pushRenderPass ( layer )
+  end
+
+  -- -- Debug
+  -- if DEBUG then
+  --   debugHUD:initialize ()
+  -- end
 
 end

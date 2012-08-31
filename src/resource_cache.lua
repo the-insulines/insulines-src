@@ -36,7 +36,6 @@ function loadImage ( fileUrl, imageAttributes )
 end
 
 function loadSound ( fileUrl, loop, volume )
-  print (fileUrl)
   local sound = MOAIUntzSound.new ()
   sound:load ( fileUrl )
   sound:setVolume ( volume )
@@ -74,7 +73,7 @@ end
 function load ( key )
   local resourceAttributes = resources[key]
   
-  if not resourceAttributes then 
+  if not resourceAttributes then
     print ( "Can't load " .. key)
   else
     local resource

@@ -44,3 +44,84 @@ dialogTree.c01s02_answering_machine_message = {
     }
   }
 }
+
+dialogTree.c01s02_coffee_pot_with_water = {
+  text = {
+    en_US = "I already filled the coffee pot.",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}
+
+dialogTree.c01s02_fill_coffee_pot_first = {
+  text = {
+    en_US = "I should fill the coffee pot first.",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}
+
+dialogTree.c01s02_mug_full = {
+  text = {
+    en_US = "That’s the nastiest Cup of Joe I’ve ever tasted. And I’ve been to Europe.",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}
+
+dialogTree.c01s02_stole_mug = {
+  text = {
+    en_US = "I sort of stole that mug from a random game development studio.",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}
+
+dialogTree.c01s02_coffee_pot_full = {
+  text = {
+    en_US = "A Pot of Bile-Tasting Sludge",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}
+
+
+dialogTree.locked = {
+  text = {
+    en_US = "It's locked",
+    es_AR = ""
+  },
+  options = {
+    {
+      label = "OK",
+      action = DIALOG_ACTION_CLOSE
+    }
+  }
+}
+
+

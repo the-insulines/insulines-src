@@ -6,6 +6,7 @@
 --==============================================================
 
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
+-- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
 -- Debugging
 DEBUG = false
@@ -49,18 +50,57 @@ JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
 
 -- Dialog
 DIALOG_ACTION_CLOSE = 0
-DEFAULT_DIALOG_COLOR = { 0.85, 0.12, 0.12, 1 }
+DEFAULT_DIALOG_COLOR = { 1, 1, 1, 1 }
 DEFAULT_OPTION_COLOR = { 1, 1, 1, 1 }
 MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
 MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
 
 -- Inventory constants
-INVENTORY_OPEN_X = 960 - 200
+INVENTORY_WIDTH = 566
+INVENTORY_HEIGHT = WORLD_RESOLUTION_Y
+INVENTORY_HALF_WIDTH = INVENTORY_WIDTH / 2
+INVENTORY_HALF_HEIGHT = INVENTORY_HEIGHT / 2
+INVENTORY_OPEN_X = SCREEN_RESOLUTION_X - INVENTORY_HALF_WIDTH
 INVENTORY_OPEN_Y = 0
-INVENTORY_CLOSED_X = 960 + 200
+INVENTORY_OPEN_DELTA_X = - INVENTORY_WIDTH
+INVENTORY_OPEN_DELTA_Y = 0
+
+INVENTORY_CLOSED_X = SCREEN_RESOLUTION_X + INVENTORY_HALF_WIDTH
 INVENTORY_CLOSED_Y = 0
 INVENTORY_ANIMATION_LENGTH = 1
 
+INVENTORY_BACKPACK_WIDTH = 89
+INVENTORY_BACKPACK_HEIGHT = 89
+INVENTORY_BACKPACK_HALF_WIDTH = INVENTORY_BACKPACK_WIDTH / 2
+INVENTORY_BACKPACK_HALF_HEIGHT = INVENTORY_BACKPACK_HEIGHT / 2
+INVENTORY_BACKPACK_POSITION_X = ( WORLD_RESOLUTION_X / 2 ) - ( INVENTORY_BACKPACK_HALF_WIDTH ) - 20
+INVENTORY_BACKPACK_POSITION_Y = ( WORLD_RESOLUTION_Y / 2 ) - ( INVENTORY_BACKPACK_HALF_HEIGHT ) - 20
+
+INVENTORY_ITEMS_TOP = WORLD_RESOLUTION_Y / 2 - 120
+
+INVENTORY_ITEM_WIDTH = 176
+INVENTORY_ITEM_HEIGHT = 176
+INVENTORY_ITEM_MARGIN = 10
+INVENTORY_ITEM_VERTICAL_MARGIN = INVENTORY_ITEM_MARGIN * 4
+INVENTORY_ITEM_HALF_WIDTH = INVENTORY_ITEM_WIDTH / 2
+INVENTORY_ITEM_HALF_HEIGHT = INVENTORY_ITEM_HEIGHT / 2
+
+
+-- HIGHLIGHT
+HIGHLIGHT_COLOR = { r = 0.92, g = 1, b = 0, a = 0.5 }
+HIGHLIGHT_TIME = 0.5
+
+
+-- DIALOG
+DIALOG_BACKGROUND_WIDTH = 1920
+DIALOG_BACKGROUND_HEIGHT = 1280
+DIALOG_BACKGROUND_HALF_WIDTH = DIALOG_BACKGROUND_WIDTH / 2
+DIALOG_BACKGROUND_HALF_HEIGHT = DIALOG_BACKGROUND_HEIGHT / 2
+
+DIALOG_WINDOW_WIDTH = 1740
+DIALOG_WINDOW_HEIGHT = 864
+DIALOG_WINDOW_HALF_WIDTH = DIALOG_WINDOW_WIDTH / 2
+DIALOG_WINDOW_HALF_HEIGHT = DIALOG_WINDOW_HEIGHT / 2
 
 -- Language
 LANGUAGE = "en"
@@ -93,7 +133,15 @@ resources = {
     fontSize = 26,
     dpi = 160
   },
-  
+
+  dialog_font = {
+    type = RESOURCE_TYPE_FONT,
+    fileName = 'Sunshine Poppy.ttf',
+    glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
+    fontSize = 50,
+    dpi = 160
+  },
+
   hitchcock = {
     type = RESOURCE_TYPE_FONT,
     fileName = 'hitchcock.ttf',
@@ -103,22 +151,88 @@ resources = {
   },
   
   inventory_background = {
-    type = RESOURCE_TYPE_IMAGE,
-    fileName = 'inventory_background.png',
-    width = 400, height = 1280,
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'hud/inventory_background.png', 
+    width = 566, height = 1280, 
   },
   
   inventory_backpack = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/backpack.png',
+    width = 89, height = 89,
+  },
+
+  inventory_cellphone = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_cellphone.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_coffee_pot_empty = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_coffee_pot_empty.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_coffee_pot_water = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_coffee_pot_water.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_floss = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_floss.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_toothbrush = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_toothbrush.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_toothpaste = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_toothpaste.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_coffee = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_coffee.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+  
+  inventory_toothbrush_with_toothpaste = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_toothbrush_with_toothpaste.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  highlight_duck = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'hud/clickeables_off.png', 
+    width = 89, height = 89, 
+  },
+
+  inventory_item_background = {
     type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'backpack.png',
-    width = 256, height = 128,
-    tileMapSize = {2, 1}
+    fileName = 'inventory_item_bkg.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT * 3,
+    tileMapSize = {1, 3}
+  },
+
+  dialog_window_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'hud/dialog_window_background.png', 
+    width = DIALOG_BACKGROUND_WIDTH, height = DIALOG_BACKGROUND_HEIGHT,
   },
 
   dialog_background = {
     type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'dialog_background.png', 
-    width = 1880, height = 997, 
+    fileName = 'hud/dialog_background.png', 
+    width = DIALOG_WINDOW_WIDTH, height = DIALOG_WINDOW_HEIGHT,
   },
 
   dialog_option_background = {
@@ -136,7 +250,7 @@ resources = {
     
   -- /////////////////////////////////////////////////////////////
   --
-  -- c01s02
+  -- c01s01
   --
   -- ////////////////////////////////////////////////////////////
 
@@ -174,21 +288,7 @@ resources = {
     loop = true,
     volume = 0.6
   },
-  
-  c01s01_lights_off_highlights_B = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s01/c01s01_lights_off_highlights_B.png', 
-    width = 1920, 
-    height = 1080
-  },
-  
-  c01s01_lights_off_shadows_B = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s01/c01s01_lights_off_shadows_B.png', 
-    width = 1920, 
-    height = 1080
-  },
-  
+    
   c01s01_cellphone = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s01/cellphone/cellphone_ring.png', 
@@ -276,6 +376,34 @@ resources = {
     height = 1467
   },
 
+  c01s02_bob_bedroom_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bob_bedroom_closed.png', 
+    width = 221, 
+    height = 452
+  },
+
+  c01s02_bedroom_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bedroom_opened.png', 
+    width = 198, 
+    height = 461
+  },
+
+  c01s02_bathroom_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bathroom_closed.png', 
+    width = 129, 
+    height = 524
+  },
+
+  c01s02_bathroom_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_bathroom_opened.png', 
+    width = 164, 
+    height = 444
+  },
+
   c01s02_coffeemaker = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_coffeemaker.png', 
@@ -300,15 +428,15 @@ resources = {
   c01s02_table = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_table.png', 
-    width = 977, 
-    height = 492
+    width = 977 * 0.9, 
+    height = 492 * 0.9
   },
 
   c01s02_chairs = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_chairs.png', 
-    width = 829, 
-    height = 474
+    width = 829 * 0.9, 
+    height = 474 * 0.9
   },
   
   c01s01_answering_machine = {
@@ -318,7 +446,92 @@ resources = {
     tileMapSize = {2, 1}
   },
   
+  c01s02_pantry_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_pantry_closed.png', 
+    width = 96, 
+    height = 128
+  },
   
+  c01s02_pantry_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_pantry_opened.png', 
+    width = 128, 
+    height = 152
+  },
+
+  c01s02_coffee = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_coffee.png', 
+    width = 30, 
+    height = 38
+  },
+  
+  c01s02_coffee_pot_empty = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_coffee_pot_empty.png', 
+    width = 59,
+    height = 42
+  },
+
+  c01s02_coffee_pot_full = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_cofee_pot_full.png', 
+    width = 58,
+    height = 44
+  },
+  
+  c01s02_mug_full = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_mug_full.png', 
+    width = 47,
+    height = 40
+  },
+
+  c01s02_mug_empty = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_mug_empty.png', 
+    width = 47,
+    height = 40
+  },
+    
+  c01s02_sink = {
+    type = RESOURCE_TYPE_TILED_IMAGE, 
+    fileName = 'c01s02/c01s02_sink.png', 
+    width = 298, height = 72,
+    tileMapSize = {2, 1}
+  },
+  
+  c01s02_freezer_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_freezer_closed.png', 
+    width = 169, height = 96
+  },
+
+  c01s02_freezer_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_freezer_opened.png', 
+    width = 162, height = 151
+  },
+
+  c01s02_fridge_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_fridge_closed.png', 
+    width = 169, height = 260
+  },
+
+  c01s02_fridge_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_fridge_opened.png', 
+    width = 157, height = 300
+  },
+
+  c01s02_cube_tray = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_cube_tray.png', 
+    width = 50, height = 43
+  },
+    
 }
 
 
