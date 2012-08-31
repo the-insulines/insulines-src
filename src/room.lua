@@ -158,16 +158,16 @@ function new (name)
       if v.resource_name then
         object.gfx = resource_cache.get ( v.resource_name )
 
-        -- Create prop
-        if object.animated then
-          -- create an animated prop
-          object.animation = AnimatedProp.new ()
-          object.animation:setDeck ( object.gfx )
-          object.prop = object.animation.prop
-        else
-          object.prop = MOAIProp2D.new ()
-          object.prop:setDeck ( object.gfx )
-        end
+      -- Create prop
+      if object.animated then
+        -- create an animated prop of the type of the object
+        object.animation = AnimatedProp.new ( resources[object.resource_name].type )
+        object.animation:setDeck ( object.gfx )
+        object.prop = object.animation.prop
+      else
+        object.prop = MOAIProp2D.new ()
+        object.prop:setDeck ( object.gfx )
+      end
       
         object.prop:setLoc ( object.x, object.y )
         if object.renderPriority then
@@ -359,7 +359,12 @@ function new (name)
   
   function room:loadAnimations ( animatedProp, animations )
     for k,v in pairs ( animations ) do
-      animatedProp:addConstantAnimation ( unpack ( v ) )
+      -- add animation based on wether it is based on a spritesheet or framed
+      if animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_SPRITESHEET then
+        animatedProp:addSpritesheetAnimation ( unpack ( v ) )
+      elseif animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_FRAMES then
+        animatedProp:addFramedAnimation ( unpack ( v ) )
+      end
     end
   end
   

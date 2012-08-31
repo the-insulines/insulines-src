@@ -19,7 +19,8 @@ function loadFont ( fileUrl, glyphs, fontSize, dpi )
   font:loadFromTTF (fileUrl, glyphs, fontSize, dpi )
   return font
 end
-  
+
+
 function loadImage ( fileUrl, imageAttributes )
   local image
   if imageAttributes.imageRect then
@@ -34,6 +35,7 @@ function loadImage ( fileUrl, imageAttributes )
   
   return image
 end
+
 
 function loadSound ( fileUrl, loop, volume )
   local sound = MOAIUntzSound.new ()
@@ -50,6 +52,38 @@ function loadGfxQuad2D ( fileUrl, imageRect )
   image:setRect ( unpack (imageRect) )
   
   return image
+end
+
+
+function loadAllAnimtionFrames ( allAnimationsLocation, allAnimationsAttributes )
+  local animations = {}
+  
+  for animationName, animationAttributes in pairs ( allAnimationsAttributes.animations ) do
+    local animation = loadAnimationFrames ( allAnimationsLocation .. animationName .. '/', animationAttributes, allAnimationsAttributes )
+    animations[animationName] = animation
+  end
+  
+  return animations
+end
+
+
+function loadAnimationFrames ( animationPath, animationAttributes, defaultAttributes )
+  -- load either the animation-specific or default attributes
+  local imageAttributes = animationAttributes
+  if imageAttributes.width == nil or imageAttributes.height == nil then
+    imageAttributes = defaultAttributes
+  end
+  
+  animationFrames = {}
+  
+  -- load the image corresponding to each frame of the animation
+  for frameIndex = 1, animationAttributes.frameCount do
+    local frameUrl = animationPath .. animationAttributes.fileName .. '_' .. frameIndex .. '.png'
+    local frame = loadImage ( frameUrl, imageAttributes )
+    table.insert ( animationFrames, frame )
+  end
+  
+  return animationFrames
 end
 
 
@@ -81,22 +115,26 @@ function load ( key )
     -- load the resource based on it's type
     if (resourceAttributes.type == RESOURCE_TYPE_IMAGE) then
       resource = loadImage (IMAGES_PATH .. resourceAttributes.fileName, resourceAttributes)
-  
+    
     elseif (resourceAttributes.type == RESOURCE_TYPE_TILED_IMAGE) then
       resource = loadTiledImage (TILED_IMAGES_PATH .. resourceAttributes.fileName, resourceAttributes)
-      
+    
+    elseif (resourceAttributes.type == RESOURCE_TYPE_ANIMATION_FRAMES) then
+      resource = loadAllAnimtionFrames (ANIMATION_FRAMES_PATH .. resourceAttributes.location, resourceAttributes)
+    
     elseif (resourceAttributes.type == RESOURCE_TYPE_FONT) then
       resource = loadFont ( FONTS_PATH .. resourceAttributes.fileName, resourceAttributes.glyphs, resourceAttributes.fontSize, resourceAttributes.dpi )
-
+    
     elseif (resourceAttributes.type == RESOURCE_TYPE_SOUND) then
       resource = loadSound ( SOUNDS_PATH .. resourceAttributes.fileName, resourceAttributes.loop, resourceAttributes.volume )
     end
-  
-    -- store the loaded resource on cache
+    
+    
+    -- store the resource under the key on cache
     cache[key] = resource
     
     if DEBUG then
-      print ( "Loaded " .. key )
+      print ( "Loaded " .. key, subkey )
     end
   end
 end
@@ -104,6 +142,7 @@ end
 
 function unload ( key )
   cache[key] = nil
+  
   return true
 end
 

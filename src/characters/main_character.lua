@@ -6,16 +6,25 @@
 --==============================================================
 
 mainCharacter = {}
-mainCharacter.gfx = resource_cache.get ( 'main_character' )
 
-mainCharacter.animation = AnimatedProp.new ()
+-- tiledImage:setSize ( unpack (tileMapSize) )
+-- tiledImage:setRect ( unpack (tileRect) )
+
+
+
+mainCharacter.animation = AnimatedProp.new ( AnimatedProp.ANIMATION_TYPE_FRAMES )
 mainCharacter.animation.currentAction = nil
 mainCharacter.avoid_clicks = true
 
+
 -- initialize the character animations
-mainCharacter.animation:setDeck (  mainCharacter.gfx )
-mainCharacter.animation:addConstantAnimation ( 'walk_right', 1, 8, MOVEMENT_SECONDS_PER_FRAME )
-mainCharacter.animation:addConstantAnimation ( 'walk_left', 9, 8, MOVEMENT_SECONDS_PER_FRAME / 2 )
+mainCharacter.gfx = resource_cache.get ( 'main_character' )
+
+mainCharacter.animation:setDeck ( mainCharacter.gfx )
+
+mainCharacter.animation:addFramedAnimation ( 'walk_right', 'walk_side', MOVEMENT_SECONDS_PER_FRAME )
+mainCharacter.animation:addFramedAnimation ( 'walk_left', 'walk_side', MOVEMENT_SECONDS_PER_FRAME )
+
 
 mainCharacter.prop = mainCharacter.animation.prop
 mainCharacter.prop:setPiv ( 0, MAIN_CHARACTER_PIVOT )

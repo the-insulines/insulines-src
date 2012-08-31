@@ -117,12 +117,16 @@ IMAGES_PATH = '../../insulines-gfx/'
 -- IMAGES_PATH = './'
 
 TILED_IMAGES_PATH = IMAGES_PATH
+ANIMATION_FRAMES_PATH = IMAGES_PATH
 FONTS_PATH = IMAGES_PATH .. 'fonts/'
 SOUNDS_PATH = IMAGES_PATH .. 'sounds/'
 
 RESOURCE_TYPE_IMAGE = 0
 RESOURCE_TYPE_TILED_IMAGE = 1
-RESOURCE_TYPE_FONT = 2
+RESOURCE_TYPE_ANIMATION_FRAMES = 2
+RESOURCE_TYPE_FONT = 3
+RESOURCE_TYPE_SOUND = 4
+
 
 resources = {
   
@@ -240,14 +244,20 @@ resources = {
     fileName = 'dialog_option_background.png', 
     width = 455, height = 182, 
   },
-
+  
   main_character = {
-    type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'characters/josh_walk_cycle.png',
-    width = 6624 / 3, height = 3860 / 3,
-    tileMapSize = {8, 2}
-  },
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/josh/',
     
+    animations = {
+      walk_side = {
+        fileName = 'josh_walk_cycle_side',
+        frameCount = 8,
+      },
+    },
+    width = 828 / 3, height = 1930 / 3,
+  },
+  
   -- /////////////////////////////////////////////////////////////
   --
   -- c01s01

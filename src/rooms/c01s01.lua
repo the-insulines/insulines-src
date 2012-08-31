@@ -48,6 +48,7 @@ objects = {
     resource_name = "josh_sleeping",
     layer_name = "back_objects",
     animated = true,
+    -- animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
     animations = {
       {'sleeping', 1, 75, JOSH_SLEEPING_SECONDS_PER_FRAME},
     },
@@ -62,6 +63,7 @@ objects = {
     resource_name = "josh_wakes_up",
     layer_name = "back_objects",
     animated = true,
+    animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
     animations = {
       {'wakes_up', 1, 30, JOSH_WAKES_SECONDS_PER_FRAME, MOAITimer.NORMAL},
       {'still', 30, 1, JOSH_WAKES_SECONDS_PER_FRAME},
@@ -81,6 +83,7 @@ objects = {
     resource_name = "josh_grabs_cellphone",
     layer_name = "back_objects",
     animated = true,
+    animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
     animations = {
       {'grabs_cellphone', 1, 30, JOSH_WAKES_SECONDS_PER_FRAME, MOAITimer.NORMAL},
       {'grabs_cellphone_loop', 31, 22, JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME, MOAITimer.NORMAL},
@@ -125,6 +128,7 @@ objects = {
     layer_name = "objects",
     highlight = true,
     animated = true,
+    animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
     animations = {
       {'calling', 1, 11, 0.10},
       --{'calling', 3, 2, 1},
@@ -143,8 +147,11 @@ objects = {
     
     onClick = function ()
       if not c01s01.objects.cellphone.woke then
+        
+        -- third click
         if c01s01.objects.cellphone.clicks == 2 then
           -- Wake up
+          c01s01.objects.cellphone.animation:stopCurrentAnimation ()
           c01s01.inputEnabled = false
           c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -20, 0, 3, MOAIEaseType.LINEAR )
           c01s01.objects.clothes_heap.highlight = true
@@ -152,9 +159,13 @@ objects = {
           anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_grabs_cellphone.wakingUp )
           c01s01.objects.cellphone.woke = true
         else
-
+          
+          -- first click
           if c01s01.objects.cellphone.clicks == 0 then
+            -- stop the sleeping animation
             c01s01:stopRendering ( "josh_sleeping" )
+            c01s01.objects.josh_sleeping.animation:stopCurrentAnimation ()
+            
             c01s01:stopRendering ( "nightstand" )
             c01s01:startRendering ( "josh_grabs_cellphone" )
             
@@ -165,6 +176,11 @@ objects = {
             c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( 3, -5, 3, MOAIEaseType.LINEAR )
             
           else
+            
+            -- second click
+            -- stop the still animation when he is grabbing the cellphone
+            c01s01.objects.josh_grabs_cellphone.animation:stopCurrentAnimation ()
+            
             local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
             c01s01.objects.cellphone.action:stop ()
             c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -8, 0, 2, MOAIEaseType.LINEAR )
@@ -187,6 +203,10 @@ objects = {
 
       local fadeIn = function ()
         c01s01:fadeIn ()
+        
+        -- stop still animation
+        c01s01.objects.josh_wakes_up.animation:stopCurrentAnimation ()
+        
         c01s01:stopRendering ( "josh_wakes_up" )
         c01s01:stopRendering ( "clothes_heap" )
         c01s01:startRendering ( "clothes_on_heap" )

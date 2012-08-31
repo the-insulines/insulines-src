@@ -5,49 +5,144 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
---module ("animatedProp", package.seeall)
+--module ( "animatedProp", package.seeall )
 
 AnimatedProp = {}
 AnimatedProp.__index = AnimatedProp
 
 
-function AnimatedProp.new ()
+-- constants
+
+AnimatedProp.ANIMATION_TYPE_SPRITESHEET = RESOURCE_TYPE_TILED_IMAGE
+AnimatedProp.ANIMATION_TYPE_FRAMES = RESOURCE_TYPE_ANIMATION_FRAMES
+
+-- methods
+
+function AnimatedProp.new ( animationType )
   local newObj = {}
+    newObj.animationType = animationType
+    newObj.animationFrames = {}
     newObj.animations = {}
     newObj.currentAnimation = nil
     newObj.prop = MOAIProp2D.new ()
-    newObj.remapper = nil
+    -- newObj.remapper = nil
   
-  setmetatable (newObj, AnimatedProp)
+  setmetatable ( newObj, AnimatedProp )
+  
   return newObj
 end
 
 
-function AnimatedProp:setDeck (spriteSheetDeck)
-  self.prop:setDeck (spriteSheetDeck)
+function AnimatedProp:addFrames ( name, animationFrames )
+  if self.animationFrames == nil then self.animationFrames = {} end
   
-  -- create the remapper
-  self.remapper = MOAIDeckRemapper.new ()
-  self.remapper:reserve (1)
-  
-  self.prop:setRemapper (self.remapper)
+  self.animationFrames[name] = animationFrames
 end
 
 
-function AnimatedProp:addConstantAnimation (name, startFrame, frameCount, frameTime, animationMode)
-  if not animationMode then animationMode = MOAITimer.LOOP end
+-- function AnimatedProp:addFrame ( gfx, index )
+--   if index then
+--     self.animationFrames[index] = gfx
+--   else
+--     table.insert ( self.animationFrames, gfx )
+--   end
+-- end
 
+
+function AnimatedProp:setDeck ( animationFrames )
+  self.animationFrames = animationFrames
+  
+  -- if the frames are in form of a spritesheet, link the whole spritesheet to the underlying prop
+  if self.animationType == AnimatedProp.ANIMATION_TYPE_SPRITESHEET then
+    self.prop:setDeck ( animationFrames )
+    
+    -- create the remapper
+    self.remapper = MOAIDeckRemapper.new ()
+    self.remapper:reserve ( 1 )
+    self.prop:setRemapper ( self.remapper )
+  end
+end
+
+
+-- creates a new animation based on a spritesheet
+function AnimatedProp:addSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode )
+  if type ( frameTime ) == 'number' then
+    self:addConstantSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode )
+  end
+end
+
+
+-- creates a new animation based on existing individual frames
+function AnimatedProp:addFramedAnimation ( name, framesName, frameTime, animationMode )
+  local frames = self.animationFrames[framesName]
+  
+  if type ( frameTime ) == 'number' then
+    self:addConstantFramedAnimation ( name, frames, frameTime, animationMode )
+  end
+end
+
+
+-- function AnimatedProp:createConstantCurve ( startKeyframe, keyframeStep, keyframeCount, keyframeTime )
+--   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
+--   local curve = MOAIAnimCurve.new ()
+--   curve:reserveKeys ( keyframeCount )
+--   
+--   for keyframe = startKeyframe, keyframeCount do
+--     curve:setKey ( keyframe, keyframeTime * (keyframe - 1), keyframe * keyframeStep, MOAIEaseType.LINEAR )
+--   end
+--   
+--   return curve
+-- end
+
+
+function AnimatedProp:addConstantFramedAnimation ( name, frames, frameTime, animationMode )
+  if not animationMode then animationMode = MOAITimer.LOOP end
+  
+  -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
+  local curve = MOAIAnimCurve.new ()
+  curve:reserveKeys ( #frames )
+  
+  for frame = 1, #frames do
+    curve:setKey ( frame, frameTime * (frame - 1), frame, MOAIEaseType.LINEAR )
+  end
+  
+  -- create the timer that triggers the events in the times set by the curve
+  local anim = MOAITimer.new ()
+  anim:setMode ( animationMode )
+  anim:setSpan ( #frames * frameTime )
+  anim:setCurve ( curve )
+  anim:setListener ( MOAITimer.EVENT_TIMER_KEYFRAME, self.updateFrame )
+  
+  -- add some aditional information necessary for the animation to the timer object
+  anim.animatedProp = self
+  anim.frames = frames
+  
+  -- store it under the name of the animation
+  self.animations[name] = anim
+  
+end
+
+
+function AnimatedProp.updateFrame ( anim, keyframe, timesExecuted, time, value )
+  self = anim.animatedProp
+  self.prop:setDeck ( anim.frames[value] )
+end
+
+
+function AnimatedProp:addConstantSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode )
+  if not animationMode then animationMode = MOAITimer.LOOP end
+  
   local lastFrame = startFrame + frameCount - 1
   
   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
   local curve = MOAIAnimCurve.new ()
-  curve:reserveKeys (2)
-  curve:setKey (1, 0, startFrame, MOAIEaseType.LINEAR)
-  curve:setKey (2, frameTime * (lastFrame - 1), lastFrame, MOAIEaseType.LINEAR)
+  curve:reserveKeys ( 2 )
+  curve:setKey ( 1, 0, startFrame, MOAIEaseType.LINEAR )
+  curve:setKey ( 2, frameTime * (frameCount - 1), lastFrame, MOAIEaseType.LINEAR )
   
   -- create the animation that links the animation curve with the remapper
   local anim = MOAIAnim:new ()
-  anim:reserveLinks (1)
+  anim:reserveLinks ( 1 )
   
   anim:setLink (1, curve, self.remapper, 1)
   anim:setMode (animationMode)
@@ -79,6 +174,12 @@ end
 
 function AnimatedProp:stopAnimation ( name )
   MOAICoroutine.blockOnAction ( self.animations[name]:stop () )
+  self.currentAnimation = nil
+end
+
+
+function AnimatedProp:pauseAnimation ( name )
+  MOAICoroutine.blockOnAction ( self.animations[name]:pause () )
   self.currentAnimation = nil
 end
 
