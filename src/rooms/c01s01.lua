@@ -94,7 +94,7 @@ objects = {
     render_at_start = false,
     avoid_clicks = true,
     
-    onEnd = function () 
+    onEnd = function ()
       c01s01.objects.josh_grabs_cellphone.animation:startAnimation("still")
     end,
     
@@ -332,13 +332,13 @@ local path = {
   },
   
   dodgeBedPoint = {
-    position = point (-410, -128),
-    neighbors = { 'bed', 'door', 'carpetPoint' },
+    position = point (-410, -150),
+    neighbors = { 'bed', 'door', 'carpetPoint', 'movePoint' },
   },
   
   movePoint = {
     position = point (-170, -200),
-    neighbors = { 'clothes', 'door', 'carpetPoint' },
+    neighbors = { 'clothes', 'dodgeBedPoint', 'carpetPoint' },
     offsets = { x = -190, y = 0 }
   },
   
@@ -350,7 +350,7 @@ local path = {
   
   door = {
     position = point (-788, -120),
-    neighbors = { 'movePoint', 'dodgeBedPoint' },
+    neighbors = { 'dodgeBedPoint' },
     offsets = { x = -190, y = 0, scl = 0.8 }
   },
 
