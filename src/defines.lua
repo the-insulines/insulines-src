@@ -245,14 +245,46 @@ resources = {
     width = 455, height = 182, 
   },
   
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- characters
+  --
+  -- ////////////////////////////////////////////////////////////
+
   main_character = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/josh/',
     
+    pivotX = 0,
+    pivotY = MAIN_CHARACTER_PIVOT,
+    
     animations = {
-      walk_side = {
+      walk_right = {
         fileName = 'josh_walk_cycle_side',
         frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+      },
+      walk_left = {
+        fileName = 'josh_walk_cycle_side',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+      },
+    },
+    width = 828 / 3, height = 1930 / 3,
+  },
+  
+  nancy = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/nancy/',
+    
+    pivotX = 0,
+    pivotY = MAIN_CHARACTER_PIVOT,
+    
+    animations = {
+      walk_side = {
+        fileName = 'nancy_walk_cycle_side',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
       },
     },
     width = 828 / 3, height = 1930 / 3,

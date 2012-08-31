@@ -13,6 +13,7 @@ require 'room'
 require 'animatedProp'
 require 'game'
 
+require 'character'
 require 'characters/main_character'
 
 require 'hud/inventory'

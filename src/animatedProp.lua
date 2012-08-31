@@ -73,8 +73,8 @@ end
 
 
 -- creates a new animation based on existing individual frames
-function AnimatedProp:addFramedAnimation ( name, framesName, frameTime, animationMode )
-  local frames = self.animationFrames[framesName]
+function AnimatedProp:addFramedAnimation ( name, frameTime, animationMode )
+  local frames = self.animationFrames[name]
   
   if type ( frameTime ) == 'number' then
     self:addConstantFramedAnimation ( name, frames, frameTime, animationMode )
