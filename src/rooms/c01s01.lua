@@ -121,6 +121,7 @@ objects = {
 
   cellphone = {
     resource_name = "c01s01_cellphone",
+    inventory_resource_name = "inventory_cellphone",
     layer_name = "objects",
     highlight = true,
     animated = true,

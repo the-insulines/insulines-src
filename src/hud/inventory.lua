@@ -155,9 +155,11 @@ function inventory:moveItem ( item )
   
   -- check if there is a possible interaction in this position
   if game.currentScene:interactionForPosition (self.currentItem, x, y) or self:interactionForPosition ( invX, invY ) then
-    self.currentItem.backProp:setIndex ( 3 )
+    self.currentItem.backProp:setColor(0,1,0)
+    -- self.currentItem.backProp:setIndex ( 3 )
   else
-    self.currentItem.backProp:setIndex ( 2 )
+    self.currentItem.backProp:setColor(1,0,0)
+    -- self.currentItem.backProp:setIndex ( 2 )
   end
   
 end
@@ -176,7 +178,7 @@ end
 
 function inventory:unselectCurrentItem ()
   if self.currentItem then
-    self.currentItem.backProp:setIndex ( 1 )
+    self.currentItem.backProp:setColor(1,1,1,1)
     self.currentItem.backProp:setPriority ()
     self.currentItem = nil
     
@@ -255,20 +257,12 @@ function inventory:addItem ( key, object )
   local item = { key = key, object = object, backProp = MOAIProp2D.new () }
 
   -- Create prop
-  item.backProp:setDeck ( self.intentoryItemBackground.gfx )
-  item.backProp:setIndex ( 1 )
+  item.backProp:setDeck ( resource_cache.get(object.inventory_resource_name) )
   table.insert ( self.items, item)
 
-  local i = # self.items
-  
-  local xPosition = INVENTORY_CLOSED_X  
-  if self.opened then xPosition = INVENTORY_OPEN_X end
-  
-  item.backProp:setLoc ( xPosition, INVENTORY_ITEMS_TOP + INVENTORY_ITEM_HALF_HEIGHT - i * INVENTORY_ITEM_HEIGHT - i * INVENTORY_ITEM_MARGIN )
   self.layer:insertProp ( item.backProp )
 
   self.newObject = true
-  self.icon.prop:setIndex ( 1 )
   
   inventory:updateItemsPosition ()
 end
@@ -299,9 +293,17 @@ function inventory:updateItemsPosition ()
   self.openAction:clear ()
   self.closeAction:clear ()
   for i, item in pairs ( self.items ) do
-    local itemTop = INVENTORY_ITEMS_TOP  + INVENTORY_ITEM_HALF_HEIGHT - i * INVENTORY_ITEM_HEIGHT - i * INVENTORY_ITEM_MARGIN
-    local xPosition = INVENTORY_CLOSED_X  
-    if self.opened then xPosition = INVENTORY_OPEN_X end
+    local itemTop = INVENTORY_ITEMS_TOP + INVENTORY_ITEM_HALF_HEIGHT - math.ceil(i/2) * INVENTORY_ITEM_HEIGHT - math.ceil(i/2) * INVENTORY_ITEM_MARGIN
+    
+    local xPosition = 0
+    
+    if i % 2 == 1 then
+      xPosition = INVENTORY_CLOSED_X - INVENTORY_ITEM_HALF_WIDTH + INVENTORY_ITEM_VERTICAL_MARGIN / 2 
+    else
+      xPosition = INVENTORY_CLOSED_X + INVENTORY_ITEM_HALF_WIDTH + 2 * INVENTORY_ITEM_VERTICAL_MARGIN
+    end
+    
+    if self.opened then xPosition = xPosition - INVENTORY_CLOSED_X + INVENTORY_OPEN_X end
     item.backProp:setLoc ( xPosition,  itemTop )
     self.openAction:addChild ( item.backProp:moveLoc( INVENTORY_OPEN_DELTA_X, INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH  ) )
     self.closeAction:addChild ( item.backProp:moveLoc( -INVENTORY_OPEN_DELTA_X, -INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH  ) )

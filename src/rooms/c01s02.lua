@@ -164,6 +164,7 @@ objects = {
   },
   
   toothpaste = {
+    inventory_resource_name = "inventory_toothpaste",
     render_at_start = false,
     interactsWith = { 'toothbrush' },
     onInteractionWith = function ( self, item )
@@ -178,6 +179,7 @@ objects = {
   },
   
   toothbrush = {
+    inventory_resource_name = "inventory_toothbrush",
     render_at_start = false,
     interactsWith = { 'toothpaste' },
     onInteractionWith = function ( self, item )
@@ -188,10 +190,12 @@ objects = {
   },
 
   toothbrush_with_toothpaste = {
+    inventory_resource_name = "inventory_toothbrush_with_toothpaste",
     render_at_start = false,
   },
   
   floss = {
+    inventory_resource_name = "inventory_floss",
     render_at_start = false
   },
   
@@ -289,7 +293,7 @@ objects = {
     render_at_start = true,
     -- onClick = function () 
     -- end,
-    interactsWith = { 'coffeePackage', 'coffeePotEmpty' },
+    interactsWith = { 'coffeePackage', 'coffeePotEmpty', 'coffeePotWater' },
     highlight = true,
     hasCoffee = false,
     hasWater = false,
@@ -320,12 +324,12 @@ objects = {
       end
       
       if item.key == 'coffeePotEmpty' then
-        if item.object.water then
-          self.hasWater = true
-          inventory:removeItem( item )
-        else
-          dialog:load("c01s02_fill_coffee_pot_first")
-        end
+        dialog:load("c01s02_fill_coffee_pot_first")
+      end
+      
+      if item.key == 'coffeePotWater' then
+        self.hasWater = true
+        inventory:removeItem( item )
       end
     end
   },
@@ -367,6 +371,7 @@ objects = {
 
   coffeePackage = {
     resource_name = 'c01s02_coffee',
+    inventory_resource_name = "inventory_coffee",
     layer_name = 'objects',
     x = 563,
     y = 53,
@@ -378,6 +383,7 @@ objects = {
 
   coffeePotEmpty = {
     resource_name = 'c01s02_coffee_pot_empty',
+    inventory_resource_name = "inventory_coffee_pot_empty",
     layer_name = 'objects',
     x = 439,
     y = 178,
@@ -389,6 +395,10 @@ objects = {
       c01s02:stopRendering('coffeePotEmpty')
     end,
     priority = 10
+  },
+
+  coffeePotWater = {
+    inventory_resource_name = "inventory_coffee_pot_water",
   },
 
   coffeePotFull = {
@@ -451,7 +461,8 @@ objects = {
         end
         
         c01s02.objects.coffeePotEmpty.water = true
-        
+        inventory:removeItem(item)
+        inventory:addItem('coffeePotWater', c01s02.objects.coffeePotWater)
       end
     end,
     
@@ -483,7 +494,6 @@ function c01s02:beforeInitialize ()
   self.objects.main_character:setLoc(1120, -245)
 end
 
--- 
 function c01s02:afterInitialize ()  
   self.objects.answering_machine.animation:startAnimation ( 'blink' )
 end

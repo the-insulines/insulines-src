@@ -21,7 +21,10 @@ autoFollow = true
 gameRunning = true
 
 function game:loadScene ( scene )
-
+  MOAIRenderMgr.clearRenderStack ()
+  -- Load HUD
+  self:displayHUD ()
+  
   -- Cache scene
   self.currentScene = scene
   
@@ -35,18 +38,28 @@ function game:loadScene ( scene )
   end
   
   -- Load all layers
+  local renderTable = {}
+  
   for k, layer in pairs( scene:layers() ) do 
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
-    MOAIRenderMgr.pushRenderPass ( layer )
-    layer:setColor(0,0,0,0)
+    -- layer:setColor(0,0,0,0)
+    table.insert(renderTable, layer)
   end
   
+  -- Get Render Table
+  local currentRenderTable = MOAIRenderMgr.getRenderTable ()
   
-  -- Load HUD
-  self:displayHUD ()
-
-  performWithDelay ( 50, scene.fadeIn, 1, scene)
+  -- Append layers to future render table
+  for k, layer in pairs ( currentRenderTable ) do
+    table.insert(renderTable, layer)
+  end
+  
+  MOAIRenderMgr.setRenderTable ( renderTable )
+  
+  
+    
+  -- performWithDelay ( 50, scene.fadeIn, 1, scene)
 end
 
 
@@ -58,11 +71,8 @@ function initialize ( self )
   
   -- Initialize sound
   MOAIUntzSystem.initialize ()
-  
-  inventory:initialize ( )
-  dialog:initialize ( )
 
-  self:loadScene ( c01s02 )
+  self:loadScene ( c01s01 )
 end
 
 
@@ -118,17 +128,16 @@ end
 
 
 function displayHUD ( self )
-  hud:initialize ()
+  if not hud.initialized then
+    hud:initialize ()
+  end
   
   for k, layer in pairs (hud.layers) do
     MOAIRenderMgr.removeRenderPass ( layer )
     layer:setViewport ( viewport )
     MOAIRenderMgr.pushRenderPass ( layer )
   end
-  -- dialog.dialogLayer:setViewport ( viewport )
-  -- MOAIRenderMgr.removeRenderPass ( dialog.dialogLayer )
-  -- MOAIRenderMgr.pushRenderPass ( dialog.dialogLayer )
-  -- 
+
   -- -- Debug
   -- if DEBUG then
   --   debugHUD:initialize ()

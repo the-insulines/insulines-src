@@ -15,29 +15,30 @@ function hud:initialize ( )
   
   inventory:initialize ()
   highlight:initialize ()
+  dialog:initialize ()
   -- menu:initialize ()
 
   if DEBUG then debugHUD:initialize () end
   
   table.insert ( self.layers, inventory.layer )
   table.insert ( self.layers, highlight.layer )
+  table.insert ( self.layers, dialog.layer )
 
   self.initialized = true
 end
 
 function hud:onInput ()
     local stopInput = false
-  -- 
+
     if not dialog.opened then
       stopInput = inventory:onInput ()
 
       if not stopInput then
         stopInput = highlight:onInput ()
       end
+    else
+      stopInput = dialog:onInput ()
     end
-    
-    
-  --   
   -- 
   -- 
   --   if dialog.opened then

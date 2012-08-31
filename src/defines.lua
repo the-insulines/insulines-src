@@ -6,10 +6,11 @@
 --==============================================================
 
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
+-- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
 -- Debugging
--- DEBUG = false
-DEBUG = true
+DEBUG = false
+-- DEBUG = true
 
 
 -- Locale
@@ -49,7 +50,7 @@ JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
 
 -- Dialog
 DIALOG_ACTION_CLOSE = 0
-DEFAULT_DIALOG_COLOR = { 0.85, 0.12, 0.12, 1 }
+DEFAULT_DIALOG_COLOR = { 1, 1, 1, 1 }
 DEFAULT_OPTION_COLOR = { 1, 1, 1, 1 }
 MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
 MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
@@ -80,13 +81,27 @@ INVENTORY_ITEMS_TOP = WORLD_RESOLUTION_Y / 2 - 120
 INVENTORY_ITEM_WIDTH = 176
 INVENTORY_ITEM_HEIGHT = 176
 INVENTORY_ITEM_MARGIN = 10
+INVENTORY_ITEM_VERTICAL_MARGIN = INVENTORY_ITEM_MARGIN * 4
 INVENTORY_ITEM_HALF_WIDTH = INVENTORY_ITEM_WIDTH / 2
 INVENTORY_ITEM_HALF_HEIGHT = INVENTORY_ITEM_HEIGHT / 2
 
 
-
+-- HIGHLIGHT
 HIGHLIGHT_COLOR = { r = 0.92, g = 1, b = 0, a = 0.5 }
 HIGHLIGHT_TIME = 0.5
+
+
+-- DIALOG
+DIALOG_BACKGROUND_WIDTH = 1920
+DIALOG_BACKGROUND_HEIGHT = 1280
+DIALOG_BACKGROUND_HALF_WIDTH = DIALOG_BACKGROUND_WIDTH / 2
+DIALOG_BACKGROUND_HALF_HEIGHT = DIALOG_BACKGROUND_HEIGHT / 2
+
+DIALOG_WINDOW_WIDTH = 1740
+DIALOG_WINDOW_HEIGHT = 864
+DIALOG_WINDOW_HALF_WIDTH = DIALOG_WINDOW_WIDTH / 2
+DIALOG_WINDOW_HALF_HEIGHT = DIALOG_WINDOW_HEIGHT / 2
+
 -- Language
 LANGUAGE = "en"
 
@@ -121,7 +136,7 @@ resources = {
 
   dialog_font = {
     type = RESOURCE_TYPE_FONT,
-    fileName = 'arialbd.ttf',
+    fileName = 'Sunshine Poppy.ttf',
     glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
     fontSize = 50,
     dpi = 160
@@ -147,12 +162,59 @@ resources = {
     width = 89, height = 89,
   },
 
+  inventory_cellphone = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_cellphone.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_coffee_pot_empty = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_coffee_pot_empty.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_coffee_pot_water = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_coffee_pot_water.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_floss = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_floss.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_toothbrush = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_toothbrush.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_toothpaste = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_toothpaste.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
+  inventory_coffee = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_coffee.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+  
+  inventory_toothbrush_with_toothpaste = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_toothbrush_with_toothpaste.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
   highlight_duck = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'hud/clickeables_off.png', 
     width = 89, height = 89, 
   },
-
 
   inventory_item_background = {
     type = RESOURCE_TYPE_TILED_IMAGE,
@@ -161,10 +223,16 @@ resources = {
     tileMapSize = {1, 3}
   },
 
+  dialog_window_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'hud/dialog_window_background.png', 
+    width = DIALOG_BACKGROUND_WIDTH, height = DIALOG_BACKGROUND_HEIGHT,
+  },
+
   dialog_background = {
     type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'dialog_background.png', 
-    width = 1880, height = 997, 
+    fileName = 'hud/dialog_background.png', 
+    width = DIALOG_WINDOW_WIDTH, height = DIALOG_WINDOW_HEIGHT,
   },
 
   dialog_option_background = {
