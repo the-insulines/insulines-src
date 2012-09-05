@@ -140,7 +140,7 @@ resources = {
 
   dialog_font = {
     type = RESOURCE_TYPE_FONT,
-    fileName = 'Sunshine Poppy.ttf',
+    fileName = 'minya nouvelle bd.ttf',
     glyphs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.?!", 
     fontSize = 50,
     dpi = 160
@@ -259,26 +259,33 @@ resources = {
     pivotY = MAIN_CHARACTER_PIVOT,
     
     animations = {
+      
       walk_right = {
         fileName = 'josh_walk_side',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
       },
+      
       walk_left = {
         fileName = 'josh_walk_side_flip',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
       },
       walk_front = {
         fileName = 'josh_walk_front',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
       },
       walk_back = {
         fileName = 'josh_walk_back',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
       },
+      
     },
     width = 828 / 3, height = 1930 / 3,
   },
@@ -307,10 +314,21 @@ resources = {
   -- ////////////////////////////////////////////////////////////
 
   josh_sleeping = {
-    type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'characters/josh_sleeping.png',
-    width = 8000, height = 4000,
-    tileMapSize = {10, 8}
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/josh/',
+    pivotX = 0,
+    pivotY = 0,
+    animations = {
+      sleeps = {
+        fileName = 'josh_sleeping',
+        startFrame = 1,
+        frameCount = 75,
+        frameTime = JOSH_SLEEPING_SECONDS_PER_FRAME,
+        width = 800, height = 500
+        
+      },
+    },
+    width = 800, height = 500
   },
 
   josh_grabs_cellphone = {
@@ -339,6 +357,13 @@ resources = {
     fileName = 'c01s01/theme.mp3', 
     loop = true,
     volume = 0.6
+  },
+
+  c01s01_ambient = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s01/ambient.mp3', 
+    loop = true,
+    volume = 1
   },
     
   c01s01_cellphone = {

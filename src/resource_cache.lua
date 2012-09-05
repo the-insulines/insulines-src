@@ -55,14 +55,13 @@ function loadGfxQuad2D ( fileUrl, imageRect )
 end
 
 
-function loadAllAnimtionFrames ( allAnimationsLocation, allAnimationsAttributes )
+function loadAllAnimationFrames ( allAnimationsLocation, allAnimationsAttributes )
   local animations = {}
-  
   for animationName, animationAttributes in pairs ( allAnimationsAttributes.animations ) do
     local animation = loadAnimationFrames ( allAnimationsLocation .. animationName .. '/', animationAttributes, allAnimationsAttributes )
     animations[animationName] = animation
   end
-  
+
   return animations
 end
 
@@ -70,6 +69,7 @@ end
 function loadAnimationFrames ( animationPath, animationAttributes, defaultAttributes )
   -- load either the animation-specific or default attributes
   local imageAttributes = animationAttributes
+
   if imageAttributes.width == nil or imageAttributes.height == nil then
     imageAttributes = defaultAttributes
   end
@@ -120,7 +120,7 @@ function load ( key )
       resource = loadTiledImage (TILED_IMAGES_PATH .. resourceAttributes.fileName, resourceAttributes)
     
     elseif (resourceAttributes.type == RESOURCE_TYPE_ANIMATION_FRAMES) then
-      resource = loadAllAnimtionFrames (ANIMATION_FRAMES_PATH .. resourceAttributes.location, resourceAttributes)
+      resource = loadAllAnimationFrames (ANIMATION_FRAMES_PATH .. resourceAttributes.location, resourceAttributes)
     
     elseif (resourceAttributes.type == RESOURCE_TYPE_FONT) then
       resource = loadFont ( FONTS_PATH .. resourceAttributes.fileName, resourceAttributes.glyphs, resourceAttributes.fontSize, resourceAttributes.dpi )

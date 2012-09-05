@@ -22,6 +22,7 @@ function AnimatedProp.new ( animationType )
   local newObj = {}
     newObj.animationType = animationType
     newObj.animationFrames = {}
+    newObj.sounds = {}
     newObj.animations = {}
     newObj.currentAnimation = nil
     newObj.prop = MOAIProp2D.new ()
@@ -35,18 +36,8 @@ end
 
 function AnimatedProp:addFrames ( name, animationFrames )
   if self.animationFrames == nil then self.animationFrames = {} end
-  
   self.animationFrames[name] = animationFrames
 end
-
-
--- function AnimatedProp:addFrame ( gfx, index )
---   if index then
---     self.animationFrames[index] = gfx
---   else
---     table.insert ( self.animationFrames, gfx )
---   end
--- end
 
 
 function AnimatedProp:setDeck ( animationFrames )
@@ -60,6 +51,10 @@ function AnimatedProp:setDeck ( animationFrames )
     self.remapper = MOAIDeckRemapper.new ()
     self.remapper:reserve ( 1 )
     self.prop:setRemapper ( self.remapper )
+  else
+    for k, v in pairs( self.animationFrames ) do
+      self.prop:setDeck ( v[1] )
+    end
   end
 end
 
@@ -73,49 +68,37 @@ end
 
 
 -- creates a new animation based on existing individual frames
-function AnimatedProp:addFramedAnimation ( name, frameTime, animationMode )
+function AnimatedProp:addFramedAnimation ( name, startFrame, frameCount, frameTime, animationMode )
   local frames = self.animationFrames[name]
   
   if type ( frameTime ) == 'number' then
-    self:addConstantFramedAnimation ( name, frames, frameTime, animationMode )
+    self:addConstantFramedAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode )
   end
 end
 
 
--- function AnimatedProp:createConstantCurve ( startKeyframe, keyframeStep, keyframeCount, keyframeTime )
---   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
---   local curve = MOAIAnimCurve.new ()
---   curve:reserveKeys ( keyframeCount )
---   
---   for keyframe = startKeyframe, keyframeCount do
---     curve:setKey ( keyframe, keyframeTime * (keyframe - 1), keyframe * keyframeStep, MOAIEaseType.LINEAR )
---   end
---   
---   return curve
--- end
-
-
-function AnimatedProp:addConstantFramedAnimation ( name, frames, frameTime, animationMode )
+function AnimatedProp:addConstantFramedAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode )
   if not animationMode then animationMode = MOAITimer.LOOP end
   
   -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
   local curve = MOAIAnimCurve.new ()
-  curve:reserveKeys ( #frames )
+  curve:reserveKeys ( frameCount )
   
-  for frame = 1, #frames do
-    curve:setKey ( frame, frameTime * (frame - 1), frame, MOAIEaseType.LINEAR )
+  for frame = 1, frameCount do
+    curve:setKey ( frame, frameTime * (frame - 1), startFrame + (frame - 1), MOAIEaseType.LINEAR )
   end
   
   -- create the timer that triggers the events in the times set by the curve
   local anim = MOAITimer.new ()
   anim:setMode ( animationMode )
-  anim:setSpan ( #frames * frameTime )
+  anim:setSpan ( frameCount * frameTime )
   anim:setCurve ( curve )
   anim:setListener ( MOAITimer.EVENT_TIMER_KEYFRAME, self.updateFrame )
   
   -- add some aditional information necessary for the animation to the timer object
   anim.animatedProp = self
   anim.frames = frames
+  anim.name = name
   
   -- store it under the name of the animation
   self.animations[name] = anim
@@ -159,6 +142,7 @@ end
 
 
 function AnimatedProp:startAnimation ( name )
+  if self.currentAnimation then self.currentAnimation:stop () end
   self.currentAnimation = self:getAnimation ( name )
   self.currentAnimation:start ()
   return self.currentAnimation
