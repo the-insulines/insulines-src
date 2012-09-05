@@ -313,17 +313,44 @@ resources = {
         frameCount = 75,
         frameTime = JOSH_SLEEPING_SECONDS_PER_FRAME,
         width = 800, height = 500
-        
       },
     },
     width = 800, height = 500
   },
 
+
   josh_grabs_cellphone = {
-    type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'characters/josh_grabs_cellphone.png',
-    width = 9200, height = 2520,
-    tileMapSize = {10, 6}
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/josh/',
+    pivotX = 0,
+    pivotY = 0,
+    animations = {
+      grabs_cellphone = {
+        fileName = 'josh_grabs_cellphone',
+        startFrame = 1,
+        frameCount = 30,
+        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        mode = MOAITimer.NORMAL
+      },
+      
+      grabs_cellphone_loop = {
+        parentAnimationName = 'grabs_cellphone',
+        startFrame = 6,
+        frameCount = 24,
+        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        mode = MOAITimer.NORMAL
+      },
+      
+      still = {
+        parentAnimationName = 'grabs_cellphone',
+        startFrame = 30,
+        frameCount = 1,
+        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        mode = MOAITimer.NORMAL
+      },
+    
+    },
+    width = 920, height = 420
   },
 
   josh_wakes_up = {

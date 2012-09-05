@@ -390,7 +390,7 @@ function new (name)
       if animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_SPRITESHEET then
         animatedProp:addSpritesheetAnimation ( unpack ( v ) )
       elseif animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_FRAMES then
-        animatedProp:addFramedAnimation ( k, v.startFrame, v.frameCount, v.frameTime, v.mode )
+        animatedProp:addFramedAnimation ( k, v.startFrame, v.frameCount, v.frameTime, v.mode, v.parentAnimationName )
       end
     end
   end
