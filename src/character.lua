@@ -35,7 +35,7 @@ function new ( name )
   
   -- methodsc
   
-  function c:setLoc (x, y)
+  function c:setLoc ( x, y )
     self.prop:setLoc ( x, y )
   end
   

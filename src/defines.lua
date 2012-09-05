@@ -260,22 +260,22 @@ resources = {
     
     animations = {
       walk_right = {
-        fileName = 'josh_walk_cycle_side',
+        fileName = 'josh_walk_side',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
       },
       walk_left = {
-        fileName = 'josh_walk_cycle_side',
+        fileName = 'josh_walk_side_flip',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
       },
       walk_front = {
-        fileName = 'josh_walk_cycle_front',
+        fileName = 'josh_walk_front',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
       },
       walk_back = {
-        fileName = 'josh_walk_cycle_back',
+        fileName = 'josh_walk_back',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
       },

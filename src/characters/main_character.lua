@@ -7,6 +7,9 @@
 -- 
 
 mainCharacter = character.new ( 'main_character' )
+-- nancy = character.new ( 'nancy' )
+-- mainCharacter = character.new ( 'nancy' )
+
 
 -- mainCharacter = {}
 -- 
