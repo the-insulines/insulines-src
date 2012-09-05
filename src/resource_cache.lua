@@ -58,8 +58,10 @@ end
 function loadAllAnimationFrames ( allAnimationsLocation, allAnimationsAttributes )
   local animations = {}
   for animationName, animationAttributes in pairs ( allAnimationsAttributes.animations ) do
-    local animation = loadAnimationFrames ( allAnimationsLocation .. animationName .. '/', animationAttributes, allAnimationsAttributes )
-    animations[animationName] = animation
+    if animationAttributes.fileName then
+      local animation = loadAnimationFrames ( allAnimationsLocation .. animationName .. '/', animationAttributes, allAnimationsAttributes )
+      animations[animationName] = animation
+    end
   end
 
   return animations
@@ -78,7 +80,7 @@ function loadAnimationFrames ( animationPath, animationAttributes, defaultAttrib
   
   -- load the image corresponding to each frame of the animation
   for frameIndex = 1, animationAttributes.frameCount do
-    local frameUrl = animationPath .. animationAttributes.fileName .. '_' .. frameIndex .. '.png'
+    local frameUrl = animationPath .. animationAttributes.fileName .. '_' .. animationAttributes.startFrame + ( frameIndex - 1 ) .. '.png'
     local frame = loadImage ( frameUrl, imageAttributes )
     table.insert ( animationFrames, frame )
   end

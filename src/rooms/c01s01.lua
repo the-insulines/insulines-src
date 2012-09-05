@@ -52,7 +52,6 @@ objects = {
     y = 116,
     render_at_start = true,
     avoid_clicks = true
-    
   },
   
   josh_wakes_up = {
@@ -79,19 +78,13 @@ objects = {
     resource_name = "josh_grabs_cellphone",
     layer_name = "back_objects",
     animated = true,
-    animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
-    animations = {
-      {'grabs_cellphone', 1, 30, JOSH_WAKES_SECONDS_PER_FRAME, MOAITimer.NORMAL},
-      {'grabs_cellphone_loop', 31, 22, JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME, MOAITimer.NORMAL},
-      {'still', 30, 1, JOSH_WAKES_SECONDS_PER_FRAME},
-    },
     x = -279,
     y = 77,
     render_at_start = false,
     avoid_clicks = true,
     
     onEnd = function ()
-      c01s01.objects.josh_grabs_cellphone.animation:startAnimation("still")
+      -- c01s01.objects.josh_grabs_cellphone.animation:ssAnimation("still")
     end,
     
     wakingUp = function ()
@@ -161,10 +154,10 @@ objects = {
             c01s01.objects.josh_sleeping.animation:stopCurrentAnimation ()
             
             c01s01:stopRendering ( "nightstand" )
-            c01s01:startRendering ( "josh_grabs_cellphone" )
             
             local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone' )
             anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_grabs_cellphone.onEnd )
+            c01s01:startRendering ( "josh_grabs_cellphone" )
             
             c01s01.objects.cellphone.action:stop ()
             c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( 3, -5, 3, MOAIEaseType.LINEAR )
