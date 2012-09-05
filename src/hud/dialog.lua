@@ -139,13 +139,16 @@ function dialog:show ( dialogText, option1, option2, option3, option4 )
   
   self.window_background.prop:setScl( 0.1, 0.1 )
   self.window_background.prop:setColor(1,1,1,0.8)
+  
   self.dialogTextBox:setColor(1,1,1,0.8)
-
+  
   self.background.prop:setScl( 2, 2 )
   self.background.prop:seekScl( 1.12, 1.12, 1)
 
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 1.1, 1.1, 0.7) )
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 1, 1, 0.1, MOAIEaseType.LINEAR ) )
+
+  self.dialogTextBox:setString(dialogText)
   
 
   -- self:setOption ( option1, self.options.buttons.option1 )

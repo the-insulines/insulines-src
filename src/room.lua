@@ -42,7 +42,7 @@ function new (name)
   
   room.initialized = false
   
-  room.layers = function (self)
+  function room:layers ()
     local result = {}
     
     table.insert ( result, self.layer_objects.background )
@@ -54,6 +54,7 @@ function new (name)
     table.insert ( result, self.layer_objects.walk_behind )
     table.insert ( result, self.layer_objects.walk_behind_highlights )
     table.insert ( result, self.layer_objects.walk_behind_shadows )
+    
     return result
   end
   
@@ -61,7 +62,9 @@ function new (name)
   
   room.objects = {}
   
-  room.initialize = function ( self )
+  room.sounds = {}
+  
+  function room:initialize ( )
     self:beforeInitialize ()
     
     game.camera:setLoc(self.initialCameraX, self.initialCameraY)
@@ -126,11 +129,62 @@ function new (name)
   -- End initialization callbacks
   
   
-  room.addObjects = function ( self, objects )
+  function room:addObjects ( objects )
     for k,v in pairs ( objects ) do 
       self.objects[k] = v
     end
   end
+  
+  function room:loadObjects ( )
+    for k,v in pairs ( self.objects ) do
+      local object = self.objects[k]
+      local resource = resources[object.resource_name]
+      
+      -- Load resource
+      if v.resource_name then
+        object.gfx = resource_cache.get ( v.resource_name )
+
+      -- Create prop
+      if object.animated then
+        -- create an animated prop of the type of the object
+        object.animation = AnimatedProp.new ( resource.type )
+        object.animation:setDeck ( object.gfx )
+        if object.sounds then
+          object.animation:addSounds ( object.sounds )
+        end
+        object.prop = object.animation.prop
+      else
+        object.prop = MOAIProp2D.new ()
+        object.prop:setDeck ( object.gfx )
+      end
+      
+        object.prop:setLoc ( object.x, object.y )
+        if object.renderPriority then
+          object.prop:setPriority ( object.renderPriority )
+        end
+
+        -- Load animations for animated prop
+        if object.animated then
+          if resource.type == RESOURCE_TYPE_ANIMATION_FRAMES then
+            self:loadAnimations ( object.animation, resource.animations )
+          else
+            self:loadAnimations ( object.animation, object.animations )
+          end
+        end
+      
+        -- Add to layer
+        object.layer = self.layer_objects[object.layer_name]
+        if object.render_at_start then
+          self:startRendering( k )
+        end
+      
+        -- Add dimensions
+        object.half_width = resources[v.resource_name].width / 2
+        object.half_height = resources[v.resource_name].height / 2
+      end
+    end
+  end
+  
   
   function room:loadCharacter ( object )
     
@@ -150,48 +204,21 @@ function new (name)
     
   end
   
-  room.loadObjects = function ( self )
-    for k,v in pairs ( self.objects ) do
-      local object = self.objects[k]
-      
-      -- Load resource
-      if v.resource_name then
-        object.gfx = resource_cache.get ( v.resource_name )
+  
+  function room:addSounds ( sounds )
+    for k, v in pairs (sounds) do
+      self.sounds[k] = v
+    end
+  end
 
-      -- Create prop
-      if object.animated then
-        -- create an animated prop of the type of the object
-        object.animation = AnimatedProp.new ( resources[object.resource_name].type )
-        object.animation:setDeck ( object.gfx )
-        object.prop = object.animation.prop
-      else
-        object.prop = MOAIProp2D.new ()
-        object.prop:setDeck ( object.gfx )
-      end
-      
-        object.prop:setLoc ( object.x, object.y )
-        if object.renderPriority then
-          object.prop:setPriority ( object.renderPriority )
-        end
-        -- Load animations for animated prop
-        if object.animated then
-          self:loadAnimations ( object.animation, object.animations )
-        end
-      
-        -- Add to layer
-        object.layer = self.layer_objects[object.layer_name]
-        if object.render_at_start then
-          self:startRendering( k )
-        end
-      
-        -- Add dimensions
-        object.half_width = resources[v.resource_name].width / 2
-        object.half_height = resources[v.resource_name].height / 2
-      end
+  function room:loadSounds ()
+    for k, v in pairs (self.sounds) do
+      self.sounds[k] = resource_cache.get(v.resource_name)
     end
   end
   
-  room.onInput = function ( self )
+    
+  function room:onInput ( )
     if self.inputEnabled then
       if input_manager.down () then
       
@@ -363,7 +390,7 @@ function new (name)
       if animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_SPRITESHEET then
         animatedProp:addSpritesheetAnimation ( unpack ( v ) )
       elseif animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_FRAMES then
-        animatedProp:addFramedAnimation ( unpack ( v ) )
+        animatedProp:addFramedAnimation ( k, v.startFrame, v.frameCount, v.frameTime, v.mode )
       end
     end
   end

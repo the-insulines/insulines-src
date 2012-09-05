@@ -20,7 +20,7 @@ function new ( name )
   c.animation:setDeck ( c.gfx )
   
   for animName, anim in pairs ( resource.animations ) do
-    c.animation:addFramedAnimation ( animName, anim.frameTime, anim.mode )
+    c.animation:addFramedAnimation ( animName, anim.startFrame, anim.frameCount, anim.frameTime, anim.mode )
   end
   
   -- initialize prop
@@ -37,6 +37,14 @@ function new ( name )
   
   function c:setLoc (x, y)
     self.prop:setLoc ( x, y )
+  end
+
+  function c:setScl ( scaleX, scaleY )
+    self.prop:setScl ( scaleX, scaleY )
+  end
+  
+  function c:startAnimation ( animationName )
+    self.animation:startAnimation( animationName )
   end
   
   
@@ -125,7 +133,9 @@ function new ( name )
 
   function c.stopMove ( action )
     self = action.character
-    self.currentWalkAnimation:pause ()
+    if self.currentWalkAnimation then
+      self.currentWalkAnimation:pause ()
+    end
   end
 
   

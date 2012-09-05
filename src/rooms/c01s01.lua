@@ -48,10 +48,6 @@ objects = {
     resource_name = "josh_sleeping",
     layer_name = "back_objects",
     animated = true,
-    -- animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
-    animations = {
-      {'sleeping', 1, 75, JOSH_SLEEPING_SECONDS_PER_FRAME},
-    },
     x = -321,
     y = 116,
     render_at_start = true,
@@ -105,8 +101,7 @@ objects = {
       c01s01:startRendering ( "nightstand" )
       c01s01:startRendering ( "josh_wakes_up" )
       
-      -- game.camera:moveScl ( 0.4, 0.4, 2, MOAIEaseType.LINEAR )
-      c01s01.objects.cellphone.ringtone:stop ()
+      c01s01.sounds.cellphone:stop ()
       
       local anim = c01s01.objects.josh_wakes_up.animation:startAnimation ( 'wakes_up' )
       anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_wakes_up.onEnd )
@@ -140,8 +135,7 @@ objects = {
     woke = false,
     calling = function ()
       c01s01.objects.cellphone.animation:startAnimation ( 'calling' )
-      c01s01.objects.cellphone.ringtone = resource_cache.get('c01s01_cellphone_ringtone')
-      c01s01.objects.cellphone.ringtone:play ()
+      c01s01.sounds.cellphone:play ()
       c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( 7, 7, 5, MOAIEaseType.LINEAR )
     end,
     
@@ -212,7 +206,7 @@ objects = {
         c01s01:startRendering ( "clothes_on_heap" )
         c01s01:startRendering ( "main_character" )
         c01s01:resetCharacter ()
-        c01s01:playThemeSong ()
+        c01s01.sounds.background:play ()
         c01s01.objects.clothes_on_heap.highlight = true
         c01s01.objects.window.highlight = true
         c01s01.objects.barbarullo.highlight = true
@@ -300,15 +294,36 @@ objects = {
 
 c01s01:addObjects ( objects )
 
+sounds = {
+  
+  ambient = {
+    resource_name = 'c01s01_ambient'
+  },
+  
+  cellphone = {
+    resource_name = 'c01s01_cellphone_ringtone'
+  },
+  
+  background = {
+    resource_name = 'c01s01_theme'
+  }
+  
+}
+
+c01s01:addSounds( sounds )
+
 function c01s01:beforeInitialize ()
   self:loadObjects ()
+  self:loadSounds ()
   self:loadCharacter( mainCharacter )
 end
 
 function c01s01:afterInitialize ()
   self.objects.cellphone.calling () 
-  self.objects.josh_sleeping.animation:startAnimation ( 'sleeping' )
+  self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
   self:stopRendering( 'main_character' )
+  
+  
   self.characterMovement = false
 end
 
