@@ -43,7 +43,7 @@ function game:loadScene ( scene )
   for k, layer in pairs( scene:layers() ) do 
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
-    -- layer:setColor(0,0,0,0)
+    layer:setColor(0,0,0,0)
     table.insert(renderTable, layer)
   end
   
@@ -56,10 +56,7 @@ function game:loadScene ( scene )
   end
   
   MOAIRenderMgr.setRenderTable ( renderTable )
-  
-  
-    
-  -- performWithDelay ( 50, scene.fadeIn, 1, scene)
+  performWithDelay ( 50, scene.fadeIn, 1, scene)
 end
 
 

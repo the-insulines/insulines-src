@@ -58,18 +58,13 @@ objects = {
     resource_name = "josh_wakes_up",
     layer_name = "back_objects",
     animated = true,
-    animationType = AnimatedProp.ANIMATION_TYPE_SPRITESHEET,
-    animations = {
-      {'wakes_up', 1, 30, JOSH_WAKES_SECONDS_PER_FRAME, MOAITimer.NORMAL},
-      {'still', 30, 1, JOSH_WAKES_SECONDS_PER_FRAME},
-    },
-    x = -312,
-    y = 180,
+    x = -313,
+    y = 183,
     render_at_start = false,
     avoid_clicks = true,
     onEnd = function () 
-      c01s01:stopRendering ( "josh_grabs_cellphone" )
-      c01s01.objects.josh_wakes_up.animation:startAnimation("still")
+      -- c01s01:stopRendering ( "josh_grabs_cellphone" )
+      -- c01s01.objects.josh_wakes_up.animation:startAnimation("still")
       c01s01.inputEnabled = true
     end
   },
@@ -92,6 +87,7 @@ objects = {
       inventory:addItem ( "cellphone", c01s01.objects.cellphone )
       c01s01:stopRendering ( "cellphone" )
       c01s01:startRendering ( "nightstand" )
+      c01s01:stopRendering ( "josh_grabs_cellphone" )
       c01s01:startRendering ( "josh_wakes_up" )
       
       c01s01.sounds.cellphone:stop ()
@@ -199,6 +195,7 @@ objects = {
         c01s01:startRendering ( "clothes_on_heap" )
         c01s01:startRendering ( "main_character" )
         c01s01:resetCharacter ()
+        -- c01s01.sounds.ambient:stop ()
         c01s01.sounds.background:play ()
         c01s01.objects.clothes_on_heap.highlight = true
         c01s01.objects.window.highlight = true
@@ -312,7 +309,8 @@ function c01s01:beforeInitialize ()
 end
 
 function c01s01:afterInitialize ()
-  self.objects.cellphone.calling () 
+  self.objects.cellphone.calling ()
+  -- self.sounds.ambient:play ()
   self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
   self:stopRendering( 'main_character' )
   

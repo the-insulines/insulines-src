@@ -43,7 +43,7 @@ CAMERA_MAX_DELTA_Y = 15 + 5
 CAMERA_MOVEMENT_DURATION = 1.6
 
 -- Animations
-JOSH_SLEEPING_SECONDS_PER_FRAME = 0.05
+JOSH_SLEEPING_SECONDS_PER_FRAME = 0.1
 JOSH_WAKES_SECONDS_PER_FRAME = 0.10
 JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.09
 JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
@@ -327,9 +327,13 @@ resources = {
         width = 800, height = 500
       },
     },
+    sounds = {
+      sleeps = {
+        { fileName = 'snoring', volume = 1, startFrame = 31 }
+      }
+    },
     width = 800, height = 500
   },
-
 
   josh_grabs_cellphone = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
@@ -366,10 +370,36 @@ resources = {
   },
 
   josh_wakes_up = {
-    type = RESOURCE_TYPE_TILED_IMAGE,
-    fileName = 'characters/josh_wakes_up.png',
-    width = 7000, height = 1800,
-    tileMapSize = {10, 3}
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/josh/',
+    pivotX = 0,
+    pivotY = 0,
+    animations = {
+      wakes_up = {
+        fileName = 'josh_wakes_up',
+        startFrame = 1,
+        frameCount = 30,
+        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        mode = MOAITimer.NORMAL
+      },
+      
+      still = {
+        parentAnimationName = 'wakes_up',
+        startFrame = 30,
+        frameCount = 1,
+        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        mode = MOAITimer.NORMAL
+      },
+    
+    },
+    sounds = {
+      wakes_up = {
+        { fileName = 'yawn', volume = 1, startFrame = 16 }
+      }
+    },
+    
+    width = 700, height = 600
+    
   },
 
   c01s01_background = {
@@ -390,7 +420,7 @@ resources = {
     type = RESOURCE_TYPE_SOUND, 
     fileName = 'c01s01/ambient.mp3', 
     loop = true,
-    volume = 1
+    volume = 0.2
   },
     
   c01s01_cellphone = {
