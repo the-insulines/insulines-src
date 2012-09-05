@@ -269,6 +269,16 @@ resources = {
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
       },
+      walk_front = {
+        fileName = 'josh_walk_cycle_front',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+      },
+      walk_back = {
+        fileName = 'josh_walk_cycle_back',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+      },
     },
     width = 828 / 3, height = 1930 / 3,
   },

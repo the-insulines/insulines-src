@@ -106,10 +106,16 @@ function new ( name )
       self.currentWalkAnimation:pause ()
     end
 
-    if delta_x > 0 then
-      self.currentWalkAnimation = self.animation:startAnimation ( 'walk_right' )
+    if math.abs ( delta_x ) > math.abs ( delta_y ) then
+      if delta_x > 0 then
+        self.currentWalkAnimation = self.animation:startAnimation ( 'walk_right' )
+      else
+        self.currentWalkAnimation = self.animation:startAnimation ( 'walk_left' )
+      end
+    elseif delta_y > 0 then
+      self.currentWalkAnimation = self.animation:startAnimation ( 'walk_back' )
     else
-      self.currentWalkAnimation = self.animation:startAnimation ( 'walk_left' )
+      self.currentWalkAnimation = self.animation:startAnimation ( 'walk_front' )
     end
     
     -- shift the value zoomFactor units
