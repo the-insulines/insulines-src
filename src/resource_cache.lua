@@ -38,10 +38,27 @@ end
 
 
 function loadSound ( fileUrl, loop, volume )
-  local sound = MOAIUntzSound.new ()
-  sound:load ( fileUrl )
-  sound:setVolume ( volume )
-  sound:setLooping ( loop )
+  local sound = {}
+  if SOUND then
+    sound.file = MOAIUntzSound.new ()
+    sound.file:load ( fileUrl )
+    sound.file:setVolume ( volume )
+    sound.file:setLooping ( loop )
+    
+    function sound:play ()
+      self.file:play ()
+    end
+
+    function sound:stop ()
+      self.file:stop ()
+    end
+    
+  else
+    function sound:play ()
+    end
+    function sound:stop ()
+    end
+  end
   return sound
 end
 

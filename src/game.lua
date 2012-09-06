@@ -66,10 +66,12 @@ function initialize ( self )
   viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
   
-  -- Initialize sound
-  MOAIUntzSystem.initialize ()
-
-  self:loadScene ( c01s02 )
+  if SOUND then
+    -- Initialize sound
+    MOAIUntzSystem.initialize ()
+  end
+  
+  self:loadScene ( c01s01 )
 end
 
 

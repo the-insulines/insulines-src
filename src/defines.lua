@@ -12,6 +12,7 @@
 -- DEBUG = false
 DEBUG = true
 
+SOUND = false
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}

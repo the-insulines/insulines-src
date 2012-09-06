@@ -13,10 +13,8 @@ c01s02.bottomCharacterZoomThreshold = -611
 c01s02.backCharacterZoom = 0.70
 c01s02.topCharacterZoomThreshold = 323
 
--- c01s02.initialCameraPathNode = 'joshDoor'
--- c01s02.initialCharacterPathNode = 'joshDoor'
-c01s02.initialCameraPathNode = 'beforeBobbyDoor'
-c01s02.initialCharacterPathNode = 'beforeBobbyDoor'
+c01s02.initialCameraPathNode = 'joshDoor'
+c01s02.initialCharacterPathNode = 'joshDoor'
 
 c01s02.initialNancyPathNode = 'door'
 
@@ -570,8 +568,6 @@ end
 
 function c01s02:afterInitialize ()  
   self.objects.answering_machine.animation:startAnimation ( 'blink' )
-  c01s02.sounds.sink_flowing:play ()
-  
 end
 
 local path = {
