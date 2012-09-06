@@ -13,8 +13,10 @@ c01s02.bottomCharacterZoomThreshold = -611
 c01s02.backCharacterZoom = 0.70
 c01s02.topCharacterZoomThreshold = 323
 
-c01s02.initialCameraPathNode = 'joshDoor'
-c01s02.initialCharacterPathNode = 'joshDoor'
+-- c01s02.initialCameraPathNode = 'joshDoor'
+-- c01s02.initialCharacterPathNode = 'joshDoor'
+c01s02.initialCameraPathNode = 'lamp'
+c01s02.initialCharacterPathNode = 'lamp'
 
 c01s02.initialNancyPathNode = 'door'
 
@@ -77,7 +79,10 @@ objects = {
     layer_name = 'walk_behind',
     x = 1086,
     y = -427,
-    render_at_start = true
+    render_at_start = true,
+    onClick = function ()
+      dialog:load('c01s02_tv')
+    end
   },
 
   television = {
@@ -86,7 +91,10 @@ objects = {
     x = 1233,
     y = -664,
     render_at_start = true,
-    renderPriority = 10
+    renderPriority = 10,
+    onClick = function ()
+      dialog:load('c01s02_tv')
+    end
   },
 
   answering_machine = {
@@ -107,12 +115,10 @@ objects = {
     answered = false,
 
     onClick = function ()
-      if not c01s02.objects.answering_machine.answered then
-        c01s02.objects.answering_machine.animation:stopCurrentAnimation()
-        c01s02.objects.answering_machine.animation:startAnimation ( 'stopped' )
-        c01s02.objects.answering_machine.answered = true
-        dialog:load("c01s02_answering_machine_message")
-      end
+      c01s02.objects.answering_machine.animation:stopCurrentAnimation()
+      c01s02.objects.answering_machine.animation:startAnimation ( 'stopped' )
+      c01s02.objects.answering_machine.answered = true
+      dialog:load("c01s02_answering_machine_message")
     end
   },
   
@@ -136,7 +142,11 @@ objects = {
         c01s02:stopRendering('bathroom_closed')
         c01s02:startRendering('bathroom_opened')
         -- Move character to bathroom
-        c01s02:moveCharacterToNode('bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
+        c01s02:moveCharacterToNode('main_character', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
+      else
+        local n = math.random(2)
+        dump ( n )
+        dialog:load('c01s02_bathroom_' .. n)
       end
     end
   },
@@ -154,7 +164,11 @@ objects = {
       c01s02:stopRendering("main_character")
       c01s02:stopRendering("bathroom_opened")
       c01s02:startRendering("bathroom_closed")
-      inventory:openInventory ()
+      
+      if not inventory.opened then
+        inventory:openInventory ()
+      end
+      
       performWithDelay(10, self.objects.bathroom_opened.addBathroomItems, 1, self)
     end,
     
@@ -162,6 +176,13 @@ objects = {
       inventory:addItem( 'toothpaste', c01s02.objects.toothpaste )
       inventory:addItem( 'toothbrush', c01s02.objects.toothbrush )
       inventory:addItem( 'floss', c01s02.objects.floss )
+    end,
+    
+    leaveBathroom = function ( self )
+      c01s02:stopRendering("bathroom_opened")
+      c01s02:startRendering("bathroom_closed")
+      
+      dialog:load('c01s02_leave_bathroom')
     end
     
   },
@@ -178,7 +199,17 @@ objects = {
         inventory:removeItem(self)
       end
       inventory:addItem( 'toothbrush_with_toothpaste', c01s02.objects.toothbrush_with_toothpaste )
+      
+      if inventory.opened then
+        inventory:closeInventory ()
+      end
+      
+      c01s02:stopRendering("bathroom_closed")
+      c01s02:startRendering("bathroom_opened")
+      c01s02:startRendering("main_character")
+      c01s02:moveCharacterToNode('main_character', 'bathroomDoor', c01s02.objects.bathroom_opened.leaveBathroom, c01s02)
     end
+    
   },
   
   toothbrush = {
@@ -510,14 +541,49 @@ objects = {
     x = -1584,
     y = -249,
     render_at_start = true,
-    onClick = function ()
+    pickedFlyer = false,
+    talkedToNancy = false,
+    closeDoor = function ()
+      c01s02:startRendering ( 'apartmentDoor' )
+      c01s02:stopRendering ( 'apartmentDoorOpened' )
+      
+      c01s02.objects.main_character.animation:startAnimation('walk_right')
+      performWithDelay (10, c01s02.objects.main_character.animation.stopCurrentAnimation, 1, c01s02.objects.main_character.animation)
+      
+      c01s02.objects.nancy.animation:startAnimation('walk_left')
+      performWithDelay (10, c01s02.objects.nancy.animation.stopCurrentAnimation, 1, c01s02.objects.nancy.animation)
+    end,
+    
+    beginNancy = function ()
       c01s02:stopRendering ( 'apartmentDoor' )
       c01s02:startRendering ( 'apartmentDoorOpened' )
       
       c01s02:loadCharacter ( nancy )
       local pos = c01s02.path.graph[c01s02.initialNancyPathNode].position
-      c01s02.objects.nancy:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
+      c01s02.objects.nancy.prop:setLoc(pos.x, pos.y)
+      c01s02.objects.nancy:moveTo(pos.x, pos.y, c01s02.perspectiveZoomFactor, 0.00001)
       c01s02:startRendering ( 'nancy' )
+      c01s02:moveCharacterToNode('nancy', 'beforeDoor', c01s02.objects.apartmentDoor.closeDoor, c01s02)
+      c01s02.objects.apartmentDoor.talkedToNancy = true
+      
+      dialog:load('c01s02_nancy_intro')
+    end,
+    onClick = function ()
+      if c01s02.objects.apartmentDoor.pickedFlyer then
+        if not c01s02.objects.apartmentDoor.talkedToNancy then
+          c01s02.objects.apartmentDoor.beginNancy ()
+        else
+          c01s02:stopRendering ( 'apartmentDoor' )
+          c01s02:startRendering ( 'apartmentDoorOpened' )
+          c01s02:unload ()
+        end
+      else
+        -- pickup flyer
+        c01s02.objects.apartmentDoor.pickedFlyer = true
+        c01s02:stopRendering('flyer')
+        inventory:addItem('flyer', c01s02.objects.flyer)
+        dialog:load('c01s02_flyer')
+      end
     end
   },
   
@@ -531,6 +597,17 @@ objects = {
       c01s02:stopRendering ( 'apartmentDoorOpened' )
       c01s02:startRendering ( 'apartmentDoor' )
     end
+  },
+
+  flyer = {
+    resource_name = 'c01s02_fair_flyer',
+    inventory_resource_name = "inventory_flyer",
+    layer_name = 'objects',
+    x = -1554,
+    y = -149,
+    render_at_start = true,
+    highlight = true,
+    avoid_clicks = true,
   },
   
   -- -----------------------------------------------------------------

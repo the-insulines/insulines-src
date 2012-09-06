@@ -258,6 +258,10 @@ objects = {
         c01s01:stopRendering( "room_door" )
         c01s01:startRendering( "room_door_open" )
         c01s01.objects.room_door_open.onClick ()
+      else
+        if c01s01.objects.cellphone.woke then 
+          dialog:load('c01s01_put_clothes')
+        end
       end
     end
   },

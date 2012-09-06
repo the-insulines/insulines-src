@@ -62,16 +62,14 @@ function initializeHUD ( self )
 
   -- Options
   self.options = {}
-  self.options.gfx = resource_cache.get ( "dialog_option_background")
-  self.options.half_width = 227.5
-  self.options.half_height = 91
-  self.options.gfx:setRect ( - self.options.half_width, - self.options.half_height, self.options.half_width, self.options.half_height)
-
+  self.options.half_width = 1540 / 2
+  self.options.half_height = 130 / 2
   self.options.buttons = {}
-  self.options.buttons.option1 = self:createOption( -710 )
-  self.options.buttons.option2 = self:createOption( -235 )
-  self.options.buttons.option3 = self:createOption( 240 )
-  self.options.buttons.option4 = self:createOption( 715 )
+  local padding = 200
+  self.options.buttons.option1 = self:createOption( padding * 0 )
+  self.options.buttons.option2 = self:createOption( padding * 1 )
+  self.options.buttons.option3 = self:createOption( padding * 2 )
+  self.options.buttons.option4 = self:createOption( padding * 3 )
   
   -- Add props in order
   self.layer:insertProp ( self.background.prop )
@@ -83,32 +81,27 @@ function initializeHUD ( self )
   
 end
 
-function dialog:createOption(x)
+function dialog:createOption(yOffset)
   local option = {}
-  
-  option.prop = MOAIProp2D.new ()
-  option.prop:setDeck ( self.options.gfx )
-  option.prop:setLoc( x , -500)
-  
   
   option.textBox = MOAITextBox.new ()
   option.textBox:setFont ( game.defaultFont )
-  option.textBox:setTextSize ( 60 )
+  option.textBox:setTextSize ( 70 )
   option.textBox:setYFlip( true )
   option.textBox:setColor ( unpack ( DEFAULT_OPTION_COLOR ))
-  option.textBox:setRect ( -self.options.half_width, -self.options.half_height, self.options.half_width, self.options.half_height)
-  option.textBox:setLoc(x, -500)
-  option.textBox:setAlignment( MOAITextBox.CENTER_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
+  option.textBox:setRect ( 0, 0, self.options.half_width * 2, self.options.half_height * 2)
+  option.textBox:setLoc(-self.window_background.half_width + 100, self.window_background.half_height - 200 - yOffset)
+  option.textBox:setAlignment( MOAITextBox.LEFT_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
   option.rendering = false
 
   function option:show ()
-    dialog.layer:insertProp ( option.prop )
+    -- dialog.layer:insertProp ( option.prop )
     dialog.layer:insertProp ( option.textBox )
     self.rendering = true
   end
   
   function option:hide ()
-    dialog.layer:removeProp ( option.prop )
+    -- dialog.layer:removeProp ( option.prop )
     dialog.layer:removeProp ( option.textBox )
     self.rendering = false
   end
@@ -125,6 +118,7 @@ function dialog:hide ( time )
 
   self.background.prop:seekScl( 2, 2, 0.3)
   self.dialogTextBox:setString( '' )
+  self:hideOptions ()
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 0.001, 0.001, 0.7 ) )
   self.layer:seekColor ( 0, 0, 0, 0, time, MOAIEaseType.LINEAR )
   
@@ -150,28 +144,48 @@ function dialog:show ( dialogText, option1, option2, option3, option4 )
 
   self.dialogTextBox:setString(dialogText)
   
+  
+  self:setOption ( option1, self.options.buttons.option1 )
+  self:setOption ( option2, self.options.buttons.option2 )
+  self:setOption ( option3, self.options.buttons.option3 )
+  self:setOption ( option4, self.options.buttons.option4 )
 
-  -- self:setOption ( option1, self.options.buttons.option1 )
-  -- self:setOption ( option2, self.options.buttons.option2 )
-  -- self:setOption ( option3, self.options.buttons.option3 )
-  -- self:setOption ( option4, self.options.buttons.option4 )
-
+  self:hideOptions ()
   self.opened = true
   game.currentScene.inputEnabled = true
   
 end
 
 function dialog:setOption ( optionDefinition, option )
-
   if optionDefinition then
-    option:setString ( optionDefinition.label )
-    option.action = optionDefinition.action
+    option:setString ( optionDefinition.label[LOCALE] )
+    option.definition = optionDefinition
     option:show ()
   else
-    option.action = nil
+    option.definition = nil
+    option.textBox:setString ('')
     option:hide ()
   end
   
+end
+
+function dialog:hideOptions ()
+  self.options.buttons.option1:hide ()
+  self.options.buttons.option2:hide ()
+  self.options.buttons.option3:hide ()
+  self.options.buttons.option4:hide ()
+  self.displayingOptions = false
+end
+
+function dialog:showOptions ()
+  self.dialogTextBox:setString('')
+  
+  if self.options.buttons.option1.definition then self.options.buttons.option1:show () end
+  if self.options.buttons.option2.definition then self.options.buttons.option2:show () end
+  if self.options.buttons.option3.definition then self.options.buttons.option3:show () end
+  if self.options.buttons.option4.definition then self.options.buttons.option4:show () end
+  
+  self.displayingOptions = true
 end
 
 function dialog:load ( dialogName )
@@ -181,6 +195,7 @@ function dialog:load ( dialogName )
   
   if dialogNode then
     self.currentNode = dialogNode
+    self.hasOptions = #options > 0
     self:show (dialogNode.text[LOCALE], unpack ( options ) )
   else
     if dialogName then
@@ -192,8 +207,18 @@ function dialog:load ( dialogName )
 end
 
 function dialog:onInput ( )
+  
+  if self.showOptionsTapped and not input_manager.isDown () then
+    self.showOptionsTapped = false
+  end
+  
   if input_manager.down () then
-    self:hide()
+    if not self.hasOptions then
+      self:hide()
+    elseif not self.displayingOptions then
+      self:showOptions ()
+      self.showOptionsTapped = true
+    end
     
     -- Check default action
     if self.currentNode and self.currentNode.defaultAction then
@@ -202,16 +227,23 @@ function dialog:onInput ( )
       end
     end
     
+    if self.displayingOptions and not self.showOptionsTapped then
+      local x, y = input_manager.getTouch ()
+      x, y = self.layer:wndToWorld ( x, y )  
+      local button = self:objectAt ( x, y )
+    
+      if button then
+        if button.definition.action == DIALOG_ACTION_CLOSE then
+          self:hide ()
+          self.displayingOptions = false
+        elseif button.definition.action == DIALOG_ACTION_REDIRECT then
+          self:hide ()
+          self.displayingOptions = false
+          self:load ( button.definition.dialogName )
+        end
+      end
+    end
     return true
-    -- local x, y = input_manager.getTouch ()
-    -- x, y = self.layer:wndToWorld ( x, y )  
-    -- local button = self:objectAt ( x, y )
-    -- 
-    -- if button then
-    --   if button.action == DIALOG_ACTION_CLOSE then
-    --     self:hide ()
-    --   end
-    -- end
   end
 end
 
@@ -219,8 +251,13 @@ function dialog:objectAt ( x, y )
 
   for k, object in pairs( self.options.buttons ) do
 
-    local objX, objY = object.prop:worldToModel ( x, y )
+    local objX, objY = object.textBox:worldToModel ( x, y )
 
+    -- For some reason that I can't see at 5:13 AM this box is a little bit higher. 
+    -- Fixing this with a magic number.
+    --                                          Francisco.
+    objY = objY - 50
+    
     if (objX >= -self.options.half_width) and (objX <= self.options.half_width) and (objY >= -self.options.half_height) and (objY <= self.options.half_height) and object.rendering then
       return object
     end

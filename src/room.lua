@@ -260,10 +260,10 @@ function new (name)
     end
   end
 
-  function room:moveCharacterToNode (node, callback_method, callback_parent)
+  function room:moveCharacterToNode (characterName, node, callback_method, callback_parent)
     local position = self.path.graph[node].position
     local steps = self.path:steps ( point ( self.objects.main_character.prop:getLoc () ),  position )
-    local char = self.objects.main_character
+    local char = self.objects[characterName]
     local callback = { method = callback_method, parent = callback_parent }
 
     self.characterMovementCoroutine = MOAICoroutine.new ()

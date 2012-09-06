@@ -9,10 +9,10 @@
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
 -- Debugging
--- DEBUG = false
-DEBUG = true
+-- DEBUG = true
 
-SOUND = false
+-- Enable sound
+-- SOUND = true
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}
@@ -185,6 +185,12 @@ resources = {
     width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
   },
 
+  inventory_flyer = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_flyer.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
+
   inventory_floss = {
     type = RESOURCE_TYPE_IMAGE,
     fileName = 'hud/inventory_floss.png',
@@ -267,7 +273,6 @@ resources = {
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
       },
-      
       walk_left = {
         fileName = 'josh_walk_side_flip',
         frameCount = 8,
@@ -299,14 +304,32 @@ resources = {
     pivotY = MAIN_CHARACTER_PIVOT,
     
     animations = {
-      walk_side = {
+      walk_right = {
+        fileName = 'nancy_walk_cycle_side',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      walk_left = {
+        fileName = 'nancy_walk_cycle_side',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      walk_front = {
+        fileName = 'nancy_walk_cycle_side',
+        frameCount = 8,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      walk_back = {
         fileName = 'nancy_walk_cycle_side',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
       },
     },
-    width = 828 / 3, height = 1930 / 3,
+    width = 828 / 4, height = 1930 / 4,
   },
   
   -- /////////////////////////////////////////////////////////////
@@ -701,6 +724,12 @@ resources = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_apartment_door_opened.png', 
     width = 217, height = 548
+  },
+  
+  c01s02_fair_flyer = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_fair_flyer.png', 
+    width = 104, height = 110
   },
 }
 
