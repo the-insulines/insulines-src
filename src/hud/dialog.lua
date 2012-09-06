@@ -132,12 +132,12 @@ function dialog:hide ( time )
 end
 
 function dialog:show ( dialogText, option1, option2, option3, option4 )
-  -- self.textBox:clear ()
+  game.currentScene.inputEnabled = false
   self.layer:moveColor ( 1, 1, 1, 1, 0.5, MOAIEaseType.LINEAR)
 
   self.background.prop:setColor ( 1, 1, 1, 0.7, 0.5, MOAIEaseType.LINEAR)
   
-  self.window_background.prop:setScl( 0.1, 0.1 )
+  self.window_background.prop:setScl( 0.001, 0.001 )
   self.window_background.prop:setColor(1,1,1,0.8)
   
   self.dialogTextBox:setColor(1,1,1,0.8)
@@ -157,6 +157,8 @@ function dialog:show ( dialogText, option1, option2, option3, option4 )
   -- self:setOption ( option4, self.options.buttons.option4 )
 
   self.opened = true
+  game.currentScene.inputEnabled = true
+  
 end
 
 function dialog:setOption ( optionDefinition, option )
@@ -174,8 +176,12 @@ end
 
 function dialog:load ( dialogName )
   local dialogNode = dialogTree[dialogName]
+  local options = {}
+  if dialogNode.options then options = dialogNode.options end
+  
   if dialogNode then
-    self:show (dialogNode.text[LOCALE], unpack(dialogNode.options))
+    self.currentNode = dialogNode
+    self:show (dialogNode.text[LOCALE], unpack ( options ) )
   else
     if dialogName then
       print ( "DIALOG TODO: " .. dialogName )
@@ -188,6 +194,14 @@ end
 function dialog:onInput ( )
   if input_manager.down () then
     self:hide()
+    
+    -- Check default action
+    if self.currentNode and self.currentNode.defaultAction then
+      if self.currentNode.defaultAction == DIALOG_ACTION_REDIRECT then
+        self:load ( self.currentNode.dialogName )
+      end
+    end
+    
     return true
     -- local x, y = input_manager.getTouch ()
     -- x, y = self.layer:wndToWorld ( x, y )  

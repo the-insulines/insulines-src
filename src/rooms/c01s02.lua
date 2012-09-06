@@ -459,14 +459,25 @@ objects = {
     
     interactsWith = { 'coffeePotEmpty' },
     highlight = true,
+    
+    stopFlowing = function ()
+      c01s02.objects.sink.animation:startAnimation ( 'stopped' )
+      c01s02.objects.sink.flowing = false
+    end,
+    
+    startFlowing = function ()
+      c01s02.objects.sink.animation:startAnimation ( 'flowing' )
+      c01s02.objects.sink.flowing = true
+      performWithDelay (200, c01s02.objects.sink.stopFlowing, 1)
+    end,
+    
     onInteractionWith = function ( self, item )
       if c01s02.objects.coffeePotEmpty.water then
         dialog:load("c01s02_coffee_pot_with_water")
       else
         
         if not c01s02.objects.sink.flowing then
-          c01s02.objects.sink.animation:startAnimation ( 'flowing' )
-          c01s02.objects.sink.flowing = true
+          c01s02.objects.sink.startFlowing ()
         end
         
         c01s02.objects.coffeePotEmpty.water = true
@@ -480,11 +491,9 @@ objects = {
     onClick = function ()
       c01s02.objects.sink.animation:stopCurrentAnimation ()
       if c01s02.objects.sink.flowing then
-        c01s02.objects.sink.animation:startAnimation ( 'stopped' )
-        c01s02.objects.sink.flowing = false
+        c01s02.objects.sink.stopFlowing ()
       else
-        c01s02.objects.sink.animation:startAnimation ( 'flowing' )
-        c01s02.objects.sink.flowing = true
+        c01s02.objects.sink.startFlowing ()
       end
     end
   },
@@ -534,14 +543,35 @@ objects = {
 
 c01s02:addObjects ( objects )
 
+sounds = {
+  
+  sink_flowing = {
+    resource_name = 'c01s02_sink_flowing'
+  },
+  
+  cellphone = {
+    resource_name = 'c01s01_cellphone_ringtone'
+  },
+  
+  background = {
+    resource_name = 'c01s01_theme'
+  }
+  
+}
+
+c01s02:addSounds( sounds )
+
 function c01s02:beforeInitialize ()
   self:loadObjects ()
+  self:loadSounds ()
   self:loadCharacter( mainCharacter )
   self.objects.main_character:setLoc(1120, -245)
 end
 
 function c01s02:afterInitialize ()  
   self.objects.answering_machine.animation:startAnimation ( 'blink' )
+  c01s02.sounds.sink_flowing:play ()
+  
 end
 
 local path = {
