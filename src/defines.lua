@@ -45,11 +45,11 @@ CAMERA_MOVEMENT_DURATION = 1.6
 -- Animations
 JOSH_SLEEPING_SECONDS_PER_FRAME = 0.1
 JOSH_WAKES_SECONDS_PER_FRAME = 0.10
-JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.09
-JOSH_GRABS_CELLPHONE_LOOP_SECONDS_PER_FRAME = 0.04
+JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.08
 
 -- Dialog
 DIALOG_ACTION_CLOSE = 0
+DIALOG_ACTION_REDIRECT = 1
 DEFAULT_DIALOG_COLOR = { 1, 1, 1, 1 }
 DEFAULT_OPTION_COLOR = { 1, 1, 1, 1 }
 MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
@@ -345,7 +345,7 @@ resources = {
         fileName = 'josh_grabs_cellphone',
         startFrame = 1,
         frameCount = 30,
-        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        frameTime = JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME,
         mode = MOAITimer.NORMAL
       },
       
@@ -353,7 +353,7 @@ resources = {
         parentAnimationName = 'grabs_cellphone',
         startFrame = 6,
         frameCount = 24,
-        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        frameTime = JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME,
         mode = MOAITimer.NORMAL
       },
       
@@ -361,7 +361,7 @@ resources = {
         parentAnimationName = 'grabs_cellphone',
         startFrame = 30,
         frameCount = 1,
-        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        frameTime = JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME,
         mode = MOAITimer.NORMAL
       },
     
@@ -452,7 +452,7 @@ resources = {
   c01s01_clothes_on_heap = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/clothes_on_heap.png', 
-    width = 477,
+    width = 220,
     height = 273
   },
   
@@ -513,8 +513,8 @@ resources = {
   c01s02_bob_bedroom_closed = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s02/c01s02_bob_bedroom_closed.png', 
-    width = 221, 
-    height = 452
+    width = 226, 
+    height = 456
   },
 
   c01s02_bedroom_opened = {
@@ -632,8 +632,15 @@ resources = {
   c01s02_sink = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s02/c01s02_sink.png', 
-    width = 298, height = 72,
+    width = 320, height = 79,
     tileMapSize = {2, 1}
+  },
+  
+  c01s02_sink_flowing = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s02/sink_flowing.wav', 
+    loop = true,
+    volume = 0.2
   },
   
   c01s02_freezer_closed = {

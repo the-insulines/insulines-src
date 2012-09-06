@@ -69,7 +69,7 @@ function initialize ( self )
   -- Initialize sound
   MOAIUntzSystem.initialize ()
 
-  self:loadScene ( c01s01 )
+  self:loadScene ( c01s02 )
 end
 
 
