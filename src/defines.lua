@@ -628,7 +628,23 @@ resources = {
     width = 47,
     height = 40
   },
-    
+  
+  c01s02_mug_full_smoke = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'c01s02/',
+    pivotX = 0,
+    pivotY = 0,
+    animations = {
+      mug_full_smoke = {
+        fileName = 'c01s02_mug_full_smoke',
+        startFrame = 1,
+        frameCount = 25,
+        frameTime = 0.1,
+      },
+    },
+    width = 80, height = 176
+  },
+  
   c01s02_sink = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s02/c01s02_sink.png', 
