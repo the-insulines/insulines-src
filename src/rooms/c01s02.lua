@@ -304,6 +304,7 @@ objects = {
         local fadeIn = function ()
           c01s02:fadeIn ()
           c01s02:startRendering ( "coffeePotFull" )
+          c01s02.objects.mug_full.animation:startAnimation ( 'mug_full_smoke' )
           c01s02:startRendering ( "mug_full" )
           c01s02.objects.coffeeMaker.madeCoffee = true
         end
@@ -413,13 +414,16 @@ objects = {
   },
   
   mug_full = {
-    resource_name = 'c01s02_mug_full',
+    resource_name = "c01s02_mug_full_smoke",
+    animated = true,
     layer_name = 'objects',
     x = 350,
-    y = 178,
+    y = 178 + 136/2,
     render_at_start = false,
+    
     onClick = function ()
       dialog:load("c01s02_mug_full")
+      c01s02.objects.mug_full.animation:stopCurrentAnimation ()
       c01s02:stopRendering( 'mug_full' )
       c01s02:startRendering( 'mug_empty' )
     end
