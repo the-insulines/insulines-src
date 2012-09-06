@@ -14,7 +14,7 @@ require 'animatedProp'
 require 'game'
 
 require 'character'
-require 'characters/main_character'
+require 'characters'
 
 require 'hud/inventory'
 require 'hud/highlight'

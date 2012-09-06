@@ -7,3 +7,4 @@
 -- 
 
 mainCharacter = character.new ( 'main_character' )
+nancy = character.new ( 'nancy' )

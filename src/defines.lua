@@ -9,8 +9,8 @@
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
 -- Debugging
-DEBUG = false
--- DEBUG = true
+-- DEBUG = false
+DEBUG = true
 
 
 -- Locale
@@ -302,6 +302,7 @@ resources = {
         fileName = 'nancy_walk_cycle_side',
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
       },
     },
     width = 828 / 3, height = 1930 / 3,
@@ -681,7 +682,18 @@ resources = {
     fileName = 'c01s02/c01s02_cube_tray.png', 
     width = 50, height = 43
   },
-    
+  
+  c01s02_apartment_door_closed = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_apartment_door_closed.png', 
+    width = 165, height = 598
+  },
+  
+  c01s02_apartment_door_opened = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'c01s02/c01s02_apartment_door_opened.png', 
+    width = 217, height = 548
+  },
 }
 
 

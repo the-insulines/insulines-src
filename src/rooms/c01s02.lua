@@ -13,8 +13,12 @@ c01s02.bottomCharacterZoomThreshold = -611
 c01s02.backCharacterZoom = 0.70
 c01s02.topCharacterZoomThreshold = 323
 
-c01s02.initialCameraPathNode = 'joshDoor'
-c01s02.initialCharacterPathNode = 'joshDoor'
+-- c01s02.initialCameraPathNode = 'joshDoor'
+-- c01s02.initialCharacterPathNode = 'joshDoor'
+c01s02.initialCameraPathNode = 'beforeBobbyDoor'
+c01s02.initialCharacterPathNode = 'beforeBobbyDoor'
+
+c01s02.initialNancyPathNode = 'door'
 
 objects = {
   background = {
@@ -66,7 +70,8 @@ objects = {
     layer_name = 'walk_behind',
     x = -170,
     y = -502,
-    render_at_start = true
+    render_at_start = true,
+    renderPriority = 100,
   },
   
   couch = {
@@ -487,6 +492,43 @@ objects = {
   -- ------------------------------------------------------
   -- End Coffee Puzzle
   -- ------------------------------------------------------
+  
+  -- -----------------------------------------------------------------
+  -- Nancy Puzzle
+  -- -----------------------------------------------------------------
+  
+  apartmentDoor = {
+    resource_name = 'c01s02_apartment_door_closed',
+    layer_name = 'objects',
+    x = -1584,
+    y = -249,
+    render_at_start = true,
+    onClick = function ()
+      c01s02:stopRendering ( 'apartmentDoor' )
+      c01s02:startRendering ( 'apartmentDoorOpened' )
+      
+      c01s02:loadCharacter ( nancy )
+      local pos = c01s02.path.graph[c01s02.initialNancyPathNode].position
+      c01s02.objects.nancy:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
+      c01s02:startRendering ( 'nancy' )
+    end
+  },
+  
+  apartmentDoorOpened = {
+    resource_name = 'c01s02_apartment_door_opened',
+    layer_name = 'walk_behind',
+    x = -1540,
+    y = -276,
+    render_at_start = false,
+    onClick = function ()
+      c01s02:stopRendering ( 'apartmentDoorOpened' )
+      c01s02:startRendering ( 'apartmentDoor' )
+    end
+  },
+  
+  -- -----------------------------------------------------------------
+  -- End Nancy Puzzle
+  -- -----------------------------------------------------------------
   
 }
 
