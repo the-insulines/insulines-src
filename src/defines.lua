@@ -12,7 +12,7 @@
 -- DEBUG = true
 
 -- Enable sound
-SOUND = true
+-- SOUND = true
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}
@@ -30,6 +30,14 @@ SCREEN_RESOLUTION_Y = 640
 
 MAIN_CHARACTER_PIVOT = -280
 MAIN_CHARACTER_TEXT_LOCATION_OFFSET = { x = 0, y = MAIN_CHARACTER_PIVOT * 2 }
+
+-- Directions
+
+DIRECTION_RIGHT = 'right'
+DIRECTION_LEFT = 'left'
+DIRECTION_BACK = 'back'
+DIRECTION_FRONT = 'front'
+
 
 -- Camera
 CAMERA_SCALE = 1.0
@@ -291,6 +299,30 @@ resources = {
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
       },
+      stand_back = {
+        fileName = 'josh_stand_back',
+        frameCount = 1,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      stand_front = {
+        fileName = 'josh_stand_front',
+        frameCount = 1,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      stand_left = {
+        fileName = 'josh_stand_side_flip',
+        frameCount = 1,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      stand_right = {
+        fileName = 'josh_stand_side',
+        frameCount = 1,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
       
     },
     width = 828 / 3, height = 1930 / 3,
@@ -328,6 +360,19 @@ resources = {
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
       },
+      stand_right = {
+        fileName = 'nancy_stand',
+        frameCount = 124,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      stand_left = {
+        fileName = 'nancy_stand_left',
+        frameCount = 124,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+      
     },
     width = 828 / 4, height = 1930 / 4,
   },

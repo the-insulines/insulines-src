@@ -195,7 +195,12 @@ function new (name)
       object.layer:insertProp ( object.prop )
       object.rendering = true
     end
-
+    
+    -- set the rendering priority of the prop
+    if object.renderPriority then
+      object.prop:setPriority ( object.renderPriority )
+    end
+    
     -- Add dimensions
     object.half_width = resources[object.name].width / 2
     object.half_height = resources[object.name].height / 2

@@ -7,6 +7,7 @@
 
 module ( "character", package.seeall )
 
+
 function new ( name )
   local resource = resources[name]
   
@@ -14,6 +15,7 @@ function new ( name )
   c.name = name
   c.animation = AnimatedProp.new ( resource.type )
   c.animation.currentAction = nil
+  c.direction = DIRECTION_FRONT
   
   -- initialize the character animations
   c.gfx = resource_cache.get ( name )
@@ -33,7 +35,7 @@ function new ( name )
   c.avoid_clicks = true
   
   
-  -- methodsc
+  -- methods
   
   function c:setLoc ( x, y )
     self.prop:setLoc ( x, y )
@@ -84,6 +86,12 @@ function new ( name )
       end
     end
     
+    -- play the idle animation corresponding to the current character orientation (if it exists)
+    self.currentAction = self.animation:getAnimation ( 'stand_' .. self.direction )
+    if self.currentAction then
+      self.currentAction:start ()
+    end
+    
     if callback then
       callback.method ( callback.parent )
     end
@@ -113,17 +121,23 @@ function new ( name )
     if self.currentWalkAnimation then
       self.currentWalkAnimation:pause ()
     end
-
+    
+    -- start the animation depending on the character movement orientation
     if math.abs ( delta_x ) > math.abs ( delta_y ) then
       if delta_x > 0 then
-        self.currentWalkAnimation = self.animation:startAnimation ( 'walk_right' )
+        self.direction = DIRECTION_RIGHT
       else
-        self.currentWalkAnimation = self.animation:startAnimation ( 'walk_left' )
+        self.direction = DIRECTION_LEFT
       end
     elseif delta_y > 0 then
-      self.currentWalkAnimation = self.animation:startAnimation ( 'walk_back' )
+      self.direction = DIRECTION_BACK
     else
-      self.currentWalkAnimation = self.animation:startAnimation ( 'walk_front' )
+      self.direction = DIRECTION_FRONT
+    end
+    
+    self.currentWalkAnimation = self.animation:getAnimation ( 'walk_' .. self.direction )
+    if self.currentWalkAnimation then
+      self.currentWalkAnimation:start ()
     end
     
     -- shift the value zoomFactor units

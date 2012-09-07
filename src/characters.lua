@@ -9,4 +9,4 @@
 mainCharacter = character.new ( 'main_character' )
 mainCharacter.renderPriority = 200
 nancy = character.new ( 'nancy' )
-mainCharacter.renderPriority = 100
+nancy.renderPriority = 100
