@@ -12,7 +12,7 @@
 -- DEBUG = true
 
 -- Enable sound
--- SOUND = true
+SOUND = true
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}

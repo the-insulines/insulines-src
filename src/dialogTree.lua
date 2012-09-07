@@ -11,6 +11,7 @@ dialogTree.c01s01_laundry = {
     en_US = "I gave the Laundry Lady the Year Off",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s01_never_sleeps = {
@@ -18,6 +19,7 @@ dialogTree.c01s01_never_sleeps = {
     en_US = "This City Never Sleeps. It just lingers in a perpetual drowsiness",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s01_put_clothes = {
@@ -25,6 +27,7 @@ dialogTree.c01s01_put_clothes = {
     en_US = "I should probably put some clothes on before that.",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_tv = {
@@ -32,6 +35,7 @@ dialogTree.c01s02_tv = {
     en_US = "57 Channels and Nothing On",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 
@@ -41,7 +45,8 @@ dialogTree.c01s02_answering_machine_message = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_answering_machine_message_2'
+  dialogName = 'c01s02_answering_machine_message_2',
+  character =  "answering"
 }
 
 dialogTree.c01s02_answering_machine_message_2 = {
@@ -50,7 +55,8 @@ dialogTree.c01s02_answering_machine_message_2 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_answering_machine_message_3'
+  dialogName = 'c01s02_answering_machine_message_3',
+  character =  "answering"
 }
 
 dialogTree.c01s02_answering_machine_message_3 = {
@@ -59,7 +65,8 @@ dialogTree.c01s02_answering_machine_message_3 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_answering_machine_message_4'
+  dialogName = 'c01s02_answering_machine_message_4',
+  character =  "answering"
 }
 
 dialogTree.c01s02_answering_machine_message_4 = {
@@ -67,6 +74,7 @@ dialogTree.c01s02_answering_machine_message_4 = {
     en_US = "Wow, she sounds pretty steamed. Then again, Bobby rarely bother to check his glucose levels before shooting up, so why would I expect him to keep a doctor’s appointment?",
     es_AR = ""
   },
+  character =  "main_character"  
 }
 
 dialogTree.c01s02_coffee_pot_with_water = {
@@ -74,6 +82,7 @@ dialogTree.c01s02_coffee_pot_with_water = {
     en_US = "I already filled the coffee pot.",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_fill_coffee_pot_first = {
@@ -81,6 +90,7 @@ dialogTree.c01s02_fill_coffee_pot_first = {
     en_US = "I should fill the coffee pot first.",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_mug_full = {
@@ -88,6 +98,7 @@ dialogTree.c01s02_mug_full = {
     en_US = "That’s the nastiest Cup of Joe I’ve ever tasted. And I’ve been to Europe.",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_stole_mug = {
@@ -95,6 +106,7 @@ dialogTree.c01s02_stole_mug = {
     en_US = "I sort of stole that mug from a random game development studio.",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_coffee_pot_full = {
@@ -102,6 +114,7 @@ dialogTree.c01s02_coffee_pot_full = {
     en_US = "A Pot of Bile-Tasting Sludge",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_flyer = {
@@ -111,8 +124,8 @@ dialogTree.c01s02_flyer = {
   },
   
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_flyer_2'
-  
+  dialogName = 'c01s02_flyer_2',  
+  character =  "main_character"
 }
 
 dialogTree.c01s02_flyer_2 = {
@@ -122,8 +135,8 @@ dialogTree.c01s02_flyer_2 = {
   },
   
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_flyer_3'
-  
+  dialogName = 'c01s02_flyer_3',
+  character =  "main_character"
 }
 
 dialogTree.c01s02_flyer_3 = {
@@ -131,6 +144,7 @@ dialogTree.c01s02_flyer_3 = {
     en_US = "Hey! It even has a small map of town with the Fair marked down!",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 
@@ -140,8 +154,8 @@ dialogTree.c01s02_nancy_intro = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_intro_answer'
-  
+  dialogName = 'c01s02_nancy_intro_answer',
+  character =  "nancy"
 }
 
 dialogTree.c01s02_nancy_intro_answer = {
@@ -155,7 +169,8 @@ dialogTree.c01s02_nancy_intro_answer = {
     { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
     { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
     { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  }
+  },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_1 = {
@@ -164,8 +179,8 @@ dialogTree.c01s02_nancy_1 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_1_1'
-  
+  dialogName = 'c01s02_nancy_1_1',
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_1_1 = {
@@ -174,7 +189,8 @@ dialogTree.c01s02_nancy_1_1 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_1_2'
+  dialogName = 'c01s02_nancy_1_2',
+  character =  "nancy"
 }
 dialogTree.c01s02_nancy_1_2 = {
   text = {
@@ -187,7 +203,8 @@ dialogTree.c01s02_nancy_1_2 = {
     { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
     { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
     { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  }
+  },
+  character =  "main_character"
 }
 
 
@@ -198,7 +215,8 @@ dialogTree.c01s02_nancy_2a = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2a_1'  
+  dialogName = 'c01s02_nancy_2a_1',
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_2a_1 = {
@@ -207,7 +225,8 @@ dialogTree.c01s02_nancy_2a_1 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2a_2'
+  dialogName = 'c01s02_nancy_2a_2',
+  character =  "nancy"
 }
 
 dialogTree.c01s02_nancy_2a_2 = {
@@ -216,7 +235,8 @@ dialogTree.c01s02_nancy_2a_2 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2a_3'
+  dialogName = 'c01s02_nancy_2a_3',
+  character =  "nancy"
 }
 
 dialogTree.c01s02_nancy_2a_3 = {
@@ -225,7 +245,8 @@ dialogTree.c01s02_nancy_2a_3 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2a_4'
+  dialogName = 'c01s02_nancy_2a_4',
+  character =  "nancy"
 }
 
 dialogTree.c01s02_nancy_2a_4 = {
@@ -234,7 +255,8 @@ dialogTree.c01s02_nancy_2a_4 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2a_5'
+  dialogName = 'c01s02_nancy_2a_5',
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_2a_5 = {
@@ -248,7 +270,8 @@ dialogTree.c01s02_nancy_2a_5 = {
     { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
     { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
     { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  }
+  },
+  character =  "nancy"
 }
 
 dialogTree.c01s02_nancy_2b = {
@@ -257,7 +280,8 @@ dialogTree.c01s02_nancy_2b = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2b_1'
+  dialogName = 'c01s02_nancy_2b_1',
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_2b_1 = {
@@ -266,7 +290,8 @@ dialogTree.c01s02_nancy_2b_1 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_2b_2'  
+  dialogName = 'c01s02_nancy_2b_2',
+  character =  "nancy" 
 }
 
 dialogTree.c01s02_nancy_2b_2 = {
@@ -277,7 +302,8 @@ dialogTree.c01s02_nancy_2b_2 = {
   options = {
     { label = {en_US = "One more thing...", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_one_more" },
     { label = {en_US = "Well, I’d love to stay and chat, but ...", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_leave" },
-  }
+  },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_one_more = {
@@ -291,8 +317,8 @@ dialogTree.c01s02_nancy_one_more = {
     { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
     { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
     { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  }
-  
+  },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_leave = {
@@ -300,6 +326,7 @@ dialogTree.c01s02_nancy_leave = {
     en_US = "Well, I’d love to stay and chat, but I’d rather chance I get run over by a bus.",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_3 = {
@@ -308,7 +335,8 @@ dialogTree.c01s02_nancy_3 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_3_1'  
+  dialogName = 'c01s02_nancy_3_1',
+  character =  "main_character"
 }
 
 dialogTree.c01s02_nancy_3_1 = {
@@ -317,7 +345,8 @@ dialogTree.c01s02_nancy_3_1 = {
     es_AR = ""
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
-  dialogName = 'c01s02_nancy_3_2'
+  dialogName = 'c01s02_nancy_3_2',
+  character =  "nancy"
 }
 
 dialogTree.c01s02_nancy_3_2 = {
@@ -331,7 +360,8 @@ dialogTree.c01s02_nancy_3_2 = {
     { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
     { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
     { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  }
+  },
+  character =  "main_character",
 }
 
 dialogTree.c01s02_leave_bathroom = {
@@ -339,6 +369,7 @@ dialogTree.c01s02_leave_bathroom = {
     en_US = "Believe me, you didn’t want to see the inside of that",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_bathroom_1 = {
@@ -346,6 +377,7 @@ dialogTree.c01s02_bathroom_1 = {
     en_US = "Once is plenty, thanks",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_bathroom_2 = {
@@ -353,6 +385,7 @@ dialogTree.c01s02_bathroom_2 = {
     en_US = "I’ll have to give a stern talk to Bobby about Toilet Etiquette. Again",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 dialogTree.locked = {
@@ -360,6 +393,7 @@ dialogTree.locked = {
     en_US = "It's locked",
     es_AR = ""
   },
+  character =  "main_character"
 }
 
 
