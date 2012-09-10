@@ -13,10 +13,10 @@ c01s02.bottomCharacterZoomThreshold = -611
 c01s02.backCharacterZoom = 0.70
 c01s02.topCharacterZoomThreshold = 323
 
--- c01s02.initialCameraPathNode = 'joshDoor'
--- c01s02.initialCharacterPathNode = 'joshDoor'
-c01s02.initialCameraPathNode = 'beforeBobbyDoor'
-c01s02.initialCharacterPathNode = 'beforeBobbyDoor'
+c01s02.initialCameraPathNode = 'joshDoor'
+c01s02.initialCharacterPathNode = 'joshDoor'
+-- c01s02.initialCameraPathNode = 'beforeBobbyDoor'
+-- c01s02.initialCharacterPathNode = 'beforeBobbyDoor'
 
 c01s02.initialNancyPathNode = 'door'
 
@@ -584,9 +584,9 @@ objects = {
       dialog:load('c01s02_nancy_intro')
     end,
     onClick = function ()
-      if not c01s02.objects.apartmentDoor.pickedFlyer then
+      if c01s02.objects.apartmentDoor.pickedFlyer then
         
-        -- if c01s02.objects.bathroom_closed.visitedBathroom and c01s02.objects.coffeeMaker.hadCoffee then
+        if c01s02.objects.bathroom_closed.visitedBathroom and c01s02.objects.coffeeMaker.hadCoffee then
         
           if not c01s02.objects.apartmentDoor.talkedToNancy then
             c01s02.objects.apartmentDoor.beginNancy ()
@@ -596,9 +596,9 @@ objects = {
             c01s02:unload ()
           end
           
-        -- else
-        --   c01s02.objects.apartmentDoor:dialogRequirements ()
-        -- end
+        else
+          c01s02.objects.apartmentDoor:dialogRequirements ()
+        end
       else
         -- pickup flyer
         c01s02.objects.apartmentDoor.pickedFlyer = true

@@ -127,7 +127,7 @@ function dialog:hide ( time )
   self.opened = false
 end
 
-function dialog:show ( dialogText, options )
+function dialog:show ( dialogText, character, options )
   game.currentScene.inputEnabled = false
   self.layer:moveColor ( 1, 1, 1, 1, 0.5, MOAIEaseType.LINEAR)
 
@@ -136,7 +136,7 @@ function dialog:show ( dialogText, options )
   self.window_background.prop:setScl( 0.001, 0.001 )
   self.window_background.prop:setColor(1,1,1,0.8)
   
-  self.dialogTextBox:setColor(1,1,1,0.8)
+  self.dialogTextBox:setColor ( DIALOG_COLOR_FOR_CHARACTER[character].r, DIALOG_COLOR_FOR_CHARACTER[character].g, DIALOG_COLOR_FOR_CHARACTER[character].b,0.8)
   
   self.background.prop:setScl( 2, 2 )
   self.background.prop:seekScl( 1.12, 1.12, 1)
@@ -212,7 +212,7 @@ function dialog:load ( dialogName )
   if dialogNode then
     self.currentNode = dialogNode
     self.hasOptions = #options > 0
-    self:show (dialogNode.text[LOCALE], options )
+    self:show (dialogNode.text[LOCALE], dialogNode.character, options )
   else
     if dialogName then
       print ( "DIALOG TODO: " .. dialogName )

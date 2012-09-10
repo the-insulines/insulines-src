@@ -63,6 +63,12 @@ DEFAULT_OPTION_COLOR = { 1, 1, 1, 1 }
 MAIN_CHARACTER_DIALOG_COLOR = { 0.36, 0.53, 0.77, 1 }
 MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
 
+DIALOG_COLOR_FOR_CHARACTER = {
+  main_character = { r = 0.36, g = 0.53, b = 0.77 },
+  nancy = { r = 0.96, g = 0.52, b = 0.52 },
+  answering = { r = 0.52, g = 0.96, b = 0.52 }
+}
+
 -- Inventory constants
 INVENTORY_WIDTH = 566
 INVENTORY_HEIGHT = WORLD_RESOLUTION_Y
