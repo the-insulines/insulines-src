@@ -390,12 +390,12 @@ function new (name)
   ----------------------------------------------------------------
   
   function room:loadAnimations ( animatedProp, animations )
-    for k,v in pairs ( animations ) do
+    for k, v in pairs ( animations ) do
       -- add animation based on wether it is based on a spritesheet or framed
       if animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_SPRITESHEET then
-        animatedProp:addSpritesheetAnimation ( unpack ( v ) )
-      elseif animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_FRAMES then
-        animatedProp:addFramedAnimation ( k, v.startFrame, v.frameCount, v.frameTime, v.mode, v.parentAnimationName )
+        animatedProp:addAnimation ( unpack ( v ) )
+      elseif animatedProp.animationType == AnimatedProp.ANIMATION_TYPE_MULTITEXTURE then
+        animatedProp:addAnimation ( k, v.startFrame, v.frameCount, v.frameTime, v.mode, v.parentAnimationName )
       end
     end
   end

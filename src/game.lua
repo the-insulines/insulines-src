@@ -71,7 +71,7 @@ function initialize ( self )
     MOAIUntzSystem.initialize ()
   end
   
-  self:loadScene ( c01s02 )
+  self:loadScene ( c01s01 )
 end
 
 

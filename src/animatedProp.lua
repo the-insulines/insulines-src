@@ -10,13 +10,17 @@
 AnimatedProp = {}
 AnimatedProp.__index = AnimatedProp
 
-
--- constants
+---------------
+-- constants --
+---------------
 
 AnimatedProp.ANIMATION_TYPE_SPRITESHEET = RESOURCE_TYPE_TILED_IMAGE
-AnimatedProp.ANIMATION_TYPE_FRAMES = RESOURCE_TYPE_ANIMATION_FRAMES
+AnimatedProp.ANIMATION_TYPE_MULTITEXTURE = RESOURCE_TYPE_ANIMATION_FRAMES
 
--- methods
+
+-------------
+-- methods --
+-------------
 
 function AnimatedProp.new ( animationType )
   local newObj = {}
@@ -59,53 +63,78 @@ function AnimatedProp:setDeck ( animationFrames )
 end
 
 
--- creates a new animation based on a spritesheet
-function AnimatedProp:addSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode )
-  if type ( frameTime ) == 'number' then
-    self:addConstantSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode )
-  end
-end
-
-
--- creates a new animation based on existing individual frames
-function AnimatedProp:addFramedAnimation ( name, startFrame, frameCount, frameTime, animationMode, parentAnimationName )
-  local frames = self.animationFrames[name]
-  if parentAnimationName then 
-    frames = self.animationFrames[parentAnimationName] 
-  end
-
-  if type ( frameTime ) == 'number' then
-    self:addConstantFramedAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode )
-  end
-end
-
-
-function AnimatedProp:addConstantFramedAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode )
+function AnimatedProp:addAnimation ( name, startFrame, frameCount, frameTime, animationMode, parentAnimationName )
+  -- create the driving curve
+  local curve = AnimatedProp.createCurve ( startFrame, frameCount, frameTime )
+  
   if not animationMode then animationMode = MOAITimer.LOOP end
   
-  -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
+  local animation
+  
+  if self.animationType == AnimatedProp.ANIMATION_TYPE_SPRITESHEET then
+    -- spritesheet animation
+    animation = AnimatedProp.createSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode, curve, self.remapper )
+    
+  elseif self.animationType == AnimatedProp.ANIMATION_TYPE_MULTITEXTURE then
+    -- multitexture animation
+    -- load the corresponding frames
+    local frames = self.animationFrames[name]
+    if parentAnimationName then
+      frames = self.animationFrames[parentAnimationName]
+    end
+    
+    animation = AnimatedProp.createMultitextureAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode, curve )
+    animation.animatedProp = self
+  end
+  
+  -- store it under the name of the animation
+  self.animations[name] = animation
+end
+
+
+-- create an animation curve. For equally timed frames, frameTime should be a number, otherwise if it is a table it should contain the timing for each frame
+function AnimatedProp.createCurve ( startFrame, frameCount, frameTime )
   local curve = MOAIAnimCurve.new ()
   curve:reserveKeys ( frameCount )
   
   for frame = 1, frameCount do
-    curve:setKey ( frame, frameTime * (frame - 1), startFrame + (frame - 1), MOAIEaseType.LINEAR )
+    -- decide the time of the current frame
+    local currentFrameTime = 0
+    if type ( frameTime ) == 'number' then currentFrameTime = frameTime
+    elseif type ( frameTime ) == 'table' then currentFrameTime = frameTime[frame] end
+    
+    curve:setKey ( frame, currentFrameTime * (frame - 1), startFrame + (frame - 1), MOAIEaseType.LINEAR )
   end
   
+  return curve
+end
+
+
+function AnimatedProp.createSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode, curve, remapper )
+  -- create the animation that links the animation curve with the remapper
+  local anim = MOAIAnim:new ()
+  anim:reserveLinks ( 1 )
+  
+  anim:setLink ( 1, curve, remapper, 1 )
+  anim:setMode ( animationMode )
+  
+  return anim
+end
+
+
+function AnimatedProp.createMultitextureAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode, curve )
   -- create the timer that triggers the events in the times set by the curve
   local anim = MOAITimer.new ()
   anim:setMode ( animationMode )
   anim:setSpan ( frameCount * frameTime )
   anim:setCurve ( curve )
-  anim:setListener ( MOAITimer.EVENT_TIMER_KEYFRAME, self.updateFrame )
+  anim:setListener ( MOAITimer.EVENT_TIMER_KEYFRAME, AnimatedProp.updateFrame )
   
   -- add some aditional information necessary for the animation to the timer object
-  anim.animatedProp = self
   anim.frames = frames
   anim.name = name
   
-  -- store it under the name of the animation
-  self.animations[name] = anim
-  
+  return anim
 end
 
 
@@ -118,29 +147,9 @@ function AnimatedProp.updateFrame ( anim, keyframe, timesExecuted, time, value )
 end
 
 
-function AnimatedProp:addConstantSpritesheetAnimation ( name, startFrame, frameCount, frameTime, animationMode )
-  if not animationMode then animationMode = MOAITimer.LOOP end
-  
-  local lastFrame = startFrame + frameCount - 1
-  
-  -- create the animation curve and set equally timed frames starting on startFrame and lasting frameCount frames
-  local curve = MOAIAnimCurve.new ()
-  curve:reserveKeys ( 2 )
-  curve:setKey ( 1, 0, startFrame, MOAIEaseType.LINEAR )
-  curve:setKey ( 2, frameTime * (frameCount - 1), lastFrame, MOAIEaseType.LINEAR )
-  
-  -- create the animation that links the animation curve with the remapper
-  local anim = MOAIAnim:new ()
-  anim:reserveLinks ( 1 )
-  
-  anim:setLink (1, curve, self.remapper, 1)
-  anim:setMode (animationMode)
-  
-  -- store it under the name of the animation
-  self.animations[name] = anim
-  
-end
-
+------------------------------------------
+-- retrieval and playback of animations --
+------------------------------------------
 
 function AnimatedProp:getAnimation ( name )
   return self.animations[name]
@@ -174,7 +183,9 @@ function AnimatedProp:pauseAnimation ( name )
 end
 
 
----- methods forwarded to MOAIProp2D
+-------------------------------------
+-- methods forwarded to MOAIProp2D --
+-------------------------------------
 
 function AnimatedProp:setLoc ( ... )
   self.prop:setLoc ( unpack (arg) )

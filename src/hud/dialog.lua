@@ -229,9 +229,9 @@ function dialog:onInput ( )
     
     if self.displayingOptions and not self.showOptionsTapped then
       local x, y = input_manager.getTouch ()
-      x, y = self.layer:wndToWorld ( x, y )  
+      x, y = self.layer:wndToWorld ( x, y )
       local button = self:objectAt ( x, y )
-    
+      
       if button then
         if button.definition.action == DIALOG_ACTION_CLOSE then
           self:hide ()
