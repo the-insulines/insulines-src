@@ -64,9 +64,31 @@ end
 
 
 function AnimatedProp:addAnimation ( name, startFrame, frameCount, frameTime, animationMode, parentAnimationName )
-  -- create the driving curve
-  local curve = AnimatedProp.createCurve ( startFrame, frameCount, frameTime )
   
+  -- load the animation time
+  local baseTime = 0
+  local frameTimeMultiplier = {}
+  
+  if type ( frameTime ) == 'number' then
+    -- all frames should last the same time
+    baseTime = frameTime
+    frameTimeMultiplier = {}
+    
+  elseif type ( frameTime ) == 'table' then
+    -- if the times of the animation shouldn't be all equal
+    -- set the base time
+    baseTime = frameTime.baseTime
+    
+    -- ollect the multiplier of each frame on a table
+    for k, frameMultiplier in pairs ( frameTime.multipliers ) do
+      frameTimeMultiplier[frameMultiplier.frame] = frameMultiplier.times
+    end
+  end
+  
+  -- create the driving curve
+  local curve, animationTotalTime = AnimatedProp.createCurve ( startFrame, frameCount, baseTime, frameTimeMultiplier )
+  
+  -- set the default animationMode to LOOP
   if not animationMode then animationMode = MOAITimer.LOOP end
   
   local animation
@@ -83,7 +105,7 @@ function AnimatedProp:addAnimation ( name, startFrame, frameCount, frameTime, an
       frames = self.animationFrames[parentAnimationName]
     end
     
-    animation = AnimatedProp.createMultitextureAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode, curve )
+    animation = AnimatedProp.createMultitextureAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode, curve, animationTotalTime )
     animation.animatedProp = self
   end
   
@@ -93,29 +115,25 @@ end
 
 
 -- create an animation curve. For equally timed frames, frameTime should be a number, otherwise if it is a table it should contain the timing for each frame
-function AnimatedProp.createCurve ( startFrame, frameCount, frameTime )
+function AnimatedProp.createCurve ( startFrame, frameCount, baseTime, frameTimeMultiplier )
   local curve = MOAIAnimCurve.new ()
   curve:reserveKeys ( frameCount )
   
-  local curveTotalTime = 0
+  local currentTime = 0
   
   for frame = 1, frameCount do
-    -- decide the time of the current frame
-    local currentFrameTime = 0
-    if type ( frameTime ) == 'number' then
-      currentFrameTime = frameTime
-    elseif type ( frameTime ) == 'table' then
-      currentFrameTime = frameTime[frame]
-    end
-    
     -- set the key linked to this frame on the curve
-    curve:setKey ( frame, currentFrameTime * (frame - 1), startFrame + (frame - 1), MOAIEaseType.LINEAR )
+    curve:setKey ( frame, currentTime, startFrame + (frame - 1), MOAIEaseType.LINEAR )
     
-    -- update the total time
-    curveTotalTime = curveTotalTime + currentFrameTime
+    -- update the accumulated time to be used as the beginning of the next frame
+    if frameTimeMultiplier[frame] then
+      currentTime = currentTime + baseTime * frameTimeMultiplier[frame]
+    else
+      currentTime = currentTime + baseTime
+    end
   end
   
-  return curve
+  return curve, currentTime
 end
 
 
@@ -131,11 +149,11 @@ function AnimatedProp.createSpritesheetAnimation ( name, startFrame, frameCount,
 end
 
 
-function AnimatedProp.createMultitextureAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode, curve )
+function AnimatedProp.createMultitextureAnimation ( name, frames, startFrame, frameCount, frameTime, animationMode, curve, animationTotalTime )
   -- create the timer that triggers the events in the times set by the curve
   local anim = MOAITimer.new ()
   anim:setMode ( animationMode )
-  anim:setSpan ( frameCount * frameTime )
+  anim:setSpan ( animationTotalTime )
   anim:setCurve ( curve )
   anim:setListener ( MOAITimer.EVENT_TIMER_KEYFRAME, AnimatedProp.updateFrame )
   
