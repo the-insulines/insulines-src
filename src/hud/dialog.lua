@@ -13,8 +13,6 @@ layer = MOAILayer2D.new ()
 
 dialogTextBox = MOAITextBox.new ()
 
-option1TextBox = MOAITextBox.new ()
-
 opened = false
 
 currentAction = nil
@@ -66,10 +64,14 @@ function initializeHUD ( self )
   self.options.half_height = 130 / 2
   self.options.buttons = {}
   local padding = 200
-  self.options.buttons.option1 = self:createOption( padding * 0 )
-  self.options.buttons.option2 = self:createOption( padding * 1 )
-  self.options.buttons.option3 = self:createOption( padding * 2 )
-  self.options.buttons.option4 = self:createOption( padding * 3 )
+  self.options.buttons = { 
+    self:createOption( padding * 0 ), 
+    self:createOption( padding * 1 ),
+    self:createOption( padding * 2 ),
+    self:createOption( padding * 3 ),
+  }
+  
+   
   
   -- Add props in order
   self.layer:insertProp ( self.background.prop )
@@ -121,11 +123,11 @@ function dialog:hide ( time )
   self:hideOptions ()
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 0.001, 0.001, 0.7 ) )
   self.layer:seekColor ( 0, 0, 0, 0, time, MOAIEaseType.LINEAR )
-  
+
   self.opened = false
 end
 
-function dialog:show ( dialogText, option1, option2, option3, option4 )
+function dialog:show ( dialogText, options )
   game.currentScene.inputEnabled = false
   self.layer:moveColor ( 1, 1, 1, 1, 0.5, MOAIEaseType.LINEAR)
 
@@ -144,46 +146,60 @@ function dialog:show ( dialogText, option1, option2, option3, option4 )
 
   self.dialogTextBox:setString(dialogText)
   
+  self:clearOptions ()
   
-  self:setOption ( option1, self.options.buttons.option1 )
-  self:setOption ( option2, self.options.buttons.option2 )
-  self:setOption ( option3, self.options.buttons.option3 )
-  self:setOption ( option4, self.options.buttons.option4 )
+  -- oneTime is used for dialogs that are displayed once
+  -- It should change dialog options
+  if self.currentNode and self.currentNode.oneTime then
+    self.currentNode.options[self.currentNode.change.hide].hidden = true
+    self.currentNode.options[self.currentNode.change.show].hidden = false
+  end
+  
+  for i, option in pairs ( options ) do
+    if not option.hidden then
+      self:setOption ( option )
+    end
+  end
 
   self:hideOptions ()
   self.opened = true
   game.currentScene.inputEnabled = true
   
+  
 end
 
-function dialog:setOption ( optionDefinition, option )
-  if optionDefinition then
-    option:setString ( optionDefinition.label[LOCALE] )
-    option.definition = optionDefinition
-    option:show ()
-  else
+function dialog:clearOptions ()
+  for i, option in pairs( self.options.buttons ) do
     option.definition = nil
     option.textBox:setString ('')
     option:hide ()
   end
-  
+end
+
+function dialog:setOption ( optionDefinition )
+  for i, button in pairs( self.options.buttons ) do
+    if not button.definition then
+      button:setString ( optionDefinition.label[LOCALE] )
+      button.definition = optionDefinition
+      button:show ()
+      return
+    end
+  end
 end
 
 function dialog:hideOptions ()
-  self.options.buttons.option1:hide ()
-  self.options.buttons.option2:hide ()
-  self.options.buttons.option3:hide ()
-  self.options.buttons.option4:hide ()
+  for i, option in pairs ( self.options.buttons ) do
+    option:hide ()
+  end
   self.displayingOptions = false
 end
 
 function dialog:showOptions ()
   self.dialogTextBox:setString('')
   
-  if self.options.buttons.option1.definition then self.options.buttons.option1:show () end
-  if self.options.buttons.option2.definition then self.options.buttons.option2:show () end
-  if self.options.buttons.option3.definition then self.options.buttons.option3:show () end
-  if self.options.buttons.option4.definition then self.options.buttons.option4:show () end
+  for i, option in pairs ( self.options.buttons ) do
+    if option then option:show () end
+  end
   
   self.displayingOptions = true
 end
@@ -196,7 +212,7 @@ function dialog:load ( dialogName )
   if dialogNode then
     self.currentNode = dialogNode
     self.hasOptions = #options > 0
-    self:show (dialogNode.text[LOCALE], unpack ( options ) )
+    self:show (dialogNode.text[LOCALE], options )
   else
     if dialogName then
       print ( "DIALOG TODO: " .. dialogName )
@@ -226,7 +242,7 @@ function dialog:onInput ( )
         self:load ( self.currentNode.dialogName )
       end
     end
-    
+
     if self.displayingOptions and not self.showOptionsTapped then
       local x, y = input_manager.getTouch ()
       x, y = self.layer:wndToWorld ( x, y )
