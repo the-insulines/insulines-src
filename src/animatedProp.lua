@@ -97,13 +97,22 @@ function AnimatedProp.createCurve ( startFrame, frameCount, frameTime )
   local curve = MOAIAnimCurve.new ()
   curve:reserveKeys ( frameCount )
   
+  local curveTotalTime = 0
+  
   for frame = 1, frameCount do
     -- decide the time of the current frame
     local currentFrameTime = 0
-    if type ( frameTime ) == 'number' then currentFrameTime = frameTime
-    elseif type ( frameTime ) == 'table' then currentFrameTime = frameTime[frame] end
+    if type ( frameTime ) == 'number' then
+      currentFrameTime = frameTime
+    elseif type ( frameTime ) == 'table' then
+      currentFrameTime = frameTime[frame]
+    end
     
+    -- set the key linked to this frame on the curve
     curve:setKey ( frame, currentFrameTime * (frame - 1), startFrame + (frame - 1), MOAIEaseType.LINEAR )
+    
+    -- update the total time
+    curveTotalTime = curveTotalTime + currentFrameTime
   end
   
   return curve

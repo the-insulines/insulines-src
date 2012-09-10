@@ -358,18 +358,26 @@ resources = {
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
       },
-      stand_right = {
-        fileName = 'nancy_stand',
-        frameCount = 124,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
-        startFrame = 1,
-      },
-      stand_left = {
-        fileName = 'nancy_stand_left',
-        frameCount = 124,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
-        startFrame = 1,
-      },
+      -- stand_right = {
+      --   fileName = 'nancy_stand',
+      --   frameCount = 124,
+      --   frameTime = MOVEMENT_SECONDS_PER_FRAME,
+      --   startFrame = 1,
+      -- },
+      -- stand_left = {
+      --   fileName = 'nancy_stand_left',
+      --   frameCount = 30,
+      --   frameTime = {
+      --     21,
+      --     1, 1, 1, 1, 1, 1, 1, 1, -- 8
+      --     8, 4, 8,
+      --     1, 1, 1, 1, 1, -- 5
+      --     28,
+      --     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -- 12
+      --     31,
+      --    },
+      --   startFrame = 1,
+      -- },
       
     },
     width = 828 / 4, height = 1930 / 4,
