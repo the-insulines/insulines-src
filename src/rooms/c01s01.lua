@@ -260,7 +260,7 @@ objects = {
         c01s01.objects.room_door_open.onClick ()
       else
         if c01s01.objects.cellphone.woke then 
-          dialog:load('c01s01_put_clothes')
+          dialog:load('c01s01_put_clothes_' .. math.random(4))
         end
       end
     end

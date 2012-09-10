@@ -22,9 +22,33 @@ dialogTree.c01s01_never_sleeps = {
   character =  "main_character"
 }
 
-dialogTree.c01s01_put_clothes = {
+dialogTree.c01s01_put_clothes_1 = {
   text = {
     en_US = "I should probably put some clothes on before that.",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_put_clothes_2 = {
+  text = {
+    en_US = "What would my mother say if she saw me like this?",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_put_clothes_3 = {
+  text = {
+    en_US = "I know I’ve looked worse off, but this attire is not very engaging",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_put_clothes_4 = {
+  text = {
+    en_US = "I think “Sleepy, Wife-Beating Bum” went out of style this season. I should probably get changed",
     es_AR = ""
   },
   character =  "main_character"
@@ -148,6 +172,15 @@ dialogTree.c01s02_flyer_3 = {
 }
 
 
+-- NANCY DIALOG
+
+nancyOptions = {
+  { id = 1, label = {en_US = "What are you doing here?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_1" },
+  { id = 2, label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
+  { id = 3, label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b", hidden = true },
+  { id = 4, label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
+}
+
 dialogTree.c01s02_nancy_intro = {
   text = {
     en_US = "Bobby! You stood me up last night, you Jerk! \nI swear to God, I’m going to grab a pound of sugar and go all Tony Montana on your ass, you - Oh, it’s just you.",
@@ -164,12 +197,7 @@ dialogTree.c01s02_nancy_intro_answer = {
     es_AR = ""
   },
   
-  options = {
-    { label = {en_US = "What are you doing here?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_1" },
-    { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
-    { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
-    { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  },
+  options = nancyOptions,
   character =  "main_character"
 }
 
@@ -198,16 +226,9 @@ dialogTree.c01s02_nancy_1_2 = {
     es_AR = ""
   },
   
-  options = {
-    { label = {en_US = "What are you doing here?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_1" },
-    { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
-    { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
-    { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  },
+  options = nancyOptions,
   character =  "main_character"
 }
-
-
 
 dialogTree.c01s02_nancy_2a = {
   text = {
@@ -216,7 +237,7 @@ dialogTree.c01s02_nancy_2a = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_nancy_2a_1',
-  character =  "main_character"
+  character =  "main_character",
 }
 
 dialogTree.c01s02_nancy_2a_1 = {
@@ -265,13 +286,10 @@ dialogTree.c01s02_nancy_2a_5 = {
     es_AR = ""
   },
   
-  options = {
-    { label = {en_US = "What are you doing here?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_1" },
-    { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
-    { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
-    { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  },
-  character =  "nancy"
+  options = nancyOptions,
+  character =  "nancy",
+  oneTime = true,
+  change = { hide = 2, show = 3 }
 }
 
 dialogTree.c01s02_nancy_2b = {
@@ -312,12 +330,7 @@ dialogTree.c01s02_nancy_one_more = {
     es_AR = ""
   },
   
-  options = {
-    { label = {en_US = "What are you doing here?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_1" },
-    { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
-    { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
-    { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  },
+  options = nancyOptions,
   character =  "main_character"
 }
 
@@ -355,14 +368,11 @@ dialogTree.c01s02_nancy_3_2 = {
     es_AR = ""
   },
   
-  options = {
-    { label = {en_US = "What are you doing here?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_1" },
-    { label = {en_US = "What’s this all about?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2a" },
-    { label = {en_US = "So you are just going to wait him out?", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_2b" },
-    { label = {en_US = "Looking good, as usual.", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_3" },
-  },
+  options = nancyOptions,
   character =  "main_character",
 }
+
+-- End NANCY
 
 dialogTree.c01s02_leave_bathroom = {
   text = {
@@ -383,6 +393,30 @@ dialogTree.c01s02_bathroom_1 = {
 dialogTree.c01s02_bathroom_2 = {
   text = {
     en_US = "I’ll have to give a stern talk to Bobby about Toilet Etiquette. Again",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s02_bathroom = {
+  text = {
+    en_US = "I need to go to the toilet first.",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s02_coffee = {
+  text = {
+    en_US = "You know I'm desperate for a coffee, right?",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s02_bathroom_and_coffee = {
+  text = {
+    en_US = "I need to go to the toilet and get a coffee first.",
     es_AR = ""
   },
   character =  "main_character"

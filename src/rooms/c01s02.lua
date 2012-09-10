@@ -13,10 +13,10 @@ c01s02.bottomCharacterZoomThreshold = -611
 c01s02.backCharacterZoom = 0.70
 c01s02.topCharacterZoomThreshold = 323
 
--- c01s02.initialCameraPathNode = 'joshDoor'
--- c01s02.initialCharacterPathNode = 'joshDoor'
-c01s02.initialCameraPathNode = 'lamp'
-c01s02.initialCharacterPathNode = 'lamp'
+c01s02.initialCameraPathNode = 'joshDoor'
+c01s02.initialCharacterPathNode = 'joshDoor'
+-- c01s02.initialCameraPathNode = 'beforeBobbyDoor'
+-- c01s02.initialCharacterPathNode = 'beforeBobbyDoor'
 
 c01s02.initialNancyPathNode = 'door'
 
@@ -80,9 +80,9 @@ objects = {
     x = 1086,
     y = -427,
     render_at_start = true,
-    onClick = function ()
-      dialog:load('c01s02_tv')
-    end
+    -- onClick = function ()
+    --   dialog:load('c01s02_tv')
+    -- end
   },
 
   television = {
@@ -92,6 +92,8 @@ objects = {
     y = -664,
     render_at_start = true,
     renderPriority = 10,
+    priority = 10,
+    highlight = true,
     onClick = function ()
       dialog:load('c01s02_tv')
     end
@@ -144,9 +146,7 @@ objects = {
         -- Move character to bathroom
         c01s02:moveCharacterToNode('main_character', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
       else
-        local n = math.random(2)
-        dump ( n )
-        dialog:load('c01s02_bathroom_' .. n)
+        dialog:load('c01s02_bathroom_' .. math.random(2))
       end
     end
   },
@@ -179,10 +179,16 @@ objects = {
     end,
     
     leaveBathroom = function ( self )
+      inventory:findAndRemoveItem('toothbrush_with_toothpaste')
+      
+      if inventory.opened then
+        inventory:closeInventory ()
+      end
+    
       c01s02:stopRendering("bathroom_opened")
       c01s02:startRendering("bathroom_closed")
-      
       dialog:load('c01s02_leave_bathroom')
+      c01s02.inputEnabled = true
     end
     
   },
@@ -192,22 +198,30 @@ objects = {
     render_at_start = false,
     interactsWith = { 'toothbrush' },
     onInteractionWith = function ( self, item )
-      inventory:removeItem(item)
+    
+      inventory:removeItem ( item )
       if self.invTarget then
-        inventory:removeItem(self.invTarget)
+        inventory:removeItem ( self.invTarget )
       else
-        inventory:removeItem(self)
+        inventory:removeItem ( self )
       end
-      inventory:addItem( 'toothbrush_with_toothpaste', c01s02.objects.toothbrush_with_toothpaste )
+    
+      inventory:addItem ( 'toothbrush_with_toothpaste', c01s02.objects.toothbrush_with_toothpaste )
+      
+      c01s02.inputEnabled = false
+      
+      performWithDelay ( 50, c01s02.sounds.toothbrush.play, 1, c01s02.sounds.toothbrush )
+
+      performWithDelay ( 800, c01s02.sounds.flush.play, 1, c01s02.sounds.flush )
       
       if inventory.opened then
         inventory:closeInventory ()
       end
-      
-      c01s02:stopRendering("bathroom_closed")
-      c01s02:startRendering("bathroom_opened")
-      c01s02:startRendering("main_character")
-      c01s02:moveCharacterToNode('main_character', 'bathroomDoor', c01s02.objects.bathroom_opened.leaveBathroom, c01s02)
+
+      performWithDelay ( 1150, c01s02.stopRendering, 1, c01s02, "bathroom_closed" )
+      performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "bathroom_opened" )
+      performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "main_character" )
+      performWithDelay ( 1150, c01s02.moveCharacterToNode, 1, c01s02, 'main_character', 'bathroomDoor', c01s02.objects.bathroom_opened.leaveBathroom, c01s02 )
     end
     
   },
@@ -248,12 +262,12 @@ objects = {
     y = 296,
     renderPriority = 100,
     render_at_start = true,
-    highlight = true,
-    onClick = function ()
-      c01s02:stopRendering('freezer_closed')
-      c01s02:startRendering('freezer_opened')
-      -- c01s02:startRendering('cube_tray')
-    end
+    -- highlight = true,
+    -- onClick = function ()
+    --   c01s02:stopRendering('freezer_closed')
+    --   c01s02:startRendering('freezer_opened')
+    --   -- c01s02:startRendering('cube_tray')
+    -- end
   },
 
   freezer_opened = {
@@ -291,11 +305,11 @@ objects = {
     x = 751,
     y = 129,
     render_at_start = true,
-    highlight = true,
-    onClick = function ()
-      c01s02:stopRendering('fridge_closed')
-      c01s02:startRendering('fridge_opened')
-    end
+    -- highlight = true,
+    -- onClick = function ()
+    --   c01s02:stopRendering('fridge_closed')
+    --   c01s02:startRendering('fridge_opened')
+    -- end
   },  
 
   fridge_opened = {
@@ -460,6 +474,7 @@ objects = {
       c01s02.objects.mug_full.animation:stopCurrentAnimation ()
       c01s02:stopRendering( 'mug_full' )
       c01s02:startRendering( 'mug_empty' )
+      c01s02.objects.coffeeMaker.hadCoffee = true
     end
   },
 
@@ -570,12 +585,19 @@ objects = {
     end,
     onClick = function ()
       if c01s02.objects.apartmentDoor.pickedFlyer then
-        if not c01s02.objects.apartmentDoor.talkedToNancy then
-          c01s02.objects.apartmentDoor.beginNancy ()
+        
+        if c01s02.objects.bathroom_closed.visitedBathroom and c01s02.objects.coffeeMaker.hadCoffee then
+        
+          if not c01s02.objects.apartmentDoor.talkedToNancy then
+            c01s02.objects.apartmentDoor.beginNancy ()
+          else
+            c01s02:stopRendering ( 'apartmentDoor' )
+            c01s02:startRendering ( 'apartmentDoorOpened' )
+            c01s02:unload ()
+          end
+          
         else
-          c01s02:stopRendering ( 'apartmentDoor' )
-          c01s02:startRendering ( 'apartmentDoorOpened' )
-          c01s02:unload ()
+          c01s02.objects.apartmentDoor:dialogRequirements ()
         end
       else
         -- pickup flyer
@@ -584,7 +606,19 @@ objects = {
         inventory:addItem('flyer', c01s02.objects.flyer)
         dialog:load('c01s02_flyer')
       end
+    end,
+    
+    dialogRequirements = function ( self )
+      if not c01s02.objects.bathroom_closed.visitedBathroom and not c01s02.objects.coffeeMaker.hadCoffee then
+        dialog:load('c01s02_bathroom_and_coffee')
+      elseif not c01s02.objects.bathroom_closed.visitedBathroom then
+        dialog:load('c01s02_bathroom')
+      else
+        dialog:load('c01s02_coffee')
+      end
+    
     end
+    
   },
   
   apartmentDoorOpened = {
@@ -620,18 +654,11 @@ c01s02:addObjects ( objects )
 
 sounds = {
   
-  sink_flowing = {
-    resource_name = 'c01s02_sink_flowing'
-  },
+  sink_flowing = { resource_name = 'c01s02_sink_flowing' },
   
-  cellphone = {
-    resource_name = 'c01s01_cellphone_ringtone'
-  },
-  
-  background = {
-    resource_name = 'c01s01_theme'
-  }
-  
+  toothbrush = { resource_name = 'c01s02_toothbrush' },
+
+  flush = { resource_name = 'c01s02_flush' },
 }
 
 c01s02:addSounds( sounds )
