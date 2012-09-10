@@ -22,9 +22,33 @@ dialogTree.c01s01_never_sleeps = {
   character =  "main_character"
 }
 
-dialogTree.c01s01_put_clothes = {
+dialogTree.c01s01_put_clothes_1 = {
   text = {
     en_US = "I should probably put some clothes on before that.",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_put_clothes_2 = {
+  text = {
+    en_US = "What would my mother say if she saw me like this?",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_put_clothes_3 = {
+  text = {
+    en_US = "I know I’ve looked worse off, but this attire is not very engaging",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_put_clothes_4 = {
+  text = {
+    en_US = "I think “Sleepy, Wife-Beating Bum” went out of style this season. I should probably get changed",
     es_AR = ""
   },
   character =  "main_character"

@@ -144,9 +144,7 @@ objects = {
         -- Move character to bathroom
         c01s02:moveCharacterToNode('main_character', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
       else
-        local n = math.random(2)
-        dump ( n )
-        dialog:load('c01s02_bathroom_' .. n)
+        dialog:load('c01s02_bathroom_' .. math.random(2))
       end
     end
   },
