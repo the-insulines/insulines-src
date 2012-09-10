@@ -52,8 +52,7 @@ CAMERA_MAX_DELTA_Y = 15 + 5
 CAMERA_MOVEMENT_DURATION = 1.6
 
 -- Animations
-JOSH_SLEEPING_SECONDS_PER_FRAME = 0.1
-JOSH_WAKES_SECONDS_PER_FRAME = 0.10
+DEFAULT_ANIMATION_SPEED = 0.1
 JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME = 0.08
 
 -- Dialog
@@ -122,8 +121,7 @@ MOVEMENT_SECONDS_PER_FRAME = 0.1
 -- Resources
 
 -- resource type constants
-IMAGES_PATH = '../../insulines-gfx/'
--- IMAGES_PATH = './'
+IMAGES_PATH = DEFAULT_ASSETS_PATH
 
 TILED_IMAGES_PATH = IMAGES_PATH
 ANIMATION_FRAMES_PATH = IMAGES_PATH
@@ -393,7 +391,7 @@ resources = {
         fileName = 'josh_sleeping',
         startFrame = 1,
         frameCount = 75,
-        frameTime = JOSH_SLEEPING_SECONDS_PER_FRAME,
+        frameTime = DEFAULT_ANIMATION_SPEED,
         width = 800, height = 500
       },
     },
@@ -449,7 +447,7 @@ resources = {
         fileName = 'josh_wakes_up',
         startFrame = 1,
         frameCount = 30,
-        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        frameTime = DEFAULT_ANIMATION_SPEED,
         mode = MOAITimer.NORMAL
       },
       
@@ -457,7 +455,7 @@ resources = {
         parentAnimationName = 'wakes_up',
         startFrame = 30,
         frameCount = 1,
-        frameTime = JOSH_WAKES_SECONDS_PER_FRAME,
+        frameTime = DEFAULT_ANIMATION_SPEED,
         mode = MOAITimer.NORMAL
       },
     

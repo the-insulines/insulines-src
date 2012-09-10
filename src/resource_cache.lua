@@ -36,27 +36,54 @@ function loadImage ( fileUrl, imageAttributes )
   return image
 end
 
+function loadUntzSound ( fileUrl, loop, volume, sound )
+  sound.file = MOAIUntzSound.new ()
+  sound.file:load ( fileUrl )
+  sound.file:setVolume ( volume )
+  sound.file:setLooping ( loop )
+
+  function sound:play ()
+    self.file:play ()
+  end
+
+  function sound:stop ()
+    self.file:stop ()
+  end
+  return sound
+end
+
+function loadFmodExSound ( fileUrl, loop, volume, sound )
+  sound.file = MOAIFmodExSound.new ()
+  sound.file:load ( fileUrl, false, true )
+  sound.channel = MOAIFmodExChannel.new ()
+  sound.volume = volume
+  sound.loop = loop
+  sound.channel:setVolume ( volume )
+  sound.channel:setLooping ( loop )
+
+  function sound:play ()
+    self.channel:setVolume( self.volume )
+    local loops = 0
+    if self.loop then loops = -1 end
+    self.channel:play (self.file, loops)
+  end
+
+  function sound:stop ()
+    self.channel:stop ()
+  end
+  return sound
+end
 
 function loadSound ( fileUrl, loop, volume )
   local sound = {}
+  function sound:play () end
+  function sound:stop () end
+  
   if SOUND then
-    sound.file = MOAIUntzSound.new ()
-    sound.file:load ( fileUrl )
-    sound.file:setVolume ( volume )
-    sound.file:setLooping ( loop )
-    
-    function sound:play ()
-      self.file:play ()
-    end
-
-    function sound:stop ()
-      self.file:stop ()
-    end
-    
-  else
-    function sound:play ()
-    end
-    function sound:stop ()
+    if SOUND_ENGINE == 'untz' then
+      sound = loadUntzSound(fileUrl, loop, volume, sound)
+    elseif SOUND_ENGINE == 'fmod' then
+      sound = loadFmodExSound(fileUrl, loop, volume, sound)
     end
   end
   return sound

@@ -67,8 +67,10 @@ function initialize ( self )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
   
   if SOUND then
-    -- Initialize sound
-    MOAIUntzSystem.initialize ()
+    if SOUND_ENGINE == 'untz' then
+      -- Initialize sound
+      MOAIUntzSystem.initialize ()
+    end
   end
   
   self:loadScene ( c01s01 )
