@@ -782,6 +782,21 @@ resources = {
     fileName = 'c01s02/c01s02_fair_flyer.png', 
     width = 104, height = 110
   },
+  
+  c01s02_toothbrush = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s02/toothbrush.mp3', 
+    loop = false,
+    volume = 0.6
+  },
+
+  c01s02_flush = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s02/flush.mp3', 
+    loop = false,
+    volume = 0.3
+  },
+  
 }
 
 

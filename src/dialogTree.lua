@@ -412,6 +412,30 @@ dialogTree.c01s02_bathroom_2 = {
   character =  "main_character"
 }
 
+dialogTree.c01s02_bathroom = {
+  text = {
+    en_US = "I need to go to the toilet first.",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s02_coffee = {
+  text = {
+    en_US = "You know I'm desperate for a coffee, right?",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s02_bathroom_and_coffee = {
+  text = {
+    en_US = "I need to go to the toilet and get a coffee first.",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
 dialogTree.locked = {
   text = {
     en_US = "It's locked",

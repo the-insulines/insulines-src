@@ -279,11 +279,9 @@ function inventory:removeItem (item)
 end
 
 function inventory:findAndRemoveItem (key)
-  for i, inventoryItem in pairs ( self.items ) do
-    if item.key == inventoryItem.key and item.object == inventoryItem.object then
-      self.layer:removeProp( item.backProp )
-      table.remove(self.items, i)
-      self:updateItemsPosition ()
+  for i, item in pairs ( self.items ) do
+    if item.key == key then
+      self:removeItem(item)
       return true
     end
   end

@@ -73,7 +73,7 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( c01s01 )
+  self:loadScene ( c01s02 )
 end
 
 
