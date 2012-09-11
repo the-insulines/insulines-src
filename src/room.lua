@@ -315,14 +315,14 @@ function new (name)
 
   function room:fadeOut ( time )
     if not time then time = 1 end
-    for k,layer in pairs ( self.layer_objects ) do
+    for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
       layer:seekColor ( 0, 0, 0, 1, time)
     end
   end
   
 
   function room:fadeIn ( )
-    for k,layer in pairs ( self.layer_objects ) do
+    for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
       layer:seekColor ( 1, 1, 1, 1, 1)
     end
   end
