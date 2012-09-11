@@ -87,11 +87,9 @@ function new ( name )
     end
     
     -- play the idle animation corresponding to the current character orientation (if it exists)
-    self.currentAction = self.animation:getAnimation ( 'stand_' .. self.direction )
-    if self.currentAction then
-      self.currentAction:start ()
-    end
+    self:standLookingInDirection (self.direction)
     
+    -- movement callback
     if callback then
       callback.method ( callback.parent )
     end
@@ -158,6 +156,16 @@ function new ( name )
     end
   end
 
+
+  function c:standLookingInDirection ( direction )
+    self.direction = direction
+    
+    -- play the idle animation corresponding to the current character orientation (if it exists)
+    self.currentAction = self.animation:getAnimation ( 'stand_' .. self.direction )
+    if self.currentAction then
+      self.currentAction:start ()
+    end
+  end
   
   return c
 end

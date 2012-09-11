@@ -560,11 +560,14 @@ objects = {
       c01s02:startRendering ( 'apartmentDoor' )
       c01s02:stopRendering ( 'apartmentDoorOpened' )
       
-      c01s02.objects.main_character.animation:startAnimation('walk_right')
-      performWithDelay (10, c01s02.objects.main_character.animation.stopCurrentAnimation, 1, c01s02.objects.main_character.animation)
-      
-      c01s02.objects.nancy.animation:startAnimation('walk_left')
-      performWithDelay (10, c01s02.objects.nancy.animation.stopCurrentAnimation, 1, c01s02.objects.nancy.animation)
+      -- characters look at each other
+      c01s02.objects.main_character:standLookingInDirection ( DIRECTION_RIGHT )
+      c01s02.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
+      -- c01s02.objects.main_character.animation:startAnimation('walk_right')
+      -- performWithDelay (10, c01s02.objects.main_character.animation.stopCurrentAnimation, 1, c01s02.objects.main_character.animation)
+      -- 
+      -- c01s02.objects.nancy.animation:startAnimation('walk_left')
+      -- performWithDelay (10, c01s02.objects.nancy.animation.stopCurrentAnimation, 1, c01s02.objects.nancy.animation)
     end,
     
     beginNancy = function ()

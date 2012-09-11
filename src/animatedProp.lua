@@ -70,7 +70,7 @@ function AnimatedProp:addAnimation ( name, startFrame, frameCount, frameTime, an
   local frameTimeMultiplier = {}
   
   if type ( frameTime ) == 'number' then
-    -- all frames should last the same time
+    -- if all frames should last the same time
     baseTime = frameTime
     frameTimeMultiplier = {}
     
