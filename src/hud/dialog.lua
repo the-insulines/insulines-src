@@ -141,6 +141,8 @@ function dialog:show ( dialogText, character, options )
   self.background.prop:setScl( 2, 2 )
   self.background.prop:seekScl( 1.12, 1.12, 1)
 
+  -- -- self.window_background.prop:seekScl( 1.1, 1.1, 0.7)
+  -- self.window_background.prop:seekScl( 1, 1, 0.1, MOAIEaseType.LINEAR )
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 1.1, 1.1, 0.7) )
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 1, 1, 0.1, MOAIEaseType.LINEAR ) )
 

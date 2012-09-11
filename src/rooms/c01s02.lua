@@ -15,8 +15,6 @@ c01s02.topCharacterZoomThreshold = 323
 
 c01s02.initialCameraPathNode = 'joshDoor'
 c01s02.initialCharacterPathNode = 'joshDoor'
--- c01s02.initialCameraPathNode = 'beforeBobbyDoor'
--- c01s02.initialCharacterPathNode = 'beforeBobbyDoor'
 
 c01s02.initialNancyPathNode = 'door'
 
@@ -594,6 +592,8 @@ objects = {
             c01s02:stopRendering ( 'apartmentDoor' )
             c01s02:startRendering ( 'apartmentDoorOpened' )
             c01s02:unload ()
+            game:loadScene ( thankYouScreen )
+            
           end
           
         else

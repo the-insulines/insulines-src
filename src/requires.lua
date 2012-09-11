@@ -20,6 +20,8 @@ require 'dialogTree'
          
 require 'input_manager'
          
+require 'rooms/logoScreen'
+require 'rooms/thankYouScreen'
 require 'rooms/c01s01'
 require 'rooms/c01s02'
 

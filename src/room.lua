@@ -11,7 +11,11 @@ function new (name)
   local room = {}
   
   room.name = name
-  
+  room.hud = true
+  room.useInventory = true
+  room.useHighlights = true
+  room.useDialogs = true
+  room.fadeOnChange = true
   -- perspective attributes
   -- room.frontCharacterZoom = 0.8
   -- room.bottomCharacterZoomThreshold = -500
@@ -71,8 +75,9 @@ function new (name)
     game.camera:setScl(self.initialCameraScl)
     
     -- calculate the perspective factor to apply zoom
-    self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / math.abs (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
-    
+    if self.frontCharacterZoom then
+      self.perspectiveZoomFactor = (self.frontCharacterZoom - self.backCharacterZoom) / math.abs (self.bottomCharacterZoomThreshold - self.topCharacterZoomThreshold)
+    end
     -- Apply default camera and character position
     self:resetCamera ()
     self:resetCharacter ()
@@ -84,34 +89,40 @@ function new (name)
   end
   
   function room:resetCamera ( )
-    local offset = self.path.graph[self.initialCameraPathNode].offsets
-    camX = offset.x
-    camY = offset.y
-    camScl = offset.scl
-    game.camera:seekLoc (camX, camY, 0.001, MOAIEaseType.FLAT)
-    game.camera:seekScl (camScl, camScl, 0.001, MOAIEaseType.FLAT)
+    if self.path then
+      local offset = self.path.graph[self.initialCameraPathNode].offsets
+      camX = offset.x
+      camY = offset.y
+      camScl = offset.scl
+      game.camera:seekLoc (camX, camY, 0.001, MOAIEaseType.FLAT)
+      game.camera:seekScl (camScl, camScl, 0.001, MOAIEaseType.FLAT)
+    else
+      game.camera:seekLoc (0, 0, 0.001, MOAIEaseType.FLAT)
+      game.camera:seekScl (1, 1, 0.001, MOAIEaseType.FLAT)
+    end
   end
   
   function room:resetCharacter ( )
-    self.layer_objects.character:insertProp ( self.objects.main_character.prop )
+    if self.objects.main_character then      
+      self.layer_objects.character:insertProp ( self.objects.main_character.prop )
     
-    pos = self.path.graph[self.initialCharacterPathNode].position
-    self.objects.main_character:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
+      pos = self.path.graph[self.initialCharacterPathNode].position
+      self.objects.main_character:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
     
-    local scl = 1
-    scl = self.backCharacterZoom + (self.topCharacterZoomThreshold - pos.y) * self.perspectiveZoomFactor
+      local scl = 1
+      scl = self.backCharacterZoom + (self.topCharacterZoomThreshold - pos.y) * self.perspectiveZoomFactor
     
-    if pos.y <= self.bottomCharacterZoomThreshold then 
-      scl = self.frontCharacterZoom
-    end
+      if pos.y <= self.bottomCharacterZoomThreshold then 
+        scl = self.frontCharacterZoom
+      end
 
-    if pos.y >= self.topCharacterZoomThreshold then
-      scl = self.backCharacterZoom
+      if pos.y >= self.topCharacterZoomThreshold then
+        scl = self.backCharacterZoom
+      end
+    
+      self.objects.main_character.prop:setScl ( scl )
+      self.characterMovement = true
     end
-    
-    self.objects.main_character.prop:setScl ( scl )
-    
-    self.characterMovement = true
   end
   
   -- To do initializations on your room use these callbacks.
@@ -340,8 +351,12 @@ function new (name)
   end  
   
   function room:unload ()
-    self:fadeOut ()
-    performWithDelay ( 100, self.removeLayers, 1, self)
+    if self.fadeOnChange then
+      self:fadeOut ()
+      performWithDelay ( 100, self.removeLayers, 1, self)
+    else
+      self:removeLayers ()
+    end
   end
   
   function room:removeLayers ()

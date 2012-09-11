@@ -400,7 +400,7 @@ dialogTree.c01s02_bathroom_2 = {
 
 dialogTree.c01s02_bathroom = {
   text = {
-    en_US = "I need to go to the toilet first.",
+    en_US = "I'm not about to start my day with Zombie Breath. Nobody deserves something that bad.",
     es_AR = ""
   },
   character =  "main_character"
@@ -408,7 +408,7 @@ dialogTree.c01s02_bathroom = {
 
 dialogTree.c01s02_coffee = {
   text = {
-    en_US = "You know I'm desperate for a coffee, right?",
+    en_US = "I don't think I'm truly ready to face Humanity unless I've had something to wake up fully",
     es_AR = ""
   },
   character =  "main_character"
@@ -416,7 +416,7 @@ dialogTree.c01s02_coffee = {
 
 dialogTree.c01s02_bathroom_and_coffee = {
   text = {
-    en_US = "I need to go to the toilet and get a coffee first.",
+    en_US = "No Toothbrush, No Coffee... No Morning. That's the way it is.",
     es_AR = ""
   },
   character =  "main_character"
@@ -425,6 +425,47 @@ dialogTree.c01s02_bathroom_and_coffee = {
 dialogTree.locked = {
   text = {
     en_US = "It's locked",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+
+-- DEMO END SCENE
+
+dialogTree.demo = {
+  text = {
+    en_US = "What secret past ties this mysterious woman to our Hero?",
+    es_AR = ""
+  },
+  defaultAction = DIALOG_ACTION_REDIRECT,
+  dialogName = 'demo_1',
+  character =  "main_character"
+}
+
+dialogTree.demo_1 = {
+  text = {
+    en_US = "Who is the Anonymous Salesman at the Fair?",
+    es_AR = ""
+  },
+  defaultAction = DIALOG_ACTION_REDIRECT,
+  dialogName = 'demo_2',
+  character =  "main_character"
+}
+
+dialogTree.demo_2 = {
+  text = {
+    en_US = "And where in the World is Bobby?",
+    es_AR = ""
+  },
+  defaultAction = DIALOG_ACTION_REDIRECT,
+  dialogName = 'demo_3',
+  character =  "nancy"
+}
+
+dialogTree.demo_3 = {
+  text = {
+    en_US = "Find out all this and more in the upcoming debut of The Insulines, a sugar-free point-and-click adventure coming to an internet near you!",
     es_AR = ""
   },
   character =  "main_character"

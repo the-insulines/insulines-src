@@ -22,8 +22,10 @@ gameRunning = true
 
 function game:loadScene ( scene )
   MOAIRenderMgr.clearRenderStack ()
-  -- Load HUD
-  self:displayHUD ()
+  if scene.hud then
+    -- Load HUD
+    self:displayHUD ()
+  end
   
   -- Cache scene
   self.currentScene = scene
@@ -43,7 +45,11 @@ function game:loadScene ( scene )
   for k, layer in pairs( scene:layers() ) do 
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
-    layer:setColor(0,0,0,0)
+  
+    if scene.fadeOnChange then
+      layer:setColor(0,0,0,0)
+    end
+  
     table.insert(renderTable, layer)
   end
   
@@ -51,12 +57,15 @@ function game:loadScene ( scene )
   local currentRenderTable = MOAIRenderMgr.getRenderTable ()
   
   -- Append layers to future render table
+  if not currentRenderTable then currentRenderTable = {} end
   for k, layer in pairs ( currentRenderTable ) do
     table.insert(renderTable, layer)
   end
-  
   MOAIRenderMgr.setRenderTable ( renderTable )
-  performWithDelay ( 50, scene.fadeIn, 1, scene)
+  
+  if scene.fadeOnChange then
+    performWithDelay ( 50, scene.fadeIn, 1, scene)
+  end
 end
 
 
@@ -73,7 +82,7 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( c01s02 )
+  self:loadScene ( logoScreen )
 end
 
 
@@ -81,10 +90,11 @@ function start ( self )
 
   -- Initialize game
   self:initialize ()
+  hud:initialize ()
   
   -- Camera animation
-  self.cameraThread = MOAIThread.new ()
-  self.cameraThread:run ( cameraAnimation )
+  -- self.cameraThread = MOAIThread.new ()
+  -- self.cameraThread:run ( cameraAnimation )
   
   -- -- Game loop
   -- -- If there is a scene loaded we gather input and update everyhing

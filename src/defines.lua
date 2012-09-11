@@ -142,6 +142,19 @@ RESOURCE_TYPE_SOUND = 4
 
 
 resources = {
+  logoScreen_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'logoScreen_background.png', 
+    width = 1920, height = 1280, 
+  },
+
+  thankYouScreen_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankYouScreen_background.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  
   
   debug_font = {
     type = RESOURCE_TYPE_FONT,

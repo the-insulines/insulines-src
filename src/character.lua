@@ -46,7 +46,7 @@ function new ( name )
   end
   
   function c:startAnimation ( animationName )
-    self.animation:startAnimation( animationName )
+    self.currentAction = self.animation:startAnimation( animationName )
   end
   
   

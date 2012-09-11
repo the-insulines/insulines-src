@@ -195,7 +195,8 @@ objects = {
         c01s01:startRendering ( "clothes_on_heap" )
         c01s01:startRendering ( "main_character" )
         c01s01:resetCharacter ()
-        -- c01s01.sounds.ambient:stop ()
+        c01s01.objects.main_character:startAnimation ( 'stand_front' )
+        c01s01.sounds.ambient:stop ()
         c01s01.sounds.background:play ()
         c01s01.objects.clothes_on_heap.highlight = true
         c01s01.objects.window.highlight = true
