@@ -153,6 +153,36 @@ resources = {
     fileName = 'thankYouScreen_background.png', 
     width = 1920, height = 1280, 
   },
+
+  thankyou_1 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_1.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  thankyou_2 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_2.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  thankyou_3 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_3.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  thankyou_4 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_4.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  thankyou_5 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_5.png', 
+    width = 1920, height = 1280, 
+  },
   
   debug_font = {
     type = RESOURCE_TYPE_FONT,

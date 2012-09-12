@@ -11,16 +11,48 @@ thankYouScreen.characterMovement = false
 
 thankYouScreen.useInventory = false
 thankYouScreen.useHighlights = false
-thankYouScreen.fadeOnChange = false
+thankYouScreen.fadeOnChange = true
 
 objects = {
-  background = {
-    resource_name = 'thankYouScreen_background',
+  background_5 = {
+    resource_name = 'thankyou_5',
     layer_name = 'background',
     x = 0,
     y = 0,
     render_at_start = true,
-    avoid_clicks = true
+    renderPriority = 10
+  },
+  background_4 = {
+    resource_name = 'thankyou_4',
+    layer_name = 'background',
+    x = 0,
+    y = 0,
+    render_at_start = true,
+    renderPriority = 20
+  },
+  background_3 = {
+    resource_name = 'thankyou_3',
+    layer_name = 'background',
+    x = 0,
+    y = 0,
+    render_at_start = true,
+    renderPriority = 30
+  },
+  background_2 = {
+    resource_name = 'thankyou_2',
+    layer_name = 'background',
+    x = 0,
+    y = 0,
+    render_at_start = true,
+    renderPriority = 40
+  },
+  background_1 = {
+    resource_name = 'thankyou_1',
+    layer_name = 'background',
+    x = 0,
+    y = 0,
+    render_at_start = true,
+    renderPriority = 50
   },
 }
 
@@ -31,6 +63,9 @@ function thankYouScreen:beforeInitialize ()
 end
 
 function thankYouScreen:afterInitialize ()
-  c01s01.sounds.background:stop ()
-  dialog:load ( 'demo' )
+  performWithDelay(600 * 1, self.objects.background_1.prop.seekColor, 1, self.objects.background_1.prop, 0, 0, 0, 0, 1)
+  performWithDelay(600 * 2, self.objects.background_2.prop.seekColor, 1, self.objects.background_2.prop, 0, 0, 0, 0, 1)
+  performWithDelay(600 * 3, self.objects.background_3.prop.seekColor, 1, self.objects.background_3.prop, 0, 0, 0, 0, 1)
+  performWithDelay(600 * 4, self.objects.background_4.prop.seekColor, 1, self.objects.background_4.prop, 0, 0, 0, 0, 1)
+  performWithDelay(600 * 5, self.objects.background_5.prop.seekColor, 1, self.objects.background_5.prop, 0, 0, 0, 0, 1)
 end

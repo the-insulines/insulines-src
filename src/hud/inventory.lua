@@ -229,7 +229,7 @@ end
 
 function inventory:openInventory ()
   if self.currentAction then self.currentAction:stop () end
-  
+
   self:updateItemsPosition ()
   
   self.opened = true
@@ -237,7 +237,6 @@ function inventory:openInventory ()
   self.currentAction = self.openAction
   MOAICoroutine.blockOnAction ( self.currentAction:start () )
   
-
   if self.newObject then
     self.newObject = false
     self.icon.prop:setIndex ( 2 )
@@ -248,7 +247,10 @@ end
 function inventory:closeInventory ()
   if self.currentAction then self.currentAction:stop () end
   self.currentAction = self.closeAction
+  
+  game.currentScene.inputEnabled = false
   MOAICoroutine.blockOnAction ( self.currentAction:start () )
+  game.currentScene.inputEnabled = true
     
   self.opened = false
 end
@@ -260,12 +262,21 @@ function inventory:addItem ( key, object )
   item.backProp:setDeck ( resource_cache.get(object.inventory_resource_name) )
   table.insert ( self.items, item)
 
-  self.layer:insertProp ( item.backProp )
-
   self.newObject = true
   
-  inventory:updateItemsPosition ()
+  function update ()
+    inventory.layer:insertProp ( item.backProp )
+    inventory:updateItemsPosition ()
+  end
+
+  if self.currentAction and self.currentAction:isBusy() then
+    self.currentAction:setListener ( MOAIAction.EVENT_STOP, update )
+  else
+    update ()
+  end
+  
 end
+
 
 function inventory:removeItem (item)
   for i, inventoryItem in pairs ( self.items ) do
