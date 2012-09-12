@@ -19,7 +19,8 @@ objects = {
     render_at_start = true,
     onClick = function ()
       logoScreen:unload ()
-      performWithDelay (100, game.loadScene, 1, game, c01s01)
+      logoScreen.inputEnabled = false
+      performWithDelay ( 100, game.loadScene, 1, game, c01s01 )
     end
   },
   
