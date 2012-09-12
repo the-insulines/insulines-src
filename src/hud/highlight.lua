@@ -23,7 +23,7 @@ function highlight:initialize ( elements )
   self.eye.prop:setIndex ( 2 )
   
   -- We want to locate the icon 20px away top right corner, 64 is half the width of the icon.
-  self.eye.x = INVENTORY_BACKPACK_POSITION_X - INVENTORY_BACKPACK_WIDTH
+  self.eye.x = INVENTORY_BACKPACK_POSITION_X - INVENTORY_BACKPACK_WIDTH - 20
   self.eye.y = INVENTORY_BACKPACK_POSITION_Y
 
   self.eye.prop:setLoc ( self.eye.x, self.eye.y )

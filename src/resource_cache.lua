@@ -143,8 +143,8 @@ end
 
 
 function loadTiledImage ( fileUrl, tiledImageAttributes )
-  local tileRectWidth = tiledImageAttributes.width / tiledImageAttributes.tileMapSize[1]
-  local tileRectHeight = tiledImageAttributes.height / tiledImageAttributes.tileMapSize[2]
+  local tileRectWidth = tiledImageAttributes.width
+  local tileRectHeight = tiledImageAttributes.height
   local tileRect = {-tileRectWidth/2, -tileRectHeight/2, tileRectWidth/2, tileRectHeight/2}
   return loadTileDeck2D ( fileUrl, tiledImageAttributes.tileMapSize, tileRect )
 end

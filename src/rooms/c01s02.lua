@@ -1,4 +1,4 @@
-  --==============================================================
+--==============================================================
 -- The Insulines - Chapter 01 / Scene 01 / Bedroom
 -- Copyright (c) 2010-2012 quov.is
 -- All Rights Reserved. 
@@ -334,53 +334,66 @@ objects = {
   coffeeMaker = {
     resource_name = 'c01s02_coffeemaker',
     layer_name = 'objects',
-    x = 374,
-    y = 270,
+    x = 439 - 10 + 35,
+    y = 178 + 43 + 58,
+    -- x = 374,
+    -- y = 270,
     render_at_start = true,
-    -- onClick = function () 
-    -- end,
+    animated = true,
     interactsWith = { 'coffeePackage', 'coffeePotEmpty', 'coffeePotWater' },
     highlight = true,
     hasCoffee = false,
     hasWater = false,
     madeCoffee = false,
-    onClick = function ()
-      if c01s02.objects.coffeeMaker.hasWater and c01s02.objects.coffeeMaker.hasCoffee and not c01s02.objects.coffeeMaker.madeCoffee then
-
-        local fadeIn = function ()
-          c01s02:fadeIn ()
-          c01s02:startRendering ( "coffeePotFull" )
-          c01s02.objects.mug_full.animation:startAnimation ( 'mug_full_smoke' )
-          c01s02:startRendering ( "mug_full" )
-          c01s02.objects.coffeeMaker.madeCoffee = true
-        end
-        
-        c01s02:fadeOut ()
-        performWithDelay (100, fadeIn, 1, c01s02)
-
+    prepareCoffee = function ( self )
+      local fadeIn = function ()
+        c01s02:fadeIn ()
+        self.animation:startAnimation ( 'coffeemaker_used' )
+        c01s02:stopRendering ( 'coffeePotEmpty' )
+        c01s02:startRendering ( "coffeePotFull" )
+        c01s02.objects.mug_full.animation:startAnimation ( 'mug_full_smoke' )
+        c01s02:startRendering ( "mug_full" )
+        self.madeCoffee = true
       end
+      
+      c01s02:fadeOut ()
+      performWithDelay ( 100, fadeIn, 1, self )
     end,
-    
     onInteractionWith = function ( self, item )
       if item.key == 'coffeePackage' then
         if not self.has_coffee then
           -- TODO: How to give feedback when coffee is used?
           self.hasCoffee = true
           inventory:removeItem( item )
+          -- display the coffee loaded sprite
+          self.animation:startAnimation ( 'coffeemaker_loaded' )
+        end
+        
+        if self.hasWater then
+          self:prepareCoffee ()
         end
       end
       
       if item.key == 'coffeePotEmpty' then
-        dialog:load("c01s02_fill_coffee_pot_first")
+        dialog:load ( "c01s02_fill_coffee_pot_first" )
       end
       
       if item.key == 'coffeePotWater' then
         self.hasWater = true
-        inventory:removeItem( item )
+        inventory:removeItem ( item )
+        
+        -- place the empty pot on the coffee maker
+        c01s02.objects.coffeePotEmpty.prop:setLoc ( self.x - 7, self.y - 78 )
+        c01s02.objects.coffeePotEmpty.onClick = nil
+        c01s02:startRendering ( 'coffeePotEmpty' )
+        
+        if self.hasCoffee then
+          self:prepareCoffee ()
+        end
       end
     end
   },
-    
+  
   pantry_closed = {
     resource_name = 'c01s02_pantry_closed',
     layer_name = 'objects',
@@ -432,8 +445,10 @@ objects = {
     resource_name = 'c01s02_coffee_pot_empty',
     inventory_resource_name = "inventory_coffee_pot_empty",
     layer_name = 'objects',
-    x = 439,
-    y = 178,
+    x = 374 - 30,
+    y = 270 - 95,--25,
+    -- x = 439,
+    -- y = 178,
     highlight = true,
     render_at_start = true,
     water = false,
@@ -441,7 +456,8 @@ objects = {
       inventory:addItem ( 'coffeePotEmpty', c01s02.objects.coffeePotEmpty)
       c01s02:stopRendering('coffeePotEmpty')
     end,
-    priority = 10
+    priority = 10,
+    renderPriority = 100,
   },
 
   coffeePotWater = {
@@ -456,7 +472,8 @@ objects = {
     render_at_start = false,
     onClick = function ()
       dialog:load('c01s02_coffee_pot_full')
-    end
+    end,
+    renderPriority = 100
   },
   
   mug_full = {
@@ -675,6 +692,7 @@ end
 
 function c01s02:afterInitialize ()  
   self.objects.answering_machine.animation:startAnimation ( 'blink' )
+  self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )
 end
 
 local path = {

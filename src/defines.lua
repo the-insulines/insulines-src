@@ -534,7 +534,7 @@ resources = {
   c01s01_cellphone = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s01/cellphone/cellphone_ring.png', 
-    width = 1100, height = 100,
+    width = 1100 / 11, height = 100,
     tileMapSize = {11, 1}
   },
 
@@ -633,44 +633,67 @@ resources = {
   },
 
   c01s02_bathroom_closed = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s02/c01s02_bathroom_closed.png', 
-    width = 129, 
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s02/c01s02_bathroom_closed.png',
+    width = 129,
     height = 524
   },
 
   c01s02_bathroom_opened = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s02/c01s02_bathroom_opened.png', 
-    width = 164, 
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s02/c01s02_bathroom_opened.png',
+    width = 164,
     height = 444
   },
 
   c01s02_coffeemaker = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s02/c01s02_coffeemaker.png', 
-    width = 69, 
-    height = 90
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'c01s02/',
+    pivotX = 0,
+    pivotY = 0,
+    animations = {
+      coffeemaker_empty = {
+        fileName = 'c01s02_coffeemaker',
+        startFrame = 1,
+        frameCount = 1,
+        frameTime = DEFAULT_ANIMATION_SPEED,
+      },
+      coffeemaker_loaded = {
+        fileName = 'c01s02_coffeemaker_coffee',
+        startFrame = 1,
+        frameCount = 1,
+        frameTime = DEFAULT_ANIMATION_SPEED,
+      },
+      coffeemaker_used = {
+        fileName = 'c01s02_coffeemaker_closed',
+        startFrame = 1,
+        frameCount = 1,
+        frameTime = DEFAULT_ANIMATION_SPEED,
+      },
+    },
+    
+    width = 130,
+    height = 200
   },
   
   c01s02_couch = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s02/c01s02_couch.png', 
-    width = 1016, 
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s02/c01s02_couch.png',
+    width = 1016,
     height = 455
   },
 
   c01s02_tv = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s02/c01s02_tv.png', 
-    width = 1140, 
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s02/c01s02_tv.png',
+    width = 1140,
     height = 325
   },
 
   c01s02_table = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'c01s02/c01s02_table.png', 
-    width = 977 * 0.9, 
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s02/c01s02_table.png',
+    width = 977 * 0.9,
     height = 492 * 0.9
   },
 
@@ -684,7 +707,7 @@ resources = {
   c01s01_answering_machine = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s02/c01s02_answer_machine.png', 
-    width = 168, height = 108,
+    width = 168 / 2, height = 108,
     tileMapSize = {2, 1}
   },
   
@@ -756,7 +779,7 @@ resources = {
   c01s02_sink = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s02/c01s02_sink.png', 
-    width = 320, height = 79,
+    width = 160, height = 79,
     tileMapSize = {2, 1}
   },
   
