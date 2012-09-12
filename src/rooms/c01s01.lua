@@ -311,15 +311,14 @@ function c01s01:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
   self:loadCharacter( mainCharacter )
+  self:stopRendering( 'main_character' )
+  self.characterMovement = false
 end
 
 function c01s01:afterInitialize ()
   self.objects.cellphone.calling ()
-  -- self.sounds.ambient:play ()
   self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
   self:stopRendering( 'main_character' )
-  
-  
   self.characterMovement = false
 end
 

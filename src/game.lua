@@ -22,13 +22,14 @@ gameRunning = true
 
 function game:loadScene ( scene )
   MOAIRenderMgr.clearRenderStack ()
+  -- Cache scene
+  self.currentScene = scene
+
   if scene.hud then
     -- Load HUD
     self:displayHUD ()
   end
   
-  -- Cache scene
-  self.currentScene = scene
   
   if not scene.initialized then
     -- Initialize scene

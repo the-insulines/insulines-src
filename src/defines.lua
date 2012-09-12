@@ -153,8 +153,36 @@ resources = {
     fileName = 'thankYouScreen_background.png', 
     width = 1920, height = 1280, 
   },
+
+  thankyou_1 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_1.png', 
+    width = 1920, height = 1280, 
+  },
   
+  thankyou_2 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_2.png', 
+    width = 1920, height = 1280, 
+  },
   
+  thankyou_3 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_3.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  thankyou_4 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_4.png', 
+    width = 1920, height = 1280, 
+  },
+  
+  thankyou_5 = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'thankyou/thankyou_5.png', 
+    width = 1920, height = 1280, 
+  },
   
   debug_font = {
     type = RESOURCE_TYPE_FONT,
@@ -342,7 +370,7 @@ resources = {
       },
       
     },
-    width = 828 / 3, height = 1930 / 3,
+    width = 273, height = 637,
   },
   
   nancy = {
@@ -378,7 +406,7 @@ resources = {
         startFrame = 1,
       },
       stand_right = {
-        fileName = 'nancy_stand',
+        fileName = 'nancy_stand_right',
         frameCount = 30,
         frameTime = {
           baseTime = 0.08,
@@ -392,6 +420,7 @@ resources = {
           },
         },
         startFrame = 1,
+        width = 266, height = 451,
       },
       stand_left = {
         fileName = 'nancy_stand_left',
@@ -408,11 +437,11 @@ resources = {
           },
         },
         startFrame = 1,
-        width = 828 * 0.28, height = 1930 * 0.28,
+        width = 266, height = 451,
       },
       
     },
-    width = 828 / 4, height = 1930 / 4,
+    width = 205, height = 439,
   },
   
   -- /////////////////////////////////////////////////////////////
@@ -438,7 +467,7 @@ resources = {
     sounds = {
       sleeps = {
         { fileName = 'snoring', volume = 1, startFrame = 31 }
-      }
+      },
     },
     width = 800, height = 500
   },
@@ -503,7 +532,7 @@ resources = {
     sounds = {
       wakes_up = {
         { fileName = 'yawn', volume = 1, startFrame = 16 }
-      }
+      },
     },
     
     width = 700, height = 600
@@ -540,7 +569,7 @@ resources = {
 
   c01s01_cellphone_ringtone = {
     type = RESOURCE_TYPE_SOUND, 
-    fileName = 'c01s01/cellphone/ringtone_loop_short.wav', 
+    fileName = 'c01s01/cellphone/ringtone_loop_short.mp3', 
     loop = true,
     volume = 0.6
   },
@@ -785,8 +814,8 @@ resources = {
   
   c01s02_sink_flowing = {
     type = RESOURCE_TYPE_SOUND, 
-    fileName = 'c01s02/sink_flowing.wav', 
-    loop = true,
+    fileName = 'c01s02/sink_flowing.mp3', 
+    loop = false,
     volume = 0.2
   },
   

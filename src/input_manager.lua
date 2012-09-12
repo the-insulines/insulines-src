@@ -6,8 +6,9 @@
 --==============================================================
 module ( "input_manager", package.seeall )
 
-local pointerX, pointerY = nil, nil
-local previousX, previousY = nil, nil
+local pointerX, pointerY = 0,0
+
+local previousX, previousY = 0, 0
 
 -- Set callback for mouse and touches
 if MOAIInputMgr.device.pointer then
