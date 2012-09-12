@@ -5,6 +5,7 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 DEFAULT_ASSETS_PATH = '../insulines-gfx/'
+-- DEFAULT_ASSETS_PATH = '../insulines-hosts/scripts/assets/'
 SOUND_ENGINE = 'untz'
 
 require 'src/requires'

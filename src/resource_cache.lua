@@ -113,7 +113,7 @@ function loadAllAnimationFrames ( allAnimationsLocation, allAnimationsAttributes
     for animationName, sounds in pairs ( allAnimationsAttributes.sounds ) do
       animations[animationName].sounds = {}
       for i, sound in pairs ( sounds ) do
-        animations[animationName].sounds[sound.startFrame] = loadSound(allAnimationsLocation .. animationName .. '/sounds/' .. sound.fileName .. '.wav', sound.loop, sound.volume )
+        animations[animationName].sounds[sound.startFrame] = loadSound(allAnimationsLocation .. animationName .. '/sounds/' .. sound.fileName .. '.mp3', sound.loop, sound.volume )
       end
     end
   end

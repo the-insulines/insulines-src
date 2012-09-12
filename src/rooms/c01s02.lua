@@ -510,7 +510,8 @@ objects = {
     startFlowing = function ()
       c01s02.objects.sink.animation:startAnimation ( 'flowing' )
       c01s02.objects.sink.flowing = true
-      performWithDelay (200, c01s02.objects.sink.stopFlowing, 1)
+      performWithDelay (450, c01s02.objects.sink.stopFlowing, 1)
+      c01s02.sounds.sink_flowing:play ()
     end,
     
     onInteractionWith = function ( self, item )
@@ -534,6 +535,7 @@ objects = {
       c01s02.objects.sink.animation:stopCurrentAnimation ()
       if c01s02.objects.sink.flowing then
         c01s02.objects.sink.stopFlowing ()
+        c01s02.sounds.sink_flowing:stop ()
       else
         c01s02.objects.sink.startFlowing ()
       end

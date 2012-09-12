@@ -569,7 +569,7 @@ resources = {
 
   c01s01_cellphone_ringtone = {
     type = RESOURCE_TYPE_SOUND, 
-    fileName = 'c01s01/cellphone/ringtone_loop_short.wav', 
+    fileName = 'c01s01/cellphone/ringtone_loop_short.mp3', 
     loop = true,
     volume = 0.6
   },
@@ -791,8 +791,8 @@ resources = {
   
   c01s02_sink_flowing = {
     type = RESOURCE_TYPE_SOUND, 
-    fileName = 'c01s02/sink_flowing.wav', 
-    loop = true,
+    fileName = 'c01s02/sink_flowing.mp3', 
+    loop = false,
     volume = 0.2
   },
   
