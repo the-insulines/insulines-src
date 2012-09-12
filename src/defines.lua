@@ -154,8 +154,6 @@ resources = {
     width = 1920, height = 1280, 
   },
   
-  
-  
   debug_font = {
     type = RESOURCE_TYPE_FONT,
     fileName = 'arialbd.ttf',
@@ -342,7 +340,7 @@ resources = {
       },
       
     },
-    width = 828 / 3, height = 1930 / 3,
+    width = 273, height = 637,
   },
   
   nancy = {
@@ -378,7 +376,7 @@ resources = {
         startFrame = 1,
       },
       stand_right = {
-        fileName = 'nancy_stand',
+        fileName = 'nancy_stand_right',
         frameCount = 30,
         frameTime = {
           baseTime = 0.08,
@@ -392,6 +390,7 @@ resources = {
           },
         },
         startFrame = 1,
+        width = 266, height = 451,
       },
       stand_left = {
         fileName = 'nancy_stand_left',
@@ -408,11 +407,11 @@ resources = {
           },
         },
         startFrame = 1,
-        width = 828 * 0.28, height = 1930 * 0.28,
+        width = 266, height = 451,
       },
       
     },
-    width = 828 / 4, height = 1930 / 4,
+    width = 205, height = 439,
   },
   
   -- /////////////////////////////////////////////////////////////
@@ -438,7 +437,7 @@ resources = {
     sounds = {
       sleeps = {
         { fileName = 'snoring', volume = 1, startFrame = 31 }
-      }
+      },
     },
     width = 800, height = 500
   },
@@ -503,7 +502,7 @@ resources = {
     sounds = {
       wakes_up = {
         { fileName = 'yawn', volume = 1, startFrame = 16 }
-      }
+      },
     },
     
     width = 700, height = 600
