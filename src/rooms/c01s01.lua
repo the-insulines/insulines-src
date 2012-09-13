@@ -34,6 +34,11 @@ objects = {
     x = 383,
     y = 265,
     render_at_start = true,
+    onClick = function ()
+      if c01s01.objects.cellphone.woke then
+        dialog:load('c01s01_floyd')
+      end
+    end
   },
   
   barbarullo = {
@@ -42,6 +47,11 @@ objects = {
     x = -336,
     y = 328,
     render_at_start = true,
+    onClick = function ()
+      if c01s01.objects.cellphone.woke then
+        dialog:load('c01s01_barbarullo')
+      end
+    end
   },
   
   josh_sleeping = {
@@ -141,6 +151,10 @@ objects = {
           local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
           anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_grabs_cellphone.wakingUp )
           c01s01.objects.cellphone.woke = true
+          c01s01.objects.window.highlight = true
+          c01s01.objects.barbarullo.highlight = true
+          c01s01.objects.floyd.highlight = true
+          c01s01.objects.walk_behind.highlight = true
         else
           
           -- first click
@@ -199,10 +213,6 @@ objects = {
         c01s01.sounds.ambient:stop ()
         c01s01.sounds.background:play ()
         c01s01.objects.clothes_on_heap.highlight = true
-        c01s01.objects.window.highlight = true
-        c01s01.objects.barbarullo.highlight = true
-        c01s01.objects.floyd.highlight = true
-        
       end
 
       if c01s01.objects.cellphone.woke then
@@ -245,7 +255,11 @@ objects = {
     x = -400,
     y = -386,
     render_at_start = true,
-    avoid_clicks = true
+    onClick = function ()
+      if c01s01.objects.cellphone.woke then
+        dialog:load('c01s01_duck')
+      end
+    end
   },
 
   room_door = {
@@ -281,6 +295,7 @@ objects = {
         c01s02.initialCharacterPathNode = 'joshDoor'
 
         performWithDelay (100, game.loadScene, 1, game, c01s02)
+                
       end
     end
   }
@@ -310,6 +325,8 @@ c01s01:addSounds( sounds )
 function c01s01:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
+  mainCharacter = character.new ( 'main_character' )
+  mainCharacter.renderPriority = 200
   self:loadCharacter( mainCharacter )
   self:stopRendering( 'main_character' )
   self.characterMovement = false

@@ -187,6 +187,7 @@ objects = {
       c01s02:startRendering("bathroom_closed")
       dialog:load('c01s02_leave_bathroom')
       c01s02.inputEnabled = true
+      c01s02.characterMovement = true
     end
     
   },
@@ -215,6 +216,8 @@ objects = {
       if inventory.opened then
         inventory:closeInventory ()
       end
+      
+      c01s02.inputEnabled = false
 
       performWithDelay ( 1150, c01s02.stopRendering, 1, c01s02, "bathroom_closed" )
       performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "bathroom_opened" )
@@ -345,6 +348,9 @@ objects = {
     hasCoffee = false,
     hasWater = false,
     madeCoffee = false,
+    onClick = function ()
+      dialog:load('c01s02_coffee_maker')
+    end,
     prepareCoffee = function ( self )
       local fadeIn = function ()
         c01s02:fadeIn ()
@@ -352,8 +358,10 @@ objects = {
         c01s02:stopRendering ( 'coffeePotEmpty' )
         c01s02:startRendering ( "coffeePotFull" )
         c01s02.objects.mug_full.animation:startAnimation ( 'mug_full_smoke' )
+        c01s02.objects.mug_full.highlight = true
         c01s02:startRendering ( "mug_full" )
         self.madeCoffee = true
+        c01s02.objects.coffeeMaker.highlight = false
       end
       
       c01s02:fadeOut ()
@@ -614,7 +622,7 @@ objects = {
             c01s02:stopRendering ( 'apartmentDoor' )
             c01s02:startRendering ( 'apartmentDoorOpened' )
             c01s02:unload ()
-            game:loadScene ( thankYouScreen )
+            performWithDelay ( 100, game.loadScene, 1, game, thankYouScreen )
             
           end
           
@@ -690,6 +698,8 @@ function c01s02:beforeInitialize ()
   self:loadSounds ()
   self:loadCharacter( mainCharacter )
   self.objects.main_character:setLoc(1120, -245)
+  nancy = character.new ( 'nancy' )
+  nancy.renderPriority = 100
 end
 
 function c01s02:afterInitialize ()  

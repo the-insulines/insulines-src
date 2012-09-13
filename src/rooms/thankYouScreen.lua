@@ -8,10 +8,7 @@
 thankYouScreen = room.new ( "thankYouScreen" )
 thankYouScreen.inputEnabled = true
 thankYouScreen.characterMovement = false
-
-thankYouScreen.useInventory = false
-thankYouScreen.useHighlights = false
-thankYouScreen.fadeOnChange = true
+thankYouScreen.hud = false
 
 objects = {
   background_5 = {
@@ -67,5 +64,6 @@ function thankYouScreen:afterInitialize ()
   performWithDelay(600 * 2, self.objects.background_2.prop.seekColor, 1, self.objects.background_2.prop, 0, 0, 0, 0, 1)
   performWithDelay(600 * 3, self.objects.background_3.prop.seekColor, 1, self.objects.background_3.prop, 0, 0, 0, 0, 1)
   performWithDelay(600 * 4, self.objects.background_4.prop.seekColor, 1, self.objects.background_4.prop, 0, 0, 0, 0, 1)
-  performWithDelay(600 * 5, self.objects.background_5.prop.seekColor, 1, self.objects.background_5.prop, 0, 0, 0, 0, 1)
+  performWithDelay(600 * 5, self.objects.background_5.prop.seekColor, 1, self.objects.background_5.prop, 0, 0, 0, 0, 2)
+  performWithDelay(600 * 5, c01s01.sounds.background.seekVolume, 1, c01s01.sounds.background, 0, 2)
 end

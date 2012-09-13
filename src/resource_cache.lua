@@ -49,6 +49,10 @@ function loadUntzSound ( fileUrl, loop, volume, sound )
   function sound:stop ()
     self.file:stop ()
   end
+  
+  function sound:seekVolume( volume, time, mode)
+    self.file:seekVolume(volume, time, mode)
+  end
   return sound
 end
 
@@ -71,6 +75,11 @@ function loadFmodExSound ( fileUrl, loop, volume, sound )
   function sound:stop ()
     self.channel:stop ()
   end
+  
+  function sound:seekVolume( volume, time, mode)
+    self.channel:seekVolume(volume, time, mode)
+  end
+  
   return sound
 end
 

@@ -22,6 +22,30 @@ dialogTree.c01s01_never_sleeps = {
   character =  "main_character"
 }
 
+dialogTree.c01s01_barbarullo = {
+  text = {
+    en_US = "That’s a promotional poster for “Barbarulo”, based on the original 1967 script. An Italian space opera about a heavily mustachioed amazon from the future in a mission to rekindle humanity’s sex drive. The plot was heavily revised after the French Co-Producers signed on.",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_floyd = {
+  text = {
+    en_US = "My signed print of the “Pink Side of the Space Station” cover art. A cult classic among synchronization enthusiasts everywhere. Much better than that Rainbow nonsense",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
+dialogTree.c01s01_duck = {
+  text = {
+    en_US = "I wonder if it’s still anatidaephobia if you know for a fact you are being watched by a creepy, albeit rubber, duck. It gives me the creeps",
+    es_AR = ""
+  },
+  character =  "main_character"
+}
+
 dialogTree.c01s01_put_clothes_1 = {
   text = {
     en_US = "I should probably put some clothes on before that.",
@@ -99,6 +123,14 @@ dialogTree.c01s02_answering_machine_message_4 = {
     es_AR = ""
   },
   character =  "main_character"  
+}
+
+dialogTree.c01s02_coffee_maker = {
+  text = {
+    en_US = "The Trusty Caffeinator 3000. A wondrous device that magically transforms plain water and ground beans into liquid energy.",
+    es_AR = ""
+  },
+  character =  "main_character"
 }
 
 dialogTree.c01s02_coffee_pot_with_water = {

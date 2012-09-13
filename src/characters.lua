@@ -6,7 +6,7 @@
 -- --==============================================================
 -- 
 
-mainCharacter = character.new ( 'main_character' )
-mainCharacter.renderPriority = 200
-nancy = character.new ( 'nancy' )
-nancy.renderPriority = 100
+-- mainCharacter = character.new ( 'main_character' )
+-- mainCharacter.renderPriority = 200
+-- nancy = character.new ( 'nancy' )
+-- nancy.renderPriority = 100
