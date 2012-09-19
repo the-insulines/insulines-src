@@ -6,7 +6,9 @@
 -- --==============================================================
 -- 
 
--- mainCharacter = character.new ( 'main_character' )
--- mainCharacter.renderPriority = 200
--- nancy = character.new ( 'nancy' )
--- nancy.renderPriority = 100
+if DEBUG then
+  mainCharacter = character.new ( 'main_character' )
+  mainCharacter.renderPriority = 200
+  nancy = character.new ( 'nancy' )
+  nancy.renderPriority = 100
+end

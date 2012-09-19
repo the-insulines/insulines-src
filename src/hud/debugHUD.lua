@@ -6,7 +6,7 @@
 --==============================================================
 module ( "debugHUD", package.seeall )
 
-local layer = MOAILayer2D.new()
+local layer = MOAILayer2D.new ()
 local font =  MOAIFont.new ()
 local mouseWorldPositionTextbox = MOAITextBox.new ()
 local mouseWindowPositionTextbox = MOAITextBox.new ()
@@ -23,10 +23,10 @@ function debugHUD:initialize ()
   
   -- load font
   font = resource_cache.get ( "debug_font" )
-
+  
   -- setup
   self:setupMousePosition ()
-  self:setupMemory ()  
+  self:setupMemory ()
   
 end
 
