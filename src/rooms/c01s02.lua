@@ -1,5 +1,5 @@
 --==============================================================
--- The Insulines - Chapter 01 / Scene 01 / Bedroom
+-- The Insulines - Chapter 01 / Scene 02 / Bedroom
 -- Copyright (c) 2010-2012 quov.is
 -- All Rights Reserved. 
 -- http://quov.is // http://theinsulines.com
@@ -17,6 +17,8 @@ c01s02.initialCameraPathNode = 'joshDoor'
 c01s02.initialCharacterPathNode = 'joshDoor'
 
 c01s02.initialNancyPathNode = 'door'
+
+
 
 objects = {
   background = {
@@ -352,7 +354,7 @@ objects = {
     hasWater = false,
     madeCoffee = false,
     onClick = function ()
-      dialog:load('c01s02_coffee_maker')
+      dialog:load ( 'c01s02_coffee_maker' )
     end,
     prepareCoffee = function ( self )
       local fadeIn = function ()
@@ -625,7 +627,8 @@ objects = {
             c01s02:stopRendering ( 'apartmentDoor' )
             c01s02:startRendering ( 'apartmentDoorOpened' )
             c01s02:unload ()
-            performWithDelay ( 100, game.loadScene, 1, game, thankYouScreen )
+            performWithDelay ( 100, game.loadScene, 1, game, c01s03 )
+            -- performWithDelay ( 100, game.loadScene, 1, game, thankYouScreen )
             
           end
           
@@ -699,6 +702,7 @@ c01s02:addSounds( sounds )
 function c01s02:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
+  
   self:loadCharacter( mainCharacter )
   self.objects.main_character:setLoc(1120, -245)
   nancy = character.new ( 'nancy' )
@@ -708,6 +712,14 @@ end
 function c01s02:afterInitialize ()  
   self.objects.answering_machine.animation:startAnimation ( 'blink' )
   self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )
+  
+  -- DEBUG MODE
+  if DEBUG then
+    c01s02.objects.bathroom_closed.visitedBathroom = true;
+    c01s02.objects.coffeeMaker.hadCoffee = true;
+    c01s02.objects.apartmentDoor.talkedToNancy = true;
+  end
+  
 end
 
 local path = {

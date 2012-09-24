@@ -133,7 +133,7 @@ function cameraAnimation ()
     cameraDeltaY = cameraDeltaY + y
     
     local action = camera:moveLoc(x, y, CAMERA_MOVEMENT_DURATION)
-
+    
     MOAICoroutine.blockOnAction ( action )
   end
 end
@@ -149,10 +149,10 @@ function displayHUD ( self )
     layer:setViewport ( viewport )
     MOAIRenderMgr.pushRenderPass ( layer )
   end
-
-  -- -- Debug
-  -- if DEBUG then
-  --   debugHUD:initialize ()
-  -- end
+  
+  -- Debug
+  if DEBUG then
+    debugHUD:initialize ()
+  end
 
 end

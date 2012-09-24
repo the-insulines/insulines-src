@@ -875,6 +875,32 @@ resources = {
     volume = 0.3
   },
   
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- c01s03
+  --
+  -- ////////////////////////////////////////////////////////////
+  
+  c01s03_background = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s03/c01s03_background.png',
+    width = 3999,
+    height = 3000,
+  },
+
+  c01s03_background_trees = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s03/c01s03_arboles_fondo.png',
+    width = 4000,
+    height = 1673,
+  },
+  
+  c01s03_walkbehind_trees = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'c01s03/c01s03_arboles_walk_behind.png',
+    width = 745,
+    height = 1137,
+  },
 }
 
 
