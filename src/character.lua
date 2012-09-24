@@ -72,8 +72,8 @@ function new ( name )
         local time = 1
         local sclTime = 1
         
-        if step.offsets.x  then camX = step.offsets.x end
-        if step.offsets.y  then camY = step.offsets.y end
+        if step.offsets.x  then camX = step.offsets.x / SCREEN_TO_WORLD_RATIO end
+        if step.offsets.y  then camY = step.offsets.y / SCREEN_TO_WORLD_RATIO end
         if step.offsets.scl  then camScl = step.offsets.scl end
         if step.offsets.time  then time = step.offsets.time end
         if step.offsets.sclTime  then time = step.offsets.sclTime end

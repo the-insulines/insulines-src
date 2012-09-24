@@ -88,10 +88,10 @@ function inventory:initializeHud ()
   
   -- setup gfx for inventory items
   self.intentoryItemBackground = {}
-  self.intentoryItemBackground.gfx = resource_cache.get ( 'inventory_item_background' )
+  -- self.intentoryItemBackground.gfx = resource_cache.get ( 'inventory_item_background' )
   self.intentoryItemBackground.half_width = INVENTORY_ITEM_HALF_WIDTH
   self.intentoryItemBackground.half_height = INVENTORY_ITEM_HALF_HEIGHT
-  self.intentoryItemBackground.gfx:setRect ( - self.intentoryItemBackground.half_width, - self.intentoryItemBackground.half_height, self.intentoryItemBackground.half_width, self.intentoryItemBackground.half_height)
+  -- self.intentoryItemBackground.gfx:setRect ( - self.intentoryItemBackground.half_width, - self.intentoryItemBackground.half_height, self.intentoryItemBackground.half_width, self.intentoryItemBackground.half_height)
 
   self.openAction = self.background.prop:moveLoc( INVENTORY_OPEN_DELTA_X, INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH )
   self.openAction:stop ()
@@ -302,7 +302,7 @@ function inventory:updateItemsPosition ()
   self.openAction:clear ()
   self.closeAction:clear ()
   for i, item in pairs ( self.items ) do
-    local itemTop = INVENTORY_ITEMS_TOP + INVENTORY_ITEM_HALF_HEIGHT - math.ceil(i/2) * INVENTORY_ITEM_HEIGHT - math.ceil(i/2) * INVENTORY_ITEM_MARGIN
+    local itemTop = INVENTORY_ITEMS_TOP - math.floor((i-1)/2) * INVENTORY_ITEM_HEIGHT / SCREEN_TO_WORLD_RATIO - math.floor((i-1)/2) * INVENTORY_ITEM_MARGIN / SCREEN_TO_WORLD_RATIO
     
     local xPosition = 0
     
@@ -312,7 +312,7 @@ function inventory:updateItemsPosition ()
       xPosition = INVENTORY_CLOSED_X + INVENTORY_ITEM_HALF_WIDTH + 2 * INVENTORY_ITEM_VERTICAL_MARGIN
     end
     
-    if self.opened then xPosition = xPosition - INVENTORY_CLOSED_X + INVENTORY_OPEN_X end
+    if self.opened then xPosition = xPosition + INVENTORY_OPEN_DELTA_X end
     item.backProp:setLoc ( xPosition,  itemTop )
     self.openAction:addChild ( item.backProp:moveLoc( INVENTORY_OPEN_DELTA_X, INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH  ) )
     self.closeAction:addChild ( item.backProp:moveLoc( -INVENTORY_OPEN_DELTA_X, -INVENTORY_OPEN_DELTA_Y, INVENTORY_ANIMATION_LENGTH  ) )

@@ -13,6 +13,11 @@ function new (graph)
   
   path.graph = graph
   
+  for i, node in pairs(path.graph) do
+    node.position = point( node.position.x / SCREEN_TO_WORLD_RATIO, node.position.y / SCREEN_TO_WORLD_RATIO )
+  end
+  
+  
   function path:steps ( sourcePoint, targetPoint )
     local sourcePointOnPath, sourceSegment = self:nearestPointOnPath ( sourcePoint )
     local targetPointOnPath, targetSegment = self:nearestPointOnPath ( targetPoint )

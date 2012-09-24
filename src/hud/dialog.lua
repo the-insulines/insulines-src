@@ -52,7 +52,7 @@ function initializeHUD ( self )
 
   -- TextBox
   self.dialogTextBox:setFont ( game.defaultFont )
-  self.dialogTextBox:setTextSize ( 80 )
+  self.dialogTextBox:setTextSize ( 80 / SCREEN_TO_WORLD_RATIO )
   self.dialogTextBox:setYFlip( true )
   self.dialogTextBox:setColor ( unpack ( DEFAULT_DIALOG_COLOR ))
   self.dialogTextBox:setRect ( -self.window_background.half_width + 100, -self.window_background.half_height + 90, self.window_background.half_width - 100, self.window_background.half_height - 100)
@@ -63,7 +63,7 @@ function initializeHUD ( self )
   self.options.half_width = 1540 / 2
   self.options.half_height = 130 / 2
   self.options.buttons = {}
-  local padding = 200
+  local padding = 200 / SCREEN_TO_WORLD_RATIO
   self.options.buttons = { 
     self:createOption( padding * 0 ), 
     self:createOption( padding * 1 ),
@@ -88,7 +88,7 @@ function dialog:createOption(yOffset)
   
   option.textBox = MOAITextBox.new ()
   option.textBox:setFont ( game.defaultFont )
-  option.textBox:setTextSize ( 70 )
+  option.textBox:setTextSize ( 70 / SCREEN_TO_WORLD_RATIO )
   option.textBox:setYFlip( true )
   option.textBox:setColor ( unpack ( DEFAULT_OPTION_COLOR ))
   option.textBox:setRect ( 0, 0, self.options.half_width * 2, self.options.half_height * 2)

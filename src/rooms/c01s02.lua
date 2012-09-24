@@ -135,7 +135,9 @@ objects = {
     visitedBathroom = false,
     onClick = function ()
       if not c01s02.objects.bathroom_closed.visitedBathroom then
-        -- TODO: Should we avoid clicks now?
+        -- Avoid clicks
+        c01s02.inputEnabled = false
+        
         c01s02.objects.bathroom_closed.visitedBathroom = true
         
         -- Open bathroom door
@@ -166,8 +168,9 @@ objects = {
       if not inventory.opened then
         inventory:openInventory ()
       end
-      
+      c01s02.inputEnabled = true      
       performWithDelay(10, self.objects.bathroom_opened.addBathroomItems, 1, self)
+
     end,
     
     addBathroomItems = function ( self )

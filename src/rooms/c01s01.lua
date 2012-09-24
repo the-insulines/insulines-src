@@ -146,7 +146,7 @@ objects = {
           -- Wake up
           c01s01.objects.cellphone.animation:stopCurrentAnimation ()
           c01s01.inputEnabled = false
-          c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -20, 0, 3, MOAIEaseType.LINEAR )
+          c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -20 / SCREEN_TO_WORLD_RATIO, 0, 3, MOAIEaseType.LINEAR )
           c01s01.objects.clothes_heap.highlight = true
           local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
           anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, c01s01.objects.josh_grabs_cellphone.wakingUp )
@@ -170,7 +170,7 @@ objects = {
             c01s01:startRendering ( "josh_grabs_cellphone" )
             
             c01s01.objects.cellphone.action:stop ()
-            c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( 3, -5, 3, MOAIEaseType.LINEAR )
+            c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( 3 / SCREEN_TO_WORLD_RATIO, -5 / SCREEN_TO_WORLD_RATIO, 3, MOAIEaseType.LINEAR )
             
           else
             
@@ -180,7 +180,7 @@ objects = {
             
             local anim = c01s01.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
             c01s01.objects.cellphone.action:stop ()
-            c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -8, 0, 2, MOAIEaseType.LINEAR )
+            c01s01.objects.cellphone.action = c01s01.objects.cellphone.prop:moveLoc ( -8 / SCREEN_TO_WORLD_RATIO, 0, 2, MOAIEaseType.LINEAR )
           end
 
           c01s01.objects.cellphone.clicks = c01s01.objects.cellphone.clicks + 1

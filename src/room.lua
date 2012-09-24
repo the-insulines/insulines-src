@@ -91,8 +91,8 @@ function new (name)
   function room:resetCamera ( )
     if self.path then
       local offset = self.path.graph[self.initialCameraPathNode].offsets
-      camX = offset.x
-      camY = offset.y
+      camX = offset.x / SCREEN_TO_WORLD_RATIO 
+      camY = offset.y / SCREEN_TO_WORLD_RATIO
       camScl = offset.scl
       game.camera:seekLoc (camX, camY, 0.001, MOAIEaseType.FLAT)
       game.camera:seekScl (camScl, camScl, 0.001, MOAIEaseType.FLAT)
@@ -169,7 +169,7 @@ function new (name)
         object.prop:setDeck ( object.gfx )
       end
       
-        object.prop:setLoc ( object.x, object.y )
+        object.prop:setLoc ( object.x / SCREEN_TO_WORLD_RATIO, object.y / SCREEN_TO_WORLD_RATIO )
         if object.renderPriority then
           object.prop:setPriority ( object.renderPriority )
         end
@@ -190,8 +190,8 @@ function new (name)
         end
       
         -- Add dimensions
-        object.half_width = resources[v.resource_name].width / 2
-        object.half_height = resources[v.resource_name].height / 2
+        object.half_width = resources[v.resource_name].width / 2 / SCREEN_TO_WORLD_RATIO
+        object.half_height = resources[v.resource_name].height / 2 / SCREEN_TO_WORLD_RATIO
       end
     end
   end

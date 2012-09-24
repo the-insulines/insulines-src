@@ -28,8 +28,8 @@ function loadImage ( fileUrl, imageAttributes )
     image = loadGfxQuad2D ( fileUrl, imageAttributes.imageRect )
   else
     -- load the entire image specified by it's size
-    local width = imageAttributes.width
-    local height = imageAttributes.height
+    local width = imageAttributes.width / SCREEN_TO_WORLD_RATIO
+    local height = imageAttributes.height / SCREEN_TO_WORLD_RATIO
     image = loadGfxQuad2D ( fileUrl, {-width/2, -height/2, width/2, height/2} )
   end
   
@@ -152,8 +152,8 @@ end
 
 
 function loadTiledImage ( fileUrl, tiledImageAttributes )
-  local tileRectWidth = tiledImageAttributes.width
-  local tileRectHeight = tiledImageAttributes.height
+  local tileRectWidth = tiledImageAttributes.width / SCREEN_TO_WORLD_RATIO
+  local tileRectHeight = tiledImageAttributes.height / SCREEN_TO_WORLD_RATIO
   local tileRect = {-tileRectWidth/2, -tileRectHeight/2, tileRectWidth/2, tileRectHeight/2}
   return loadTileDeck2D ( fileUrl, tiledImageAttributes.tileMapSize, tileRect )
 end
