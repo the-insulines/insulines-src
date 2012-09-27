@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'nokogiri'
 
-class LevelParser
+class RoomParser
   attr_accessor :file, :xml, :layers
   def initialize(filename)
     self.file = File.open(filename)
@@ -66,12 +66,4 @@ class LevelParser
     print result
   end
 
-end
-
-
-if ARGV[0]
-  lp = LevelParser.new(ARGV[0])
-  lp.to_lua
-else
-  puts "Usage: ruby parse-level.rb [filename]"
 end
