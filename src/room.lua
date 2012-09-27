@@ -147,28 +147,35 @@ function new (name)
   end
   
   function room:loadObjects ( )
-    for k,v in pairs ( self.objects ) do
+    for k, v in pairs ( self.objects ) do
       local object = self.objects[k]
-      local resource = resources[object.resource_name]
       
       -- Load resource
       if v.resource_name then
-        object.gfx = resource_cache.get ( v.resource_name )
-
-      -- Create prop
-      if object.animated then
-        -- create an animated prop of the type of the object
-        object.animation = AnimatedProp.new ( resource.type )
-        object.animation:setDeck ( object.gfx )
-        if object.sounds then
-          object.animation:addSounds ( object.sounds )
+        local resource
+        if self.hasExternalAssets then
+          v.fileName = v.resource_name  -- TODO: THIS IS NOT GOOD, JUST FOR BACKWARD COMPATIBILITY
+          resource = v
+          object.gfx = resource_cache.get ( k, v )
+        else
+          resource = resources[object.resource_name]
+          object.gfx = resource_cache.get ( v.resource_name )
         end
-        object.prop = object.animation.prop
-      else
-        object.prop = MOAIProp2D.new ()
-        object.prop:setDeck ( object.gfx )
-      end
-      
+        
+        -- Create prop
+        if object.animated then
+          -- create an animated prop of the type of the object
+          object.animation = AnimatedProp.new ( resource.type )
+          object.animation:setDeck ( object.gfx )
+          if object.sounds then
+            object.animation:addSounds ( object.sounds )
+          end
+          object.prop = object.animation.prop
+        else
+          object.prop = MOAIProp2D.new ()
+          object.prop:setDeck ( object.gfx )
+        end
+        
         object.prop:setLoc ( object.x / SCREEN_TO_WORLD_RATIO, object.y / SCREEN_TO_WORLD_RATIO )
         if object.renderPriority then
           object.prop:setPriority ( object.renderPriority )
@@ -190,8 +197,8 @@ function new (name)
         end
       
         -- Add dimensions
-        object.half_width = resources[v.resource_name].width / 2 / SCREEN_TO_WORLD_RATIO
-        object.half_height = resources[v.resource_name].height / 2 / SCREEN_TO_WORLD_RATIO
+        object.half_width = resource.width / 2 / SCREEN_TO_WORLD_RATIO
+        object.half_height = resource.height / 2 / SCREEN_TO_WORLD_RATIO
       end
     end
   end

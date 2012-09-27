@@ -20,7 +20,7 @@ objects = {
     onClick = function ()
       logoScreen:unload ()
       logoScreen.inputEnabled = false
-      performWithDelay ( 100, game.loadScene, 1, game, c01s01 )
+      performWithDelay ( 100, game.loadScene, 1, game, c01s03 )
     end
   },
   

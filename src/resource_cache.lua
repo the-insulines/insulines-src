@@ -168,6 +168,12 @@ function loadTileDeck2D ( fileUrl, tileMapSize, tileRect )
 end
 
 
+function loadExternal ( key, attributes )
+  resources[key] = attributes
+  load ( key )
+end
+
+
 function load ( key )
   local resourceAttributes = resources[key]
   
@@ -211,9 +217,13 @@ function unload ( key )
 end
 
 
-function get ( key )
+function get ( key, attributes )
   if (not loaded ( key )) then
-    load ( key )
+    if (attributes) then
+      loadExternal ( key, attributes )
+    else
+      load ( key )
+    end
   end
   
   return cache[key]
