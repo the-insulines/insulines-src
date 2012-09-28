@@ -1,12 +1,8 @@
-require 'rubygems'
 require 'progressbar'
 require 'fileutils'
 require './tools/shared'
 require './tools/room_parser'
+require './tools/room_definitions_listener'
 
-
-#
-# Parse rooms svg's
-#
-print "Parsing rooms..."
-
+listener = RoomDefinitionsListener.new()
+listener.start()
