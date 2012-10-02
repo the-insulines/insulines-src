@@ -9,14 +9,14 @@ require 'c01s03_definition'
 
 c01s03 = room.new ( "c01s03" )
 
-c01s03.frontCharacterZoom = 0.9
-c01s03.bottomCharacterZoomThreshold = -611
+c01s03.frontCharacterZoom = 1.3
+c01s03.bottomCharacterZoomThreshold = -542
 
-c01s03.backCharacterZoom = 0.3
-c01s03.topCharacterZoomThreshold = 323
+c01s03.backCharacterZoom = 0.5
+c01s03.topCharacterZoomThreshold = 74
 
-c01s03.initialCameraPathNode = 'behind_tree'
-c01s03.initialCharacterPathNode = 'behind_tree'
+c01s03.initialCameraPathNode = 'start'
+c01s03.initialCharacterPathNode = 'start'
 
 
 c01s03.hasExternalAssets = true
@@ -32,16 +32,35 @@ function c01s03:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
   self:loadCharacter( mainCharacter )
-  self.objects.main_character:setLoc(0, 0)
 end
 
 function c01s03:afterInitialize ()
 end
 
 local path = {
-  behind_tree = {
-    position = point (0, 0),
-    neighbors = {},
+  start = {
+    position = point (-470, 32),
+    neighbors = {'pete_and_paul'},
+    offsets = { x = 0, y = 0, scl = 1.0 }
+  },
+  pete_and_paul = {
+    position = point (-146, -216),
+    neighbors = {'start', 'foam', 'stuff'},
+    offsets = { x = 0, y = 0, scl = 1.0 }
+  },
+  foam = {
+    position = point (90, -314),
+    neighbors = {'pete_and_paul', 'bottle_emporium','stuff'},
+    offsets = { x = 0, y = 0, scl = 1.0 }
+  },
+  bottle_emporium = {
+    position = point (476, -540),
+    neighbors = {'foam', 'stuff'},
+    offsets = { x = 0, y = 0, scl = 1.0 }
+  },
+  stuff = {
+    position = point (-182, -392),
+    neighbors = {'bottle_emporium','foam', 'pete_and_paul'},
     offsets = { x = 0, y = 0, scl = 1.0 }
   },
 }

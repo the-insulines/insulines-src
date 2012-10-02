@@ -36,10 +36,8 @@ class RoomParser
                 result_asset[name.to_sym] = a.value
             end
           end
-          puts "(#{result_asset[:x]}, #{result_asset[:y]})[#{result_asset[:width]}, #{result_asset[:height]}]"
           result_asset[:x] = result_asset[:x].to_f - (self.width / 2) + (result_asset[:width].to_f / 2)
           result_asset[:y] = -result_asset[:y].to_f + (self.height / 2) - (result_asset[:height].to_f / 2)
-          puts "(#{result_asset[:x]}, #{result_asset[:y]})[#{result_asset[:width]}, #{result_asset[:height]}]"
           layer << result_asset
         end
 

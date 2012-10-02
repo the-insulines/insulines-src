@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     listen (0.5.1)
     progressbar (0.11.0)

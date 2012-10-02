@@ -34,6 +34,7 @@ function new (name)
     back_objects = MOAILayer2D.new (),
     objects = MOAILayer2D.new (),
     character = MOAILayer2D.new (),
+    walk_behind_objects = MOAILayer2D.new (),
     walk_behind = MOAILayer2D.new (),
     walk_behind_shadows = MOAILayer2D.new (),
     walk_behind_highlights = MOAILayer2D.new (),git
@@ -55,6 +56,7 @@ function new (name)
     table.insert ( result, self.layer_objects.back_objects )
     table.insert ( result, self.layer_objects.objects )
     table.insert ( result, self.layer_objects.character )
+    table.insert ( result, self.layer_objects.walk_behind_objects )
     table.insert ( result, self.layer_objects.walk_behind )
     table.insert ( result, self.layer_objects.walk_behind_highlights )
     table.insert ( result, self.layer_objects.walk_behind_shadows )

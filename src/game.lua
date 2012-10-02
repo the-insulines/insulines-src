@@ -83,7 +83,8 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( logoScreen )
+  -- self:loadScene ( logoScreen )
+  self:loadScene ( c01s03 )
 end
 
 
