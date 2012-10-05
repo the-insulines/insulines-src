@@ -1065,7 +1065,7 @@
               <Link OriginConvoID="2" DestinationConvoID="2" OriginDialogID="0" DestinationDialogID="1" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString>Variable["MessagePlayed"] == false</ConditionsString>
-            <UserScript>Variable["SkipLoop"] = true</UserScript>
+            <UserScript>Variable["SkipLoop"] = false</UserScript>
           </DialogEntry>
           <DialogEntry ID="1" ConversationID="2" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -1161,7 +1161,6 @@
             </Fields>
             <OutgoingLinks>
               <Link OriginConvoID="2" DestinationConvoID="2" OriginDialogID="2" DestinationDialogID="3" IsConnector="false" />
-              <Link OriginConvoID="2" DestinationConvoID="2" OriginDialogID="2" DestinationDialogID="4" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
             <UserScript>Variable["MessagePlayed"] = true</UserScript>
@@ -1211,55 +1210,6 @@
             </Fields>
             <OutgoingLinks />
             <ConditionsString>Variable["SkipLoop"] == false</ConditionsString>
-            <UserScript />
-          </DialogEntry>
-          <DialogEntry ID="4" ConversationID="2" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
-            <Fields>
-              <Field Type="Text" Hint="The title of this dialogue.">
-                <Title>Title</Title>
-                <Value>New Dialogue</Value>
-              </Field>
-              <Field Type="Files" Hint="A collection of image files that represent this dialogue.">
-                <Title>Pictures</Title>
-                <Value>[]</Value>
-              </Field>
-              <Field Type="Text" Hint="A short description of what happens in this dialogue.">
-                <Title>Description</Title>
-                <Value />
-              </Field>
-              <Field Type="Actor" Hint="The actor who is talking.">
-                <Title>Actor</Title>
-                <Value>1</Value>
-              </Field>
-              <Field Type="Actor" Hint="The actor who is listening.">
-                <Title>Conversant</Title>
-                <Value>1</Value>
-              </Field>
-              <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
-                <Title>Menu Text</Title>
-                <Value />
-              </Field>
-              <Field Type="Localization" Hint="The text that is spoken by the actor.">
-                <Title>Dialogue Text</Title>
-                <Value>Anyway...</Value>
-              </Field>
-              <Field Type="Text" Hint="A description of what is going on during this dialogue.">
-                <Title>Parenthetical</Title>
-                <Value />
-              </Field>
-              <Field Type="Files" Hint="A collection of audio files that should be played during this dialogue.">
-                <Title>Audio Files</Title>
-                <Value>[]</Value>
-              </Field>
-              <Field Type="Text" Hint="A WMV video file to be played for this dialogue.">
-                <Title>Video File</Title>
-                <Value />
-              </Field>
-            </Fields>
-            <OutgoingLinks>
-              <Link OriginConvoID="2" DestinationConvoID="1" OriginDialogID="4" DestinationDialogID="0" IsConnector="true" />
-            </OutgoingLinks>
-            <ConditionsString>Variable["SkipLoop"] == true</ConditionsString>
             <UserScript />
           </DialogEntry>
         </DialogEntries>
