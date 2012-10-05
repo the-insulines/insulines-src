@@ -4459,7 +4459,7 @@ Actually, I don’t how I’ll manage to sleep tonight..</Value>
               <Link OriginConvoID="3" DestinationConvoID="3" OriginDialogID="3" DestinationDialogID="4" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>game.currentScene.objects.paul:startAnimation('blink')</UserScript>
           </DialogEntry>
           <DialogEntry ID="4" ConversationID="3" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -4508,7 +4508,7 @@ Actually, I don’t how I’ll manage to sleep tonight..</Value>
               <Link OriginConvoID="3" DestinationConvoID="3" OriginDialogID="4" DestinationDialogID="9" IsConnector="true" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>game.currentScene.objects.paul:startAnimation('blink')</UserScript>
+            <UserScript />
           </DialogEntry>
           <DialogEntry ID="5" ConversationID="3" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -4655,7 +4655,7 @@ Actually, I don’t how I’ll manage to sleep tonight..</Value>
               <Link OriginConvoID="3" DestinationConvoID="3" OriginDialogID="7" DestinationDialogID="8" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>game.currentScene.objects.paul:startAnimation('blink')</UserScript>
           </DialogEntry>
           <DialogEntry ID="8" ConversationID="3" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
