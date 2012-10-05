@@ -23,7 +23,7 @@ class FileWatcher
     dialogs.each do |dialog_filename|
       # Parse room
       dialog = DialogParser.new(dialog_filename)
-      result_filename = dialog_filename.gsub('dialog_definitions/xml/', 'src/dialogs/').gsub('.xml', '_dialogs.lua')
+      result_filename = dialog_filename.gsub('dialog_definitions/xml/', 'src/dialogs/').gsub('.xml', '_dialogs_definition.lua')
       f = File.open(result_filename, 'w')
       f.write(dialog.to_lua)
       f.close
