@@ -2258,7 +2258,8 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I cannot fathom what could possibly be more menacing than that.|Actually, I don’t how I’ll manage to sleep tonight..</Value>
+                <Value>I cannot fathom what could possibly be more menacing than that.|
+Actually, I don’t how I’ll manage to sleep tonight..</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -4507,7 +4508,7 @@
               <Link OriginConvoID="3" DestinationConvoID="3" OriginDialogID="4" DestinationDialogID="9" IsConnector="true" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>game.currentScene.objects.paul:startAnimation('blink')</UserScript>
           </DialogEntry>
           <DialogEntry ID="5" ConversationID="3" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -7523,9 +7524,9 @@
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="11" DestinationDialogID="12" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>variable_Desc1 = false
-variable_Desc2 = false
-variable_Desc3 = false</UserScript>
+            <UserScript>Variable["Smell"] = false
+Variable["Weight"] = false
+Variable["Dog"] = false</UserScript>
           </DialogEntry>
           <DialogEntry ID="12" ConversationID="4" IsRoot="false" IsGroup="true" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -7583,7 +7584,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Patchouli-Smelling,</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7606,7 +7607,7 @@ variable_Desc3 = false</UserScript>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="13" DestinationDialogID="17" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>variable_Desc1 = true</UserScript>
+            <UserScript>Variable ["Smell"] = true</UserScript>
           </DialogEntry>
           <DialogEntry ID="14" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -7632,7 +7633,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Minty-Breathed,</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7681,7 +7682,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Shifty-Looking,</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7730,7 +7731,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Peg-Legged,</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7811,7 +7812,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Chubby</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7860,7 +7861,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Heavy-set</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7883,7 +7884,7 @@ variable_Desc3 = false</UserScript>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="19" DestinationDialogID="22" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>variable_Desc2 = true</UserScript>
+            <UserScript>Variable["Weight"] = true</UserScript>
           </DialogEntry>
           <DialogEntry ID="20" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -7909,7 +7910,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Rotund</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -7958,7 +7959,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>Slightly Overweight</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -8088,7 +8089,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>a lisp.</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -8137,7 +8138,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>an eye patch.</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -8186,7 +8187,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>an annoying pug.</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -8209,7 +8210,7 @@ variable_Desc3 = false</UserScript>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="26" DestinationDialogID="28" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>variable_Desc3 = true</UserScript>
+            <UserScript>Variable["Dog"] = true</UserScript>
           </DialogEntry>
           <DialogEntry ID="27" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -8235,7 +8236,7 @@ variable_Desc3 = false</UserScript>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value />
+                <Value>gout.</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -8356,7 +8357,9 @@ variable_Desc3 = false</UserScript>
             <OutgoingLinks>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="29" DestinationDialogID="3" IsConnector="true" />
             </OutgoingLinks>
-            <ConditionsString>Variable["Desc1"] == false or Variable["Desc2"] == false or Variable["Desc3"] == false</ConditionsString>
+            <ConditionsString>Variable["Smell"] == false
+or Variable["Weight"] == false
+or Variable["Dog"] == false</ConditionsString>
             <UserScript />
           </DialogEntry>
           <DialogEntry ID="30" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
@@ -8406,7 +8409,9 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             <OutgoingLinks>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="30" DestinationDialogID="31" IsConnector="false" />
             </OutgoingLinks>
-            <ConditionsString>Variable["Desc1"] == true and Variable["Desc2"] == true and Variable["Desc3"] == true</ConditionsString>
+            <ConditionsString>Variable["Smell"] == true
+and Variable["Weight"] == true
+and Variable["Dog"] == true</ConditionsString>
             <UserScript />
           </DialogEntry>
           <DialogEntry ID="31" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
@@ -8781,7 +8786,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="38" DestinationDialogID="39" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>Variable["Bottle"] = math.random(4)</UserScript>
           </DialogEntry>
           <DialogEntry ID="39" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -8833,7 +8838,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="39" DestinationDialogID="73" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>variable_Bottle = math.random(4)</UserScript>
+            <UserScript />
           </DialogEntry>
           <DialogEntry ID="40" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -9627,7 +9632,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="63" DestinationDialogID="39" IsConnector="true" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>Variable["Bottle"] = math.random(4)</UserScript>
           </DialogEntry>
           <DialogEntry ID="64" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -10143,54 +10148,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
         <Fields>
           <Field Type="Text" Hint="The name of this variable.">
             <Title>Name</Title>
-            <Value>Desc1</Value>
-          </Field>
-          <Field Type="Boolean" Hint="The default initial value of this variable.">
-            <Title>Initial Value</Title>
-            <Value>False</Value>
-          </Field>
-          <Field Type="Text" Hint="A short description of what this variable is for.">
-            <Title>Description</Title>
-            <Value>First Description Element</Value>
-          </Field>
-        </Fields>
-      </UserVariable>
-      <UserVariable>
-        <Fields>
-          <Field Type="Text" Hint="The name of this variable.">
-            <Title>Name</Title>
-            <Value>Desc2</Value>
-          </Field>
-          <Field Type="Boolean" Hint="The default initial value of this variable.">
-            <Title>Initial Value</Title>
-            <Value>False</Value>
-          </Field>
-          <Field Type="Text" Hint="A short description of what this variable is for.">
-            <Title>Description</Title>
-            <Value>Second Description Element</Value>
-          </Field>
-        </Fields>
-      </UserVariable>
-      <UserVariable>
-        <Fields>
-          <Field Type="Text" Hint="The name of this variable.">
-            <Title>Name</Title>
-            <Value>Desc3</Value>
-          </Field>
-          <Field Type="Boolean" Hint="The default initial value of this variable.">
-            <Title>Initial Value</Title>
-            <Value>False</Value>
-          </Field>
-          <Field Type="Text" Hint="A short description of what this variable is for.">
-            <Title>Description</Title>
-            <Value>Third Description Element</Value>
-          </Field>
-        </Fields>
-      </UserVariable>
-      <UserVariable>
-        <Fields>
-          <Field Type="Text" Hint="The name of this variable.">
-            <Title>Name</Title>
             <Value>Bottle</Value>
           </Field>
           <Field Type="Number" Hint="The default initial value of this variable.">
@@ -10200,6 +10157,54 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           <Field Type="Text" Hint="A short description of what this variable is for.">
             <Title>Description</Title>
             <Value>A Random Bottle Description</Value>
+          </Field>
+        </Fields>
+      </UserVariable>
+      <UserVariable>
+        <Fields>
+          <Field Type="Text" Hint="The name of this variable.">
+            <Title>Name</Title>
+            <Value>Dog</Value>
+          </Field>
+          <Field Type="Number" Hint="The default initial value of this variable.">
+            <Title>Initial Value</Title>
+            <Value>False</Value>
+          </Field>
+          <Field Type="Text" Hint="A short description of what this variable is for.">
+            <Title>Description</Title>
+            <Value>Third Description Element: "Pug"</Value>
+          </Field>
+        </Fields>
+      </UserVariable>
+      <UserVariable>
+        <Fields>
+          <Field Type="Text" Hint="The name of this variable.">
+            <Title>Name</Title>
+            <Value>Weight</Value>
+          </Field>
+          <Field Type="Number" Hint="The default initial value of this variable.">
+            <Title>Initial Value</Title>
+            <Value>False</Value>
+          </Field>
+          <Field Type="Text" Hint="A short description of what this variable is for.">
+            <Title>Description</Title>
+            <Value>Second Description Element: "Heavy"</Value>
+          </Field>
+        </Fields>
+      </UserVariable>
+      <UserVariable>
+        <Fields>
+          <Field Type="Text" Hint="The name of this variable.">
+            <Title>Name</Title>
+            <Value>Smell</Value>
+          </Field>
+          <Field Type="Number" Hint="The default initial value of this variable.">
+            <Title>Initial Value</Title>
+            <Value>False</Value>
+          </Field>
+          <Field Type="Text" Hint="A short description of what this variable is for.">
+            <Title>Description</Title>
+            <Value>First Description Element: "Patchouli"</Value>
           </Field>
         </Fields>
       </UserVariable>
