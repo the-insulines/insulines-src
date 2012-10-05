@@ -8357,9 +8357,7 @@ Variable["Dog"] = false</UserScript>
             <OutgoingLinks>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="29" DestinationDialogID="3" IsConnector="true" />
             </OutgoingLinks>
-            <ConditionsString>Variable["Smell"] == false
-or Variable["Weight"] == false
-or Variable["Dog"] == false</ConditionsString>
+            <ConditionsString>Variable["Smell"] == false or Variable["Weight"] == false or Variable["Dog"] == false</ConditionsString>
             <UserScript />
           </DialogEntry>
           <DialogEntry ID="30" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
@@ -8409,9 +8407,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             <OutgoingLinks>
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="30" DestinationDialogID="31" IsConnector="false" />
             </OutgoingLinks>
-            <ConditionsString>Variable["Smell"] == true
-and Variable["Weight"] == true
-and Variable["Dog"] == true</ConditionsString>
+            <ConditionsString>Variable["Smell"] == true and Variable["Weight"] == true and Variable["Dog"] == true</ConditionsString>
             <UserScript />
           </DialogEntry>
           <DialogEntry ID="31" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
