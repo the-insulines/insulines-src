@@ -211,7 +211,9 @@ end
 
 
 function unload ( key )
-  cache[key] = nil
+  if key then
+    cache[key] = nil
+  end
   
   return true
 end

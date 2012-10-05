@@ -1,5 +1,5 @@
 -- path nodes
-path = {
+c01s04_path = {
   
   start = {
     position = point (-940, -356),

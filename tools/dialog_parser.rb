@@ -2,11 +2,12 @@ require 'rubygems'
 require 'nokogiri'
 
 class DialogParser
-  attr_accessor :file, :xml, :actors, :conversations, :user_variables
+  attr_accessor :file, :xml, :actors, :conversations, :user_variables, :name
 
   def initialize(filename)
     self.file = File.open(filename)
     self.xml = Nokogiri::XML(self.file)
+    self.name = filename.split('/')[2].gsub('.xml', '')
   end
 
   def parse
@@ -161,7 +162,7 @@ class DialogParser
   
   def to_lua
     self.parse if !self.conversations
-    result = "conversations = {\n"
+    result = "#{self.name}_conversations = {\n"
     result += "  \n"
     
     result += "  userVariables = {\n"

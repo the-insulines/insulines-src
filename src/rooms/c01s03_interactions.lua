@@ -1,4 +1,4 @@
-objectInteractions = {
+c01s03_objectInteractions = {
   
   c01s03_glassglow_table = {
     onClick = function ()

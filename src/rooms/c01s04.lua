@@ -64,8 +64,8 @@ c01s04 = function ()
     self:loadSounds ()
     
     -- characters
-    self:loadCharacter ( josh )
-    self:loadCharacter ( moe )
+    self:loadCharacter ( josh () )
+    self:loadCharacter ( moe () )
     
     self.objects.moe:setLoc ( self.initialMoePosition.x, self.initialMoePosition.y )
     

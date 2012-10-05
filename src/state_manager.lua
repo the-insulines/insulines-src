@@ -7,4 +7,6 @@
 
 module ( "stateManager", package.seeall )
 
+cellphoneClicks = 0
+
 -- pickedFlyer = false

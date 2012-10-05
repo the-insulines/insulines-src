@@ -15,7 +15,10 @@ map = function ()
   require 'map_interactions'
   
   local map_room = room.new ( "map" )
-  
+
+  map_room:addObjects ( map_objects )
+  map_room:loadObjectInteractions ( map_objectInteractions )
+
   map_room.hasExternalAssets = true
   map_room.inputEnabled = true
   map_room.characterMovement = false
@@ -25,10 +28,6 @@ map = function ()
   map_room.useCellphone = false
   
 
-  map_room:addObjects ( objects )
-  
-  map_room:loadObjectInteractions ( objectInteractions )
-  
   function map_room:beforeInitialize ()
     self:loadObjects ()
   end

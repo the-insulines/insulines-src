@@ -6,6 +6,9 @@
 -- --==============================================================
 -- 
 
-josh = character.new ( 'josh' )
-josh.renderPriority = 200
+function josh ()
+  local josh = character.new ( 'josh' )
+  josh.renderPriority = 200
+  return josh
+end
 

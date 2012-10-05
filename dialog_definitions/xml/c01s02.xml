@@ -1209,7 +1209,7 @@
               </Field>
             </Fields>
             <OutgoingLinks />
-            <ConditionsString>Variable["SkipLoop"] == false</ConditionsString>
+            <ConditionsString />
             <UserScript />
           </DialogEntry>
         </DialogEntries>

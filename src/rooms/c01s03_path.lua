@@ -1,5 +1,5 @@
 -- path nodes
-path = {
+c01s03_path = {
   
   start = {
     position = point (-470, 32),
@@ -41,7 +41,7 @@ path = {
 
 
 -- object nodes on path
-objectPlacementOnPath = {
+c01s03_objectPlacementOnPath = {
   
   c01s03_glassglow_table = 'stuff',
   
