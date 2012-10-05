@@ -6923,7 +6923,7 @@ Actually, I don’t how I’ll manage to sleep tonight..</Value>
             </Fields>
             <OutgoingLinks />
             <ConditionsString />
-            <UserScript />
+            <UserScript>game.currentScene.objects.paul:startAnimation('stand')</UserScript>
           </DialogEntry>
         </DialogEntries>
       </Conversation>
@@ -8457,7 +8457,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
               <Link OriginConvoID="4" DestinationConvoID="4" OriginDialogID="31" DestinationDialogID="3" IsConnector="true" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>game.currentScene:cellphoneMessage ()</UserScript>
           </DialogEntry>
           <DialogEntry ID="32" ConversationID="4" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
