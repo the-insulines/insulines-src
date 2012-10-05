@@ -140,8 +140,8 @@ class DialogParser
         result += "          isGroup = #{dialog_entry[:is_group]},\n"
         result += "          actor = '#{self.actors[dialog_entry[:actor].to_i][:name].downcase}',\n"
         result += "          conversant = '#{self.actors[dialog_entry[:conversant].to_i][:name].downcase}',\n"
-        result += "          menuText = '#{dialog_entry[:"menu text"]}',\n"
-        result += "          dialogueText = '#{dialog_entry[:"dialogue text"]}',\n"
+        result += "          menuText = \"#{dialog_entry[:"menu text"]}\",\n"
+        result += "          dialogueText = \"#{dialog_entry[:"dialogue text"]}\",\n"
         result += "          conditionsString = '#{dialog_entry[:conditions_string]}',\n"
         result += "          userScript = '#{dialog_entry[:user_script]}',\n"
         
