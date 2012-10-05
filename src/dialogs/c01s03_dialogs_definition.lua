@@ -3,7 +3,7 @@ conversations = {
   glasworks = {
     actor = 'josh',
     conversant = 'sonja',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
@@ -36,7 +36,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = "Hello there, sweetie. Welcome to Glasgow’s Glassworks. What can I do ye for?",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -54,7 +54,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = "Hi there, Luv.",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -132,7 +132,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "Nice Glass",
           dialogueText = "That’s some interesting looking glass you’ve got there.",
-          conditionsString = 'Dialog[4].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -168,7 +168,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "Nice Glass",
           dialogueText = "Nice glass, Sonja!",
-          conditionsString = 'Dialog[4].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -204,7 +204,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "I'm looking for someone",
           dialogueText = "I’m looking for someone here at the Fair.",
-          conditionsString = 'Dialog[8].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog8.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -312,7 +312,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "So, about this guy...",
           dialogueText = "So, about this guy...",
-          conditionsString = 'Dialog[8].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog8.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -395,7 +395,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "I need a bottle...",
           dialogueText = "Say, could you make a bottle that resembled a specific brand?",
-          conditionsString = 'Dialog[19].SimStatus ~= "WasDisplayed" and Variable["Janxx"] == true',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus ~= "WasDisplayed" and stateManager.dialogs["glasworks"]["Janxx"] == true',
           links = {
             {
               originConversationId = 1,
@@ -521,7 +521,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "About that bottle...",
           dialogueText = "So, there's no chance of you making that bottle for me?",
-          conditionsString = 'Dialog[19].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -574,7 +574,7 @@ conversations = {
   foam_and_lather = {
     actor = 'josh',
     conversant = 'howard',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
@@ -607,7 +607,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = "Erhm... Hi there.",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -661,7 +661,7 @@ conversations = {
           conversant = 'howard',
           menuText = "",
           dialogueText = "Uh... Hello?",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -757,7 +757,7 @@ conversations = {
           conversant = 'howard',
           menuText = "What is this place?",
           dialogueText = "What is this place?",
-          conditionsString = 'Dialog[7].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog7.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -793,7 +793,7 @@ conversations = {
           conversant = 'howard',
           menuText = "Riddle me this...",
           dialogueText = "Riddle me this...",
-          conditionsString = 'Dialog[7].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog7.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -864,7 +864,7 @@ conversations = {
           conversant = 'howard',
           menuText = "What's with the Gun?",
           dialogueText = "Why would a soap salesman need to carry a gun?",
-          conditionsString = 'Dialog[11].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog11.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -936,7 +936,7 @@ conversations = {
           conversant = 'howard',
           menuText = "Who are \"They\"?",
           dialogueText = "I’m pretty sure I’ll regret asking this, but who are “they”?",
-          conditionsString = 'Dialog[11].SimStatus == "WasDisplayed" and Dialog[15].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog11.SimStatus == "WasDisplayed" and dialog.currentConversation.dialogEntries.dialog15.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1026,7 +1026,7 @@ conversations = {
           conversant = 'howard',
           menuText = "So, the Lizardfolk, uh?",
           dialogueText = "So, the Lizardfolk, uh?",
-          conditionsString = 'Dialog[15].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog15.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1062,7 +1062,7 @@ conversations = {
           conversant = 'howard',
           menuText = "Tell me about That Ol’ Janxx Spirits",
           dialogueText = "What can you tell me about That Ol’ Janxx Spirits?",
-          conditionsString = 'Dialog[22].SimStatus ~= "WasDisplayed" and Variable["Janxx"] == true',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus ~= "WasDisplayed" and stateManager.dialogs["foam_and_lather"]["Janxx"] == true',
           links = {
             {
               originConversationId = 2,
@@ -1134,7 +1134,7 @@ conversations = {
           conversant = 'howard',
           menuText = "What was That Ol' Janxx Spirits like?",
           dialogueText = "So, how would you sum up That Ol’ Janxx Spirits then?",
-          conditionsString = 'Dialog[22].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1206,7 +1206,7 @@ conversations = {
           conversant = 'howard',
           menuText = "Everyone here looks familiar.",
           dialogueText = "Everyone in this fair seems oddly familiar, somehow.",
-          conditionsString = 'Dialog[30].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog30.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1278,7 +1278,7 @@ conversations = {
           conversant = 'howard',
           menuText = "Still, there is something fishy here...",
           dialogueText = "I still think there’s something fishy about this place.",
-          conditionsString = 'Dialog[30].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog30.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1314,7 +1314,7 @@ conversations = {
           conversant = 'howard',
           menuText = "I’m looking for a stall at the fair.",
           dialogueText = "I’m looking for a stall at the fair.",
-          conditionsString = 'Dialog[36].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog36.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1512,7 +1512,7 @@ conversations = {
           conversant = 'howard',
           menuText = "So, about that guy...",
           dialogueText = "So, about that guy...",
-          conditionsString = 'Dialog[36].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog36.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1630,7 +1630,7 @@ conversations = {
   wardrobe = {
     actor = 'josh',
     conversant = 'pete',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
@@ -1663,7 +1663,7 @@ conversations = {
           conversant = 'paul',
           menuText = "",
           dialogueText = "I’m telling you, this has to be the dumbest idea you’ve had in a long line of dumb ideas, Bro.",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -1735,7 +1735,7 @@ conversations = {
           conversant = 'paul',
           menuText = "",
           dialogueText = "This is beyond retarded, you know that?",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -1853,7 +1853,7 @@ conversations = {
           conversant = 'pete',
           menuText = "I'm looking for someone.",
           dialogueText = "I was wondering if you’ve seen a certain guy in the fair..",
-          conditionsString = 'Dialog[10].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog10.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2159,7 +2159,7 @@ conversations = {
           conversant = 'pete',
           menuText = "About this guy...",
           dialogueText = "So, about this “heavy-set” guy..",
-          conditionsString = 'Dialog[10].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog10.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2231,7 +2231,7 @@ conversations = {
           conversant = 'paul',
           menuText = "About this place...",
           dialogueText = "How did you two guys wind up selling such... Ehrm... “Colorful” Clothing?",
-          conditionsString = 'Dialog[31].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2285,7 +2285,7 @@ conversations = {
           conversant = 'pete',
           menuText = "About this place...",
           dialogueText = "So, about this place of yours...",
-          conditionsString = 'Dialog[31].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2414,7 +2414,7 @@ conversations = {
           conversant = 'pete',
           menuText = "How about Football?",
           dialogueText = "I guess you just strike me more like Madden kind of guys.",
-          conditionsString = 'Dialog[40].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog40.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2540,7 +2540,7 @@ conversations = {
           conversant = 'pete',
           menuText = "About Madden...",
           dialogueText = "So, this Madden guy, uh?",
-          conditionsString = 'Dialog[40].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog40.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2676,7 +2676,7 @@ conversations = {
   klein = {
     actor = 'josh',
     conversant = 'klein',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
@@ -2709,7 +2709,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = "Welcome to Klein’s Kleine Bottle-Lamp Emporium!| I’m Friedrich Klein. What can Ich do for you today?",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2727,7 +2727,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = "Welcome back!",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2805,7 +2805,7 @@ conversations = {
           conversant = 'klein',
           menuText = "What's all this?",
           dialogueText = "What is it that you do, exactly?",
-          conditionsString = 'Dialog[4].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2859,7 +2859,7 @@ conversations = {
           conversant = 'klein',
           menuText = "What did you do, again?",
           dialogueText = "So, what is that you did here?",
-          conditionsString = 'Dialog[4].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2895,7 +2895,7 @@ conversations = {
           conversant = 'klein',
           menuText = "I’m looking for this guy...",
           dialogueText = "I’m looking for this guy...",
-          conditionsString = 'Dialog[31].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3339,7 +3339,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "Ach! Doesn’t ring a bell, sorry.",
-          conditionsString = 'Variable["Desc1"] == false or Variable["Desc2"] == false or Variable["Desc3"] == false',
+          conditionsString = 'stateManager.dialogs["klein"]["Desc1"] == false or Variable["Desc2"] == false or Variable["Desc3"] == false',
           links = {
             {
               originConversationId = 4,
@@ -3357,7 +3357,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "Na ja, Ich know this guy.|\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.| Fortunately for us he seems to be absent today.",
-          conditionsString = 'Variable["Desc1"] == true and Variable["Desc2"] == true and Variable["Desc3"] == true',
+          conditionsString = 'stateManager.dialogs["klein"]["Desc1"] == true and Variable["Desc2"] == true and Variable["Desc3"] == true',
           links = {
             {
               originConversationId = 4,
@@ -3393,7 +3393,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "About this guy...",
           dialogueText = "So, you haven't seen him today? At all?",
-          conditionsString = 'Dialog[31].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3429,7 +3429,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "I’m looking for a Lamp",
           dialogueText = "I’m looking for a Lamp",
-          conditionsString = 'Dialog[56].SimStatus ~= "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog56.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3575,7 +3575,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "This is a one-of-a-kind item.| A high-yield tetra-lampe, both stand and shade made from vintage red-wine tetra packs.| Perfect for the avant-retro-kitsch deco scene connoisseur.",
-          conditionsString = 'Variable["Bottle"] == 1',
+          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 1',
           links = {
             {
               originConversationId = 4,
@@ -3593,7 +3593,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "An Ol' Janxx Spirits Bottle",
           dialogueText = "Got anything with an Ol’ Janxx Spirits Bottle?",
-          conditionsString = 'Variable["Janxx"] == true',
+          conditionsString = 'stateManager.dialogs["klein"]["Janxx"] == true',
           links = {
             {
               originConversationId = 4,
@@ -3762,7 +3762,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "I’m looking for a lamp.",
           dialogueText = "I’m looking for a lamp.",
-          conditionsString = 'Dialog[56].SimStatus == "WasDisplayed"',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog56.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3985,7 +3985,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "Nothing says “class” like a fine champagne.| Likewise, this 1978 Don Pomeranian bedside lamp is really the only choice if you are looking to jazz up your boudoir atmosphere.",
-          conditionsString = 'Variable["Bottle"] == 2',
+          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 2',
           links = {
             {
               originConversationId = 4,
@@ -4039,7 +4039,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "",
           dialogueText = "How about this inverted Lady Joanne Lamp-de-Pie?| A handful of LEDs inside an upended 2 gallon amber glass jug, it provides a soft luminescence not unlike a fire in a dye warehouse.",
-          conditionsString = 'Variable["Bottle"] == 3',
+          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 3',
           links = {
             {
               originConversationId = 4,
@@ -4057,7 +4057,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "",
           dialogueText = "Show off your celtic heritage with this single-malt whiskey lamp, with matching sheepskin and tam-o-shanter shade!",
-          conditionsString = 'Variable["Bottle"] == 4',
+          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 4',
           links = {
             {
               originConversationId = 4,

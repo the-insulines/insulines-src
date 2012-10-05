@@ -6,7 +6,7 @@
 --==============================================================
 
 -- Debugging
-DEBUG = true
+-- DEBUG = true
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
@@ -60,7 +60,8 @@ MAIN_CHARACTER_DIALOG_SHADOW_OFFSET = { x = -3, y = -3 }
 DIALOG_COLOR_FOR_CHARACTER = {
   main_character = { r = 0.36, g = 0.53, b = 0.77 },
   nancy = { r = 0.96, g = 0.52, b = 0.52 },
-  answering = { r = 0.52, g = 0.96, b = 0.52 }
+  answering = { r = 0.52, g = 0.96, b = 0.52 },
+  sonja = { r = 0.96, g = 0.52, b = 0.52 },
 }
 
 -- Inventory constants

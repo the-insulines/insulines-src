@@ -20,6 +20,7 @@ class DialogParser
       when "Conversations"
         self.load_conversations(asset)
       when "UserVariables"
+        # self.load_user_variables(asset)
       end
     end
   end
@@ -35,7 +36,7 @@ class DialogParser
       end
     end
   end
-
+    
   def load_conversations(conversations_xml)
     self.conversations = {}
     conversations_xml.children.select { |f| f.name == "Conversation" }.each do |conversation_xml|
@@ -129,6 +130,17 @@ class DialogParser
     string
   end
   
+  def updateConditionsString(string, conversation)
+    return '' if !string
+
+    string.gsub!(/Dialog\[(\d{1,2})\]/, 'dialog.currentConversation.dialogEntries.dialog\1')
+
+    title = conversation[:title].downcase.gsub(' ', '_')
+    string.gsub!(/Variable\[(.*)\]/, 'stateManager.dialogs["' + title + '"][\1]')
+
+    string
+  end
+  
   def to_lua
     self.parse if !self.conversations
     result = "conversations = {\n"
@@ -139,7 +151,7 @@ class DialogParser
 
       result += "    actor = '#{self.actors[conversation[:actor].to_i][:name].downcase}',\n"
       result += "    conversant = '#{self.actors[conversation[:conversant].to_i][:name].downcase}',\n"
-      result += "    dialog_entries = {\n"
+      result += "    dialogEntries = {\n"
 
       conversation[:dialog_entries].each do |dialog_entry|
         result += "        dialog#{dialog_entry[:id]} = {\n"
@@ -149,7 +161,7 @@ class DialogParser
         result += "          conversant = '#{self.actors[dialog_entry[:conversant].to_i][:name].downcase}',\n"
         result += "          menuText = \"#{self.escape(dialog_entry[:"menu text"])}\",\n"
         result += "          dialogueText = \"#{self.escape(dialog_entry[:"dialogue text"])}\",\n"
-        result += "          conditionsString = '#{dialog_entry[:conditions_string]}',\n"
+        result += "          conditionsString = '#{self.updateConditionsString(dialog_entry[:conditions_string], conversation)}',\n"
         
         if dialog_entry[:user_script]
           result += "          userScript = function()\n"

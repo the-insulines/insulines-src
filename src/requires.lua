@@ -3,6 +3,7 @@ package.path = package.path .. ";src/?.lua"
 require 'math/point2d'
 require 'path'
 require 'resource_cache'
+require 'state_manager'
 require 'defines'
 require 'room'
 require 'animatedProp'

@@ -12,7 +12,8 @@ c01s03 = function()
   require 'dialogs/c01s03_dialogs_definition'
 
   local c01s03_room = room.new ( "c01s03" )
-
+  
+  
   c01s03_room.frontCharacterZoom = 1.3
   c01s03_room.bottomCharacterZoomThreshold = -542
 
@@ -23,9 +24,9 @@ c01s03 = function()
   c01s03_room.initialCharacterPathNode = 'start'
 
   c01s03_room.hasExternalAssets = true
-
+  
   c01s03_room:addObjects ( objects )
-
+  c01s03_room:loadConversations ( conversations )
   -- sounds = {
   -- }
   -- 
@@ -34,10 +35,11 @@ c01s03 = function()
   function c01s03_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
-    self:loadCharacter( mainCharacter )
+    -- self:loadCharacter( mainCharacter )
   end
 
   function c01s03_room:afterInitialize ()
+    dialog:load('glasworks')
   end
 
   local path = {

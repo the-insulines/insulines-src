@@ -49,7 +49,6 @@ class FileWatcher
   def start
     self.update_game
     self.listener = Listen.to('./room_definitions', './src', './dialog_definitions/xml', :ignore => /definition/) do |modified, added, removed|
-      puts "File changed"
       self.update_game
     end
   end

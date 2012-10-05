@@ -205,9 +205,12 @@ function new (name)
     end
   end
   
+  function room:loadConversations ( conversations )
+    self.conversations = conversations
+  end
+  
   
   function room:loadCharacter ( object )
-    
     -- Add to layer
     object.layer = self.layer_objects.character
     
