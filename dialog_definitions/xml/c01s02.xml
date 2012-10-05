@@ -794,9 +794,7 @@
                 <Value />
               </Field>
             </Fields>
-            <OutgoingLinks>
-              <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="13" DestinationDialogID="3" IsConnector="true" />
-            </OutgoingLinks>
+            <OutgoingLinks />
             <ConditionsString>Variable["SkipLoop"] == true</ConditionsString>
             <UserScript />
           </DialogEntry>
