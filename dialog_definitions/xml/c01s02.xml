@@ -749,7 +749,7 @@
               <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="12" DestinationDialogID="13" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript />
+            <UserScript>Variable["SkipLoop"] == true;</UserScript>
           </DialogEntry>
           <DialogEntry ID="13" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
