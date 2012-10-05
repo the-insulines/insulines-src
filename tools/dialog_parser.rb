@@ -122,6 +122,13 @@ class DialogParser
     dialog_entries
   end
 
+  def escape(string)
+    return '' if !string
+    string.gsub!(/\n/, "\\n")
+    string.gsub!('"', '\"')
+    string
+  end
+  
   def to_lua
     self.parse if !self.conversations
     result = "conversations = {\n"
@@ -135,15 +142,20 @@ class DialogParser
       result += "    dialog_entries = {\n"
 
       conversation[:dialog_entries].each do |dialog_entry|
-        result += "        #{dialog_entry[:id]} = {\n"
+        result += "        dialog#{dialog_entry[:id]} = {\n"
         result += "          isRoot = #{dialog_entry[:is_root]},\n"
         result += "          isGroup = #{dialog_entry[:is_group]},\n"
         result += "          actor = '#{self.actors[dialog_entry[:actor].to_i][:name].downcase}',\n"
         result += "          conversant = '#{self.actors[dialog_entry[:conversant].to_i][:name].downcase}',\n"
-        result += "          menuText = \"#{dialog_entry[:"menu text"]}\",\n"
-        result += "          dialogueText = \"#{dialog_entry[:"dialogue text"]}\",\n"
+        result += "          menuText = \"#{self.escape(dialog_entry[:"menu text"])}\",\n"
+        result += "          dialogueText = \"#{self.escape(dialog_entry[:"dialogue text"])}\",\n"
         result += "          conditionsString = '#{dialog_entry[:conditions_string]}',\n"
-        result += "          userScript = '#{dialog_entry[:user_script]}',\n"
+        
+        if dialog_entry[:user_script]
+          result += "          userScript = function()\n"
+          result += "            #{dialog_entry[:user_script]}\n"
+          result += "          end,\n"
+        end
         
         result += "          links = {\n"
         
@@ -165,7 +177,7 @@ class DialogParser
       result += "    },\n"      
 
       # p conversation; return;
-      result += "  }\n"
+      result += "  },\n"
       result += "  \n"
 
       #   result += asset_result

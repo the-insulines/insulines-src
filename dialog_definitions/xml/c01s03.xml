@@ -2258,8 +2258,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I cannot fathom what could possibly be more menacing than that.|
-Actually, I don’t how I’ll manage to sleep tonight..</Value>
+                <Value>I cannot fathom what could possibly be more menacing than that.|Actually, I don’t how I’ll manage to sleep tonight..</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>

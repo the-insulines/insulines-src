@@ -4,7 +4,7 @@ conversations = {
     actor = 'josh',
     conversant = 'sonja',
     dialog_entries = {
-        0 = {
+        dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
@@ -12,7 +12,6 @@ conversations = {
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -30,7 +29,7 @@ conversations = {
             },
           },
         },
-        1 = {
+        dialog1 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -38,7 +37,6 @@ conversations = {
           menuText = "",
           dialogueText = "Hello there, sweetie. Welcome to Glasgow’s Glassworks. What can I do ye for?",
           conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -49,7 +47,7 @@ conversations = {
             },
           },
         },
-        2 = {
+        dialog2 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -57,7 +55,6 @@ conversations = {
           menuText = "",
           dialogueText = "Hi there, Luv.",
           conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -68,7 +65,7 @@ conversations = {
             },
           },
         },
-        3 = {
+        dialog3 = {
           isRoot = false,
           isGroup = true,
           actor = 'sonja',
@@ -76,7 +73,6 @@ conversations = {
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -129,7 +125,7 @@ conversations = {
             },
           },
         },
-        4 = {
+        dialog4 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -137,7 +133,6 @@ conversations = {
           menuText = "Nice Glass",
           dialogueText = "That’s some interesting looking glass you’ve got there.",
           conditionsString = 'Dialog[4].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -148,7 +143,7 @@ conversations = {
             },
           },
         },
-        5 = {
+        dialog5 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -156,7 +151,6 @@ conversations = {
           menuText = "",
           dialogueText = "Thank ye, Hon. Handcrafted it all meself I did.| Sonja Preach’s the name, Vitrofusion’s the Game.| Picked up the trade at the Cathedral back in me home town and been at it ever since.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -167,7 +161,7 @@ conversations = {
             },
           },
         },
-        6 = {
+        dialog6 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -175,7 +169,6 @@ conversations = {
           menuText = "Nice Glass",
           dialogueText = "Nice glass, Sonja!",
           conditionsString = 'Dialog[4].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -186,7 +179,7 @@ conversations = {
             },
           },
         },
-        7 = {
+        dialog7 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -194,7 +187,6 @@ conversations = {
           menuText = "",
           dialogueText = "Thanks!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -205,7 +197,7 @@ conversations = {
             },
           },
         },
-        8 = {
+        dialog8 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -213,7 +205,6 @@ conversations = {
           menuText = "I'm looking for someone",
           dialogueText = "I’m looking for someone here at the Fair.",
           conditionsString = 'Dialog[8].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -224,7 +215,7 @@ conversations = {
             },
           },
         },
-        9 = {
+        dialog9 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -232,7 +223,6 @@ conversations = {
           menuText = "",
           dialogueText = "Who would he be?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -243,7 +233,7 @@ conversations = {
             },
           },
         },
-        10 = {
+        dialog10 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -251,7 +241,6 @@ conversations = {
           menuText = "",
           dialogueText = "I don’t know his name, really.| He sells old LPs here somewhere.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -262,7 +251,7 @@ conversations = {
             },
           },
         },
-        11 = {
+        dialog11 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -270,7 +259,6 @@ conversations = {
           menuText = "",
           dialogueText = "I think I know the guy...| He has the most adorable Pug, always follows him everywhere.| It’s the cutest little thing, always yapping along happily and sneaking around through the stalls.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -281,7 +269,7 @@ conversations = {
             },
           },
         },
-        12 = {
+        dialog12 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -289,7 +277,6 @@ conversations = {
           menuText = "",
           dialogueText = "Sounds like quite the pain in the butt to me.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -300,7 +287,7 @@ conversations = {
             },
           },
         },
-        13 = {
+        dialog13 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -308,7 +295,6 @@ conversations = {
           menuText = "",
           dialogueText = "Oh! Not at all, Luv.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -319,7 +305,7 @@ conversations = {
             },
           },
         },
-        14 = {
+        dialog14 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -327,7 +313,6 @@ conversations = {
           menuText = "So, about this guy...",
           dialogueText = "So, about this guy...",
           conditionsString = 'Dialog[8].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -338,7 +323,7 @@ conversations = {
             },
           },
         },
-        15 = {
+        dialog15 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -346,7 +331,6 @@ conversations = {
           menuText = "",
           dialogueText = "The one with the puppy? Haven’t seen him all day, Luv.| You should ask Old Man Felix, he knows everyone ‘round here.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -357,7 +341,7 @@ conversations = {
             },
           },
         },
-        16 = {
+        dialog16 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -365,7 +349,6 @@ conversations = {
           menuText = "",
           dialogueText = "Right. Thanks.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -376,7 +359,7 @@ conversations = {
             },
           },
         },
-        17 = {
+        dialog17 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -384,7 +367,6 @@ conversations = {
           menuText = "Well, see you around.",
           dialogueText = "Well, see you around.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -395,7 +377,7 @@ conversations = {
             },
           },
         },
-        18 = {
+        dialog18 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -403,11 +385,10 @@ conversations = {
           menuText = "",
           dialogueText = "Take care, Luv.",
           conditionsString = '',
-          userScript = '',
           links = {
           },
         },
-        19 = {
+        dialog19 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -415,7 +396,6 @@ conversations = {
           menuText = "I need a bottle...",
           dialogueText = "Say, could you make a bottle that resembled a specific brand?",
           conditionsString = 'Dialog[19].SimStatus ~= "WasDisplayed" and Variable["Janxx"] == true',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -426,7 +406,7 @@ conversations = {
             },
           },
         },
-        20 = {
+        dialog20 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -434,7 +414,6 @@ conversations = {
           menuText = "",
           dialogueText = "I think you’ve got yer parties mixed up, Luv.| See here, I’m no run-off-the-mill glassblower.| Vitrofusion is a fine and delicate art form, I don’t deal with menial and crude devices like bottles and jugs.| Plus, there’s another catch to what yer askin’.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -445,7 +424,7 @@ conversations = {
             },
           },
         },
-        21 = {
+        dialog21 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -453,7 +432,6 @@ conversations = {
           menuText = "",
           dialogueText = "Really? What is it?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -464,7 +442,7 @@ conversations = {
             },
           },
         },
-        22 = {
+        dialog22 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -472,7 +450,6 @@ conversations = {
           menuText = "",
           dialogueText = "Copyright Infringement, Luv.| That bottle o’yours is most likely a trademarked design, I can’t just make you a knock off.| I could catch something nasty in the VAG.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -483,7 +460,7 @@ conversations = {
             },
           },
         },
-        23 = {
+        dialog23 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -491,7 +468,6 @@ conversations = {
           menuText = "",
           dialogueText = "Ehhh.. The what now?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -502,7 +478,7 @@ conversations = {
             },
           },
         },
-        24 = {
+        dialog24 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -510,7 +486,6 @@ conversations = {
           menuText = "",
           dialogueText = "Vitrofusionist Association of Glassgow, Luv.| I’m a registered trader, you see.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -521,7 +496,7 @@ conversations = {
             },
           },
         },
-        25 = {
+        dialog25 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -529,7 +504,6 @@ conversations = {
           menuText = "",
           dialogueText = "Oh, thank god.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -540,7 +514,7 @@ conversations = {
             },
           },
         },
-        26 = {
+        dialog26 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -548,7 +522,6 @@ conversations = {
           menuText = "About that bottle...",
           dialogueText = "So, there's no chance of you making that bottle for me?",
           conditionsString = 'Dialog[19].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -559,7 +532,7 @@ conversations = {
             },
           },
         },
-        27 = {
+        dialog27 = {
           isRoot = false,
           isGroup = false,
           actor = 'sonja',
@@ -567,7 +540,6 @@ conversations = {
           menuText = "",
           dialogueText = "I'm afraid I can't do it, Luv.| But Klein may have one lying around, you should ask him.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -578,7 +550,7 @@ conversations = {
             },
           },
         },
-        28 = {
+        dialog28 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -586,7 +558,6 @@ conversations = {
           menuText = "",
           dialogueText = "Alright, thanks.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 1,
@@ -598,13 +569,13 @@ conversations = {
           },
         },
     },
-  }
+  },
   
   foam_and_lather = {
     actor = 'josh',
     conversant = 'howard',
     dialog_entries = {
-        0 = {
+        dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
@@ -612,7 +583,6 @@ conversations = {
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -630,7 +600,7 @@ conversations = {
             },
           },
         },
-        1 = {
+        dialog1 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -638,7 +608,6 @@ conversations = {
           menuText = "",
           dialogueText = "Erhm... Hi there.",
           conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -649,7 +618,7 @@ conversations = {
             },
           },
         },
-        2 = {
+        dialog2 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -657,7 +626,6 @@ conversations = {
           menuText = "",
           dialogueText = "NGAH!| Good God, man!| You don’t wanna startle me like that, son.| I’m a red-blooded bugger with an itchy finger.| And I’m packing HEAT! I’m warning you!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -668,7 +636,7 @@ conversations = {
             },
           },
         },
-        3 = {
+        dialog3 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -676,7 +644,6 @@ conversations = {
           menuText = "",
           dialogueText = "I’ll... keep that in mind, thanks.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -687,7 +654,7 @@ conversations = {
             },
           },
         },
-        4 = {
+        dialog4 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -695,7 +662,6 @@ conversations = {
           menuText = "",
           dialogueText = "Uh... Hello?",
           conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -706,7 +672,7 @@ conversations = {
             },
           },
         },
-        5 = {
+        dialog5 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -714,7 +680,6 @@ conversations = {
           menuText = "",
           dialogueText = "Pufferfish!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -725,7 +690,7 @@ conversations = {
             },
           },
         },
-        6 = {
+        dialog6 = {
           isRoot = false,
           isGroup = true,
           actor = 'howard',
@@ -733,7 +698,6 @@ conversations = {
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -786,7 +750,7 @@ conversations = {
             },
           },
         },
-        7 = {
+        dialog7 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -794,7 +758,6 @@ conversations = {
           menuText = "What is this place?",
           dialogueText = "What is this place?",
           conditionsString = 'Dialog[7].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -805,7 +768,7 @@ conversations = {
             },
           },
         },
-        8 = {
+        dialog8 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -813,7 +776,6 @@ conversations = {
           menuText = "",
           dialogueText = "This, my friend, is the world famous Foam and Lather Ltd from Los Alamos.| We deal with the most exotic fragrances and delicate products for all your rising rinsing needs.| Anything from flogging some aging wife beater back to its pearly white glory of yore to the secret salves and ointments from far-flung orient to awaken sensuous desires on the unsuspecting opposite sex.| Or the same sex, as you may have it.| I’m not one to judge here.| I’m the founder, chairman, CEO and primary stockholder, Howard Samuel Tillson.| Pleased to meet you.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -824,7 +786,7 @@ conversations = {
             },
           },
         },
-        9 = {
+        dialog9 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -832,7 +794,6 @@ conversations = {
           menuText = "Riddle me this...",
           dialogueText = "Riddle me this...",
           conditionsString = 'Dialog[7].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -843,7 +804,7 @@ conversations = {
             },
           },
         },
-        10 = {
+        dialog10 = {
           isRoot = false,
           isGroup = true,
           actor = 'josh',
@@ -851,7 +812,6 @@ conversations = {
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -897,7 +857,7 @@ conversations = {
             },
           },
         },
-        11 = {
+        dialog11 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -905,7 +865,6 @@ conversations = {
           menuText = "What's with the Gun?",
           dialogueText = "Why would a soap salesman need to carry a gun?",
           conditionsString = 'Dialog[11].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -916,7 +875,7 @@ conversations = {
             },
           },
         },
-        12 = {
+        dialog12 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -924,7 +883,6 @@ conversations = {
           menuText = "",
           dialogueText = "Well excuse me, Comrade!| It’s my god-given constitutional right to bear arms, and if you want to take that from me you’ll have to pry it from my cold dead hands.| Besides, I have bigger concerns than the King of England or some Pinko Commie Ivan walking up to my stand and relieving me of my hard-earned wares, you know?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -935,16 +893,14 @@ conversations = {
             },
           },
         },
-        13 = {
+        dialog13 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "I cannot fathom what could possibly be more menacing than that.|
-Actually, I don’t how I’ll manage to sleep tonight..",
+          dialogueText = "I cannot fathom what could possibly be more menacing than that.|Actually, I don’t how I’ll manage to sleep tonight..",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -955,7 +911,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        14 = {
+        dialog14 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -963,7 +919,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "You wouldn’t sleep either if you knew what I know, man.| In my travels I’ve seen some serious shit.| I was once blind, like you are now, but the veil has fallen from my eyes. Now I know.| And they know I know.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -974,15 +929,14 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        15 = {
+        dialog15 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
           conversant = 'howard',
-          menuText = "Who are "They"?",
+          menuText = "Who are \"They\"?",
           dialogueText = "I’m pretty sure I’ll regret asking this, but who are “they”?",
           conditionsString = 'Dialog[11].SimStatus == "WasDisplayed" and Dialog[15].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -993,7 +947,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        16 = {
+        dialog16 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1001,7 +955,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "The Lizardmen!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1012,7 +965,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        17 = {
+        dialog17 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1020,7 +973,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "What?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1031,7 +983,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        18 = {
+        dialog18 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1039,7 +991,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Cold-blooded reptilian inteligencia agents wrapped in leathery human hides.| I’ve been on to them for years.| Ever since I accidently ran into them for the first time in the back alley of a small suburban parish, after an incense deal went sour.| Now they are after me, they must have me silenced so they can stage their coup and take over the country.| The tell is in the eyes, you see?| Some glimpse of saurian ancestry in their gaze, a malevolent hungry glean as they eyeball a small mammal.| That, and the smell.| Their breath reeks of raw flesh decomposing in between rows of sharp, triangular teeth, meant for tearing.| Without a doubt all that remains of other, less cautious folks who discovered the ruse.| But I’m not about to become fodder for some anthropomorphic alien iguana, no sir!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1050,7 +1001,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        19 = {
+        dialog19 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1058,7 +1009,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "And there it is. I regret asking already.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1069,7 +1019,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        20 = {
+        dialog20 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1077,7 +1027,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "So, the Lizardfolk, uh?",
           dialogueText = "So, the Lizardfolk, uh?",
           conditionsString = 'Dialog[15].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1088,7 +1037,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        21 = {
+        dialog21 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1096,7 +1045,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "They are amongst us, man!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1107,7 +1055,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        22 = {
+        dialog22 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1115,7 +1063,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "Tell me about That Ol’ Janxx Spirits",
           dialogueText = "What can you tell me about That Ol’ Janxx Spirits?",
           conditionsString = 'Dialog[22].SimStatus ~= "WasDisplayed" and Variable["Janxx"] == true',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1126,7 +1073,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        23 = {
+        dialog23 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1134,7 +1081,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Now, that’s the stuff man.| It’s hard as hell to come by, but if you do chance upon some don’t forget about your good friend Howard right here.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1145,7 +1091,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        24 = {
+        dialog24 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1153,7 +1099,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "So it’s that good, uh?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1164,7 +1109,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        25 = {
+        dialog25 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1172,7 +1117,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Vain deities high up in Uranus can keep their effeminate nectar all to themselves, for as long as we mortals have that volatile and fickle concoction.| What deranged alchemist was it that first brewed such a despicable bile?| The sticky, tar-like texture clogs your windpipe| just long enough for it’s oddly wooden minty freshness to invade your sinuses,| before it plunges down your throat leaving a blazing trail like a bat back into hell.| Man, I could sure do with a drink right now.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1183,7 +1127,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        26 = {
+        dialog26 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1191,7 +1135,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "What was That Ol' Janxx Spirits like?",
           dialogueText = "So, how would you sum up That Ol’ Janxx Spirits then?",
           conditionsString = 'Dialog[22].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1202,7 +1145,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        27 = {
+        dialog27 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1210,7 +1153,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Tar-Like Texture,| Minty Freshness,| A Wooden Touch| and a Wicked Afterburn.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1221,7 +1163,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        28 = {
+        dialog28 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1229,7 +1171,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Right.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1240,7 +1181,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        29 = {
+        dialog29 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1248,7 +1189,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "Nevermind.",
           dialogueText = "You know what? Nevermind.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1259,7 +1199,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        30 = {
+        dialog30 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1267,7 +1207,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "Everyone here looks familiar.",
           dialogueText = "Everyone in this fair seems oddly familiar, somehow.",
           conditionsString = 'Dialog[30].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1278,7 +1217,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        31 = {
+        dialog31 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1286,7 +1225,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Nonsense!| All members of this fair free-trading cooperative are completely unrelated to any individuals, living or deceased, and no association should be inferred.| Likewise, no copyright infringement was intended in the naming of any locale or dramatis persona on this premises,| and any and all inquiries on the matter should be addressed to the board of directives through the appropriate channels made available to such effect.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1297,7 +1235,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        32 = {
+        dialog32 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1305,7 +1243,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Wow, that was a quite impressive rant on legalese.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1316,7 +1253,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        33 = {
+        dialog33 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1324,7 +1261,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Thanks.| I had it committed to memory as instructed by my attorney, Dr Gonzalo Lazlo.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1335,7 +1271,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        34 = {
+        dialog34 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1343,7 +1279,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "Still, there is something fishy here...",
           dialogueText = "I still think there’s something fishy about this place.",
           conditionsString = 'Dialog[30].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1354,7 +1289,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        35 = {
+        dialog35 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1362,7 +1297,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I’m afraid that in the absence of my lawyer, I must pronounce myself disinclined to make any further comment on the matter.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1373,7 +1307,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        36 = {
+        dialog36 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1381,7 +1315,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "I’m looking for a stall at the fair.",
           dialogueText = "I’m looking for a stall at the fair.",
           conditionsString = 'Dialog[36].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1392,7 +1325,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        37 = {
+        dialog37 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1400,7 +1333,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "What’s your poison, man?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1411,7 +1343,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        38 = {
+        dialog38 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1419,7 +1351,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "There’s this guy who sells LPs. I’d like to find him.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1430,7 +1361,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        39 = {
+        dialog39 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1438,7 +1369,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Oh, trust me on this one, you don’t wanna do any such thing. |You see, there’s a certain scent that haunts this man.| A sickly sweet wraith that stalks his every move, whose tendrils dangle in the breeze like fly-casting lines from hell itself.| A mere whiff of its pungent putrescence would be enough to send hardened Laosian leatherworkers reeling,| and certified city plumbing inspectors gagging.| The manliest of men, none strangers to striding socks-deep in raw sewage, cower before his stench.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1449,7 +1379,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        40 = {
+        dialog40 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1457,7 +1387,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I get it, the guy has a bit of a B.O. problem. I can handle that, I guess.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1468,7 +1397,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        41 = {
+        dialog41 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1476,7 +1405,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Nay, what I’m talking about is something far more sinister than a simple lack of taste while shopping for deodorant.| For this is a man who has danced with the devil one too many times under the pale moonlight.| In this bouquet of his, he bears the telltale sign of the damned and the lost.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1487,7 +1415,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        42 = {
+        dialog42 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1495,7 +1423,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "O-K... I think I need to get going now...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1506,7 +1433,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        43 = {
+        dialog43 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1514,7 +1441,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Mark my words, you dimwit!| Or face the untold horrors of Patchouli Oil!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1525,7 +1451,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        44 = {
+        dialog44 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1533,7 +1459,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Yeah, sure, I’ll keep that in...| Wait, that’s it? Patchouli?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1544,7 +1469,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        45 = {
+        dialog45 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1552,7 +1477,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "The foulest substance on god’s green earth.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1563,7 +1487,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        46 = {
+        dialog46 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1571,7 +1495,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Riiiiight...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1582,7 +1505,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        47 = {
+        dialog47 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1590,7 +1513,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "So, about that guy...",
           dialogueText = "So, about that guy...",
           conditionsString = 'Dialog[36].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1601,7 +1523,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        48 = {
+        dialog48 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1609,7 +1531,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I can’t help you with that, man, other than assuring you he’s not here today.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1620,7 +1541,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        49 = {
+        dialog49 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1628,7 +1549,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "How do you know?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1639,7 +1559,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        50 = {
+        dialog50 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1647,7 +1567,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I would’ve smelt the bastard by now.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1658,7 +1577,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        51 = {
+        dialog51 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1666,7 +1585,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Of course.| I think I’ll double-check anyways.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1677,7 +1595,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        52 = {
+        dialog52 = {
           isRoot = false,
           isGroup = false,
           actor = 'howard',
@@ -1685,7 +1603,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "This nose don’t lie, man!| Ask Old Man Klein and he'll set you straight.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 2,
@@ -1696,7 +1613,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        53 = {
+        dialog53 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1704,18 +1621,17 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "Bye now.",
           dialogueText = "Well, have a big one.",
           conditionsString = '',
-          userScript = '',
           links = {
           },
         },
     },
-  }
+  },
   
   wardrobe = {
     actor = 'josh',
     conversant = 'pete',
     dialog_entries = {
-        0 = {
+        dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
@@ -1723,7 +1639,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1741,7 +1656,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        1 = {
+        dialog1 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -1749,7 +1664,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I’m telling you, this has to be the dumbest idea you’ve had in a long line of dumb ideas, Bro.",
           conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1760,7 +1674,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        2 = {
+        dialog2 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -1768,7 +1682,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Why do you have to be so negative all the time, man? This is going to work out, trust me!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1779,7 +1692,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        3 = {
+        dialog3 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1787,7 +1700,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Ehrm... Hello?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1798,7 +1710,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        4 = {
+        dialog4 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -1806,7 +1718,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Well hello there, Brospeh! See anything you like?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1817,7 +1728,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        5 = {
+        dialog5 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -1825,7 +1736,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "This is beyond retarded, you know that?",
           conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1836,7 +1746,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        6 = {
+        dialog6 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -1844,7 +1754,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Oh, shut up!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1855,7 +1764,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        7 = {
+        dialog7 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1863,7 +1772,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Ehrm.. Guys?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1874,7 +1782,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        8 = {
+        dialog8 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -1882,7 +1790,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "What now?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1893,7 +1800,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        9 = {
+        dialog9 = {
           isRoot = false,
           isGroup = true,
           actor = 'pete',
@@ -1901,7 +1808,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1940,7 +1846,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        10 = {
+        dialog10 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -1948,7 +1854,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "I'm looking for someone.",
           dialogueText = "I was wondering if you’ve seen a certain guy in the fair..",
           conditionsString = 'Dialog[10].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1959,7 +1864,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        11 = {
+        dialog11 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -1967,7 +1872,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Why are you asking us? Is it because of the clientele we keep?| You know, just because we tailor to the fashion-sensitive homosexual crowd doesn’t mean we are all gayballs for dudes, dude.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1978,7 +1882,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        12 = {
+        dialog12 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -1986,7 +1890,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Uh... Yeah, we are not!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -1997,7 +1900,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        13 = {
+        dialog13 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2005,7 +1908,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Besides that’s like, stereotyping, man! And that’s bad!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2016,7 +1918,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        14 = {
+        dialog14 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2024,7 +1926,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Uh... He just runs a second-hand record booth here somewhere,| I thought you may know him.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2035,7 +1936,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        15 = {
+        dialog15 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2043,7 +1944,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Records?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2054,7 +1954,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        16 = {
+        dialog16 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2062,7 +1962,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Wait up, Brah. I think he means the Fat Guy.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2073,7 +1972,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        17 = {
+        dialog17 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2081,7 +1980,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "What fat guy?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2092,7 +1990,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        18 = {
+        dialog18 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2100,7 +1998,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "You know, the Chubby Fellow?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2111,7 +2008,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        19 = {
+        dialog19 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2119,7 +2016,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "You mean the Rotund Fellow?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2130,7 +2026,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        20 = {
+        dialog20 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2138,7 +2034,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "He’s slightly overweight alright, but I wouldn’t call him “rotund”. ",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2149,7 +2044,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        21 = {
+        dialog21 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2157,7 +2052,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Let’s settle for “Heavy-set”, shall we?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2168,7 +2062,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        22 = {
+        dialog22 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2176,7 +2070,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Alright, heavy-set it is.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2187,7 +2080,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        23 = {
+        dialog23 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2195,7 +2088,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "So you do know him, then?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2206,7 +2098,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        24 = {
+        dialog24 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2214,7 +2106,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Yeah Brah. We know him.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2225,7 +2116,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        25 = {
+        dialog25 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2233,7 +2124,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Where can I find him?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2244,7 +2134,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        26 = {
+        dialog26 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2252,7 +2142,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "No idea Brah. Haven’t seen him all day.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2263,7 +2152,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        27 = {
+        dialog27 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2271,7 +2160,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "About this guy...",
           dialogueText = "So, about this “heavy-set” guy..",
           conditionsString = 'Dialog[10].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2282,7 +2170,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        28 = {
+        dialog28 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2290,7 +2178,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Haven’t seen him all day, Brah.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2301,7 +2188,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        29 = {
+        dialog29 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2309,7 +2196,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Perhaps you should ask the Bottle-Lamp Guy.| He knows everyone ‘round here.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2320,7 +2206,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        30 = {
+        dialog30 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2328,7 +2214,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Ok, thanks.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2339,7 +2224,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        31 = {
+        dialog31 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2347,7 +2232,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "About this place...",
           dialogueText = "How did you two guys wind up selling such... Ehrm... “Colorful” Clothing?",
           conditionsString = 'Dialog[31].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2358,7 +2242,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        32 = {
+        dialog32 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2366,7 +2250,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "This place is my dream come true, man!| Pete &amp; Paul’s Wondrous Wardrobe is the place in town for our queer Bros and Brosettes to shop for tasteful and tantalizing apparel.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2377,7 +2260,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        33 = {
+        dialog33 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2385,7 +2268,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Straight Up.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2396,7 +2278,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        34 = {
+        dialog34 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2404,7 +2286,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "About this place...",
           dialogueText = "So, about this place of yours...",
           conditionsString = 'Dialog[31].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2415,7 +2296,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        35 = {
+        dialog35 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2423,7 +2304,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Yeah Brah?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2434,7 +2314,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        36 = {
+        dialog36 = {
           isRoot = false,
           isGroup = true,
           actor = 'pete',
@@ -2442,7 +2322,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2474,7 +2353,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        37 = {
+        dialog37 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2482,7 +2361,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "You always wanted to do this?",
           dialogueText = "So, you guys always wanted to help people look fabulous?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2493,7 +2371,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        38 = {
+        dialog38 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2501,7 +2379,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Hey, Homos deserve to look good too, you know?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2512,7 +2389,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        39 = {
+        dialog39 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2520,7 +2397,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Right on, Bro. Right on.| Besides, there is no shame in being a Fag.| I can respect a dude who digs other dudes. That shit’s tough.| Just don’t have them spot me when I’m doing squats.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2531,7 +2407,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        40 = {
+        dialog40 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2539,7 +2415,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "How about Football?",
           dialogueText = "I guess you just strike me more like Madden kind of guys.",
           conditionsString = 'Dialog[40].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2550,7 +2425,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        41 = {
+        dialog41 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2558,7 +2433,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "John M is THA MAN!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2569,7 +2443,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        42 = {
+        dialog42 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2577,7 +2451,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Be careful what you say about him now, or we’ll find your gamertag...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2588,7 +2461,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        43 = {
+        dialog43 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2596,7 +2469,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "We’ll track you..",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2607,7 +2479,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        44 = {
+        dialog44 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2615,7 +2487,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "And we’ll teabag you to kingdom come, Brah.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2626,7 +2497,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        45 = {
+        dialog45 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2634,7 +2505,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "It won't matter where you go or what you play, for as long as there’s PvP...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2645,7 +2515,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        46 = {
+        dialog46 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2653,7 +2523,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "You’ll be gargling balls. Forever.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2664,7 +2533,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        47 = {
+        dialog47 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2672,7 +2541,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "About Madden...",
           dialogueText = "So, this Madden guy, uh?",
           conditionsString = 'Dialog[40].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2683,7 +2551,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        48 = {
+        dialog48 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2691,7 +2559,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Remember Bro... Gargling balls.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2702,7 +2569,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        49 = {
+        dialog49 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2710,7 +2577,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Forever",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2721,7 +2587,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        50 = {
+        dialog50 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2729,7 +2595,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Right. Sorry. Nevermind.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2740,7 +2605,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        51 = {
+        dialog51 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2748,7 +2613,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "Nevermind",
           dialogueText = "Nevermind",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2759,7 +2623,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        52 = {
+        dialog52 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2767,7 +2631,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "See you.",
           dialogueText = "Well, I’ll be seeing you guys.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2778,7 +2641,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        53 = {
+        dialog53 = {
           isRoot = false,
           isGroup = false,
           actor = 'paul',
@@ -2786,7 +2649,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Righteous.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 3,
@@ -2797,7 +2659,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        54 = {
+        dialog54 = {
           isRoot = false,
           isGroup = false,
           actor = 'pete',
@@ -2805,18 +2667,17 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "So long, Brah.",
           conditionsString = '',
-          userScript = '',
           links = {
           },
         },
     },
-  }
+  },
   
   klein = {
     actor = 'josh',
     conversant = 'klein',
     dialog_entries = {
-        0 = {
+        dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
@@ -2824,7 +2685,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2842,7 +2702,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        1 = {
+        dialog1 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -2850,7 +2710,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Welcome to Klein’s Kleine Bottle-Lamp Emporium!| I’m Friedrich Klein. What can Ich do for you today?",
           conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2861,7 +2720,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        2 = {
+        dialog2 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -2869,7 +2728,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Welcome back!",
           conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2880,7 +2738,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        3 = {
+        dialog3 = {
           isRoot = false,
           isGroup = true,
           actor = 'klein',
@@ -2888,7 +2746,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2941,7 +2798,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        4 = {
+        dialog4 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2949,7 +2806,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "What's all this?",
           dialogueText = "What is it that you do, exactly?",
           conditionsString = 'Dialog[4].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2960,7 +2816,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        5 = {
+        dialog5 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -2968,7 +2824,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I’m the sole heir of a long line of lampemachering artisans.| Ich use only the finest discarded bottles to create tasteful art-deco pieces that illuminate rooms like Morgendämmerung!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2979,7 +2834,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        6 = {
+        dialog6 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -2987,7 +2842,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Right...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -2998,7 +2852,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        7 = {
+        dialog7 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3006,7 +2860,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "What did you do, again?",
           dialogueText = "So, what is that you did here?",
           conditionsString = 'Dialog[4].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3017,7 +2870,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        8 = {
+        dialog8 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3025,7 +2878,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "I make lamps out of funny bottles.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3036,7 +2888,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        9 = {
+        dialog9 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3044,7 +2896,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "I’m looking for this guy...",
           dialogueText = "I’m looking for this guy...",
           conditionsString = 'Dialog[31].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3055,7 +2906,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        10 = {
+        dialog10 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3063,7 +2914,6 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "What’s he like?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3074,7 +2924,7 @@ Actually, I don’t how I’ll manage to sleep tonight..",
             },
           },
         },
-        11 = {
+        dialog11 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3082,9 +2932,11 @@ Actually, I don’t how I’ll manage to sleep tonight..",
           menuText = "",
           dialogueText = "Well, he’s a...",
           conditionsString = '',
-          userScript = 'variable_Desc1 = false
+          userScript = function()
+            variable_Desc1 = false
 variable_Desc2 = false
-variable_Desc3 = false',
+variable_Desc3 = false
+          end,
           links = {
             {
               originConversationId = 4,
@@ -3095,7 +2947,7 @@ variable_Desc3 = false',
             },
           },
         },
-        12 = {
+        dialog12 = {
           isRoot = false,
           isGroup = true,
           actor = 'josh',
@@ -3103,7 +2955,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3135,7 +2986,7 @@ variable_Desc3 = false',
             },
           },
         },
-        13 = {
+        dialog13 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3143,7 +2994,9 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Patchouli-Smelling,",
           conditionsString = '',
-          userScript = 'variable_Desc1 = true',
+          userScript = function()
+            variable_Desc1 = true
+          end,
           links = {
             {
               originConversationId = 4,
@@ -3154,7 +3007,7 @@ variable_Desc3 = false',
             },
           },
         },
-        14 = {
+        dialog14 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3162,7 +3015,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Minty-Breathed,",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3173,7 +3025,7 @@ variable_Desc3 = false',
             },
           },
         },
-        15 = {
+        dialog15 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3181,7 +3033,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Shifty-Looking,",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3192,7 +3043,7 @@ variable_Desc3 = false',
             },
           },
         },
-        16 = {
+        dialog16 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3200,7 +3051,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Peg-Legged,",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3211,7 +3061,7 @@ variable_Desc3 = false',
             },
           },
         },
-        17 = {
+        dialog17 = {
           isRoot = false,
           isGroup = true,
           actor = 'josh',
@@ -3219,7 +3069,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3251,7 +3100,7 @@ variable_Desc3 = false',
             },
           },
         },
-        18 = {
+        dialog18 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3259,7 +3108,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Chubby",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3270,7 +3118,7 @@ variable_Desc3 = false',
             },
           },
         },
-        19 = {
+        dialog19 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3278,7 +3126,9 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Heavy-set",
           conditionsString = '',
-          userScript = 'variable_Desc2 = true',
+          userScript = function()
+            variable_Desc2 = true
+          end,
           links = {
             {
               originConversationId = 4,
@@ -3289,7 +3139,7 @@ variable_Desc3 = false',
             },
           },
         },
-        20 = {
+        dialog20 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3297,7 +3147,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Rotund",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3308,7 +3157,7 @@ variable_Desc3 = false',
             },
           },
         },
-        21 = {
+        dialog21 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3316,7 +3165,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Slightly Overweight",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3327,7 +3175,7 @@ variable_Desc3 = false',
             },
           },
         },
-        22 = {
+        dialog22 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3335,7 +3183,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "LP Vendor with...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3346,7 +3193,7 @@ variable_Desc3 = false',
             },
           },
         },
-        23 = {
+        dialog23 = {
           isRoot = false,
           isGroup = true,
           actor = 'josh',
@@ -3354,7 +3201,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3386,7 +3232,7 @@ variable_Desc3 = false',
             },
           },
         },
-        24 = {
+        dialog24 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3394,7 +3240,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "a lisp.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3405,7 +3250,7 @@ variable_Desc3 = false',
             },
           },
         },
-        25 = {
+        dialog25 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3413,7 +3258,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "an eye patch.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3424,7 +3268,7 @@ variable_Desc3 = false',
             },
           },
         },
-        26 = {
+        dialog26 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3432,7 +3276,9 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "an annoying pug.",
           conditionsString = '',
-          userScript = 'variable_Desc3 = true',
+          userScript = function()
+            variable_Desc3 = true
+          end,
           links = {
             {
               originConversationId = 4,
@@ -3443,7 +3289,7 @@ variable_Desc3 = false',
             },
           },
         },
-        27 = {
+        dialog27 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3451,7 +3297,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "gout.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3462,7 +3307,7 @@ variable_Desc3 = false',
             },
           },
         },
-        28 = {
+        dialog28 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3470,7 +3315,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Hmm...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3488,7 +3332,7 @@ variable_Desc3 = false',
             },
           },
         },
-        29 = {
+        dialog29 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3496,7 +3340,6 @@ variable_Desc3 = false',
           menuText = "",
           dialogueText = "Ach! Doesn’t ring a bell, sorry.",
           conditionsString = 'Variable["Desc1"] == false or Variable["Desc2"] == false or Variable["Desc3"] == false',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3507,16 +3350,14 @@ variable_Desc3 = false',
             },
           },
         },
-        30 = {
+        dialog30 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Na ja, Ich know this guy.|
-If you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.| Fortunately for us he seems to be absent today.",
+          dialogueText = "Na ja, Ich know this guy.|\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.| Fortunately for us he seems to be absent today.",
           conditionsString = 'Variable["Desc1"] == true and Variable["Desc2"] == true and Variable["Desc3"] == true',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3527,7 +3368,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        31 = {
+        dialog31 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3535,7 +3376,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Well, if it isn’t my lucky day...",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3546,7 +3386,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        32 = {
+        dialog32 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3554,7 +3394,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "About this guy...",
           dialogueText = "So, you haven't seen him today? At all?",
           conditionsString = 'Dialog[31].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3565,7 +3404,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        33 = {
+        dialog33 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3573,7 +3412,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Nope, sory.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3584,7 +3422,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        34 = {
+        dialog34 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3592,7 +3430,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "I’m looking for a Lamp",
           dialogueText = "I’m looking for a Lamp",
           conditionsString = 'Dialog[56].SimStatus ~= "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3603,7 +3440,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        35 = {
+        dialog35 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3611,7 +3448,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Got anything on your mind?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3622,7 +3458,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        36 = {
+        dialog36 = {
           isRoot = false,
           isGroup = true,
           actor = 'klein',
@@ -3630,7 +3466,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3655,7 +3490,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        37 = {
+        dialog37 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3663,7 +3498,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "Nevermind ",
           dialogueText = "Nevermind ",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3674,7 +3508,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        38 = {
+        dialog38 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3682,7 +3516,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "Got anything special?",
           dialogueText = "Got anything special?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3693,7 +3526,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        39 = {
+        dialog39 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3701,7 +3534,9 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Let's see here...",
           conditionsString = '',
-          userScript = 'variable_Bottle = math.random(4)',
+          userScript = function()
+            variable_Bottle = math.random(4)
+          end,
           links = {
             {
               originConversationId = 4,
@@ -3733,7 +3568,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        40 = {
+        dialog40 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3741,7 +3576,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "This is a one-of-a-kind item.| A high-yield tetra-lampe, both stand and shade made from vintage red-wine tetra packs.| Perfect for the avant-retro-kitsch deco scene connoisseur.",
           conditionsString = 'Variable["Bottle"] == 1',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3752,7 +3586,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        48 = {
+        dialog48 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3760,7 +3594,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "An Ol' Janxx Spirits Bottle",
           dialogueText = "Got anything with an Ol’ Janxx Spirits Bottle?",
           conditionsString = 'Variable["Janxx"] == true',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3771,7 +3604,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        49 = {
+        dialog49 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3779,7 +3612,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Ah, die übermensch choice. Lets see now...| Here it is.| A sober composition, building on the simplicity of the bottle with a stiff-brimmed bleached linen shade and a vintage copper switch on a gas lamp burner.| Truly a masterpiece, if I do say so myself.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3790,7 +3622,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        50 = {
+        dialog50 = {
           isRoot = false,
           isGroup = true,
           actor = 'klein',
@@ -3798,7 +3630,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3816,7 +3647,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        51 = {
+        dialog51 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3824,7 +3655,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "I’ll take it!",
           dialogueText = "I’ll take it!",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3835,7 +3665,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        52 = {
+        dialog52 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3843,7 +3673,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Ah, spoken like a man in control of his destiny.| So you shall.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3854,7 +3683,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        53 = {
+        dialog53 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3862,7 +3691,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "How much do you want for it?",
           dialogueText = "How much do you want for it?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3873,7 +3701,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        54 = {
+        dialog54 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3881,7 +3709,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Tell you what, I’ve grown fond of you.| You can have it.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3892,7 +3719,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        55 = {
+        dialog55 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3900,7 +3727,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Really?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3911,7 +3737,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        56 = {
+        dialog56 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3919,7 +3745,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Yeah. It’s busted anyways.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3930,7 +3755,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        57 = {
+        dialog57 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3938,7 +3763,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "I’m looking for a lamp.",
           dialogueText = "I’m looking for a lamp.",
           conditionsString = 'Dialog[56].SimStatus == "WasDisplayed"',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3949,7 +3773,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        58 = {
+        dialog58 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -3957,7 +3781,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "No more freebies, sorry.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3968,7 +3791,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        59 = {
+        dialog59 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3976,11 +3799,10 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "Bye",
           dialogueText = "Bye.",
           conditionsString = '',
-          userScript = '',
           links = {
           },
         },
-        60 = {
+        dialog60 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -3988,7 +3810,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "That’s not made of bottles, technically speaking.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -3999,7 +3820,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        61 = {
+        dialog61 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -4007,7 +3828,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Well, no. I’ve been experimenting with some new materials, you see.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4018,7 +3838,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        62 = {
+        dialog62 = {
           isRoot = false,
           isGroup = true,
           actor = 'klein',
@@ -4026,7 +3846,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4051,7 +3870,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        63 = {
+        dialog63 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4059,7 +3878,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "No thanks. Anything else?",
           dialogueText = "No thanks. Anything else?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4070,7 +3888,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        64 = {
+        dialog64 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4078,7 +3896,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "I’ll take it.",
           dialogueText = "I’ll take it.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4089,7 +3906,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        65 = {
+        dialog65 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -4097,7 +3914,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "I knew it! I knew you and this lamp were meant for eachother!| Got any money on you?",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4108,7 +3924,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        66 = {
+        dialog66 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4116,7 +3932,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Nope",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4127,7 +3942,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        67 = {
+        dialog67 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -4135,7 +3950,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Then I guess this isn’t the lamp for you after all.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4146,7 +3960,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        68 = {
+        dialog68 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4154,7 +3968,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "Forget it",
           dialogueText = "You know what? Forget it.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4165,7 +3978,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        69 = {
+        dialog69 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -4173,7 +3986,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Nothing says “class” like a fine champagne.| Likewise, this 1978 Don Pomeranian bedside lamp is really the only choice if you are looking to jazz up your boudoir atmosphere.",
           conditionsString = 'Variable["Bottle"] == 2',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4184,7 +3996,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        70 = {
+        dialog70 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4192,7 +4004,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "That bottle is broken, the whole bottom is missing.| And those edges look sharp.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4203,7 +4014,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        71 = {
+        dialog71 = {
           isRoot = false,
           isGroup = false,
           actor = 'klein',
@@ -4211,7 +4022,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Indeed so. This very bottle was used to christen a brand-new velero on its maiden voyage.",
           conditionsString = '',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4222,7 +4032,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        72 = {
+        dialog72 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4230,7 +4040,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "How about this inverted Lady Joanne Lamp-de-Pie?| A handful of LEDs inside an upended 2 gallon amber glass jug, it provides a soft luminescence not unlike a fire in a dye warehouse.",
           conditionsString = 'Variable["Bottle"] == 3',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4241,7 +4050,7 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
             },
           },
         },
-        73 = {
+        dialog73 = {
           isRoot = false,
           isGroup = false,
           actor = 'josh',
@@ -4249,7 +4058,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           menuText = "",
           dialogueText = "Show off your celtic heritage with this single-malt whiskey lamp, with matching sheepskin and tam-o-shanter shade!",
           conditionsString = 'Variable["Bottle"] == 4',
-          userScript = '',
           links = {
             {
               originConversationId = 4,
@@ -4261,6 +4069,6 @@ If you ask me, he has no business in this fine Flea Market. He’s a disgrace to
           },
         },
     },
-  }
+  },
   
 }
