@@ -747,9 +747,10 @@
             </Fields>
             <OutgoingLinks>
               <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="12" DestinationDialogID="13" IsConnector="false" />
+              <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="12" DestinationDialogID="18" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>Variable["SkipLoop"] = true</UserScript>
+            <UserScript />
           </DialogEntry>
           <DialogEntry ID="13" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -794,7 +795,9 @@
                 <Value />
               </Field>
             </Fields>
-            <OutgoingLinks/>
+            <OutgoingLinks>
+              <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="13" DestinationDialogID="3" IsConnector="true" />
+            </OutgoingLinks>
             <ConditionsString>Variable["SkipLoop"] == true</ConditionsString>
             <UserScript />
           </DialogEntry>
