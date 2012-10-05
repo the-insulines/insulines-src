@@ -1152,7 +1152,7 @@
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value>Since my girlfriend dumped me and hooked up with my best friend and room mate?</Value>
+                <Value>Since my girlfriend hooked up with my best friend?</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -1201,7 +1201,7 @@
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value>Since Bobby screwed me over, figuratively speaking, and screwed my girlfriend, literally speaking?</Value>
+                <Value>Since Bobby screwed me and my ex (literally)?</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
