@@ -1,4 +1,4 @@
-conversations = {
+c01s03_conversations = {
   
   userVariables = {
     Janxx = {
@@ -3012,6 +3012,9 @@ conversations = {
             "So long, Brah.",
           },
           conditionsString = '',
+          userScript = function()
+            game.currentScene.objects.paul:startAnimation('stand')
+          end,
           links = {
           },
         },
@@ -3774,6 +3777,9 @@ stateManager.dialogs.userVariables["Dog"]= false
             "Well, if it isn’t my lucky day...",
           },
           conditionsString = '',
+          userScript = function()
+            game.currentScene:cellphoneMessage ()
+          end,
           links = {
             {
               originConversationId = 4,

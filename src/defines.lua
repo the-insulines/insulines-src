@@ -7,6 +7,9 @@
 
 -- Debugging
 -- DEBUG = true
+--MOAISim.setLeakTrackingEnabled(true)
+MOAISim.setHistogramEnabled (true)
+-- MOAISim.setLuaAllocLogEnabled(true)
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
@@ -70,17 +73,17 @@ DIALOG_COLOR_FOR_CHARACTER = {
 }
 
 -- Inventory constants
-INVENTORY_WIDTH = 471
+INVENTORY_WIDTH = 566
 INVENTORY_HEIGHT = WORLD_RESOLUTION_Y
 INVENTORY_HALF_WIDTH = INVENTORY_WIDTH / 2
 INVENTORY_HALF_HEIGHT = INVENTORY_HEIGHT / 2
 -- INVENTORY_OPEN_X = WORLD_RESOLUTION_X - INVENTORY_WIDTH
 INVENTORY_OPEN_X = 0
 INVENTORY_OPEN_Y = 0
-INVENTORY_OPEN_DELTA_X = - 2 * INVENTORY_WIDTH
+INVENTORY_OPEN_DELTA_X = - 1.18 * INVENTORY_WIDTH
 INVENTORY_OPEN_DELTA_Y = 0
 
-INVENTORY_CLOSED_X = WORLD_RESOLUTION_X - INVENTORY_HALF_WIDTH
+INVENTORY_CLOSED_X = WORLD_RESOLUTION_X - INVENTORY_WIDTH
 INVENTORY_CLOSED_Y = 0
 INVENTORY_ANIMATION_LENGTH = 1
 
@@ -464,7 +467,7 @@ resources = {
   howard = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/howard/',
-    width = 285 * 0.92, height = 600 * 0.92,
+    width = 262, height = 552,
     
     pivotX = 0,
     pivotY = -200,
@@ -482,7 +485,7 @@ resources = {
   klein = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/klein/',
-    width = 880 * 0.4, height = 1664 * 0.4,
+    width = 352, height = 666,
     
     pivotX = 0,
     pivotY = -300,
@@ -490,7 +493,7 @@ resources = {
     animations = {
       stand = {
         fileName = 'klein_stand',
-        frameCount = 55,--249,
+        frameCount = 55,
         frameTime = {
           baseTime = 0.04,
           multipliers = {
@@ -517,7 +520,7 @@ resources = {
   sonja = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/sonja/',
-    width = 1400 * 0.4, height = 2000 * 0.4,
+    width = 560, height = 800,
     
     pivotX = 0,
     pivotY = -400,
@@ -543,7 +546,7 @@ resources = {
   paul = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/paul/',
-    width = 991 * 0.2, height = 2000 * 0.2,
+    width = 198, height = 400,
     
     pivotX = 0,
     pivotY = -200,
@@ -587,7 +590,7 @@ resources = {
   pete = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/pete/',
-    width = 1233 * 0.18, height = 2000 * 0.18,
+    width = 222, height = 360,
     
     pivotX = 0,
     pivotY = -180,
@@ -605,7 +608,7 @@ resources = {
   moe = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/moe/',
-    width = 1300 * 0.35, height = 2000 * 0.35,
+    width = 455, height = 700,
     
     pivotX = 0,
     pivotY = -350,
@@ -642,9 +645,11 @@ resources = {
       sleeps = {
         fileName = 'josh_sleeping',
         startFrame = 1,
-        frameCount = 75,
+        -- frameCount = 75,
+        frameCount = 10,
         frameTime = DEFAULT_ANIMATION_SPEED,
         width = 800, height = 500
+        -- width = 80, height = 50
       },
     },
     sounds = {

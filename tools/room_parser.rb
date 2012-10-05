@@ -2,10 +2,11 @@ require 'rubygems'
 require 'nokogiri'
 
 class RoomParser
-  attr_accessor :file, :xml, :layers, :width, :height
+  attr_accessor :file, :xml, :layers, :width, :height, :name
   def initialize(filename)
     self.file = File.open(filename)
     self.xml = Nokogiri::XML(self.file)
+    self.name = filename.split('/')[1].gsub('.svg', '')
     self.layers = {}
   end
 
@@ -48,7 +49,7 @@ class RoomParser
 
   def to_lua
     self.parse if self.layers.empty?
-    result = "objects = {\n"
+    result = "#{self.name}_objects = {\n"
     result += "  \n"
 
     self.layers.each do |layer_name, layer|

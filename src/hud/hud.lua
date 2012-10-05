@@ -67,9 +67,11 @@ function hud:onInput ()
   if DEBUG then
     local x, y = input_manager.position ()
     if x and y then
-      debugHUD:setMouseWindowPosition(x,y)
-      x, y = game.currentScene.layer_objects.background:wndToWorld ( x, y )
-      debugHUD:setMouseWorldPosition(x,y)
+      if game.currentScene then
+        debugHUD:setMouseWindowPosition(x,y)
+        x, y = game.currentScene.layer_objects.background:wndToWorld ( x, y )
+        debugHUD:setMouseWorldPosition(x,y)
+      end
     end
   end
   

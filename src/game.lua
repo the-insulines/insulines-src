@@ -24,7 +24,7 @@ gameRunning = true
 sceneFadeOutTime = 200
 
 
-function game:switchToScene ( scene )
+function game:switchToScene ( scene, initialCharacterPathNode, initialCameraPathNode )
   local shouldWaitFadeout = self.currentScene.fadeOnChange
   
   self:unloadCurrentScene ()
@@ -34,7 +34,7 @@ function game:switchToScene ( scene )
     sleepCoroutine ( self.sceneFadeOutTime )
   end
   
-  self:loadScene ( scene )
+  self:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode  )
 end
 
 
@@ -45,9 +45,9 @@ function game:unloadCurrentScene ()
   if self.currentScene then
     if self.currentScene.fadeOnChange then
       self.currentScene:fadeOut ( self.sceneFadeOutTime )
-      performWithDelay ( self.sceneFadeOutTime, self.currentScene.removeLayers, 1, self.currentScene )
+      performWithDelay ( self.sceneFadeOutTime, self.currentScene.unload, 1, self.currentScene )
     else
-      self.currentScene:removeLayers ()
+      self.currentScene:unload ()
     end
   end
   
@@ -55,29 +55,29 @@ function game:unloadCurrentScene ()
 end
 
 
-function game:loadScene ( scene )
+function game:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode )
   
   -- Cache scene
-  self.currentScene = scene
+  self.currentScene = scene (initialCharacterPathNode, initialCameraPathNode )
   
   -- Initialize hud (must be done after loading a scene)
   hud:initialize ()
   
   -- Show loading screen
-  loadingScreen:setup ( scene.objectsCount )
+  loadingScreen:setup ( self.currentScene.objectsCount )
   -- coroutine.yield ()
   
-  if not scene.initialized then
+  if not self.currentScene.initialized then
     -- Initialize scene
-    scene:initialize ()
+    self.currentScene:initialize ()
   else
     -- Reset scene
-    scene:resetCamera ()
-    scene:resetCharacter ()
-    scene:loadConversations ()
+    self.currentScene:resetCamera ()
+    self.currentScene:resetCharacter ()
+    self.currentScene:loadConversations ()
   end
   
-  self:sceneLoaded ( scene )
+  self:sceneLoaded ( self.currentScene )
   
 end
 
@@ -96,10 +96,10 @@ function initialize ( self )
     end
   end
   
-  -- self:loadScene ( logoScreen () )
-  self:loadScene ( c01s01 () )
-  -- self:loadScene ( c01s03 () )
-  -- self:loadScene ( c01s04 () )
+  self:loadScene ( logoScreen )
+  -- self:loadScene ( c01s02 )
+  -- self:loadScene ( c01s03 )
+  -- self:loadScene ( c01s04 )
   
   -- Debug
   if DEBUG then
@@ -146,9 +146,15 @@ function game:sceneLoaded ( scene )
   if scene.shouldShowHud then
     -- Load HUD
     self:showHUD ()
-    dialog:loadConversations(scene.conversations)
+    if scene.conversations then
+      dialog:loadConversations(scene.conversations)
+    end
   end
 
+  -- MOAISim.reportHistogram ()
+  -- print ( ' ---------------------------------- ')
+  MOAISim.forceGarbageCollection ()
+  -- MOAISim.reportHistogram ()
 end
 
 function start ( self )
@@ -181,6 +187,7 @@ function start ( self )
     end
 
     coroutine.yield ()
+
   end
 
 end
