@@ -39,7 +39,7 @@ c01s03 = function()
   end
 
   function c01s03_room:afterInitialize ()
-    dialog:load('glasworks')
+    dialog:load('klein')
   end
 
   local path = {

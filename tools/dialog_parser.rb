@@ -2,7 +2,7 @@ require 'rubygems'
 require 'nokogiri'
 
 class DialogParser
-  attr_accessor :file, :xml, :actors, :conversations
+  attr_accessor :file, :xml, :actors, :conversations, :user_variables
 
   def initialize(filename)
     self.file = File.open(filename)
@@ -20,26 +20,40 @@ class DialogParser
       when "Conversations"
         self.load_conversations(asset)
       when "UserVariables"
-        # self.load_user_variables(asset)
+        self.load_user_variables(asset)
       end
     end
   end
 
   def load_actors(actors_xml)
     self.actors = {}
-    actors_xml.children.select { |f| f.name == "Actor" }.each do |actor_xml|
+    onlyChildrenWithName("Actor", actors_xml).each do |actor_xml|
       id = actor_xml.attributes['ID'].value.to_i
       self.actors[id] = { :id => id }
       
-      actor_xml.children.select { |f| f.name == "Fields" }.each do |fields|
+      onlyChildrenWithName("Fields", actor_xml).each do |fields|
         self.actors[id] = self.parse_fields(fields, self.actors[id])
+      end
+    end
+  end
+
+  def onlyChildrenWithName(name, xml)
+    xml.children.select { |f| f.name == name }
+  end
+
+  def load_user_variables(user_variables_xml)
+    self.user_variables = {}
+    onlyChildrenWithName("UserVariable", user_variables_xml).each do |user_variable_xml|
+      onlyChildrenWithName("Fields", user_variable_xml).each do |fields|
+        variable = self.parse_fields(fields, {})
+        self.user_variables[variable[:name]] = variable
       end
     end
   end
     
   def load_conversations(conversations_xml)
     self.conversations = {}
-    conversations_xml.children.select { |f| f.name == "Conversation" }.each do |conversation_xml|
+    onlyChildrenWithName("Conversation", conversations_xml).each do |conversation_xml|
       conversation = { :id => conversation_xml.attributes["ID"].value.to_i }
       
       conversation_xml.children.each do |conversation_children|
@@ -58,7 +72,7 @@ class DialogParser
   end
 
   def parse_fields(fields_xml, bucket)
-    fields_xml.children.select { |f| f.name == "Field" }.each do |field|
+    onlyChildrenWithName("Field", fields_xml).each do |field|
       current_field = ''
       field.children.each do |field_children|
         current_field = field_children.children.first.to_s.downcase.to_sym if field_children.name == "Title"
@@ -71,7 +85,7 @@ class DialogParser
   def parse_links(links_xml, bucket)
     bucket[:links] = []
 
-    links_xml.children.select { |l| l.name == "Link"}.each do |link_xml|
+    onlyChildrenWithName("Link", links_xml).each do |link_xml|
       link = {
         :origin_conversation_id => link_xml.attributes['OriginConvoID'].value.to_i,
         :destination_conversation_id => link_xml.attributes['DestinationConvoID'].value.to_i,
@@ -96,7 +110,7 @@ class DialogParser
 
   def parse_dialog_entries(dialog_entries_xml)
     dialog_entries = []
-    dialog_entries_xml.children.select { |de| de.name == "DialogEntry"}.each do |dialog_entry_xml|
+    onlyChildrenWithName("DialogEntry", dialog_entries_xml).each do |dialog_entry_xml|
       dialog_entry = { 
         :id => dialog_entry_xml.attributes['ID'].value.to_i,
         :is_root => eval(dialog_entry_xml.attributes['IsRoot'].value),
@@ -130,20 +144,34 @@ class DialogParser
     string
   end
   
-  def updateConditionsString(string, conversation)
+  def updateConditionsString(string)
     return '' if !string
 
     string.gsub!(/Dialog\[(\d{1,2})\]/, 'dialog.currentConversation.dialogEntries.dialog\1')
+    string.gsub!(/Variable\["(\w*)"\] /, 'stateManager.dialogs.userVariables["\1"]')
+    string
+  end
 
-    title = conversation[:title].downcase.gsub(' ', '_')
-    string.gsub!(/Variable\[(.*)\]/, 'stateManager.dialogs["' + title + '"][\1]')
-
+    def updateUserScript(string)
+    return '' if !string
+    string.gsub!(/variable_(.*) =/, 'stateManager.dialogs.userVariables["\1"] =')
     string
   end
   
   def to_lua
     self.parse if !self.conversations
     result = "conversations = {\n"
+    result += "  \n"
+    
+    result += "  userVariables = {\n"
+    
+    self.user_variables.each do |key, user_variable| 
+      result += "    #{user_variable[:name]} = {\n"
+      result += "      initialValue = #{user_variable[:"initial value"].downcase},\n"
+      result += "    },\n"
+    end
+    
+    result += "  },\n"
     result += "  \n"
 
     self.conversations.each do |id, conversation|
@@ -159,13 +187,13 @@ class DialogParser
         result += "          isGroup = #{dialog_entry[:is_group]},\n"
         result += "          actor = '#{self.actors[dialog_entry[:actor].to_i][:name].downcase}',\n"
         result += "          conversant = '#{self.actors[dialog_entry[:conversant].to_i][:name].downcase}',\n"
-        result += "          menuText = \"#{self.escape(dialog_entry[:"menu text"])}\",\n"
+        result += "          menuText = \"#{self.escape(dialog_entry[:"menu text"]) }\",\n"
         result += "          dialogueText = \"#{self.escape(dialog_entry[:"dialogue text"])}\",\n"
-        result += "          conditionsString = '#{self.updateConditionsString(dialog_entry[:conditions_string], conversation)}',\n"
+        result += "          conditionsString = '#{self.updateConditionsString(dialog_entry[:conditions_string])}',\n"
         
         if dialog_entry[:user_script]
           result += "          userScript = function()\n"
-          result += "            #{dialog_entry[:user_script]}\n"
+          result += "            #{self.updateUserScript(dialog_entry[:user_script])}\n"
           result += "          end,\n"
         end
         

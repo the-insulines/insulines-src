@@ -1,5 +1,23 @@
 conversations = {
   
+  userVariables = {
+    Janxx = {
+      initialValue = false,
+    },
+    Desc1 = {
+      initialValue = false,
+    },
+    Desc2 = {
+      initialValue = false,
+    },
+    Desc3 = {
+      initialValue = false,
+    },
+    Bottle = {
+      initialValue = 1,
+    },
+  },
+  
   glasworks = {
     actor = 'josh',
     conversant = 'sonja',
@@ -395,7 +413,7 @@ conversations = {
           conversant = 'sonja',
           menuText = "I need a bottle...",
           dialogueText = "Say, could you make a bottle that resembled a specific brand?",
-          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus ~= "WasDisplayed" and stateManager.dialogs["glasworks"]["Janxx"] == true',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus ~= "WasDisplayed" and stateManager.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 1,
@@ -1062,7 +1080,7 @@ conversations = {
           conversant = 'howard',
           menuText = "Tell me about That Ol’ Janxx Spirits",
           dialogueText = "What can you tell me about That Ol’ Janxx Spirits?",
-          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus ~= "WasDisplayed" and stateManager.dialogs["foam_and_lather"]["Janxx"] == true',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus ~= "WasDisplayed" and stateManager.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 2,
@@ -2933,9 +2951,9 @@ conversations = {
           dialogueText = "Well, he’s a...",
           conditionsString = '',
           userScript = function()
-            variable_Desc1 = false
-variable_Desc2 = false
-variable_Desc3 = false
+            stateManager.dialogs.userVariables["Desc1"] = false
+stateManager.dialogs.userVariables["Desc2"] = false
+stateManager.dialogs.userVariables["Desc3"] = false
           end,
           links = {
             {
@@ -2995,7 +3013,7 @@ variable_Desc3 = false
           dialogueText = "Patchouli-Smelling,",
           conditionsString = '',
           userScript = function()
-            variable_Desc1 = true
+            stateManager.dialogs.userVariables["Desc1"] = true
           end,
           links = {
             {
@@ -3127,7 +3145,7 @@ variable_Desc3 = false
           dialogueText = "Heavy-set",
           conditionsString = '',
           userScript = function()
-            variable_Desc2 = true
+            stateManager.dialogs.userVariables["Desc2"] = true
           end,
           links = {
             {
@@ -3277,7 +3295,7 @@ variable_Desc3 = false
           dialogueText = "an annoying pug.",
           conditionsString = '',
           userScript = function()
-            variable_Desc3 = true
+            stateManager.dialogs.userVariables["Desc3"] = true
           end,
           links = {
             {
@@ -3339,7 +3357,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "Ach! Doesn’t ring a bell, sorry.",
-          conditionsString = 'stateManager.dialogs["klein"]["Desc1"] == false or Variable["Desc2"] == false or Variable["Desc3"] == false',
+          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== false or stateManager.dialogs.userVariables["Desc2"]== false or stateManager.dialogs.userVariables["Desc3"]== false',
           links = {
             {
               originConversationId = 4,
@@ -3357,7 +3375,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "Na ja, Ich know this guy.|\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.| Fortunately for us he seems to be absent today.",
-          conditionsString = 'stateManager.dialogs["klein"]["Desc1"] == true and Variable["Desc2"] == true and Variable["Desc3"] == true',
+          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== true and stateManager.dialogs.userVariables["Desc2"]== true and stateManager.dialogs.userVariables["Desc3"]== true',
           links = {
             {
               originConversationId = 4,
@@ -3535,7 +3553,7 @@ variable_Desc3 = false
           dialogueText = "Let's see here...",
           conditionsString = '',
           userScript = function()
-            variable_Bottle = math.random(4)
+            stateManager.dialogs.userVariables["Bottle"] = math.random(4)
           end,
           links = {
             {
@@ -3575,7 +3593,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "This is a one-of-a-kind item.| A high-yield tetra-lampe, both stand and shade made from vintage red-wine tetra packs.| Perfect for the avant-retro-kitsch deco scene connoisseur.",
-          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 1',
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 1',
           links = {
             {
               originConversationId = 4,
@@ -3593,7 +3611,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "An Ol' Janxx Spirits Bottle",
           dialogueText = "Got anything with an Ol’ Janxx Spirits Bottle?",
-          conditionsString = 'stateManager.dialogs["klein"]["Janxx"] == true',
+          conditionsString = 'stateManager.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 4,
@@ -3985,7 +4003,7 @@ variable_Desc3 = false
           conversant = 'josh',
           menuText = "",
           dialogueText = "Nothing says “class” like a fine champagne.| Likewise, this 1978 Don Pomeranian bedside lamp is really the only choice if you are looking to jazz up your boudoir atmosphere.",
-          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 2',
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 2',
           links = {
             {
               originConversationId = 4,
@@ -4039,7 +4057,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "",
           dialogueText = "How about this inverted Lady Joanne Lamp-de-Pie?| A handful of LEDs inside an upended 2 gallon amber glass jug, it provides a soft luminescence not unlike a fire in a dye warehouse.",
-          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 3',
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 3',
           links = {
             {
               originConversationId = 4,
@@ -4057,7 +4075,7 @@ variable_Desc3 = false
           conversant = 'klein',
           menuText = "",
           dialogueText = "Show off your celtic heritage with this single-malt whiskey lamp, with matching sheepskin and tam-o-shanter shade!",
-          conditionsString = 'stateManager.dialogs["klein"]["Bottle"] == 4',
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 4',
           links = {
             {
               originConversationId = 4,

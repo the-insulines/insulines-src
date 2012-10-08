@@ -11,6 +11,13 @@ conversations = {}
 
 function dialog:loadConversations(conversations_definition)
   self.conversations = conversations_definition
+
+  -- Load all user variables
+  if self.conversations.userVariables then
+    for name, info in pairs(self.conversations.userVariables) do
+      stateManager.dialogs.userVariables[name] = info.initialValue 
+    end
+  end
 end
 
 layer = MOAILayer2D.new ()
@@ -26,8 +33,11 @@ function initialize ( self )
     print ( "dialog.lua:20: Initializing dialog..." )
   end
   
-  if not stateManager.dialogs then
-    stateManager.dialogs = {}
+  -- If there is no dialogs table in state manager, create it
+  if not stateManager.dialogs then 
+    stateManager.dialogs = {
+      userVariables = {}
+    }
   end
   
   -- Initialize HUD
@@ -146,9 +156,6 @@ function dialog:appear()
   self.window_background.prop:setScl( 0.001, 0.001 )
   self.window_background.prop:setColor(1,1,1,0.8)
   
-  local character = self.currentDialogEntry.actor
-  self.dialogTextBox:setColor ( DIALOG_COLOR_FOR_CHARACTER[character].r, DIALOG_COLOR_FOR_CHARACTER[character].g, DIALOG_COLOR_FOR_CHARACTER[character].b,0.8)
-  
   self.background.prop:setScl( 2, 2 )
   self.background.prop:seekScl( 1.12, 1.12, 1)
 
@@ -161,7 +168,10 @@ end
 
 function dialog:showCurrentDialogEntry ( )
   if not self.opened then self:appear() end
-  
+
+  local character = self.currentDialogEntry.actor
+  self.dialogTextBox:setColor ( DIALOG_COLOR_FOR_CHARACTER[character].r, DIALOG_COLOR_FOR_CHARACTER[character].g, DIALOG_COLOR_FOR_CHARACTER[character].b,0.8)
+
   self.dialogTextBox:setString(self.currentDialogEntry.dialogueText)
 end
 
@@ -176,7 +186,13 @@ end
 function dialog:setOption ( optionDefinition, dialogEntryId )
   for i, button in pairs( self.options.buttons ) do
     if not button.definition then
-      button:setString ( optionDefinition.menuText )
+
+      if not optionDefinition.menuText == '' then
+        button:setString ( optionDefinition.menuText )
+      else
+        button:setString ( optionDefinition.dialogueText )
+      end
+      
       button.definition = optionDefinition
       button.definition.id = dialogEntryId
       button:show ()
@@ -207,9 +223,12 @@ end
 
 function dialog:load ( conversationName )
   self.currentConversation = self.conversations[conversationName]
+  
+  -- If state manager didn't have the namespace for this conversation, create it.
   if not stateManager.dialogs[conversationName] then
     stateManager.dialogs[conversationName] = {}
   end
+
   
   self:loadDialogEntry(0)
 end
@@ -220,7 +239,6 @@ function dialog:getDialogEntry(id)
 end
 
 function dialog:loadDialogEntry(id)
-  print ("Loading dialog: " .. id)
   self.currentDialogEntryId = id
   self:processCurrentDialogEntry()
 end
@@ -276,6 +294,10 @@ function dialog:onInput ( )
   if input_manager.down () then
     if not self.currentDialogEntry.isGroup then
       self.currentDialogEntry.SimStatus = "WasDisplayed"
+      
+      if  self.currentDialogEntry and self.currentDialogEntry.userScript then
+        self.currentDialogEntry.userScript()
+      end
 
       if self.currentDialogEntry.links[1] then
         self.dialogTextBox:setString('')
