@@ -11,7 +11,7 @@ dialogTree.c01s01_laundry = {
     en_US = "I gave the Laundry Lady the Year Off",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_never_sleeps = {
@@ -19,7 +19,7 @@ dialogTree.c01s01_never_sleeps = {
     en_US = "This City Never Sleeps. It just lingers in a perpetual drowsiness",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_barbarullo = {
@@ -27,7 +27,7 @@ dialogTree.c01s01_barbarullo = {
     en_US = "That’s a promotional poster for “Barbarulo”, based on the original 1967 script. An Italian space opera about a heavily mustachioed amazon from the future in a mission to rekindle humanity’s sex drive. The plot was heavily revised after the French Co-Producers signed on.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_floyd = {
@@ -35,7 +35,7 @@ dialogTree.c01s01_floyd = {
     en_US = "My signed print of the “Pink Side of the Space Station” cover art. A cult classic among synchronization enthusiasts everywhere. Much better than that Rainbow nonsense",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_duck = {
@@ -43,7 +43,7 @@ dialogTree.c01s01_duck = {
     en_US = "I wonder if it’s still anatidaephobia if you know for a fact you are being watched by a creepy, albeit rubber, duck. It gives me the creeps",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_put_clothes_1 = {
@@ -51,7 +51,7 @@ dialogTree.c01s01_put_clothes_1 = {
     en_US = "I should probably put some clothes on before that.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_put_clothes_2 = {
@@ -59,7 +59,7 @@ dialogTree.c01s01_put_clothes_2 = {
     en_US = "What would my mother say if she saw me like this?",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_put_clothes_3 = {
@@ -67,7 +67,7 @@ dialogTree.c01s01_put_clothes_3 = {
     en_US = "I know I’ve looked worse off, but this attire is not very engaging",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s01_put_clothes_4 = {
@@ -75,7 +75,7 @@ dialogTree.c01s01_put_clothes_4 = {
     en_US = "I think “Sleepy, Wife-Beating Bum” went out of style this season. I should probably get changed",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_tv = {
@@ -83,7 +83,7 @@ dialogTree.c01s02_tv = {
     en_US = "57 Channels and Nothing On",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 
@@ -122,7 +122,7 @@ dialogTree.c01s02_answering_machine_message_4 = {
     en_US = "Wow, she sounds pretty steamed. Then again, Bobby rarely bother to check his glucose levels before shooting up, so why would I expect him to keep a doctor’s appointment?",
     es_AR = ""
   },
-  character =  "main_character"  
+  character =  "josh"  
 }
 
 dialogTree.c01s02_coffee_maker = {
@@ -130,7 +130,7 @@ dialogTree.c01s02_coffee_maker = {
     en_US = "The Trusty Caffeinator 3000. A wondrous device that magically transforms plain water and ground beans into liquid energy.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_coffee_pot_with_water = {
@@ -138,7 +138,7 @@ dialogTree.c01s02_coffee_pot_with_water = {
     en_US = "I already filled the coffee pot.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_fill_coffee_pot_first = {
@@ -146,7 +146,7 @@ dialogTree.c01s02_fill_coffee_pot_first = {
     en_US = "I should fill the coffee pot first.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_mug_full = {
@@ -154,7 +154,7 @@ dialogTree.c01s02_mug_full = {
     en_US = "That’s the nastiest Cup of Joe I’ve ever tasted. And I’ve been to Europe.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_stole_mug = {
@@ -162,7 +162,7 @@ dialogTree.c01s02_stole_mug = {
     en_US = "I sort of stole that mug from a random game development studio.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_coffee_pot_full = {
@@ -170,7 +170,7 @@ dialogTree.c01s02_coffee_pot_full = {
     en_US = "A Pot of Bile-Tasting Sludge",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_flyer = {
@@ -181,7 +181,7 @@ dialogTree.c01s02_flyer = {
   
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_flyer_2',  
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_flyer_2 = {
@@ -192,7 +192,7 @@ dialogTree.c01s02_flyer_2 = {
   
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_flyer_3',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_flyer_3 = {
@@ -200,7 +200,7 @@ dialogTree.c01s02_flyer_3 = {
     en_US = "Hey! It even has a small map of town with the Fair marked down!",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 
@@ -230,7 +230,7 @@ dialogTree.c01s02_nancy_intro_answer = {
   },
   
   options = nancyOptions,
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_1 = {
@@ -240,7 +240,7 @@ dialogTree.c01s02_nancy_1 = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_nancy_1_1',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_1_1 = {
@@ -259,7 +259,7 @@ dialogTree.c01s02_nancy_1_2 = {
   },
   
   options = nancyOptions,
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_2a = {
@@ -269,7 +269,7 @@ dialogTree.c01s02_nancy_2a = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_nancy_2a_1',
-  character =  "main_character",
+  character =  "josh",
 }
 
 dialogTree.c01s02_nancy_2a_1 = {
@@ -309,7 +309,7 @@ dialogTree.c01s02_nancy_2a_4 = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_nancy_2a_5',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_2a_5 = {
@@ -331,7 +331,7 @@ dialogTree.c01s02_nancy_2b = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_nancy_2b_1',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_2b_1 = {
@@ -353,7 +353,7 @@ dialogTree.c01s02_nancy_2b_2 = {
     { label = {en_US = "One more thing...", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_one_more" },
     { label = {en_US = "Well, I’d love to stay and chat, but ...", es_AR = ""}, action = DIALOG_ACTION_REDIRECT, dialogName = "c01s02_nancy_leave" },
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_one_more = {
@@ -363,7 +363,7 @@ dialogTree.c01s02_nancy_one_more = {
   },
   
   options = nancyOptions,
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_leave = {
@@ -371,7 +371,7 @@ dialogTree.c01s02_nancy_leave = {
     en_US = "Well, I’d love to stay and chat, but I’d rather chance I get run over by a bus.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_3 = {
@@ -381,7 +381,7 @@ dialogTree.c01s02_nancy_3 = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'c01s02_nancy_3_1',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_nancy_3_1 = {
@@ -401,7 +401,7 @@ dialogTree.c01s02_nancy_3_2 = {
   },
   
   options = nancyOptions,
-  character =  "main_character",
+  character =  "josh",
 }
 
 -- End NANCY
@@ -411,7 +411,7 @@ dialogTree.c01s02_leave_bathroom = {
     en_US = "Believe me, you didn’t want to see the inside of that",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_bathroom_1 = {
@@ -419,7 +419,7 @@ dialogTree.c01s02_bathroom_1 = {
     en_US = "Once is plenty, thanks",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_bathroom_2 = {
@@ -427,7 +427,7 @@ dialogTree.c01s02_bathroom_2 = {
     en_US = "I’ll have to give a stern talk to Bobby about Toilet Etiquette. Again",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_bathroom = {
@@ -435,7 +435,7 @@ dialogTree.c01s02_bathroom = {
     en_US = "I'm not about to start my day with Zombie Breath. Nobody deserves something that bad.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_coffee = {
@@ -443,7 +443,7 @@ dialogTree.c01s02_coffee = {
     en_US = "I don't think I'm truly ready to face Humanity unless I've had something to wake up fully",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.c01s02_bathroom_and_coffee = {
@@ -451,7 +451,7 @@ dialogTree.c01s02_bathroom_and_coffee = {
     en_US = "No Toothbrush, No Coffee... No Morning. That's the way it is.",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.locked = {
@@ -459,7 +459,7 @@ dialogTree.locked = {
     en_US = "It's locked",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 
@@ -472,7 +472,7 @@ dialogTree.demo = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'demo_1',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.demo_1 = {
@@ -482,7 +482,7 @@ dialogTree.demo_1 = {
   },
   defaultAction = DIALOG_ACTION_REDIRECT,
   dialogName = 'demo_2',
-  character =  "main_character"
+  character =  "josh"
 }
 
 dialogTree.demo_2 = {
@@ -500,7 +500,7 @@ dialogTree.demo_3 = {
     en_US = "Find out all this and more in the upcoming debut of The Insulines, a sugar-free point-and-click adventure coming to an internet near you!",
     es_AR = ""
   },
-  character =  "main_character"
+  character =  "josh"
 }
 
 

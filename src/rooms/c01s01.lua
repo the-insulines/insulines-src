@@ -207,9 +207,9 @@ objects = {
         c01s01:stopRendering ( "josh_wakes_up" )
         c01s01:stopRendering ( "clothes_heap" )
         c01s01:startRendering ( "clothes_on_heap" )
-        c01s01:startRendering ( "main_character" )
+        c01s01:startRendering ( "josh" )
         c01s01:resetCharacter ()
-        c01s01.objects.main_character:startAnimation ( 'stand_front' )
+        c01s01.objects.josh:startAnimation ( 'stand_front' )
         c01s01.sounds.ambient:stop ()
         c01s01.sounds.background:play ()
         c01s01.objects.clothes_on_heap.highlight = true
@@ -325,17 +325,17 @@ c01s01:addSounds( sounds )
 function c01s01:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
-  mainCharacter = character.new ( 'main_character' )
-  mainCharacter.renderPriority = 200
-  self:loadCharacter( mainCharacter )
-  self:stopRendering( 'main_character' )
+  josh = character.new ( 'josh' )
+  josh.renderPriority = 200
+  self:loadCharacter( josh )
+  self:stopRendering( 'josh' )
   self.characterMovement = false
 end
 
 function c01s01:afterInitialize ()
   self.objects.cellphone.calling ()
   self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
-  self:stopRendering( 'main_character' )
+  self:stopRendering( 'josh' )
   self.characterMovement = false
 end
 

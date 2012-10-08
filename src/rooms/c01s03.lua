@@ -9,7 +9,9 @@ package.path = package.path .. ";src/rooms/?.lua"
 c01s03 = function()
 
   require 'c01s03_definition'
+  require 'c01s03_path'
   require 'dialogs/c01s03_dialogs_definition'
+  require 'c01s03_interactions'
 
   local c01s03_room = room.new ( "c01s03" )
 
@@ -34,43 +36,18 @@ c01s03 = function()
   function c01s03_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
-    self:loadCharacter( mainCharacter )
+    self:loadCharacter( josh )
   end
 
   function c01s03_room:afterInitialize ()
   end
-
-  local path = {
-    start = {
-      position = point (-470, 32),
-      neighbors = {'pete_and_paul'},
-      offsets = { x = 0, y = 0, scl = 1.0 }
-    },
-    pete_and_paul = {
-      position = point (-146, -216),
-      neighbors = {'start', 'foam', 'stuff'},
-      offsets = { x = 0, y = 0, scl = 1.0 }
-    },
-    foam = {
-      position = point (90, -314),
-      neighbors = {'pete_and_paul', 'bottle_emporium','stuff'},
-      offsets = { x = 0, y = 0, scl = 1.0 }
-    },
-    bottle_emporium = {
-      position = point (476, -540),
-      neighbors = {'foam', 'stuff'},
-      offsets = { x = 0, y = 0, scl = 1.0 }
-    },
-    stuff = {
-      position = point (-182, -392),
-      neighbors = {'bottle_emporium','foam', 'pete_and_paul'},
-      offsets = { x = 0, y = 0, scl = 1.0 }
-    },
-  }
-
-  -- Walk path
-  c01s03_room:loadPath(path)
-
+  
+  -- Load path and place objects on it
+  c01s03_room:loadPath ( path )
+  c01s03_room:placeObjectsOnPath ( objectPlacementOnPath )
+  
+  c01s03_room:loadObjectInteractions ( objectInteractions )
+  
   return c01s03_room
   
 end

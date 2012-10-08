@@ -56,8 +56,8 @@ sounds = {
 function c01s03:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
-  self:loadCharacter ( mainCharacter )
-  self.objects.main_character:setLoc ( 0, 0 )
+  self:loadCharacter ( josh )
+  self.objects.josh:setLoc ( 0, 0 )
 end
 
 function c01s03:afterInitialize ()

@@ -280,14 +280,24 @@ objects = {
     renderPriority = 271,
   },
   
-  c01s03_puestos_walk_behind = {
+  c01s03_left_table = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -472.70886, y = -320.67791500000004,
-    width = 587.66406, height = 642.26355,
-    resource_name = 'c01s03/c01s03_puestos_walk_behind.png',
+    x = -574.90626, y = -75.59404000000004,
+    width = 192.28728, height = 153.54636,
+    resource_name = 'c01s03/c01s03_left_table.png',
     render_at_start = true,
     renderPriority = 281,
+  },
+  
+  c01s03_glassglow_table = {
+    layer_name = 'walk_behind',
+    type = RESOURCE_TYPE_IMAGE,
+    x = -471.14523499999996, y = -365.39685,
+    width = 567.52521, height = 538.29126,
+    resource_name = 'c01s03/c01s03_glassglow_table.png',
+    render_at_start = true,
+    renderPriority = 291,
   },
   
   c01s03_glasglow_walk_behind = {
@@ -297,7 +307,7 @@ objects = {
     width = 518.69617, height = 595.80603,
     resource_name = 'c01s03/c01s03_glasglow_walk_behind.png',
     render_at_start = true,
-    renderPriority = 291,
+    renderPriority = 301,
   },
   
   c01s03_canos_wb = {
@@ -307,7 +317,7 @@ objects = {
     width = 609.21649, height = 1014.4029,
     resource_name = 'c01s03/c01s03_canos_wb.png',
     render_at_start = true,
-    renderPriority = 301,
+    renderPriority = 311,
   },
   
   c01s03_glass_2 = {
@@ -317,7 +327,7 @@ objects = {
     width = 54.120647, height = 289.28204,
     resource_name = 'c01s03/c01s03_glass_2.png',
     render_at_start = true,
-    renderPriority = 311,
+    renderPriority = 321,
   },
   
   c01s03_glass_4 = {
@@ -327,7 +337,7 @@ objects = {
     width = 58.910088, height = 107.76235,
     resource_name = 'c01s03/c01s03_glass_4.png',
     render_at_start = true,
-    renderPriority = 321,
+    renderPriority = 331,
   },
   
   c01s03_glass_3 = {
@@ -337,7 +347,7 @@ objects = {
     width = 70.883682, height = 106.32552,
     resource_name = 'c01s03/c01s03_glass_3.png',
     render_at_start = true,
-    renderPriority = 331,
+    renderPriority = 341,
   },
   
   c01s03_glass_1 = {
@@ -347,7 +357,7 @@ objects = {
     width = 68.010017, height = 149.90939,
     resource_name = 'c01s03/c01s03_glass_1.png',
     render_at_start = true,
-    renderPriority = 341,
+    renderPriority = 351,
   },
   
 }
