@@ -29,7 +29,7 @@
      inkscape:cx="834.16238"
      inkscape:cy="429.59281"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="852"
@@ -113,7 +113,7 @@
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_paul_and_pete.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_paul_and_pete.png"
        style="display:inline"
-       y="373.20154"
+       y="371.20154"
        x="808.64209"
        id="image3765"
        height="366.87094"
@@ -122,8 +122,8 @@
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_foam_and_lather.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_foam_and_lather.png"
        style="display:inline"
-       y="539.23846"
-       x="1027.3212"
+       y="535.23846"
+       x="1031.3213"
        id="image3457"
        height="414.76529"
        width="363.99725" />
@@ -139,6 +139,7 @@
     <image
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_canos.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_canos.png"
+       avoid_render_at_start="true"
        y="262.44"
        x="577.65222"
        id="image3954"
@@ -175,8 +176,8 @@
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_lamp_4.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_lamp_4.png"
        style="display:inline"
-       y="276.95917"
-       x="1382.4697"
+       y="298.95917"
+       x="1388.4697"
        id="image3567"
        height="212.65103"
        width="147.51469" />
@@ -188,7 +189,8 @@
        x="1666.8104"
        id="image3578"
        height="229.41406"
-       width="92.43615" />
+       width="92.43615"
+       avoid_render_at_start="true" />
     <image
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_lamp_6.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_lamp_6.png"
@@ -220,8 +222,8 @@
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_lamp_9.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_lamp_9.png"
        style="display:inline"
-       y="631.11859"
-       x="1380.301"
+       y="629.11859"
+       x="1388.301"
        id="image3622"
        height="182.95654"
        width="101.53609" />
@@ -229,8 +231,8 @@
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_lamp_9_lights2.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_lamp_9_lights2.png"
        style="display:inline"
-       y="644.32849"
-       x="1417.1543"
+       y="642.32849"
+       x="1425.1543"
        id="image3644"
        height="164.27773"
        width="70.404739" />
@@ -314,18 +316,18 @@
      style="display:inline">
     <image
        y="638.82086"
-       x="288.9501"
+       x="294.9501"
        id="image3194"
        xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s03/c01s03_left_table.png"
-       height="153.54636"
+       height="159.29759"
        width="192.28728" />
     <image
-       y="736.25122"
-       x="205.09216"
+       y="743.91956"
+       x="203.42386"
        id="image3097"
        xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s03/c01s03_glassglow_table.png"
-       height="538.29126"
-       width="567.52521" />
+       height="530.62292"
+       width="582.86188" />
     <image
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_glasglow_walk_behind.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_glasglow_walk_behind.png"
@@ -337,8 +339,9 @@
     <image
        sodipodi:absref="/Users/pablodelsel/Documents/Development/the-insulines/insulines-src/room_definitions/../../insulines-gfx/c01s03/c01s03_canos_wb.png"
        xlink:href="../../insulines-gfx/c01s03/c01s03_canos_wb.png"
+       avoid_render_at_start="true"
        y="269.58167"
-       x="179.24855"
+       x="189.24855"
        id="image4016"
        height="1014.4029"
        width="609.21649" />
@@ -347,7 +350,7 @@
        xlink:href="../../insulines-gfx/c01s03/c01s03_glass_2.png"
        style="display:inline"
        y="345.72873"
-       x="614.54651"
+       x="624.54651"
        id="image3501"
        height="289.28204"
        width="54.120647" />
@@ -374,7 +377,7 @@
        xlink:href="../../insulines-gfx/c01s03/c01s03_glass_1.png"
        style="display:inline"
        y="382.51624"
-       x="520.51678"
+       x="530.51678"
        id="image3490"
        height="149.90939"
        width="68.010017" />

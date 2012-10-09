@@ -209,7 +209,7 @@ function new (name)
   function room:loadCharacter ( object )
     
     -- Add to layer
-    object.layer = self.layer_objects.character
+    object.layer = self.layer_objects[object.layer_name] or self.layer_objects.character
     
     if object.render_at_start then
       object.layer:insertProp ( object.prop )

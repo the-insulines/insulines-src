@@ -438,6 +438,62 @@ resources = {
     width = 205, height = 439,
   },
   
+  
+  howard = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/howard/',
+    width = 285, height = 600,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'howard_stand',
+        frameCount = 1,--124,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+    },
+  },
+  
+  klein = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/klein/',
+    width = 880 * 0.4, height = 1664 * 0.4,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'klein_stand',
+        frameCount = 1,--249,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+    },
+  },
+  
+  sonja = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/sonja/',
+    width = 1400 * 0.4, height = 2000 * 0.4,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'sonja_stand',
+        frameCount = 1,--249,
+        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        startFrame = 1,
+      },
+    },
+  },
+  
+  
   -- /////////////////////////////////////////////////////////////
   --
   -- c01s01

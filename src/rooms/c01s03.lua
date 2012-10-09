@@ -6,7 +6,7 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
-c01s03 = function()
+c01s03 = function ()
 
   require 'c01s03_definition'
   require 'c01s03_path'
@@ -22,12 +22,23 @@ c01s03 = function()
   c01s03_room.topCharacterZoomThreshold = 74
 
   c01s03_room.initialCameraPathNode = 'start'
+  
+  -- Character initial positions
   c01s03_room.initialCharacterPathNode = 'start'
+  c01s03_room.initialHowardPosition = point ( 330, 90 )
+  c01s03_room.initialKleinPosition = point ( 800, 0 )
+  c01s03_room.initialSonjaPosition = point ( -800, -200 )
 
   c01s03_room.hasExternalAssets = true
 
   c01s03_room:addObjects ( objects )
 
+  -- Load path and place objects on it
+  c01s03_room:loadPath ( path )
+  c01s03_room:placeObjectsOnPath ( objectPlacementOnPath )
+  
+  c01s03_room:loadObjectInteractions ( objectInteractions )
+  
   -- sounds = {
   -- }
   -- 
@@ -37,16 +48,20 @@ c01s03 = function()
     self:loadObjects ()
     self:loadSounds ()
     self:loadCharacter( josh )
+    self:loadCharacter( howard )
+    self:loadCharacter( klein )
+    self:loadCharacter( sonja )
+    
+    self.objects.howard:setLoc ( self.initialHowardPosition.x, self.initialHowardPosition.y )
+    self.objects.klein:setLoc ( self.initialKleinPosition.x, self.initialKleinPosition.y )
+    self.objects.sonja:setLoc ( self.initialSonjaPosition.x, self.initialSonjaPosition.y )
+    
+    -- self.objects.howard:startAnimation ( 'stand' )
   end
 
   function c01s03_room:afterInitialize ()
   end
   
-  -- Load path and place objects on it
-  c01s03_room:loadPath ( path )
-  c01s03_room:placeObjectsOnPath ( objectPlacementOnPath )
-  
-  c01s03_room:loadObjectInteractions ( objectInteractions )
   
   return c01s03_room
   

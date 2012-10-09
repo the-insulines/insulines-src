@@ -32,7 +32,7 @@ path = {
   },
   
   stuff = {
-    position = point (-214, -346),
+    position = point (-220, -514),
     neighbors = {'foam_fork', 'pete_and_paul_fork'},
     offsets = { x = 0, y = 0, scl = 1.0 }
   },
