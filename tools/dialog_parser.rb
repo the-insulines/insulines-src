@@ -188,7 +188,15 @@ class DialogParser
         result += "          actor = '#{self.actors[dialog_entry[:actor].to_i][:name].downcase}',\n"
         result += "          conversant = '#{self.actors[dialog_entry[:conversant].to_i][:name].downcase}',\n"
         result += "          menuText = \"#{self.escape(dialog_entry[:"menu text"]) }\",\n"
-        result += "          dialogueText = \"#{self.escape(dialog_entry[:"dialogue text"])}\",\n"
+        
+        if dialog_entry[:"dialogue text"] && !dialog_entry[:"dialogue text"].empty?
+          result += "          dialogueText = {\n"
+          dialog_entry[:"dialogue text"].split('|').each do |dialog_text|
+            result += "            \"#{self.escape(dialog_text)}\",\n"
+          end
+          result += "          },\n"
+        end
+
         result += "          conditionsString = '#{self.updateConditionsString(dialog_entry[:conditions_string])}',\n"
         
         if dialog_entry[:user_script]

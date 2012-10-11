@@ -172,7 +172,9 @@ function dialog:showCurrentDialogEntry ( )
   local character = self.currentDialogEntry.actor
   self.dialogTextBox:setColor ( DIALOG_COLOR_FOR_CHARACTER[character].r, DIALOG_COLOR_FOR_CHARACTER[character].g, DIALOG_COLOR_FOR_CHARACTER[character].b,0.8)
 
-  self.dialogTextBox:setString(self.currentDialogEntry.dialogueText)
+  if self.currentDialogEntry.dialogueText then
+    self.dialogTextBox:setString(self.currentDialogEntry.dialogueText[self.currentDialogEntryTextIndex])
+  end
 end
 
 function dialog:clearOptions ()
@@ -190,7 +192,7 @@ function dialog:setOption ( optionDefinition, dialogEntryId )
       if not optionDefinition.menuText == '' then
         button:setString ( optionDefinition.menuText )
       else
-        button:setString ( optionDefinition.dialogueText )
+        button:setString ( optionDefinition.dialogueText[1] )
       end
       
       button.definition = optionDefinition
@@ -240,6 +242,7 @@ end
 
 function dialog:loadDialogEntry(id)
   self.currentDialogEntryId = id
+  self.currentDialogEntryTextIndex = 1
   self:processCurrentDialogEntry()
 end
 
@@ -247,7 +250,7 @@ function dialog:processCurrentDialogEntry()
   
   self.currentDialogEntry = self:getDialogEntry(self.currentDialogEntryId)
   
-  if self.currentDialogEntry.dialogueText ~= "" then
+  if self.currentDialogEntry.dialogueText then
     -- Show text
     self:showCurrentDialogEntry()
   else
@@ -295,7 +298,13 @@ function dialog:onInput ( )
     if not self.currentDialogEntry.isGroup then
       self.currentDialogEntry.SimStatus = "WasDisplayed"
       
-      if  self.currentDialogEntry and self.currentDialogEntry.userScript then
+      if #self.currentDialogEntry.dialogueText > self.currentDialogEntryTextIndex then
+        self.currentDialogEntryTextIndex = self.currentDialogEntryTextIndex + 1
+        self:showCurrentDialogEntry()
+        return
+      end
+
+      if self.currentDialogEntry and self.currentDialogEntry.userScript then
         self.currentDialogEntry.userScript()
       end
 
