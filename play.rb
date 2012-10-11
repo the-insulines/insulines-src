@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'progressbar'
 require 'fileutils'
 require './tools/shared'

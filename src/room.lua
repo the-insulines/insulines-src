@@ -105,11 +105,11 @@ function new (name)
   end
   
   function room:resetCharacter ( )
-    if self.objects.main_character then      
-      self.layer_objects.character:insertProp ( self.objects.main_character.prop )
+    if self.objects.josh then      
+      self.layer_objects.character:insertProp ( self.objects.josh.prop )
     
       pos = self.path.graph[self.initialCharacterPathNode].position
-      self.objects.main_character:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
+      self.objects.josh:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
     
       local scl = 1
       scl = self.backCharacterZoom + (self.topCharacterZoomThreshold - pos.y) * self.perspectiveZoomFactor
@@ -122,7 +122,7 @@ function new (name)
         scl = self.backCharacterZoom
       end
     
-      self.objects.main_character.prop:setScl ( scl )
+      self.objects.josh.prop:setScl ( scl )
       self.characterMovement = true
     end
   end
@@ -212,7 +212,7 @@ function new (name)
   
   function room:loadCharacter ( object )
     -- Add to layer
-    object.layer = self.layer_objects.character
+    object.layer = self.layer_objects[object.layer_name] or self.layer_objects.character
     
     if object.render_at_start then
       object.layer:insertProp ( object.prop )
@@ -249,14 +249,22 @@ function new (name)
   function room:onInput ( )
     if self.inputEnabled then
       if input_manager.down () then
-      
+        
         local x, y = input_manager.getTouch ()
         x, y = self.layer_objects.objects:wndToWorld ( x, y )
-      
+        local targetPoint = point ( x, y )
+        
         -- Collision detection
         local object = self:objectAt ( x, y )
         local callback = nil
         if object then
+          
+          -- set the target point of the object that will be used for character movement
+          if object.pathNode then
+            targetPoint = self.path.graph[object.pathNode].position
+          end
+          
+          -- set the callback method when finished walking
           if type (object.onClick) == "function" then
             if self.characterMovement then
               callback = { method = object.onClick, parent = object }
@@ -266,20 +274,17 @@ function new (name)
           end
         else
         end
-      
-      
-      
+        
+        
         if self.characterMovement then
-          local char = self.objects.main_character
+          local char = self.objects.josh
 
           if char and char.rendering then
           
+            -- stop previous movement
             if self.characterMovementCoroutine then self.characterMovementCoroutine:stop () end
-          
-            local steps = self.path:steps ( point ( char.prop:getLoc () ),  point ( x, y ) )
-            self.characterMovementCoroutine = MOAICoroutine.new ()
-            self.characterMovementCoroutine:run( char.moveThroughSteps, char, steps, self.perspectiveZoomFactor, callback )
-          
+            
+            self:moveCharacterToPosition ( char, targetPoint, callback )
           end
         
         end
@@ -289,15 +294,20 @@ function new (name)
   end
 
   function room:moveCharacterToNode (characterName, node, callback_method, callback_parent)
-    local position = self.path.graph[node].position
-    local steps = self.path:steps ( point ( self.objects.main_character.prop:getLoc () ),  position )
     local char = self.objects[characterName]
+    local position = self.path.graph[node].position
     local callback = { method = callback_method, parent = callback_parent }
-
-    self.characterMovementCoroutine = MOAICoroutine.new ()
-    self.characterMovementCoroutine:run( char.moveThroughSteps, char, steps, self.perspectiveZoomFactor, callback )
     
+    self:moveCharacterToPosition ( char, position, callback )
   end
+  
+  
+  function room:moveCharacterToPosition ( character, position, callback )
+    local steps = self.path:steps ( point ( character.prop:getLoc () ), position )
+    self.characterMovementCoroutine = MOAICoroutine.new ()
+    self.characterMovementCoroutine:run( character.moveThroughSteps, character, steps, self.perspectiveZoomFactor, callback )
+  end
+  
   
   function room:reload ()
     
@@ -339,6 +349,7 @@ function new (name)
     end
   end
   
+  
   function room:loadPath ( graph )
     
     self.path = Path.new ( graph )
@@ -349,6 +360,23 @@ function new (name)
     
   end
   
+  
+  function room:placeObjectsOnPath ( objectPlacementOnPath )
+    for objectName, pathNode in pairs ( objectPlacementOnPath ) do
+      self.objects[objectName].pathNode = pathNode
+    end
+  end
+  
+  
+  function room:loadObjectInteractions ( objectInteractions )
+    for objectName, interactions in pairs ( objectInteractions ) do
+      for interactionName, interaction in pairs ( interactions ) do
+        self.objects[objectName][interactionName] = interaction
+      end
+    end
+  end
+  
+  
   function room:playThemeSong ()
     self.theme_song = resource_cache.get(self.name .. '_theme')
     self.theme_song:setVolume ( 0 )
@@ -356,11 +384,13 @@ function new (name)
     self.theme_song:seekVolume ( 1, 1 )
   end
   
+  
   function room:stopThemeSong ()
     if self.theme_song and self.theme_song:isPlaying () then
       self.theme_song:stop ()
     end
   end  
+  
   
   function room:unload ()
     if self.fadeOnChange then
@@ -371,11 +401,13 @@ function new (name)
     end
   end
   
+  
   function room:removeLayers ()
     for k, layer in pairs ( self.layer_objects ) do
       MOAIRenderMgr.removeRenderPass ( layer )
     end
   end
+  
   
   function room:interactionForPosition (source, x, y)
     if x and y then
@@ -392,9 +424,11 @@ function new (name)
     end
   end
   
+  
   function room:interact (source, target)
     target:onInteractionWith(source)
   end
+  
   
   function room:startHighlightingInteractions ()
     for k, object in pairs ( self.objects ) do
@@ -404,6 +438,7 @@ function new (name)
     end
   end
 
+  
   function room:stoptHighlightingInteractions ()
     for k, object in pairs ( self.objects ) do
       if object.highlight then

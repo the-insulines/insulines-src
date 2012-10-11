@@ -17,7 +17,7 @@ require 'hud/highlight'
 require 'hud/dialog'
 require 'hud/hud'
 
-require 'dialogTree'
+-- require 'dialogTree'
 
 require 'input_manager'
 

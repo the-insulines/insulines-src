@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'listen'
 
 class FileWatcher
@@ -33,7 +34,7 @@ class FileWatcher
   end
   
   def start_game
-    self.pid = spawn('moai main.lua')
+    self.pid = Process.spawn('moai main.lua')
   end
 
   def end_game

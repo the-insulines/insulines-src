@@ -146,7 +146,7 @@ objects = {
         c01s02:stopRendering('bathroom_closed')
         c01s02:startRendering('bathroom_opened')
         -- Move character to bathroom
-        c01s02:moveCharacterToNode('main_character', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
+        c01s02:moveCharacterToNode('josh', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
       else
         dialog:load('c01s02_bathroom_' .. math.random(2))
       end
@@ -163,7 +163,7 @@ objects = {
     inBathroom = function ( self )
 
       -- Close bathroom door
-      c01s02:stopRendering("main_character")
+      c01s02:stopRendering("josh")
       c01s02:stopRendering("bathroom_opened")
       c01s02:startRendering("bathroom_closed")
       
@@ -226,8 +226,8 @@ objects = {
 
       performWithDelay ( 1150, c01s02.stopRendering, 1, c01s02, "bathroom_closed" )
       performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "bathroom_opened" )
-      performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "main_character" )
-      performWithDelay ( 1150, c01s02.moveCharacterToNode, 1, c01s02, 'main_character', 'bathroomDoor', c01s02.objects.bathroom_opened.leaveBathroom, c01s02 )
+      performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "josh" )
+      performWithDelay ( 1150, c01s02.moveCharacterToNode, 1, c01s02, 'josh', 'bathroomDoor', c01s02.objects.bathroom_opened.leaveBathroom, c01s02 )
     end
     
   },
@@ -593,10 +593,10 @@ objects = {
       c01s02:stopRendering ( 'apartmentDoorOpened' )
       
       -- characters look at each other
-      c01s02.objects.main_character:standLookingInDirection ( DIRECTION_RIGHT )
+      c01s02.objects.josh:standLookingInDirection ( DIRECTION_RIGHT )
       c01s02.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
-      -- c01s02.objects.main_character.animation:startAnimation('walk_right')
-      -- performWithDelay (10, c01s02.objects.main_character.animation.stopCurrentAnimation, 1, c01s02.objects.main_character.animation)
+      -- c01s02.objects.josh.animation:startAnimation('walk_right')
+      -- performWithDelay (10, c01s02.objects.josh.animation.stopCurrentAnimation, 1, c01s02.objects.josh.animation)
       -- 
       -- c01s02.objects.nancy.animation:startAnimation('walk_left')
       -- performWithDelay (10, c01s02.objects.nancy.animation.stopCurrentAnimation, 1, c01s02.objects.nancy.animation)
@@ -703,8 +703,8 @@ function c01s02:beforeInitialize ()
   self:loadObjects ()
   self:loadSounds ()
   
-  self:loadCharacter( mainCharacter )
-  self.objects.main_character:setLoc(1120, -245)
+  self:loadCharacter( josh )
+  self.objects.josh:setLoc(1120, -245)
   nancy = character.new ( 'nancy' )
   nancy.renderPriority = 100
 end

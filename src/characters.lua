@@ -7,8 +7,17 @@
 -- 
 
 if DEBUG then
-  mainCharacter = character.new ( 'main_character' )
-  mainCharacter.renderPriority = 200
+  josh = character.new ( 'josh' )
+  josh.renderPriority = 200
   nancy = character.new ( 'nancy' )
   nancy.renderPriority = 100
+  howard = character.new ( 'howard' )
+  howard.renderPriority = 0
+  howard.layer_name = 'objects'
+  klein = character.new ( 'klein' )
+  klein.renderPriority = 0
+  klein.layer_name = 'objects'
+  sonja = character.new ( 'sonja' )
+  sonja.renderPriority = 0
+  sonja.layer_name = 'objects'
 end
