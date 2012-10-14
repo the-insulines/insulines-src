@@ -64,7 +64,10 @@ frame_definition = ""
 
 frames.each_with_index do |frame, i|
   frame_index = i+1
-  frame_definition += "{frame = #{frame_index}, times = #{frame[2]}},\n"
+  times = frame[2]
+  if times > 1
+    frame_definition += "{frame = #{frame_index}, times = #{times}},\n"
+  end
   
   tmp_name = frame[0] + ".tmp"
   split_file_name = frame[0].split(/\d+/)

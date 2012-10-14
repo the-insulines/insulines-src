@@ -29,6 +29,8 @@ c01s03 = function ()
   c01s03_room.initialHowardPosition = point ( 330, 90 )
   c01s03_room.initialKleinPosition = point ( 800, 0 )
   c01s03_room.initialSonjaPosition = point ( -800, -200 )
+  c01s03_room.initialPaulPosition = point ( 120, 110 )
+  c01s03_room.initialPetePosition = point ( -20, 100 )
 
   c01s03_room.hasExternalAssets = true
   
@@ -50,17 +52,24 @@ c01s03 = function ()
   function c01s03_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
-
-    self:loadCharacter( josh )
-    self:loadCharacter( howard )
-    self:loadCharacter( klein )
-    self:loadCharacter( sonja )
+    self:loadCharacter ( josh )
+    self:loadCharacter ( howard )
+    self:loadCharacter ( klein )
+    self:loadCharacter ( sonja )
+    self:loadCharacter ( paul )
+    self:loadCharacter ( pete )
     
     self.objects.howard:setLoc ( self.initialHowardPosition.x, self.initialHowardPosition.y )
     self.objects.klein:setLoc ( self.initialKleinPosition.x, self.initialKleinPosition.y )
     self.objects.sonja:setLoc ( self.initialSonjaPosition.x, self.initialSonjaPosition.y )
+    self.objects.paul:setLoc ( self.initialPaulPosition.x, self.initialPaulPosition.y )
+    self.objects.pete:setLoc ( self.initialPetePosition.x, self.initialPetePosition.y )
     
-    -- self.objects.howard:startAnimation ( 'stand' )
+    self.objects.howard:startAnimation ( 'stand' )
+    self.objects.klein:startAnimation ( 'stand' )
+    self.objects.sonja:startAnimation ( 'stand' )
+    self.objects.paul:startAnimation ( 'stand' )
+    self.objects.pete:startAnimation ( 'stand' )
   end
 
   function c01s03_room:afterInitialize ()

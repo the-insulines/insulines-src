@@ -6,7 +6,7 @@
 --==============================================================
 
 -- Debugging
--- DEBUG = true
+DEBUG = true
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
@@ -445,7 +445,7 @@ resources = {
   howard = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/howard/',
-    width = 285, height = 600,
+    width = 285 * 0.92, height = 600 * 0.92,
     
     pivotX = 0,
     pivotY = 0,
@@ -453,8 +453,8 @@ resources = {
     animations = {
       stand = {
         fileName = 'howard_stand',
-        frameCount = 1,--124,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        frameCount = 124,
+        frameTime = 0.04,
         startFrame = 1,
       },
     },
@@ -471,8 +471,25 @@ resources = {
     animations = {
       stand = {
         fileName = 'klein_stand',
-        frameCount = 1,--249,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        frameCount = 55,--249,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 38},
+            {frame = 12, times = 6},
+            {frame = 13, times = 15},
+            {frame = 25, times = 25},
+            {frame = 26, times = 6},
+            {frame = 27, times = 30},
+            {frame = 39, times = 8},
+            {frame = 40, times = 6},
+            {frame = 41, times = 23},
+            {frame = 42, times = 16},
+            {frame = 53, times = 6},
+            {frame = 54, times = 6},
+            {frame = 55, times = 21},
+          },
+        },
         startFrame = 1,
       },
     },
@@ -489,8 +506,59 @@ resources = {
     animations = {
       stand = {
         fileName = 'sonja_stand',
-        frameCount = 1,--249,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
+        frameCount = 75,
+        frameTime = {
+            baseTime = 0.04,
+            multipliers = {
+              {frame = 1, times = 5},
+              {frame = 2, times = 21},
+              {frame = 48, times = 2},
+              {frame = 49, times = 26},
+            },
+          },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  paul = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/paul/',
+    width = 991 * 0.2, height = 2000 * 0.2,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'paul_stand',
+        frameCount = 120,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 3},
+            {frame = 2, times = 2},
+            {frame = 119, times = 2},
+          },
+        },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  pete = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/pete/',
+    width = 1233 * 0.18, height = 2000 * 0.18,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'pete_stand',
+        frameCount = 124,
+        frameTime = 0.04,
         startFrame = 1,
       },
     },

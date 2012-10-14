@@ -43,7 +43,7 @@ objects = {
   c01s03_puestos_derecha = {
     layer_name = 'objects',
     type = RESOURCE_TYPE_IMAGE,
-    x = 289.35908000000006, y = -257.45736500000004,
+    x = 291.35908000000006, y = -257.45736500000004,
     width = 1336.2532, height = 708.83685,
     resource_name = 'c01s03/c01s03_puestos_derecha.png',
     render_at_start = true,
@@ -96,7 +96,7 @@ objects = {
     x = 288.17352000000005, y = -130.35989999999998,
     width = 1341.0426, height = 1015.8398,
     resource_name = 'c01s03/c01s03_canos.png',
-    render_at_start = false,
+    render_at_start = true,
     renderPriority = 91,
   },
   
@@ -283,7 +283,7 @@ objects = {
   c01s03_left_table = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -568.90626, y = -78.46965500000005,
+    x = -568.90626, y = -86.46965500000005,
     width = 192.28728, height = 159.29759,
     resource_name = 'c01s03/c01s03_left_table.png',
     render_at_start = true,
@@ -293,7 +293,7 @@ objects = {
   c01s03_glassglow_table = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -465.1452, y = -369.23102000000006,
+    x = -465.1452, y = -379.23102000000006,
     width = 582.86188, height = 530.62292,
     resource_name = 'c01s03/c01s03_glassglow_table.png',
     render_at_start = true,
@@ -303,7 +303,7 @@ objects = {
   c01s03_glasglow_walk_behind = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -485.4716449999999, y = -39.061924999999974,
+    x = -481.4716449999999, y = -49.061924999999974,
     width = 518.69617, height = 595.80603,
     resource_name = 'c01s03/c01s03_glasglow_walk_behind.png',
     render_at_start = true,
@@ -313,17 +313,17 @@ objects = {
   c01s03_canos_wb = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -466.14320499999997, y = -136.78312,
+    x = -468.14320499999997, y = -144.78312,
     width = 609.21649, height = 1014.4029,
     resource_name = 'c01s03/c01s03_canos_wb.png',
-    render_at_start = false,
+    render_at_start = true,
     renderPriority = 311,
   },
   
   c01s03_glass_2 = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -308.3931665, y = 149.63025000000002,
+    x = -310.3931665, y = 143.63025000000002,
     width = 54.120647, height = 289.28204,
     resource_name = 'c01s03/c01s03_glass_2.png',
     render_at_start = true,
@@ -353,7 +353,7 @@ objects = {
   c01s03_glass_1 = {
     layer_name = 'walk_behind',
     type = RESOURCE_TYPE_IMAGE,
-    x = -395.47821149999993, y = 182.529065,
+    x = -397.47821149999993, y = 174.529065,
     width = 68.010017, height = 149.90939,
     resource_name = 'c01s03/c01s03_glass_1.png',
     render_at_start = true,
