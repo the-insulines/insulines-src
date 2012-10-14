@@ -1,16 +1,33 @@
 conversations = {
   
+  userVariables = {
+    Janxx = {
+      initialValue = false,
+    },
+    Desc1 = {
+      initialValue = false,
+    },
+    Desc2 = {
+      initialValue = false,
+    },
+    Desc3 = {
+      initialValue = false,
+    },
+    Bottle = {
+      initialValue = 1,
+    },
+  },
+  
   glasworks = {
     actor = 'josh',
     conversant = 'sonja',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
           conversant = 'sonja',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -35,8 +52,10 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Hello there, sweetie. Welcome to Glasgow’s Glassworks. What can I do ye for?",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "Hello there, sweetie. Welcome to Glasgow’s Glassworks. What can I do ye for?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -53,8 +72,10 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Hi there, Luv.",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "Hi there, Luv.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -71,7 +92,6 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -131,8 +151,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "Nice Glass",
-          dialogueText = "That’s some interesting looking glass you’ve got there.",
-          conditionsString = 'Dialog[4].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "That’s some interesting looking glass you’ve got there.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -149,7 +171,11 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Thank ye, Hon. Handcrafted it all meself I did.| Sonja Preach’s the name, Vitrofusion’s the Game.| Picked up the trade at the Cathedral back in me home town and been at it ever since.",
+          dialogueText = {
+            "Thank ye, Hon. Handcrafted it all meself I did.",
+            " Sonja Preach’s the name, Vitrofusion’s the Game.",
+            " Picked up the trade at the Cathedral back in me home town and been at it ever since.",
+          },
           conditionsString = '',
           links = {
             {
@@ -167,8 +193,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "Nice Glass",
-          dialogueText = "Nice glass, Sonja!",
-          conditionsString = 'Dialog[4].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "Nice glass, Sonja!",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -185,7 +213,9 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Thanks!",
+          dialogueText = {
+            "Thanks!",
+          },
           conditionsString = '',
           links = {
             {
@@ -203,8 +233,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "I'm looking for someone",
-          dialogueText = "I’m looking for someone here at the Fair.",
-          conditionsString = 'Dialog[8].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I’m looking for someone here at the Fair.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog8.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -221,7 +253,9 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Who would he be?",
+          dialogueText = {
+            "Who would he be?",
+          },
           conditionsString = '',
           links = {
             {
@@ -239,7 +273,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "",
-          dialogueText = "I don’t know his name, really.| He sells old LPs here somewhere.",
+          dialogueText = {
+            "I don’t know his name, really.",
+            " He sells old LPs here somewhere.",
+          },
           conditionsString = '',
           links = {
             {
@@ -257,7 +294,11 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I think I know the guy...| He has the most adorable Pug, always follows him everywhere.| It’s the cutest little thing, always yapping along happily and sneaking around through the stalls.",
+          dialogueText = {
+            "I think I know the guy...",
+            " He has the most adorable Pug, always follows him everywhere.",
+            " It’s the cutest little thing, always yapping along happily and sneaking around through the stalls.",
+          },
           conditionsString = '',
           links = {
             {
@@ -275,7 +316,9 @@ conversations = {
           actor = 'josh',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Sounds like quite the pain in the butt to me.",
+          dialogueText = {
+            "Sounds like quite the pain in the butt to me.",
+          },
           conditionsString = '',
           links = {
             {
@@ -293,7 +336,9 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Oh! Not at all, Luv.",
+          dialogueText = {
+            "Oh! Not at all, Luv.",
+          },
           conditionsString = '',
           links = {
             {
@@ -311,8 +356,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "So, about this guy...",
-          dialogueText = "So, about this guy...",
-          conditionsString = 'Dialog[8].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, about this guy...",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog8.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -329,7 +376,10 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "The one with the puppy? Haven’t seen him all day, Luv.| You should ask Old Man Felix, he knows everyone ‘round here.",
+          dialogueText = {
+            "The one with the puppy? Haven’t seen him all day, Luv.",
+            " You should ask Old Man Felix, he knows everyone ‘round here.",
+          },
           conditionsString = '',
           links = {
             {
@@ -347,7 +397,9 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "",
-          dialogueText = "Right. Thanks.",
+          dialogueText = {
+            "Right. Thanks.",
+          },
           conditionsString = '',
           links = {
             {
@@ -365,7 +417,9 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "Well, see you around.",
-          dialogueText = "Well, see you around.",
+          dialogueText = {
+            "Well, see you around.",
+          },
           conditionsString = '',
           links = {
             {
@@ -383,7 +437,9 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Take care, Luv.",
+          dialogueText = {
+            "Take care, Luv.",
+          },
           conditionsString = '',
           links = {
           },
@@ -394,8 +450,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "I need a bottle...",
-          dialogueText = "Say, could you make a bottle that resembled a specific brand?",
-          conditionsString = 'Dialog[19].SimStatus ~= "WasDisplayed" and Variable["Janxx"] == true',
+          dialogueText = {
+            "Say, could you make a bottle that resembled a specific brand?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus ~= "WasDisplayed" and stateManager.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 1,
@@ -412,7 +470,12 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I think you’ve got yer parties mixed up, Luv.| See here, I’m no run-off-the-mill glassblower.| Vitrofusion is a fine and delicate art form, I don’t deal with menial and crude devices like bottles and jugs.| Plus, there’s another catch to what yer askin’.",
+          dialogueText = {
+            "I think you’ve got yer parties mixed up, Luv.",
+            " See here, I’m no run-off-the-mill glassblower.",
+            " Vitrofusion is a fine and delicate art form, I don’t deal with menial and crude devices like bottles and jugs.",
+            " Plus, there’s another catch to what yer askin’.",
+          },
           conditionsString = '',
           links = {
             {
@@ -430,7 +493,9 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "",
-          dialogueText = "Really? What is it?",
+          dialogueText = {
+            "Really? What is it?",
+          },
           conditionsString = '',
           links = {
             {
@@ -448,7 +513,11 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Copyright Infringement, Luv.| That bottle o’yours is most likely a trademarked design, I can’t just make you a knock off.| I could catch something nasty in the VAG.",
+          dialogueText = {
+            "Copyright Infringement, Luv.",
+            " That bottle o’yours is most likely a trademarked design, I can’t just make you a knock off.",
+            " I could catch something nasty in the VAG.",
+          },
           conditionsString = '',
           links = {
             {
@@ -466,7 +535,9 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "",
-          dialogueText = "Ehhh.. The what now?",
+          dialogueText = {
+            "Ehhh.. The what now?",
+          },
           conditionsString = '',
           links = {
             {
@@ -484,7 +555,10 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Vitrofusionist Association of Glassgow, Luv.| I’m a registered trader, you see.",
+          dialogueText = {
+            "Vitrofusionist Association of Glassgow, Luv.",
+            " I’m a registered trader, you see.",
+          },
           conditionsString = '',
           links = {
             {
@@ -502,7 +576,9 @@ conversations = {
           actor = 'josh',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Oh, thank god.",
+          dialogueText = {
+            "Oh, thank god.",
+          },
           conditionsString = '',
           links = {
             {
@@ -520,8 +596,10 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "About that bottle...",
-          dialogueText = "So, there's no chance of you making that bottle for me?",
-          conditionsString = 'Dialog[19].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, there's no chance of you making that bottle for me?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 1,
@@ -538,7 +616,10 @@ conversations = {
           actor = 'sonja',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I'm afraid I can't do it, Luv.| But Klein may have one lying around, you should ask him.",
+          dialogueText = {
+            "I'm afraid I can't do it, Luv.",
+            " But Klein may have one lying around, you should ask him.",
+          },
           conditionsString = '',
           links = {
             {
@@ -556,7 +637,9 @@ conversations = {
           actor = 'josh',
           conversant = 'sonja',
           menuText = "",
-          dialogueText = "Alright, thanks.",
+          dialogueText = {
+            "Alright, thanks.",
+          },
           conditionsString = '',
           links = {
             {
@@ -574,14 +657,13 @@ conversations = {
   foam_and_lather = {
     actor = 'josh',
     conversant = 'howard',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -606,8 +688,10 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Erhm... Hi there.",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "Erhm... Hi there.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -624,7 +708,13 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "NGAH!| Good God, man!| You don’t wanna startle me like that, son.| I’m a red-blooded bugger with an itchy finger.| And I’m packing HEAT! I’m warning you!",
+          dialogueText = {
+            "NGAH!",
+            " Good God, man!",
+            " You don’t wanna startle me like that, son.",
+            " I’m a red-blooded bugger with an itchy finger.",
+            " And I’m packing HEAT! I’m warning you!",
+          },
           conditionsString = '',
           links = {
             {
@@ -642,7 +732,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "I’ll... keep that in mind, thanks.",
+          dialogueText = {
+            "I’ll... keep that in mind, thanks.",
+          },
           conditionsString = '',
           links = {
             {
@@ -660,8 +752,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "Uh... Hello?",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "Uh... Hello?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -678,7 +772,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Pufferfish!",
+          dialogueText = {
+            "Pufferfish!",
+          },
           conditionsString = '',
           links = {
             {
@@ -696,7 +792,6 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -756,8 +851,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "What is this place?",
-          dialogueText = "What is this place?",
-          conditionsString = 'Dialog[7].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "What is this place?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog7.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -774,7 +871,15 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "This, my friend, is the world famous Foam and Lather Ltd from Los Alamos.| We deal with the most exotic fragrances and delicate products for all your rising rinsing needs.| Anything from flogging some aging wife beater back to its pearly white glory of yore to the secret salves and ointments from far-flung orient to awaken sensuous desires on the unsuspecting opposite sex.| Or the same sex, as you may have it.| I’m not one to judge here.| I’m the founder, chairman, CEO and primary stockholder, Howard Samuel Tillson.| Pleased to meet you.",
+          dialogueText = {
+            "This, my friend, is the world famous Foam and Lather Ltd from Los Alamos.",
+            " We deal with the most exotic fragrances and delicate products for all your rising rinsing needs.",
+            " Anything from flogging some aging wife beater back to its pearly white glory of yore to the secret salves and ointments from far-flung orient to awaken sensuous desires on the unsuspecting opposite sex.",
+            " Or the same sex, as you may have it.",
+            " I’m not one to judge here.",
+            " I’m the founder, chairman, CEO and primary stockholder, Howard Samuel Tillson.",
+            " Pleased to meet you.",
+          },
           conditionsString = '',
           links = {
             {
@@ -792,8 +897,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Riddle me this...",
-          dialogueText = "Riddle me this...",
-          conditionsString = 'Dialog[7].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "Riddle me this...",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog7.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -810,7 +917,6 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -863,8 +969,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "What's with the Gun?",
-          dialogueText = "Why would a soap salesman need to carry a gun?",
-          conditionsString = 'Dialog[11].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "Why would a soap salesman need to carry a gun?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog11.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -881,7 +989,11 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Well excuse me, Comrade!| It’s my god-given constitutional right to bear arms, and if you want to take that from me you’ll have to pry it from my cold dead hands.| Besides, I have bigger concerns than the King of England or some Pinko Commie Ivan walking up to my stand and relieving me of my hard-earned wares, you know?",
+          dialogueText = {
+            "Well excuse me, Comrade!",
+            " It’s my god-given constitutional right to bear arms, and if you want to take that from me you’ll have to pry it from my cold dead hands.",
+            " Besides, I have bigger concerns than the King of England or some Pinko Commie Ivan walking up to my stand and relieving me of my hard-earned wares, you know?",
+          },
           conditionsString = '',
           links = {
             {
@@ -899,7 +1011,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "I cannot fathom what could possibly be more menacing than that.|Actually, I don’t how I’ll manage to sleep tonight..",
+          dialogueText = {
+            "I cannot fathom what could possibly be more menacing than that.",
+            "Actually, I don’t how I’ll manage to sleep tonight..",
+          },
           conditionsString = '',
           links = {
             {
@@ -917,7 +1032,12 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "You wouldn’t sleep either if you knew what I know, man.| In my travels I’ve seen some serious shit.| I was once blind, like you are now, but the veil has fallen from my eyes. Now I know.| And they know I know.",
+          dialogueText = {
+            "You wouldn’t sleep either if you knew what I know, man.",
+            " In my travels I’ve seen some serious shit.",
+            " I was once blind, like you are now, but the veil has fallen from my eyes. Now I know.",
+            " And they know I know.",
+          },
           conditionsString = '',
           links = {
             {
@@ -935,8 +1055,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Who are \"They\"?",
-          dialogueText = "I’m pretty sure I’ll regret asking this, but who are “they”?",
-          conditionsString = 'Dialog[11].SimStatus == "WasDisplayed" and Dialog[15].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I’m pretty sure I’ll regret asking this, but who are “they”?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog11.SimStatus == "WasDisplayed" and dialog.currentConversation.dialogEntries.dialog15.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -953,7 +1075,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "The Lizardmen!",
+          dialogueText = {
+            "The Lizardmen!",
+          },
           conditionsString = '',
           links = {
             {
@@ -971,7 +1095,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "What?",
+          dialogueText = {
+            "What?",
+          },
           conditionsString = '',
           links = {
             {
@@ -989,7 +1115,18 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Cold-blooded reptilian inteligencia agents wrapped in leathery human hides.| I’ve been on to them for years.| Ever since I accidently ran into them for the first time in the back alley of a small suburban parish, after an incense deal went sour.| Now they are after me, they must have me silenced so they can stage their coup and take over the country.| The tell is in the eyes, you see?| Some glimpse of saurian ancestry in their gaze, a malevolent hungry glean as they eyeball a small mammal.| That, and the smell.| Their breath reeks of raw flesh decomposing in between rows of sharp, triangular teeth, meant for tearing.| Without a doubt all that remains of other, less cautious folks who discovered the ruse.| But I’m not about to become fodder for some anthropomorphic alien iguana, no sir!",
+          dialogueText = {
+            "Cold-blooded reptilian inteligencia agents wrapped in leathery human hides.",
+            " I’ve been on to them for years.",
+            " Ever since I accidently ran into them for the first time in the back alley of a small suburban parish, after an incense deal went sour.",
+            " Now they are after me, they must have me silenced so they can stage their coup and take over the country.",
+            " The tell is in the eyes, you see?",
+            " Some glimpse of saurian ancestry in their gaze, a malevolent hungry glean as they eyeball a small mammal.",
+            " That, and the smell.",
+            " Their breath reeks of raw flesh decomposing in between rows of sharp, triangular teeth, meant for tearing.",
+            " Without a doubt all that remains of other, less cautious folks who discovered the ruse.",
+            " But I’m not about to become fodder for some anthropomorphic alien iguana, no sir!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1007,7 +1144,9 @@ conversations = {
           actor = 'josh',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "And there it is. I regret asking already.",
+          dialogueText = {
+            "And there it is. I regret asking already.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1025,8 +1164,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "So, the Lizardfolk, uh?",
-          dialogueText = "So, the Lizardfolk, uh?",
-          conditionsString = 'Dialog[15].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, the Lizardfolk, uh?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog15.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1043,7 +1184,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "They are amongst us, man!",
+          dialogueText = {
+            "They are amongst us, man!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1061,8 +1204,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Tell me about That Ol’ Janxx Spirits",
-          dialogueText = "What can you tell me about That Ol’ Janxx Spirits?",
-          conditionsString = 'Dialog[22].SimStatus ~= "WasDisplayed" and Variable["Janxx"] == true',
+          dialogueText = {
+            "What can you tell me about That Ol’ Janxx Spirits?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus ~= "WasDisplayed" and stateManager.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 2,
@@ -1079,7 +1224,10 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Now, that’s the stuff man.| It’s hard as hell to come by, but if you do chance upon some don’t forget about your good friend Howard right here.",
+          dialogueText = {
+            "Now, that’s the stuff man.",
+            " It’s hard as hell to come by, but if you do chance upon some don’t forget about your good friend Howard right here.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1097,7 +1245,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "So it’s that good, uh?",
+          dialogueText = {
+            "So it’s that good, uh?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1115,7 +1265,14 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Vain deities high up in Uranus can keep their effeminate nectar all to themselves, for as long as we mortals have that volatile and fickle concoction.| What deranged alchemist was it that first brewed such a despicable bile?| The sticky, tar-like texture clogs your windpipe| just long enough for it’s oddly wooden minty freshness to invade your sinuses,| before it plunges down your throat leaving a blazing trail like a bat back into hell.| Man, I could sure do with a drink right now.",
+          dialogueText = {
+            "Vain deities high up in Uranus can keep their effeminate nectar all to themselves, for as long as we mortals have that volatile and fickle concoction.",
+            " What deranged alchemist was it that first brewed such a despicable bile?",
+            " The sticky, tar-like texture clogs your windpipe",
+            " just long enough for it’s oddly wooden minty freshness to invade your sinuses,",
+            " before it plunges down your throat leaving a blazing trail like a bat back into hell.",
+            " Man, I could sure do with a drink right now.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1133,8 +1290,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "What was That Ol' Janxx Spirits like?",
-          dialogueText = "So, how would you sum up That Ol’ Janxx Spirits then?",
-          conditionsString = 'Dialog[22].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, how would you sum up That Ol’ Janxx Spirits then?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1151,7 +1310,12 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Tar-Like Texture,| Minty Freshness,| A Wooden Touch| and a Wicked Afterburn.",
+          dialogueText = {
+            "Tar-Like Texture,",
+            " Minty Freshness,",
+            " A Wooden Touch",
+            " and a Wicked Afterburn.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1169,7 +1333,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "Right.",
+          dialogueText = {
+            "Right.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1187,7 +1353,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Nevermind.",
-          dialogueText = "You know what? Nevermind.",
+          dialogueText = {
+            "You know what? Nevermind.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1205,8 +1373,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Everyone here looks familiar.",
-          dialogueText = "Everyone in this fair seems oddly familiar, somehow.",
-          conditionsString = 'Dialog[30].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "Everyone in this fair seems oddly familiar, somehow.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog30.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1223,7 +1393,12 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Nonsense!| All members of this fair free-trading cooperative are completely unrelated to any individuals, living or deceased, and no association should be inferred.| Likewise, no copyright infringement was intended in the naming of any locale or dramatis persona on this premises,| and any and all inquiries on the matter should be addressed to the board of directives through the appropriate channels made available to such effect.",
+          dialogueText = {
+            "Nonsense!",
+            " All members of this fair free-trading cooperative are completely unrelated to any individuals, living or deceased, and no association should be inferred.",
+            " Likewise, no copyright infringement was intended in the naming of any locale or dramatis persona on this premises,",
+            " and any and all inquiries on the matter should be addressed to the board of directives through the appropriate channels made available to such effect.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1241,7 +1416,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "Wow, that was a quite impressive rant on legalese.",
+          dialogueText = {
+            "Wow, that was a quite impressive rant on legalese.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1259,7 +1436,10 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Thanks.| I had it committed to memory as instructed by my attorney, Dr Gonzalo Lazlo.",
+          dialogueText = {
+            "Thanks.",
+            " I had it committed to memory as instructed by my attorney, Dr Gonzalo Lazlo.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1277,8 +1457,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Still, there is something fishy here...",
-          dialogueText = "I still think there’s something fishy about this place.",
-          conditionsString = 'Dialog[30].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "I still think there’s something fishy about this place.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog30.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1295,7 +1477,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I’m afraid that in the absence of my lawyer, I must pronounce myself disinclined to make any further comment on the matter.",
+          dialogueText = {
+            "I’m afraid that in the absence of my lawyer, I must pronounce myself disinclined to make any further comment on the matter.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1313,8 +1497,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "I’m looking for a stall at the fair.",
-          dialogueText = "I’m looking for a stall at the fair.",
-          conditionsString = 'Dialog[36].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I’m looking for a stall at the fair.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog36.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1331,7 +1517,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "What’s your poison, man?",
+          dialogueText = {
+            "What’s your poison, man?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1349,7 +1537,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "There’s this guy who sells LPs. I’d like to find him.",
+          dialogueText = {
+            "There’s this guy who sells LPs. I’d like to find him.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1367,7 +1557,14 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Oh, trust me on this one, you don’t wanna do any such thing. |You see, there’s a certain scent that haunts this man.| A sickly sweet wraith that stalks his every move, whose tendrils dangle in the breeze like fly-casting lines from hell itself.| A mere whiff of its pungent putrescence would be enough to send hardened Laosian leatherworkers reeling,| and certified city plumbing inspectors gagging.| The manliest of men, none strangers to striding socks-deep in raw sewage, cower before his stench.",
+          dialogueText = {
+            "Oh, trust me on this one, you don’t wanna do any such thing. ",
+            "You see, there’s a certain scent that haunts this man.",
+            " A sickly sweet wraith that stalks his every move, whose tendrils dangle in the breeze like fly-casting lines from hell itself.",
+            " A mere whiff of its pungent putrescence would be enough to send hardened Laosian leatherworkers reeling,",
+            " and certified city plumbing inspectors gagging.",
+            " The manliest of men, none strangers to striding socks-deep in raw sewage, cower before his stench.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1385,7 +1582,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "I get it, the guy has a bit of a B.O. problem. I can handle that, I guess.",
+          dialogueText = {
+            "I get it, the guy has a bit of a B.O. problem. I can handle that, I guess.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1403,7 +1602,11 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Nay, what I’m talking about is something far more sinister than a simple lack of taste while shopping for deodorant.| For this is a man who has danced with the devil one too many times under the pale moonlight.| In this bouquet of his, he bears the telltale sign of the damned and the lost.",
+          dialogueText = {
+            "Nay, what I’m talking about is something far more sinister than a simple lack of taste while shopping for deodorant.",
+            " For this is a man who has danced with the devil one too many times under the pale moonlight.",
+            " In this bouquet of his, he bears the telltale sign of the damned and the lost.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1421,7 +1624,9 @@ conversations = {
           actor = 'josh',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "O-K... I think I need to get going now...",
+          dialogueText = {
+            "O-K... I think I need to get going now...",
+          },
           conditionsString = '',
           links = {
             {
@@ -1439,7 +1644,10 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Mark my words, you dimwit!| Or face the untold horrors of Patchouli Oil!",
+          dialogueText = {
+            "Mark my words, you dimwit!",
+            " Or face the untold horrors of Patchouli Oil!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1457,7 +1665,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "Yeah, sure, I’ll keep that in...| Wait, that’s it? Patchouli?",
+          dialogueText = {
+            "Yeah, sure, I’ll keep that in...",
+            " Wait, that’s it? Patchouli?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1475,7 +1686,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "The foulest substance on god’s green earth.",
+          dialogueText = {
+            "The foulest substance on god’s green earth.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1493,7 +1706,9 @@ conversations = {
           actor = 'josh',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Riiiiight...",
+          dialogueText = {
+            "Riiiiight...",
+          },
           conditionsString = '',
           links = {
             {
@@ -1511,8 +1726,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "So, about that guy...",
-          dialogueText = "So, about that guy...",
-          conditionsString = 'Dialog[36].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, about that guy...",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog36.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 2,
@@ -1529,7 +1746,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I can’t help you with that, man, other than assuring you he’s not here today.",
+          dialogueText = {
+            "I can’t help you with that, man, other than assuring you he’s not here today.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1547,7 +1766,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "How do you know?",
+          dialogueText = {
+            "How do you know?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1565,7 +1786,9 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I would’ve smelt the bastard by now.",
+          dialogueText = {
+            "I would’ve smelt the bastard by now.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1583,7 +1806,10 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "",
-          dialogueText = "Of course.| I think I’ll double-check anyways.",
+          dialogueText = {
+            "Of course.",
+            " I think I’ll double-check anyways.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1601,7 +1827,10 @@ conversations = {
           actor = 'howard',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "This nose don’t lie, man!| Ask Old Man Klein and he'll set you straight.",
+          dialogueText = {
+            "This nose don’t lie, man!",
+            " Ask Old Man Klein and he'll set you straight.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1619,7 +1848,9 @@ conversations = {
           actor = 'josh',
           conversant = 'howard',
           menuText = "Bye now.",
-          dialogueText = "Well, have a big one.",
+          dialogueText = {
+            "Well, have a big one.",
+          },
           conditionsString = '',
           links = {
           },
@@ -1630,14 +1861,13 @@ conversations = {
   wardrobe = {
     actor = 'josh',
     conversant = 'pete',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -1662,8 +1892,10 @@ conversations = {
           actor = 'pete',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "I’m telling you, this has to be the dumbest idea you’ve had in a long line of dumb ideas, Bro.",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I’m telling you, this has to be the dumbest idea you’ve had in a long line of dumb ideas, Bro.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -1680,7 +1912,9 @@ conversations = {
           actor = 'paul',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "Why do you have to be so negative all the time, man? This is going to work out, trust me!",
+          dialogueText = {
+            "Why do you have to be so negative all the time, man? This is going to work out, trust me!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1698,7 +1932,9 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "Ehrm... Hello?",
+          dialogueText = {
+            "Ehrm... Hello?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1716,7 +1952,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Well hello there, Brospeh! See anything you like?",
+          dialogueText = {
+            "Well hello there, Brospeh! See anything you like?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1734,8 +1972,10 @@ conversations = {
           actor = 'pete',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "This is beyond retarded, you know that?",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "This is beyond retarded, you know that?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -1752,7 +1992,9 @@ conversations = {
           actor = 'paul',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "Oh, shut up!",
+          dialogueText = {
+            "Oh, shut up!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1770,7 +2012,9 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "Ehrm.. Guys?",
+          dialogueText = {
+            "Ehrm.. Guys?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1788,7 +2032,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "What now?",
+          dialogueText = {
+            "What now?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1806,7 +2052,6 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -1852,8 +2097,10 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "I'm looking for someone.",
-          dialogueText = "I was wondering if you’ve seen a certain guy in the fair..",
-          conditionsString = 'Dialog[10].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I was wondering if you’ve seen a certain guy in the fair..",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog10.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -1870,7 +2117,10 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Why are you asking us? Is it because of the clientele we keep?| You know, just because we tailor to the fashion-sensitive homosexual crowd doesn’t mean we are all gayballs for dudes, dude.",
+          dialogueText = {
+            "Why are you asking us? Is it because of the clientele we keep?",
+            " You know, just because we tailor to the fashion-sensitive homosexual crowd doesn’t mean we are all gayballs for dudes, dude.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1888,7 +2138,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Uh... Yeah, we are not!",
+          dialogueText = {
+            "Uh... Yeah, we are not!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1906,7 +2158,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Besides that’s like, stereotyping, man! And that’s bad!",
+          dialogueText = {
+            "Besides that’s like, stereotyping, man! And that’s bad!",
+          },
           conditionsString = '',
           links = {
             {
@@ -1924,7 +2178,10 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "Uh... He just runs a second-hand record booth here somewhere,| I thought you may know him.",
+          dialogueText = {
+            "Uh... He just runs a second-hand record booth here somewhere,",
+            " I thought you may know him.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1942,7 +2199,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Records?",
+          dialogueText = {
+            "Records?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1960,7 +2219,9 @@ conversations = {
           actor = 'paul',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "Wait up, Brah. I think he means the Fat Guy.",
+          dialogueText = {
+            "Wait up, Brah. I think he means the Fat Guy.",
+          },
           conditionsString = '',
           links = {
             {
@@ -1978,7 +2239,9 @@ conversations = {
           actor = 'pete',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "What fat guy?",
+          dialogueText = {
+            "What fat guy?",
+          },
           conditionsString = '',
           links = {
             {
@@ -1996,7 +2259,9 @@ conversations = {
           actor = 'paul',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "You know, the Chubby Fellow?",
+          dialogueText = {
+            "You know, the Chubby Fellow?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2014,7 +2279,9 @@ conversations = {
           actor = 'pete',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "You mean the Rotund Fellow?",
+          dialogueText = {
+            "You mean the Rotund Fellow?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2032,7 +2299,9 @@ conversations = {
           actor = 'paul',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "He’s slightly overweight alright, but I wouldn’t call him “rotund”. ",
+          dialogueText = {
+            "He’s slightly overweight alright, but I wouldn’t call him “rotund”. ",
+          },
           conditionsString = '',
           links = {
             {
@@ -2050,7 +2319,9 @@ conversations = {
           actor = 'pete',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "Let’s settle for “Heavy-set”, shall we?",
+          dialogueText = {
+            "Let’s settle for “Heavy-set”, shall we?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2068,7 +2339,9 @@ conversations = {
           actor = 'paul',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "Alright, heavy-set it is.",
+          dialogueText = {
+            "Alright, heavy-set it is.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2086,7 +2359,9 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "So you do know him, then?",
+          dialogueText = {
+            "So you do know him, then?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2104,7 +2379,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Yeah Brah. We know him.",
+          dialogueText = {
+            "Yeah Brah. We know him.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2122,7 +2399,9 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "Where can I find him?",
+          dialogueText = {
+            "Where can I find him?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2140,7 +2419,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "No idea Brah. Haven’t seen him all day.",
+          dialogueText = {
+            "No idea Brah. Haven’t seen him all day.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2158,8 +2439,10 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "About this guy...",
-          dialogueText = "So, about this “heavy-set” guy..",
-          conditionsString = 'Dialog[10].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, about this “heavy-set” guy..",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog10.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2176,7 +2459,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Haven’t seen him all day, Brah.",
+          dialogueText = {
+            "Haven’t seen him all day, Brah.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2194,7 +2479,10 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Perhaps you should ask the Bottle-Lamp Guy.| He knows everyone ‘round here.",
+          dialogueText = {
+            "Perhaps you should ask the Bottle-Lamp Guy.",
+            " He knows everyone ‘round here.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2212,7 +2500,9 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "",
-          dialogueText = "Ok, thanks.",
+          dialogueText = {
+            "Ok, thanks.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2230,8 +2520,10 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "About this place...",
-          dialogueText = "How did you two guys wind up selling such... Ehrm... “Colorful” Clothing?",
-          conditionsString = 'Dialog[31].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "How did you two guys wind up selling such... Ehrm... “Colorful” Clothing?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2248,7 +2540,10 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "This place is my dream come true, man!| Pete &amp; Paul’s Wondrous Wardrobe is the place in town for our queer Bros and Brosettes to shop for tasteful and tantalizing apparel.",
+          dialogueText = {
+            "This place is my dream come true, man!",
+            " Pete &amp; Paul’s Wondrous Wardrobe is the place in town for our queer Bros and Brosettes to shop for tasteful and tantalizing apparel.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2266,7 +2561,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Straight Up.",
+          dialogueText = {
+            "Straight Up.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2284,8 +2581,10 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "About this place...",
-          dialogueText = "So, about this place of yours...",
-          conditionsString = 'Dialog[31].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, about this place of yours...",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2302,7 +2601,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Yeah Brah?",
+          dialogueText = {
+            "Yeah Brah?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2320,7 +2621,6 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -2359,7 +2659,9 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "You always wanted to do this?",
-          dialogueText = "So, you guys always wanted to help people look fabulous?",
+          dialogueText = {
+            "So, you guys always wanted to help people look fabulous?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2377,7 +2679,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Hey, Homos deserve to look good too, you know?",
+          dialogueText = {
+            "Hey, Homos deserve to look good too, you know?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2395,7 +2699,12 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Right on, Bro. Right on.| Besides, there is no shame in being a Fag.| I can respect a dude who digs other dudes. That shit’s tough.| Just don’t have them spot me when I’m doing squats.",
+          dialogueText = {
+            "Right on, Bro. Right on.",
+            " Besides, there is no shame in being a Fag.",
+            " I can respect a dude who digs other dudes. That shit’s tough.",
+            " Just don’t have them spot me when I’m doing squats.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2413,8 +2722,10 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "How about Football?",
-          dialogueText = "I guess you just strike me more like Madden kind of guys.",
-          conditionsString = 'Dialog[40].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I guess you just strike me more like Madden kind of guys.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog40.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2431,7 +2742,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "John M is THA MAN!",
+          dialogueText = {
+            "John M is THA MAN!",
+          },
           conditionsString = '',
           links = {
             {
@@ -2449,7 +2762,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Be careful what you say about him now, or we’ll find your gamertag...",
+          dialogueText = {
+            "Be careful what you say about him now, or we’ll find your gamertag...",
+          },
           conditionsString = '',
           links = {
             {
@@ -2467,7 +2782,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "We’ll track you..",
+          dialogueText = {
+            "We’ll track you..",
+          },
           conditionsString = '',
           links = {
             {
@@ -2485,7 +2802,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "And we’ll teabag you to kingdom come, Brah.",
+          dialogueText = {
+            "And we’ll teabag you to kingdom come, Brah.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2503,7 +2822,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "It won't matter where you go or what you play, for as long as there’s PvP...",
+          dialogueText = {
+            "It won't matter where you go or what you play, for as long as there’s PvP...",
+          },
           conditionsString = '',
           links = {
             {
@@ -2521,7 +2842,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "You’ll be gargling balls. Forever.",
+          dialogueText = {
+            "You’ll be gargling balls. Forever.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2539,8 +2862,10 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "About Madden...",
-          dialogueText = "So, this Madden guy, uh?",
-          conditionsString = 'Dialog[40].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, this Madden guy, uh?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog40.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 3,
@@ -2557,7 +2882,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Remember Bro... Gargling balls.",
+          dialogueText = {
+            "Remember Bro... Gargling balls.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2575,7 +2902,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Forever",
+          dialogueText = {
+            "Forever",
+          },
           conditionsString = '',
           links = {
             {
@@ -2593,7 +2922,9 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "",
-          dialogueText = "Right. Sorry. Nevermind.",
+          dialogueText = {
+            "Right. Sorry. Nevermind.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2611,7 +2942,9 @@ conversations = {
           actor = 'josh',
           conversant = 'paul',
           menuText = "Nevermind",
-          dialogueText = "Nevermind",
+          dialogueText = {
+            "Nevermind",
+          },
           conditionsString = '',
           links = {
             {
@@ -2629,7 +2962,9 @@ conversations = {
           actor = 'josh',
           conversant = 'pete',
           menuText = "See you.",
-          dialogueText = "Well, I’ll be seeing you guys.",
+          dialogueText = {
+            "Well, I’ll be seeing you guys.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2647,7 +2982,9 @@ conversations = {
           actor = 'paul',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Righteous.",
+          dialogueText = {
+            "Righteous.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2665,7 +3002,9 @@ conversations = {
           actor = 'pete',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "So long, Brah.",
+          dialogueText = {
+            "So long, Brah.",
+          },
           conditionsString = '',
           links = {
           },
@@ -2676,14 +3015,13 @@ conversations = {
   klein = {
     actor = 'josh',
     conversant = 'klein',
-    dialog_entries = {
+    dialogEntries = {
         dialog0 = {
           isRoot = true,
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -2708,8 +3046,11 @@ conversations = {
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Welcome to Klein’s Kleine Bottle-Lamp Emporium!| I’m Friedrich Klein. What can Ich do for you today?",
-          conditionsString = 'Dialog[1].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "Welcome to Klein’s Kleine Bottle-Lamp Emporium!",
+            " I’m Friedrich Klein. What can Ich do for you today?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2726,8 +3067,10 @@ conversations = {
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Welcome back!",
-          conditionsString = 'Dialog[1].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "Welcome back!",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2744,7 +3087,6 @@ conversations = {
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -2804,8 +3146,10 @@ conversations = {
           actor = 'josh',
           conversant = 'klein',
           menuText = "What's all this?",
-          dialogueText = "What is it that you do, exactly?",
-          conditionsString = 'Dialog[4].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "What is it that you do, exactly?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2822,7 +3166,10 @@ conversations = {
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I’m the sole heir of a long line of lampemachering artisans.| Ich use only the finest discarded bottles to create tasteful art-deco pieces that illuminate rooms like Morgendämmerung!",
+          dialogueText = {
+            "I’m the sole heir of a long line of lampemachering artisans.",
+            " Ich use only the finest discarded bottles to create tasteful art-deco pieces that illuminate rooms like Morgendämmerung!",
+          },
           conditionsString = '',
           links = {
             {
@@ -2840,7 +3187,9 @@ conversations = {
           actor = 'josh',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Right...",
+          dialogueText = {
+            "Right...",
+          },
           conditionsString = '',
           links = {
             {
@@ -2858,8 +3207,10 @@ conversations = {
           actor = 'josh',
           conversant = 'klein',
           menuText = "What did you do, again?",
-          dialogueText = "So, what is that you did here?",
-          conditionsString = 'Dialog[4].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, what is that you did here?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog4.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2876,7 +3227,9 @@ conversations = {
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I make lamps out of funny bottles.",
+          dialogueText = {
+            "I make lamps out of funny bottles.",
+          },
           conditionsString = '',
           links = {
             {
@@ -2894,8 +3247,10 @@ conversations = {
           actor = 'josh',
           conversant = 'klein',
           menuText = "I’m looking for this guy...",
-          dialogueText = "I’m looking for this guy...",
-          conditionsString = 'Dialog[31].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I’m looking for this guy...",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -2912,7 +3267,9 @@ conversations = {
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "What’s he like?",
+          dialogueText = {
+            "What’s he like?",
+          },
           conditionsString = '',
           links = {
             {
@@ -2930,12 +3287,14 @@ conversations = {
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Well, he’s a...",
+          dialogueText = {
+            "Well, he’s a...",
+          },
           conditionsString = '',
           userScript = function()
-            variable_Desc1 = false
-variable_Desc2 = false
-variable_Desc3 = false
+            stateManager.dialogs.userVariables["Desc1"] = false
+stateManager.dialogs.userVariables["Desc2"] = false
+stateManager.dialogs.userVariables["Desc3"] = false
           end,
           links = {
             {
@@ -2953,7 +3312,6 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -2992,10 +3350,12 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Patchouli-Smelling,",
+          dialogueText = {
+            "Patchouli-Smelling,",
+          },
           conditionsString = '',
           userScript = function()
-            variable_Desc1 = true
+            stateManager.dialogs.userVariables["Desc1"] = true
           end,
           links = {
             {
@@ -3013,7 +3373,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Minty-Breathed,",
+          dialogueText = {
+            "Minty-Breathed,",
+          },
           conditionsString = '',
           links = {
             {
@@ -3031,7 +3393,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Shifty-Looking,",
+          dialogueText = {
+            "Shifty-Looking,",
+          },
           conditionsString = '',
           links = {
             {
@@ -3049,7 +3413,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Peg-Legged,",
+          dialogueText = {
+            "Peg-Legged,",
+          },
           conditionsString = '',
           links = {
             {
@@ -3067,7 +3433,6 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -3106,7 +3471,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Chubby",
+          dialogueText = {
+            "Chubby",
+          },
           conditionsString = '',
           links = {
             {
@@ -3124,10 +3491,12 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Heavy-set",
+          dialogueText = {
+            "Heavy-set",
+          },
           conditionsString = '',
           userScript = function()
-            variable_Desc2 = true
+            stateManager.dialogs.userVariables["Desc2"] = true
           end,
           links = {
             {
@@ -3145,7 +3514,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Rotund",
+          dialogueText = {
+            "Rotund",
+          },
           conditionsString = '',
           links = {
             {
@@ -3163,7 +3534,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Slightly Overweight",
+          dialogueText = {
+            "Slightly Overweight",
+          },
           conditionsString = '',
           links = {
             {
@@ -3181,7 +3554,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "LP Vendor with...",
+          dialogueText = {
+            "LP Vendor with...",
+          },
           conditionsString = '',
           links = {
             {
@@ -3199,7 +3574,6 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -3238,7 +3612,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "a lisp.",
+          dialogueText = {
+            "a lisp.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3256,7 +3632,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "an eye patch.",
+          dialogueText = {
+            "an eye patch.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3274,10 +3652,12 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "an annoying pug.",
+          dialogueText = {
+            "an annoying pug.",
+          },
           conditionsString = '',
           userScript = function()
-            variable_Desc3 = true
+            stateManager.dialogs.userVariables["Desc3"] = true
           end,
           links = {
             {
@@ -3295,7 +3675,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "gout.",
+          dialogueText = {
+            "gout.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3313,7 +3695,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Hmm...",
+          dialogueText = {
+            "Hmm...",
+          },
           conditionsString = '',
           links = {
             {
@@ -3338,8 +3722,10 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Ach! Doesn’t ring a bell, sorry.",
-          conditionsString = 'Variable["Desc1"] == false or Variable["Desc2"] == false or Variable["Desc3"] == false',
+          dialogueText = {
+            "Ach! Doesn’t ring a bell, sorry.",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== false or stateManager.dialogs.userVariables["Desc2"]== false or stateManager.dialogs.userVariables["Desc3"]== false',
           links = {
             {
               originConversationId = 4,
@@ -3356,8 +3742,12 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Na ja, Ich know this guy.|\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.| Fortunately for us he seems to be absent today.",
-          conditionsString = 'Variable["Desc1"] == true and Variable["Desc2"] == true and Variable["Desc3"] == true',
+          dialogueText = {
+            "Na ja, Ich know this guy.",
+            "\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.",
+            " Fortunately for us he seems to be absent today.",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== true and stateManager.dialogs.userVariables["Desc2"]== true and stateManager.dialogs.userVariables["Desc3"]== true',
           links = {
             {
               originConversationId = 4,
@@ -3374,7 +3764,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Well, if it isn’t my lucky day...",
+          dialogueText = {
+            "Well, if it isn’t my lucky day...",
+          },
           conditionsString = '',
           links = {
             {
@@ -3392,8 +3784,10 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "About this guy...",
-          dialogueText = "So, you haven't seen him today? At all?",
-          conditionsString = 'Dialog[31].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "So, you haven't seen him today? At all?",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog31.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3410,7 +3804,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Nope, sory.",
+          dialogueText = {
+            "Nope, sory.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3428,8 +3824,10 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "I’m looking for a Lamp",
-          dialogueText = "I’m looking for a Lamp",
-          conditionsString = 'Dialog[56].SimStatus ~= "WasDisplayed"',
+          dialogueText = {
+            "I’m looking for a Lamp",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog56.SimStatus ~= "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3446,7 +3844,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Got anything on your mind?",
+          dialogueText = {
+            "Got anything on your mind?",
+          },
           conditionsString = '',
           links = {
             {
@@ -3464,7 +3864,6 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -3496,7 +3895,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "Nevermind ",
-          dialogueText = "Nevermind ",
+          dialogueText = {
+            "Nevermind ",
+          },
           conditionsString = '',
           links = {
             {
@@ -3514,7 +3915,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "Got anything special?",
-          dialogueText = "Got anything special?",
+          dialogueText = {
+            "Got anything special?",
+          },
           conditionsString = '',
           links = {
             {
@@ -3532,10 +3935,12 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Let's see here...",
+          dialogueText = {
+            "Let's see here...",
+          },
           conditionsString = '',
           userScript = function()
-            variable_Bottle = math.random(4)
+            stateManager.dialogs.userVariables["Bottle"] = math.random(4)
           end,
           links = {
             {
@@ -3574,8 +3979,12 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "This is a one-of-a-kind item.| A high-yield tetra-lampe, both stand and shade made from vintage red-wine tetra packs.| Perfect for the avant-retro-kitsch deco scene connoisseur.",
-          conditionsString = 'Variable["Bottle"] == 1',
+          dialogueText = {
+            "This is a one-of-a-kind item.",
+            " A high-yield tetra-lampe, both stand and shade made from vintage red-wine tetra packs.",
+            " Perfect for the avant-retro-kitsch deco scene connoisseur.",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 1',
           links = {
             {
               originConversationId = 4,
@@ -3592,8 +4001,10 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "An Ol' Janxx Spirits Bottle",
-          dialogueText = "Got anything with an Ol’ Janxx Spirits Bottle?",
-          conditionsString = 'Variable["Janxx"] == true',
+          dialogueText = {
+            "Got anything with an Ol’ Janxx Spirits Bottle?",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 4,
@@ -3610,7 +4021,12 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Ah, die übermensch choice. Lets see now...| Here it is.| A sober composition, building on the simplicity of the bottle with a stiff-brimmed bleached linen shade and a vintage copper switch on a gas lamp burner.| Truly a masterpiece, if I do say so myself.",
+          dialogueText = {
+            "Ah, die übermensch choice. Lets see now...",
+            " Here it is.",
+            " A sober composition, building on the simplicity of the bottle with a stiff-brimmed bleached linen shade and a vintage copper switch on a gas lamp burner.",
+            " Truly a masterpiece, if I do say so myself.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3628,7 +4044,6 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -3653,7 +4068,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "I’ll take it!",
-          dialogueText = "I’ll take it!",
+          dialogueText = {
+            "I’ll take it!",
+          },
           conditionsString = '',
           links = {
             {
@@ -3671,7 +4088,10 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Ah, spoken like a man in control of his destiny.| So you shall.",
+          dialogueText = {
+            "Ah, spoken like a man in control of his destiny.",
+            " So you shall.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3689,7 +4109,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "How much do you want for it?",
-          dialogueText = "How much do you want for it?",
+          dialogueText = {
+            "How much do you want for it?",
+          },
           conditionsString = '',
           links = {
             {
@@ -3707,7 +4129,10 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Tell you what, I’ve grown fond of you.| You can have it.",
+          dialogueText = {
+            "Tell you what, I’ve grown fond of you.",
+            " You can have it.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3725,7 +4150,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Really?",
+          dialogueText = {
+            "Really?",
+          },
           conditionsString = '',
           links = {
             {
@@ -3743,7 +4170,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Yeah. It’s busted anyways.",
+          dialogueText = {
+            "Yeah. It’s busted anyways.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3761,8 +4190,10 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "I’m looking for a lamp.",
-          dialogueText = "I’m looking for a lamp.",
-          conditionsString = 'Dialog[56].SimStatus == "WasDisplayed"',
+          dialogueText = {
+            "I’m looking for a lamp.",
+          },
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog56.SimStatus == "WasDisplayed"',
           links = {
             {
               originConversationId = 4,
@@ -3779,7 +4210,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "No more freebies, sorry.",
+          dialogueText = {
+            "No more freebies, sorry.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3797,7 +4230,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "Bye",
-          dialogueText = "Bye.",
+          dialogueText = {
+            "Bye.",
+          },
           conditionsString = '',
           links = {
           },
@@ -3808,7 +4243,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "That’s not made of bottles, technically speaking.",
+          dialogueText = {
+            "That’s not made of bottles, technically speaking.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3826,7 +4263,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Well, no. I’ve been experimenting with some new materials, you see.",
+          dialogueText = {
+            "Well, no. I’ve been experimenting with some new materials, you see.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3844,7 +4283,6 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "",
           conditionsString = '',
           links = {
             {
@@ -3876,7 +4314,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "No thanks. Anything else?",
-          dialogueText = "No thanks. Anything else?",
+          dialogueText = {
+            "No thanks. Anything else?",
+          },
           conditionsString = '',
           links = {
             {
@@ -3894,7 +4334,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "I’ll take it.",
-          dialogueText = "I’ll take it.",
+          dialogueText = {
+            "I’ll take it.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3912,7 +4354,10 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "I knew it! I knew you and this lamp were meant for eachother!| Got any money on you?",
+          dialogueText = {
+            "I knew it! I knew you and this lamp were meant for eachother!",
+            " Got any money on you?",
+          },
           conditionsString = '',
           links = {
             {
@@ -3930,7 +4375,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Nope",
+          dialogueText = {
+            "Nope",
+          },
           conditionsString = '',
           links = {
             {
@@ -3948,7 +4395,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Then I guess this isn’t the lamp for you after all.",
+          dialogueText = {
+            "Then I guess this isn’t the lamp for you after all.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3966,7 +4415,9 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "Forget it",
-          dialogueText = "You know what? Forget it.",
+          dialogueText = {
+            "You know what? Forget it.",
+          },
           conditionsString = '',
           links = {
             {
@@ -3984,8 +4435,11 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Nothing says “class” like a fine champagne.| Likewise, this 1978 Don Pomeranian bedside lamp is really the only choice if you are looking to jazz up your boudoir atmosphere.",
-          conditionsString = 'Variable["Bottle"] == 2',
+          dialogueText = {
+            "Nothing says “class” like a fine champagne.",
+            " Likewise, this 1978 Don Pomeranian bedside lamp is really the only choice if you are looking to jazz up your boudoir atmosphere.",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 2',
           links = {
             {
               originConversationId = 4,
@@ -4002,7 +4456,10 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "That bottle is broken, the whole bottom is missing.| And those edges look sharp.",
+          dialogueText = {
+            "That bottle is broken, the whole bottom is missing.",
+            " And those edges look sharp.",
+          },
           conditionsString = '',
           links = {
             {
@@ -4020,7 +4477,9 @@ variable_Desc3 = false
           actor = 'klein',
           conversant = 'josh',
           menuText = "",
-          dialogueText = "Indeed so. This very bottle was used to christen a brand-new velero on its maiden voyage.",
+          dialogueText = {
+            "Indeed so. This very bottle was used to christen a brand-new velero on its maiden voyage.",
+          },
           conditionsString = '',
           links = {
             {
@@ -4038,8 +4497,11 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "How about this inverted Lady Joanne Lamp-de-Pie?| A handful of LEDs inside an upended 2 gallon amber glass jug, it provides a soft luminescence not unlike a fire in a dye warehouse.",
-          conditionsString = 'Variable["Bottle"] == 3',
+          dialogueText = {
+            "How about this inverted Lady Joanne Lamp-de-Pie?",
+            " A handful of LEDs inside an upended 2 gallon amber glass jug, it provides a soft luminescence not unlike a fire in a dye warehouse.",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 3',
           links = {
             {
               originConversationId = 4,
@@ -4056,8 +4518,10 @@ variable_Desc3 = false
           actor = 'josh',
           conversant = 'klein',
           menuText = "",
-          dialogueText = "Show off your celtic heritage with this single-malt whiskey lamp, with matching sheepskin and tam-o-shanter shade!",
-          conditionsString = 'Variable["Bottle"] == 4',
+          dialogueText = {
+            "Show off your celtic heritage with this single-malt whiskey lamp, with matching sheepskin and tam-o-shanter shade!",
+          },
+          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 4',
           links = {
             {
               originConversationId = 4,

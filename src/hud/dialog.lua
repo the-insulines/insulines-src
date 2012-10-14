@@ -7,7 +7,18 @@
 
 module ( "dialog", package.seeall )
 
-objects = {}
+conversations = {}
+
+function dialog:loadConversations(conversations_definition)
+  self.conversations = conversations_definition
+
+  -- Load all user variables
+  if self.conversations.userVariables then
+    for name, info in pairs(self.conversations.userVariables) do
+      stateManager.dialogs.userVariables[name] = info.initialValue 
+    end
+  end
+end
 
 layer = MOAILayer2D.new ()
 
@@ -22,12 +33,22 @@ function initialize ( self )
     print ( "dialog.lua:20: Initializing dialog..." )
   end
   
+  -- If there is no dialogs table in state manager, create it
+  if not stateManager.dialogs then 
+    stateManager.dialogs = {
+      userVariables = {}
+    }
+  end
+  
   -- Initialize HUD
-  self:initializeHUD ()
+  if not self.initializedHUD then
+    self:initializeHUD ()
+  end
   
 end
 
 function initializeHUD ( self )
+  self.initializedHUD = true
   -- Background
   self.background = {}
   self.background.gfx = resource_cache.get ( "dialog_background" )
@@ -44,12 +65,12 @@ function initializeHUD ( self )
   self.window_background.half_width = DIALOG_WINDOW_HALF_WIDTH
   self.window_background.half_height = DIALOG_WINDOW_HALF_HEIGHT
   self.window_background.gfx:setRect ( - self.window_background.half_width, - self.window_background.half_height, self.window_background.half_width, self.window_background.half_height)
-
+  
   -- Create prop
   self.window_background.prop = MOAIProp2D.new ()
   self.window_background.prop:setDeck ( self.window_background.gfx )
   self.window_background.prop:setLoc( 0, 0)
-
+  
   -- TextBox
   self.dialogTextBox:setFont ( game.defaultFont )
   self.dialogTextBox:setTextSize ( 80 / SCREEN_TO_WORLD_RATIO )
@@ -95,15 +116,13 @@ function dialog:createOption(yOffset)
   option.textBox:setLoc(-self.window_background.half_width + 100, self.window_background.half_height - 200 - yOffset)
   option.textBox:setAlignment( MOAITextBox.LEFT_JUSTIFY, MOAITextBox.CENTER_JUSTIFY)
   option.rendering = false
-
+  
   function option:show ()
-    -- dialog.layer:insertProp ( option.prop )
     dialog.layer:insertProp ( option.textBox )
     self.rendering = true
   end
   
   function option:hide ()
-    -- dialog.layer:removeProp ( option.prop )
     dialog.layer:removeProp ( option.textBox )
     self.rendering = false
   end
@@ -117,57 +136,45 @@ end
 
 function dialog:hide ( time )
   if not time then time = 0.5 end
-
+  
   self.background.prop:seekScl( 2, 2, 0.3)
   self.dialogTextBox:setString( '' )
   self:hideOptions ()
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 0.001, 0.001, 0.7 ) )
   self.layer:seekColor ( 0, 0, 0, 0, time, MOAIEaseType.LINEAR )
-
+  
   self.opened = false
 end
 
-function dialog:show ( dialogText, character, options )
+function dialog:appear()
   game.currentScene.inputEnabled = false
-  self.layer:moveColor ( 1, 1, 1, 1, 0.5, MOAIEaseType.LINEAR)
-
-  self.background.prop:setColor ( 1, 1, 1, 0.7, 0.5, MOAIEaseType.LINEAR)
   
+  self.layer:moveColor ( 1, 1, 1, 1, 0.5, MOAIEaseType.LINEAR)
+  
+  self.background.prop:setColor ( 1, 1, 1, 0.7, 0.5, MOAIEaseType.LINEAR)
+
   self.window_background.prop:setScl( 0.001, 0.001 )
   self.window_background.prop:setColor(1,1,1,0.8)
-  
-  self.dialogTextBox:setColor ( DIALOG_COLOR_FOR_CHARACTER[character].r, DIALOG_COLOR_FOR_CHARACTER[character].g, DIALOG_COLOR_FOR_CHARACTER[character].b,0.8)
   
   self.background.prop:setScl( 2, 2 )
   self.background.prop:seekScl( 1.12, 1.12, 1)
 
-  -- -- self.window_background.prop:seekScl( 1.1, 1.1, 0.7)
-  -- self.window_background.prop:seekScl( 1, 1, 0.1, MOAIEaseType.LINEAR )
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 1.1, 1.1, 0.7) )
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 1, 1, 0.1, MOAIEaseType.LINEAR ) )
-
-  self.dialogTextBox:setString(dialogText)
   
-  self:clearOptions ()
-  
-  -- oneTime is used for dialogs that are displayed once
-  -- It should change dialog options
-  if self.currentNode and self.currentNode.oneTime then
-    self.currentNode.options[self.currentNode.change.hide].hidden = true
-    self.currentNode.options[self.currentNode.change.show].hidden = false
-  end
-  
-  for i, option in pairs ( options ) do
-    if not option.hidden then
-      self:setOption ( option )
-    end
-  end
-
-  self:hideOptions ()
   self.opened = true
-  game.currentScene.inputEnabled = true
   
-  
+end
+
+function dialog:showCurrentDialogEntry ( )
+  if not self.opened then self:appear() end
+
+  local character = self.currentDialogEntry.actor
+  self.dialogTextBox:setColor ( DIALOG_COLOR_FOR_CHARACTER[character].r, DIALOG_COLOR_FOR_CHARACTER[character].g, DIALOG_COLOR_FOR_CHARACTER[character].b,0.8)
+
+  if self.currentDialogEntry.dialogueText then
+    self.dialogTextBox:setString(self.currentDialogEntry.dialogueText[self.currentDialogEntryTextIndex])
+  end
 end
 
 function dialog:clearOptions ()
@@ -178,11 +185,18 @@ function dialog:clearOptions ()
   end
 end
 
-function dialog:setOption ( optionDefinition )
+function dialog:setOption ( optionDefinition, dialogEntryId )
   for i, button in pairs( self.options.buttons ) do
     if not button.definition then
-      button:setString ( optionDefinition.label[LOCALE] )
+
+      if not optionDefinition.menuText == '' then
+        button:setString ( optionDefinition.menuText )
+      else
+        button:setString ( optionDefinition.dialogueText[1] )
+      end
+      
       button.definition = optionDefinition
+      button.definition.id = dialogEntryId
       button:show ()
       return
     end
@@ -197,68 +211,124 @@ function dialog:hideOptions ()
 end
 
 function dialog:showOptions ()
-  self.dialogTextBox:setString('')
-  
-  for i, option in pairs ( self.options.buttons ) do
-    if option then option:show () end
+  dialog:clearOptions ()
+
+  for i, link in pairs(self.currentDialogEntry.links) do
+    local option = self:getDialogEntry(link.destinationDialogId)
+    local condition = true
+    if option.conditionsString ~= '' then condition = loadstring("return " .. option.conditionsString)() end
+    if condition then dialog:setOption(option, link.destinationDialogId) end
   end
   
   self.displayingOptions = true
 end
 
-function dialog:load ( dialogName )
-  local dialogNode = dialogTree[dialogName]
-  local options = {}
-  if dialogNode.options then options = dialogNode.options end
+function dialog:load ( conversationName )
+  self.currentConversation = self.conversations[conversationName]
   
-  if dialogNode then
-    self.currentNode = dialogNode
-    self.hasOptions = #options > 0
-    self:show (dialogNode.text[LOCALE], dialogNode.character, options )
+  -- If state manager didn't have the namespace for this conversation, create it.
+  if not stateManager.dialogs[conversationName] then
+    stateManager.dialogs[conversationName] = {}
+  end
+
+  
+  self:loadDialogEntry(0)
+end
+
+
+function dialog:getDialogEntry(id)
+  return self.currentConversation.dialogEntries['dialog' .. id]
+end
+
+function dialog:loadDialogEntry(id)
+  self.currentDialogEntryId = id
+  self.currentDialogEntryTextIndex = 1
+  self:processCurrentDialogEntry()
+end
+
+function dialog:processCurrentDialogEntry()
+  
+  self.currentDialogEntry = self:getDialogEntry(self.currentDialogEntryId)
+  
+  if self.currentDialogEntry.dialogueText then
+    -- Show text
+    self:showCurrentDialogEntry()
   else
-    if dialogName then
-      print ( "DIALOG TODO: " .. dialogName )
+    -- Since there is no text, we have to redirect to another dialog 
+    -- or show options if it's a group
+    if self.currentDialogEntry.isGroup then
+
+      -- show options
+      self:showOptions()
     else
-      print ( "DIALOG NIL!!!" )
+      -- redirect
+      self:redirect()
     end
   end
 end
 
-function dialog:onInput ( )
+function dialog:redirect()
+  local links = self.currentDialogEntry.links
   
+  for i, link in pairs(links) do
+    local linkNodeEntry = self:getDialogEntry(link.destinationDialogId)
+  
+    -- We have to check that the condition is met in order to redirect to that link
+    local condition = true
+    
+    if linkNodeEntry.conditionsString ~= '' then
+      condition = loadstring("return " .. linkNodeEntry.conditionsString)()
+    end
+    
+    if condition then
+      self:loadDialogEntry(link.destinationDialogId)
+      break
+    end
+
+  end
+end
+
+
+function dialog:onInput ( )
   if self.showOptionsTapped and not input_manager.isDown () then
     self.showOptionsTapped = false
   end
   
   if input_manager.down () then
-    if not self.hasOptions then
-      self:hide()
+    if not self.currentDialogEntry.isGroup then
+      self.currentDialogEntry.SimStatus = "WasDisplayed"
+      
+      if #self.currentDialogEntry.dialogueText > self.currentDialogEntryTextIndex then
+        self.currentDialogEntryTextIndex = self.currentDialogEntryTextIndex + 1
+        self:showCurrentDialogEntry()
+        return
+      end
+
+      if self.currentDialogEntry and self.currentDialogEntry.userScript then
+        self.currentDialogEntry.userScript()
+      end
+
+      if self.currentDialogEntry.links[1] then
+        self.dialogTextBox:setString('')
+        self:redirect()
+        return
+      else
+        self:hide()
+        return
+      end
     elseif not self.displayingOptions then
       self:showOptions ()
       self.showOptionsTapped = true
     end
     
-    -- Check default action
-    if self.currentNode and self.currentNode.defaultAction then
-      if self.currentNode.defaultAction == DIALOG_ACTION_REDIRECT then
-        self:load ( self.currentNode.dialogName )
-      end
-    end
-
     if self.displayingOptions and not self.showOptionsTapped then
       local x, y = input_manager.getTouch ()
       x, y = self.layer:wndToWorld ( x, y )
       local button = self:objectAt ( x, y )
-      
+
       if button then
-        if button.definition.action == DIALOG_ACTION_CLOSE then
-          self:hide ()
-          self.displayingOptions = false
-        elseif button.definition.action == DIALOG_ACTION_REDIRECT then
-          self:hide ()
-          self.displayingOptions = false
-          self:load ( button.definition.dialogName )
-        end
+        self:hideOptions()
+        self:loadDialogEntry(button.definition.id)
       end
     end
     return true

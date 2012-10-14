@@ -28,6 +28,7 @@ function game:loadScene ( scene )
   if scene.hud then
     -- Load HUD
     self:displayHUD ()
+    dialog:loadConversations(scene.conversations)
   end
   
   

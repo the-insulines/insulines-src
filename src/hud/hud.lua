@@ -12,25 +12,26 @@ layers = {}
 initialized = false
 
 function hud:initialize ( )
-  inventory:initialize ()
-  highlight:initialize ()
-  dialog:initialize ()
-  -- menu:initialize ()
+  if not self.initialized then
+    inventory:initialize ()
+    highlight:initialize ()
+    dialog:initialize ()
+    -- menu:initialize ()
 
-  if DEBUG then debugHUD:initialize () end
+    if DEBUG then debugHUD:initialize () end
   
-  if game.currentScene.useInventory then
-    table.insert ( self.layers, inventory.layer )
-  end
+    if game.currentScene.useInventory then
+      table.insert ( self.layers, inventory.layer )
+    end
   
-  if game.currentScene.useHighlights then
-    table.insert ( self.layers, highlight.layer )
-  end
+    if game.currentScene.useHighlights then
+      table.insert ( self.layers, highlight.layer )
+    end
   
-  if game.currentScene.useDialogs then
-    table.insert ( self.layers, dialog.layer )
+    if game.currentScene.useDialogs then
+      table.insert ( self.layers, dialog.layer )
+    end
   end
-
   self.initialized = true
 end
 

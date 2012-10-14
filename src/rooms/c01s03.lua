@@ -14,7 +14,8 @@ c01s03 = function ()
   require 'c01s03_interactions'
 
   local c01s03_room = room.new ( "c01s03" )
-
+  
+  
   c01s03_room.frontCharacterZoom = 1.3
   c01s03_room.bottomCharacterZoomThreshold = -542
 
@@ -30,7 +31,7 @@ c01s03 = function ()
   c01s03_room.initialSonjaPosition = point ( -800, -200 )
 
   c01s03_room.hasExternalAssets = true
-
+  
   c01s03_room:addObjects ( objects )
 
   -- Load path and place objects on it
@@ -39,6 +40,8 @@ c01s03 = function ()
   
   c01s03_room:loadObjectInteractions ( objectInteractions )
   
+  c01s03_room:loadConversations ( conversations )
+
   -- sounds = {
   -- }
   -- 
@@ -47,6 +50,7 @@ c01s03 = function ()
   function c01s03_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
+
     self:loadCharacter( josh )
     self:loadCharacter( howard )
     self:loadCharacter( klein )
