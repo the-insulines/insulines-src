@@ -90,6 +90,16 @@ objects = {
     renderPriority = 81,
   },
   
+  c01s03_lamp_4 = {
+    layer_name = 'objects',
+    type = RESOURCE_TYPE_IMAGE,
+    x = 502.2270450000001, y = 234.71531500000003,
+    width = 147.51469, height = 212.65103,
+    resource_name = 'c01s03/c01s03_lamp_4.png',
+    render_at_start = true,
+    renderPriority = 91,
+  },
+  
   c01s03_canos = {
     layer_name = 'objects',
     type = RESOURCE_TYPE_IMAGE,
@@ -97,7 +107,7 @@ objects = {
     width = 1341.0426, height = 1015.8398,
     resource_name = 'c01s03/c01s03_canos.png',
     render_at_start = true,
-    renderPriority = 91,
+    renderPriority = 101,
   },
   
   c01s03_cartel_klein = {
@@ -107,7 +117,7 @@ objects = {
     width = 379.32217, height = 199.26015,
     resource_name = 'c01s03/c01s03_cartel_klein.png',
     render_at_start = true,
-    renderPriority = 101,
+    renderPriority = 111,
   },
   
   c01s03_foam_lather_cartel = {
@@ -117,7 +127,7 @@ objects = {
     width = 140.33054, height = 159.00934,
     resource_name = 'c01s03/c01s03_foam_lather_cartel.png',
     render_at_start = true,
-    renderPriority = 111,
+    renderPriority = 121,
   },
   
   c01s03_lamp_1 = {
@@ -126,16 +136,6 @@ objects = {
     x = 650.7533375000002, y = -40.11918000000003,
     width = 67.531075, height = 137.45686,
     resource_name = 'c01s03/c01s03_lamp_1.png',
-    render_at_start = true,
-    renderPriority = 121,
-  },
-  
-  c01s03_lamp_4 = {
-    layer_name = 'objects',
-    type = RESOURCE_TYPE_IMAGE,
-    x = 502.2270450000001, y = 234.71531500000003,
-    width = 147.51469, height = 212.65103,
-    resource_name = 'c01s03/c01s03_lamp_4.png',
     render_at_start = true,
     renderPriority = 131,
   },
