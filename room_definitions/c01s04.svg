@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1920"
+   height="1280"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="c01s04.svg"
+   enable-background="new">
+  <defs
+     id="defs4">
+    <filter
+       inkscape:collect="always"
+       id="filter3509">
+      <feBlend
+         inkscape:collect="always"
+         mode="lighten"
+         in2="BackgroundImage"
+         id="feBlend3511" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4326">
+      <feBlend
+         inkscape:collect="always"
+         mode="multiply"
+         in2="BackgroundImage"
+         id="feBlend4328" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.52162723"
+     inkscape:cx="1451.4349"
+     inkscape:cy="775.25141"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="852"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-page="false"
+     inkscape:snap-global="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="background"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <image
+       y="0"
+       x="0"
+       id="image3104"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_building.png"
+       height="1280"
+       width="1920" />
+    <image
+       style="display:inline"
+       y="0"
+       x="1752.1664"
+       id="image3250"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_edificio_costado.png"
+       height="1280"
+       width="167.83366" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="objects"
+     style="display:inline">
+    <image
+       y="241.42854"
+       x="440.9342"
+       id="image3339"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_poster.png"
+       height="569.98798"
+       width="310.55399" />
+    <image
+       y="613.79376"
+       x="1635.0427"
+       id="image3404"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_turpentine.png"
+       height="94.146004"
+       width="67.307999" />
+    <image
+       y="182.93617"
+       x="1178.1322"
+       id="image4392"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_door_closed.png"
+       height="671.802"
+       width="280.30801" />
+    <image
+       y="180.93617"
+       x="1185.5873"
+       id="image4457"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_door_opened.png"
+       height="751.89001"
+       width="274.76999" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="walk_behind"
+     style="display:inline">
+    <image
+       y="0"
+       x="335.56635"
+       id="image3169"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk-behind.png"
+       height="1280"
+       width="795.99866" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="background_highlights"
+     style="display:inline;filter:url(#filter3509)">
+    <image
+       y="2"
+       x="3.0000458"
+       id="image3502"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk_behind_ambient_light.png"
+       height="1278"
+       width="1917" />
+    <image
+       y="0"
+       x="1752.1664"
+       id="image3721"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_edificio_costado_light_on.png"
+       height="1201.3199"
+       width="34.080002" />
+    <image
+       y="48.008057"
+       x="355.07501"
+       id="image3802"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk_behind_light_on.png"
+       height="1231.9919"
+       width="794.48999" />
+    <image
+       y="161.93614"
+       x="1078.6078"
+       id="image3985"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_light_on.png"
+       height="913.34399"
+       width="729.73798" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="background_shadows"
+     style="display:inline;filter:url(#filter4326)">
+    <image
+       y="0"
+       x="988.20428"
+       id="image4114"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_sombra_light_off.png"
+       height="1314.5074"
+       width="1121.2574" />
+    <image
+       y="2"
+       x="512.49603"
+       id="image4323"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_sombra_light_on.png"
+       height="1256.7"
+       width="1407.504" />
+  </g>
+</svg>
