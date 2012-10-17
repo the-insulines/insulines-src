@@ -595,11 +595,6 @@ objects = {
       -- characters look at each other
       c01s02.objects.josh:standLookingInDirection ( DIRECTION_RIGHT )
       c01s02.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
-      -- c01s02.objects.josh.animation:startAnimation('walk_right')
-      -- performWithDelay (10, c01s02.objects.josh.animation.stopCurrentAnimation, 1, c01s02.objects.josh.animation)
-      -- 
-      -- c01s02.objects.nancy.animation:startAnimation('walk_left')
-      -- performWithDelay (10, c01s02.objects.nancy.animation.stopCurrentAnimation, 1, c01s02.objects.nancy.animation)
     end,
     
     beginNancy = function ()

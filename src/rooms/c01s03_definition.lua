@@ -103,8 +103,8 @@ objects = {
   c01s03_cartel_klein = {
     layer_name = 'objects',
     type = RESOURCE_TYPE_IMAGE,
-    x = 769.26823, y = 207.68697,
-    width = 381.23926, height = 170.50398,
+    x = 778.4656849999999, y = -342.1895850000001,
+    width = 379.32217, height = 199.26015,
     resource_name = 'c01s03/c01s03_cartel_klein.png',
     render_at_start = true,
     renderPriority = 101,

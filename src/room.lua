@@ -239,6 +239,7 @@ function new (name)
     end
   end
 
+
   function room:loadSounds ()
     for k, v in pairs (self.sounds) do
       self.sounds[k] = resource_cache.get(v.resource_name)
@@ -267,9 +268,9 @@ function new (name)
           -- set the callback method when finished walking
           if type (object.onClick) == "function" then
             if self.characterMovement then
-              callback = { method = object.onClick, parent = object }
+              callback = { method = object.onClick, parent = self }
             else
-              object:onClick ()
+              object:onClick ( self )
             end
           end
         else
@@ -371,6 +372,7 @@ function new (name)
   function room:loadObjectInteractions ( objectInteractions )
     for objectName, interactions in pairs ( objectInteractions ) do
       for interactionName, interaction in pairs ( interactions ) do
+        print (objectName, interactionName, interaction)
         self.objects[objectName][interactionName] = interaction
       end
     end
@@ -425,8 +427,18 @@ function new (name)
   end
   
   
-  function room:interact (source, target)
-    target:onInteractionWith(source)
+  function room:interact ( source, target )
+    target:onInteractionWith( source )
+  end
+  
+  
+  function room:talkTo ( characterName )
+    local character = self.objects[characterName]
+    local josh = self.objects.josh
+    
+    josh:lookAt ( character:getPosition () )
+    
+    print ( 'Start dialog here!' )
   end
   
   
@@ -465,10 +477,10 @@ function new (name)
   function room:objectAt ( x, y )
     local resultObject = nil
     local maxPriority = nil
-    for k, object in pairs( self.objects ) do
+    for k, object in pairs ( self.objects ) do
       if object.prop then
         local objX, objY = object.prop:worldToModel ( x, y )
-  
+        
         if (objX >= -object.half_width) and (objX <= object.half_width) and (objY >= -object.half_height) and (objY <= object.half_height) and (not object.avoid_clicks) and object.rendering then
           if not maxPriority then
             resultObject = object
@@ -485,7 +497,7 @@ function new (name)
     return resultObject
   end
   
-
+  
   return room
   
 end

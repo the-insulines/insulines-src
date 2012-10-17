@@ -3,11 +3,11 @@ path = {
   
   start = {
     position = point (-470, 32),
-    neighbors = {'pete_and_paul_fork'},
+    neighbors = {'pete_and_paul'},
     offsets = { x = 0, y = 0, scl = 1.0 }
   },
   
-  pete_and_paul_fork = {
+  pete_and_paul = {
     position = point ( -214, -214 ), -- point (-146, -216),
     neighbors = {'start', 'foam_fork'},
     offsets = { x = 0, y = 0, scl = 1.0 }
@@ -15,7 +15,7 @@ path = {
   
   foam_fork = {
     position = point ( -56, -360 ),
-    neighbors = {'pete_and_paul_fork', 'foam', 'stuff', 'bottle_emporium'},
+    neighbors = {'pete_and_paul', 'foam', 'stuff', 'bottle_emporium'},
     offsets = { x = 0, y = 0, scl = 1.0 }
   },
   

@@ -448,7 +448,7 @@ resources = {
     width = 285 * 0.92, height = 600 * 0.92,
     
     pivotX = 0,
-    pivotY = 0,
+    pivotY = -200,
     
     animations = {
       stand = {
@@ -466,7 +466,7 @@ resources = {
     width = 880 * 0.4, height = 1664 * 0.4,
     
     pivotX = 0,
-    pivotY = 0,
+    pivotY = -300,
     
     animations = {
       stand = {
@@ -501,7 +501,7 @@ resources = {
     width = 1400 * 0.4, height = 2000 * 0.4,
     
     pivotX = 0,
-    pivotY = 0,
+    pivotY = -400,
     
     animations = {
       stand = {
@@ -527,7 +527,7 @@ resources = {
     width = 991 * 0.2, height = 2000 * 0.2,
     
     pivotX = 0,
-    pivotY = 0,
+    pivotY = -200,
     
     animations = {
       stand = {
@@ -552,7 +552,7 @@ resources = {
     width = 1233 * 0.18, height = 2000 * 0.18,
     
     pivotX = 0,
-    pivotY = 0,
+    pivotY = -180,
     
     animations = {
       stand = {

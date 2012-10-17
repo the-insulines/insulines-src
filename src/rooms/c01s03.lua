@@ -25,12 +25,13 @@ c01s03 = function ()
   c01s03_room.initialCameraPathNode = 'start'
   
   -- Character initial positions
+  -- The pivot was subtracted to calculate the Y coordinate
   c01s03_room.initialCharacterPathNode = 'start'
-  c01s03_room.initialHowardPosition = point ( 330, 90 )
-  c01s03_room.initialKleinPosition = point ( 800, 0 )
-  c01s03_room.initialSonjaPosition = point ( -800, -200 )
-  c01s03_room.initialPaulPosition = point ( 120, 110 )
-  c01s03_room.initialPetePosition = point ( -20, 100 )
+  c01s03_room.initialHowardPosition = point ( 330, 90 - 200 )
+  c01s03_room.initialKleinPosition = point ( 800, 0 - 300 )
+  c01s03_room.initialSonjaPosition = point ( -800, -200 - 400 )
+  c01s03_room.initialPaulPosition = point ( 120, 110 - 200 )
+  c01s03_room.initialPetePosition = point ( -20, 100 - 180 )
 
   c01s03_room.hasExternalAssets = true
   

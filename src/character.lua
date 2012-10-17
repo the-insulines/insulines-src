@@ -45,6 +45,11 @@ function new ( name )
     self.prop:setScl ( scaleX, scaleY )
   end
   
+  function c:getPosition ()
+    return point ( self.prop:getLoc () )
+  end
+  
+  
   function c:startAnimation ( animationName )
     self.currentAction = self.animation:startAnimation( animationName )
   end
@@ -99,19 +104,17 @@ function new ( name )
   function c:moveTo ( x, y, zoomFactor, time )
     self:stopCurrentAction ()
 
-    local curX, curY = self.prop:getLoc ()
-
-    local delta_x = x - curX
-    local delta_y = y - curY
+    local direction, delta = self:directionTo ( point ( x, y ) )
+    self.direction = direction
     
     if not time then
-      time = math.sqrt ( delta_x * delta_x + delta_y * delta_y) / MOVEMENT_PIXELS_PER_SECOND
+      time = math.sqrt ( delta.x * delta.x + delta.y * delta.y ) / MOVEMENT_PIXELS_PER_SECOND
     end
     -- If time == 0, moveLoc returns nil, which breaks the function
     if time == 0 then time = .001 end
     
     -- create the movement displacement action
-    self.currentAction = self.prop:moveLoc ( delta_x, delta_y, time, MOAIEaseType.LINEAR )
+    self.currentAction = self.prop:moveLoc ( delta.x, delta.y, time, MOAIEaseType.LINEAR )
     self.currentAction.character = self
     
     self.currentAction:setListener ( MOAIAction.EVENT_STOP, self.stopMove )
@@ -121,18 +124,6 @@ function new ( name )
     end
     
     -- start the animation depending on the character movement orientation
-    if math.abs ( delta_x ) > math.abs ( delta_y ) then
-      if delta_x > 0 then
-        self.direction = DIRECTION_RIGHT
-      else
-        self.direction = DIRECTION_LEFT
-      end
-    elseif delta_y > 0 then
-      self.direction = DIRECTION_BACK
-    else
-      self.direction = DIRECTION_FRONT
-    end
-    
     self.currentWalkAnimation = self.animation:getAnimation ( 'walk_' .. self.direction )
     if self.currentWalkAnimation then
       self.currentWalkAnimation:start ()
@@ -140,12 +131,42 @@ function new ( name )
     
     -- shift the value zoomFactor units
     -- increase it if the character is heading down (delta_y negative) and decrease it if he is heading up
-    local zoom = zoomFactor * - delta_y
+    local zoom = zoomFactor * - delta.y
     self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
 
     -- start
     self.currentAction:start ()
     return self.currentAction
+  end
+  
+  
+  function c:lookAt ( targetPoint )
+    local direction = self:directionTo ( targetPoint )
+    print ('======================')
+    print ('look at:', targetPoint, direction)
+    self:standLookingInDirection ( direction )
+  end
+  
+  
+  function c:directionTo ( targetPoint )
+    local currentPos = point ( self.prop:getLoc () )
+
+    local delta = targetPoint - currentPos
+    local direction = nil
+    
+    if math.abs ( delta.x ) > math.abs ( delta.y ) then
+      if delta.x > 0 then
+        direction = DIRECTION_RIGHT
+      else
+        direction = DIRECTION_LEFT
+      end
+    elseif delta.y > 0 then
+      direction = DIRECTION_BACK
+    else
+      direction = DIRECTION_FRONT
+    end
+    
+    return direction, delta
   end
   
 
@@ -161,6 +182,7 @@ function new ( name )
     self.direction = direction
     
     -- play the idle animation corresponding to the current character orientation (if it exists)
+    self:stopCurrentAction ()
     self.currentAction = self.animation:getAnimation ( 'stand_' .. self.direction )
     if self.currentAction then
       self.currentAction:start ()
