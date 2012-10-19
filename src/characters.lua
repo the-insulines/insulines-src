@@ -60,4 +60,12 @@ if DEBUG then
   pete.onClick = function ( room )
     room:talkTo( 'pete' )
   end
+  
+  moe = character.new ( 'moe' )
+  moe.avoid_clicks = false
+  moe.priority = 10
+  moe.onClick = function ( room )
+    room:talkTo( 'moe' )
+  end
+  
 end

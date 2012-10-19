@@ -26,6 +26,7 @@ require 'rooms/thankYouScreen'
 require 'rooms/c01s01'
 require 'rooms/c01s02'
 require 'rooms/c01s03'
+require 'rooms/c01s04'
 
 if DEBUG then
   require 'src/hud/debugHUD'

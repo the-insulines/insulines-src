@@ -142,8 +142,6 @@ function new ( name )
   
   function c:lookAt ( targetPoint )
     local direction = self:directionTo ( targetPoint )
-    print ('======================')
-    print ('look at:', targetPoint, direction)
     self:standLookingInDirection ( direction )
   end
   

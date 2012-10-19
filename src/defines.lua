@@ -564,6 +564,24 @@ resources = {
     },
   },
   
+  moe = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/moe/',
+    width = 1300 * 0.35, height = 2000 * 0.35,
+    
+    pivotX = 0,
+    pivotY = -350,
+    
+    animations = {
+      stand = {
+        fileName = 'moe_stand',
+        frameCount = 25,
+        frameTime = 0.04,
+        startFrame = 1,
+      },
+    },
+  },
+  
   
   -- /////////////////////////////////////////////////////////////
   --
