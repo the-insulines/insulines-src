@@ -165,10 +165,12 @@ class DialogParser
     
     result += "  userVariables = {\n"
     
-    self.user_variables.each do |key, user_variable| 
-      result += "    #{user_variable[:name]} = {\n"
-      result += "      initialValue = #{user_variable[:"initial value"].downcase},\n"
-      result += "    },\n"
+    if self.user_variables
+      self.user_variables.each do |key, user_variable| 
+        result += "    #{user_variable[:name]} = {\n"
+        result += "      initialValue = #{user_variable[:"initial value"].downcase},\n"
+        result += "    },\n"
+      end
     end
     
     result += "  },\n"

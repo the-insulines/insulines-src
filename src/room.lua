@@ -432,16 +432,6 @@ function new (name)
   end
   
   
-  function room:talkTo ( characterName )
-    local character = self.objects[characterName]
-    local josh = self.objects.josh
-    
-    josh:lookAt ( character:getPosition () )
-    
-    print ( 'Start dialog here!' )
-  end
-  
-  
   function room:startHighlightingInteractions ()
     for k, object in pairs ( self.objects ) do
       if object.highlight then

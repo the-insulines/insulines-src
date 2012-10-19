@@ -143,6 +143,7 @@ function dialog:hide ( time )
   MOAICoroutine.blockOnAction ( self.window_background.prop:seekScl( 0.001, 0.001, 0.7 ) )
   self.layer:seekColor ( 0, 0, 0, 0, time, MOAIEaseType.LINEAR )
   
+  game.currentScene.inputEnabled = true
   self.opened = false
 end
 

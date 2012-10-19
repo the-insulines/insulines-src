@@ -18,8 +18,9 @@ if DEBUG then
   howard.layer_name = 'objects'
   howard.priority = 10
   howard.avoid_clicks = false
-  howard.onClick = function ( room )
-    room:talkTo( 'howard' )
+  howard.onClick = function ()
+    josh:lookAt ( howard:getPosition () )
+    dialog:load ( 'foam_and_lather' )
   end
   
   klein = character.new ( 'klein' )
@@ -27,8 +28,9 @@ if DEBUG then
   klein.layer_name = 'objects'
   klein.priority = 10
   klein.avoid_clicks = false
-  klein.onClick = function ( room )
-    room:talkTo( 'klein' )
+  klein.onClick = function ()
+    josh:lookAt ( klein:getPosition () )
+    dialog:load ( 'klein' )
   end
   
   sonja = character.new ( 'sonja' )
@@ -37,8 +39,9 @@ if DEBUG then
   sonja.priority = 10
   sonja.pathNode = 'stuff'
   sonja.avoid_clicks = false
-  sonja.onClick = function ( room )
-    room:talkTo( 'sonja' )
+  sonja.onClick = function ()
+    josh:lookAt ( sonja:getPosition () )
+    dialog:load ( 'glasworks' )
   end
   
   paul = character.new ( 'paul' )
@@ -47,8 +50,9 @@ if DEBUG then
   paul.priority = 10
   paul.pathNode = 'pete_and_paul'
   paul.avoid_clicks = false
-  paul.onClick = function ( room )
-    room:talkTo( 'paul' )
+  paul.onClick = function ()
+    josh:lookAt ( paul:getPosition () )
+    dialog:load ( 'wardrobe' )
   end
   
   pete = character.new ( 'pete' )
@@ -57,8 +61,9 @@ if DEBUG then
   pete.priority = 10
   pete.pathNode = 'pete_and_paul'
   pete.avoid_clicks = false
-  pete.onClick = function ( room )
-    room:talkTo( 'pete' )
+  pete.onClick = function ()
+    josh:lookAt ( pete:getPosition () )
+    dialog:load ( 'wardrobe' )
   end
   
   moe = character.new ( 'moe' )

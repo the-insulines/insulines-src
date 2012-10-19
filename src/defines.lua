@@ -64,6 +64,10 @@ DIALOG_COLOR_FOR_CHARACTER = {
   answering = { r = 0.52, g = 0.96, b = 0.52 },
   sonja = { r = 0.96, g = 0.52, b = 0.52 },
   klein = { r = 0.52, g = 0.96, b = 0.52 },
+  paul = { r = 0.52, g = 0.96, b = 0.52 },
+  pete = { r = 0.52, g = 0.96, b = 0.52 },
+  howard = { r = 0.52, g = 0.96, b = 0.52 },
+  moe = { r = 0.52, g = 0.96, b = 0.52 },
 }
 
 -- Inventory constants
