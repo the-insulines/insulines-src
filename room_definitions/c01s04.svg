@@ -46,8 +46,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.52162723"
-     inkscape:cx="1066.1023"
-     inkscape:cy="698.5683"
+     inkscape:cx="908.90192"
+     inkscape:cy="683.10424"
      inkscape:document-units="px"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -93,23 +93,8 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="objects"
-     style="display:inline">
-    <image
-       y="241.42854"
-       x="440.9342"
-       id="image3339"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_poster.png"
-       height="569.98798"
-       width="310.55399" />
-    <image
-       y="613.79376"
-       x="1635.0427"
-       id="image3404"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_turpentine.png"
-       height="94.146004"
-       width="67.307999" />
+     id="layer8"
+     inkscape:label="back_objects">
     <image
        y="182.93617"
        x="1178.1322"
@@ -118,25 +103,39 @@
        height="671.802"
        width="280.30801" />
     <image
-       y="180.93617"
-       x="1185.5873"
-       id="image4457"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_door_opened.png"
-       height="751.89001"
-       width="274.76999" />
+       y="613.79376"
+       x="1635.0427"
+       id="image3404"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_turpentine.png"
+       height="94.146004"
+       width="67.307999" />
+    <image
+       y="241.42854"
+       x="440.9342"
+       id="image3339"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_poster.png"
+       height="569.98798"
+       width="310.55399" />
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="walk_behind"
-     style="display:inline">
+     id="layer5"
+     inkscape:label="background_shadows"
+     style="display:inline;filter:url(#filter4326)">
     <image
        y="0"
-       x="335.56635"
-       id="image3169"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk_behind.png"
-       height="1280"
-       width="795.99866" />
+       x="988.20428"
+       id="image4114"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_sombra_light_off.png"
+       height="1314.5074"
+       width="1121.2574" />
+    <image
+       y="2"
+       x="512.49603"
+       id="image4323"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_sombra_light_on.png"
+       height="1256.7"
+       width="1407.504" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -158,13 +157,6 @@
        height="1201.3199"
        width="34.080002" />
     <image
-       y="48.008057"
-       x="355.07501"
-       id="image3802"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk_behind_light_on.png"
-       height="1231.9919"
-       width="794.48999" />
-    <image
        y="161.93614"
        x="1078.6078"
        id="image3985"
@@ -174,22 +166,36 @@
   </g>
   <g
      inkscape:groupmode="layer"
-     id="layer5"
-     inkscape:label="background_shadows"
-     style="display:inline;filter:url(#filter4326)">
+     id="layer3"
+     inkscape:label="walk_behind"
+     style="display:inline">
     <image
        y="0"
-       x="988.20428"
-       id="image4114"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_sombra_light_off.png"
-       height="1314.5074"
-       width="1121.2574" />
+       x="335.56635"
+       id="image3169"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk_behind.png"
+       height="1280"
+       width="795.99866" />
     <image
-       y="2"
-       x="512.49603"
-       id="image4323"
-       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_sombra_light_on.png"
-       height="1256.7"
-       width="1407.504" />
+       style="display:inline;filter:url(#filter4326)"
+       y="180.93617"
+       x="1185.5873"
+       id="image4457"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_door_opened.png"
+       height="751.89001"
+       width="274.76999" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="walk_behind_highlights"
+     style="display:inline">
+    <image
+       y="48.008057"
+       x="355.07501"
+       id="image3802"
+       xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_walk_behind_light_on.png"
+       height="1231.9919"
+       width="794.48999" />
   </g>
 </svg>

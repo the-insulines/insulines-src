@@ -29,9 +29,9 @@ function new (name)
   
   room.layer_objects = {
     background = MOAILayer2D.new (),
+    back_objects = MOAILayer2D.new (),
     background_shadows = MOAILayer2D.new (),
     background_highlights = MOAILayer2D.new (),
-    back_objects = MOAILayer2D.new (),
     objects = MOAILayer2D.new (),
     character = MOAILayer2D.new (),
     walk_behind_objects = MOAILayer2D.new (),
@@ -51,15 +51,15 @@ function new (name)
     local result = {}
     
     table.insert ( result, self.layer_objects.background )
+    table.insert ( result, self.layer_objects.back_objects )
     table.insert ( result, self.layer_objects.background_shadows )
     table.insert ( result, self.layer_objects.background_highlights )
-    table.insert ( result, self.layer_objects.back_objects )
     table.insert ( result, self.layer_objects.objects )
     table.insert ( result, self.layer_objects.character )
     table.insert ( result, self.layer_objects.walk_behind_objects )
     table.insert ( result, self.layer_objects.walk_behind )
-    table.insert ( result, self.layer_objects.walk_behind_highlights )
     table.insert ( result, self.layer_objects.walk_behind_shadows )
+    table.insert ( result, self.layer_objects.walk_behind_highlights )
     
     return result
   end
@@ -268,9 +268,9 @@ function new (name)
           -- set the callback method when finished walking
           if type (object.onClick) == "function" then
             if self.characterMovement then
-              callback = { method = object.onClick, parent = self }
+              callback = { method = object.onClick }
             else
-              object:onClick ( self )
+              object:onClick ()
             end
           end
         else

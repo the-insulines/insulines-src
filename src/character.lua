@@ -71,6 +71,11 @@ function new ( name )
       -- TODO: refactor this
       -- Adjust camera if required
       if game.autoFollow and step.offsets then
+        -- Run step action if set
+        if step.action then
+          step.action ()
+        end
+        
         -- Translate
         local camX, camY = game.camera:getLoc ()
         local camScl = game.camera:getScl ()
