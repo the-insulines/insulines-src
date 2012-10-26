@@ -5,33 +5,37 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-logoScreen = room.new ( "logoScreen" )
-logoScreen.hud = false
-logoScreen.inputEnabled = true
-logoScreen.characterMovement = false
+function logoScreen ()
+  local s = room.new ( "logoScreen" )
+  s.hud = false
+  s.inputEnabled = true
+  s.characterMovement = false
 
-objects = {
-  background = {
-    resource_name = 'logoScreen_background',
-    layer_name = 'background',
-    x = 0,
-    y = 0,
-    render_at_start = true,
-    onClick = function ()
-      logoScreen:unload ()
-      logoScreen.inputEnabled = false
-      performWithDelay ( 100, game.loadScene, 1, game, c01s01 )
-    end
-  },
-  
-  
-}
+  objects = {
+    background = {
+      resource_name = 'logoScreen_background',
+      layer_name = 'background',
+      x = 0,
+      y = 0,
+      render_at_start = true,
+      onClick = function ()
+        s:unload ()
+        s.inputEnabled = false
+        performWithDelay ( 100, game.loadScene, 1, game, c01s01 )
+      end
+    },
+    
+    
+  }
 
-logoScreen:addObjects ( objects )
+  s:addObjects ( objects )
 
-function logoScreen:beforeInitialize ()
-  self:loadObjects ()
-end
+  function s:beforeInitialize ()
+    self:loadObjects ()
+  end
 
-function logoScreen:afterInitialize ()
+  function s:afterInitialize ()
+  end
+
+  return s
 end

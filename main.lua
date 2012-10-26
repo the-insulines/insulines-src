@@ -7,7 +7,7 @@
 DEFAULT_ASSETS_PATH = '../insulines-gfx/'
 -- DEFAULT_ASSETS_PATH = '../insulines-hosts/scripts/assets/'
 -- SOUND_ENGINE = 'fmod'
-SOUND_ENGINE = 'untz'
+-- SOUND_ENGINE = 'untz'
 
 SCREEN_RESOLUTION_X = 960
 SCREEN_RESOLUTION_Y = 640

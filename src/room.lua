@@ -143,15 +143,17 @@ function new (name)
   
   
   function room:addObjects ( objects )
+    self.objectsCount = 0
     for k,v in pairs ( objects ) do 
       self.objects[k] = v
+      self.objectsCount = self.objectsCount + 1
     end
   end
   
   function room:loadObjects ( )
     for k, v in pairs ( self.objects ) do
       local object = self.objects[k]
-      
+      loadingScreen:step()
       -- Load resource
       if v.resource_name then
         local resource
@@ -340,7 +342,7 @@ function new (name)
   function room:fadeOut ( time )
     if not time then time = 1 end
     for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
-      layer:seekColor ( 0, 0, 0, 1, time)
+      layer:seekColor ( 0, 0, 0, 0, time)
     end
   end
   

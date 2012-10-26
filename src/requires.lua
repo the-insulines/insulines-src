@@ -7,6 +7,7 @@ require 'state_manager'
 require 'defines'
 require 'room'
 require 'animatedProp'
+require 'loadingScreen'
 require 'game'
 
 require 'character'

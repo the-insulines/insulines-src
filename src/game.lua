@@ -21,16 +21,13 @@ autoFollow = true
 gameRunning = true
 
 function game:loadScene ( scene )
-  MOAIRenderMgr.clearRenderStack ()
+
   -- Cache scene
   self.currentScene = scene
 
-  if scene.hud then
-    -- Load HUD
-    self:displayHUD ()
-    dialog:loadConversations(scene.conversations)
-  end
-  
+  -- Show loading screen
+  loadingScreen:setup(scene.objectsCount)
+  coroutine.yield ()
   
   if not scene.initialized then
     -- Initialize scene
@@ -41,7 +38,39 @@ function game:loadScene ( scene )
     scene:resetCharacter ()
   end
   
-  -- Load all layers
+  self:sceneLoaded (scene)
+  
+end
+
+
+function initialize ( self )
+  -- Setup viewport
+  viewport = MOAIViewport.new ()
+  viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
+  viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
+  
+  if SOUND then
+    if SOUND_ENGINE == 'untz' then
+      -- Initialize sound
+      MOAIUntzSystem.initialize ()
+    end
+  end
+  
+  --self:loadScene ( logoScreen() )
+  self:loadScene ( c01s01 )
+  --self:loadScene ( c01s03() )
+end
+
+function game:sceneLoaded (scene)
+  --MOAIRenderMgr.setRenderTable ( {} )
+
+  if scene.hud then
+    -- Load HUD
+    self:displayHUD ()
+    dialog:loadConversations(scene.conversations)
+  end
+  
+    -- Load all layers
   local renderTable = {}
   
   for k, layer in pairs( scene:layers() ) do 
@@ -63,44 +92,35 @@ function game:loadScene ( scene )
   for k, layer in pairs ( currentRenderTable ) do
     table.insert(renderTable, layer)
   end
+  
   MOAIRenderMgr.setRenderTable ( renderTable )
   
+  -- Hide loading screen
+  loadingScreen:hide()
+
   if scene.fadeOnChange then
     performWithDelay ( 50, scene.fadeIn, 1, scene)
   end
+
 end
-
-
-function initialize ( self )
-  -- Setup viewport
-  viewport = MOAIViewport.new ()
-  viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
-  viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
-  
-  if SOUND then
-    if SOUND_ENGINE == 'untz' then
-      -- Initialize sound
-      MOAIUntzSystem.initialize ()
-    end
-  end
-  
-  -- self:loadScene ( logoScreen )
-  self:loadScene ( c01s03() )
-end
-
 
 function start ( self )
 
   -- Initialize game
-  self:initialize ()
-  hud:initialize ()
+  loadingScreen:initialize()
   
-  -- Camera animation
+  coroutine.yield ()
+
+  self:initialize()
+
+  hud:initialize ()
+
+  -- -- Camera animation
   -- self.cameraThread = MOAIThread.new ()
   -- self.cameraThread:run ( cameraAnimation )
   
-  -- -- Game loop
-  -- -- If there is a scene loaded we gather input and update everyhing
+  -- Game loop
+  -- If there is a scene loaded we gather input and update everyhing
   while self.gameRunning do
     local stopInput = false
 

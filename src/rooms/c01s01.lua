@@ -304,8 +304,8 @@ objects = {
         c01s02.initialCameraPathNode = 'joshDoor'
         c01s02.initialCharacterPathNode = 'joshDoor'
 
-        performWithDelay (100, game.loadScene, 1, game, c01s02)
-                
+        -- performWithDelay (100, game.loadScene, 1, game, c01s02)
+        game:loadScene(c01s02)     
       end
     end
   }

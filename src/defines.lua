@@ -6,13 +6,13 @@
 --==============================================================
 
 -- Debugging
-DEBUG = true
+-- DEBUG = true
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
 
 -- Enable sound
-SOUND = true
+-- SOUND = true
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}
@@ -143,6 +143,12 @@ RESOURCE_TYPE_SOUND = 4
 
 
 resources = {
+  loadingScreen_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'loading/loading_background.png', 
+    width = 1920, height = 1280, 
+  },
+
   logoScreen_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'logoScreen_background.png', 
