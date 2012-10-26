@@ -155,7 +155,7 @@ function new (name)
       -- Load resource
       if v.resource_name then
         local resource
-        if self.hasExternalAssets then
+        if self.hasExternalAssets and not object.externalAsset then
           v.fileName = v.resource_name  -- TODO: THIS IS NOT GOOD, JUST FOR BACKWARD COMPATIBILITY
           resource = v
           object.gfx = resource_cache.get ( k, v )
@@ -194,6 +194,7 @@ function new (name)
       
         -- Add to layer
         object.layer = self.layer_objects[object.layer_name]
+        object.prop:setAttrLink ( MOAIProp.ATTR_BLEND_MODE, object.layer, MOAIProp.ATTR_BLEND_MODE )
         if object.render_at_start then
           self:startRendering( k )
         end

@@ -12,6 +12,8 @@ c01s04 = function ()
   require 'c01s04_path'
   require 'dialogs/c01s04_dialogs_definition'
   require 'c01s04_interactions'
+  require 'c01s04_characters'
+  
   
   local c01s04_room = room.new ( "c01s04" )
   
@@ -38,6 +40,8 @@ c01s04 = function ()
   c01s04_room.alleyLightOn = false
   c01s04_room.joshWalksIntoAlley = true
   c01s04_room.shadowColor = 0.3
+  c01s04_room.shadowTransitionTime = 0.5 -- seconds
+  c01s04_room.shadowAnimation = nil
   
   
   c01s04_room:addObjects ( objects )
@@ -73,15 +77,43 @@ c01s04 = function ()
   
   
   function c01s04_room:afterInitialize ()
+    print ( '=========================================================' )
+    print (MOAIProp.ATTR_BLEND_MODE)
+    print (MOAIProp.BLEND_NORMAL)
+    print (MOAIProp.BLEND_ADD)
+    print ( self.objects.c01s04_light_on.prop:setAttr(MOAIProp.ATTR_BLEND_MODE, MOAIProp.BLEND_ADD) )
+    -- self.objects.c01s04_light_on.prop:setBlendMode(MOAIProp2D.BLEND_ADD)
+    print ( self.objects.c01s04_light_on.prop:getAttr(MOAIProp.ATTR_BLEND_MODE) )
+    print ( '=========================================================' )
+    
     self:turnAlleyLightOn ()
   end
   
   
   function c01s04_room:walkIntoAlleyAction ()
+    if self.shadowAnimation then
+      self.shadowAnimation:stop ()
+    end
+    
     if self.joshWalksIntoAlley then
-      self.objects.josh.prop:setColor ( self.shadowColor, self.shadowColor, self.shadowColor )
+      self.shadowAnimation = self.objects.josh.prop:seekColor ( self.shadowColor, self.shadowColor, self.shadowColor, 1, self.shadowTransitionTime, MOAIEaseType.LINEAR )
     else
-      self.objects.josh.prop:setColor ( 1, 1, 1 )
+      self.shadowAnimation = self.objects.josh.prop:seekColor ( 1, 1, 1, 1, self.shadowTransitionTime, MOAIEaseType.LINEAR )
+    end
+    
+    self.joshWalksIntoAlley = not self.joshWalksIntoAlley
+  end
+  
+  
+  function c01s04_room:walkOutOfAlleyAction ()
+    if self.shadowAnimation then
+      self.shadowAnimation:stop ()
+    end
+    
+    if self.joshWalksIntoAlley then
+      self.shadowAnimation = self.objects.josh.prop:seekColor ( 1, 1, 1, 1, self.shadowTransitionTime, MOAIEaseType.LINEAR )
+    else
+      self.shadowAnimation = self.objects.josh.prop:seekColor ( self.shadowColor, self.shadowColor, self.shadowColor, 1, self.shadowTransitionTime, MOAIEaseType.LINEAR )
     end
     
     self.joshWalksIntoAlley = not self.joshWalksIntoAlley
@@ -94,6 +126,8 @@ c01s04 = function ()
       -- MOAICoroutine.blockOnAction ( self:alleyLightAnimation () )
       self:alleyLightAnimation ()
       -- self.objects.josh.currentAction:pause ( false )
+    else
+      self:turnAlleyLightOn ()
     end
   end
   

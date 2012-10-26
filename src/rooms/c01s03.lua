@@ -12,7 +12,9 @@ c01s03 = function ()
   require 'c01s03_path'
   require 'dialogs/c01s03_dialogs_definition'
   require 'c01s03_interactions'
-
+  require 'c01s03_characters'
+  
+  
   local c01s03_room = room.new ( "c01s03" )
   
   
@@ -23,6 +25,7 @@ c01s03 = function ()
   c01s03_room.topCharacterZoomThreshold = 74
 
   c01s03_room.initialCameraPathNode = 'start'
+  
   
   -- Character initial positions
   -- The pivot was subtracted to calculate the Y coordinate
@@ -35,8 +38,24 @@ c01s03 = function ()
 
   c01s03_room.hasExternalAssets = true
   
+  
+  -- Scene objects
+  
+  externalObjects = {
+    c01s03_candle_light = {
+      resource_name = "c01s03_candle_light",
+      layer_name = "objects",
+      x = 0,
+      y = 0,
+      render_at_start = true,
+      animated = true,
+    }
+  }
+  
   c01s03_room:addObjects ( objects )
-
+  -- c01s03_room:addObjects ( externalObjects )
+  
+  
   -- Load path and place objects on it
   c01s03_room:loadPath ( path )
   c01s03_room:placeObjectsOnPath ( objectPlacementOnPath )
@@ -44,6 +63,8 @@ c01s03 = function ()
   c01s03_room:loadObjectInteractions ( objectInteractions )
   
   c01s03_room:loadConversations ( conversations )
+  
+  
 
   -- sounds = {
   -- }
@@ -71,6 +92,8 @@ c01s03 = function ()
     self.objects.sonja:startAnimation ( 'stand' )
     self.objects.paul:startAnimation ( 'stand' )
     self.objects.pete:startAnimation ( 'stand' )
+    
+    -- self.objects.c01s03_candle_light:startAnimation ( 'c01s03_candlelight' )
   end
 
   function c01s03_room:afterInitialize ()
