@@ -10,16 +10,6 @@ objects = {
     renderPriority = 1,
   },
   
-  c01s04_edificio_costado = {
-    layer_name = 'background',
-    type = RESOURCE_TYPE_IMAGE,
-    x = 876.0832300000001, y = 0.0,
-    width = 167.83366, height = 1280,
-    resource_name = 'c01s04/c01s04_edificio_costado.png',
-    render_at_start = true,
-    renderPriority = 11,
-  },
-  
   c01s04_door_closed = {
     layer_name = 'back_objects',
     type = RESOURCE_TYPE_IMAGE,
@@ -27,7 +17,7 @@ objects = {
     width = 280.30801, height = 671.802,
     resource_name = 'c01s04/c01s04_door_closed.png',
     render_at_start = true,
-    renderPriority = 21,
+    renderPriority = 11,
   },
   
   c01s04_turpentine = {
@@ -37,7 +27,7 @@ objects = {
     width = 67.307999, height = 94.146004,
     resource_name = 'c01s04/c01s04_turpentine.png',
     render_at_start = true,
-    renderPriority = 31,
+    renderPriority = 21,
   },
   
   c01s04_poster = {
@@ -47,47 +37,27 @@ objects = {
     width = 310.55399, height = 569.98798,
     resource_name = 'c01s04/c01s04_poster.png',
     render_at_start = true,
-    renderPriority = 41,
+    renderPriority = 31,
   },
   
   c01s04_sombra_light_off = {
     layer_name = 'background_shadows',
     type = RESOURCE_TYPE_IMAGE,
-    x = 588.83298, y = -17.25369999999998,
-    width = 1121.2574, height = 1314.5074,
+    x = 436.06782, y = 0.0,
+    width = 1047.8644, height = 1280,
     resource_name = 'c01s04/c01s04_sombra_light_off.png',
     render_at_start = true,
-    renderPriority = 51,
+    renderPriority = 41,
   },
   
   c01s04_sombra_light_on = {
     layer_name = 'background_shadows',
     type = RESOURCE_TYPE_IMAGE,
-    x = 256.24802999999997, y = 9.649999999999977,
-    width = 1407.504, height = 1256.7,
+    x = 243.20001999999994, y = 0.0,
+    width = 1433.6, height = 1280,
     resource_name = 'c01s04/c01s04_sombra_light_on.png',
     render_at_start = true,
-    renderPriority = 61,
-  },
-  
-  c01s04_walk_behind_ambient_light = {
-    layer_name = 'background_highlights',
-    type = RESOURCE_TYPE_IMAGE,
-    x = 1.5000457999999526, y = -1.0,
-    width = 1917, height = 1278,
-    resource_name = 'c01s04/c01s04_walk_behind_ambient_light.png',
-    render_at_start = true,
-    renderPriority = 71,
-  },
-  
-  c01s04_edificio_costado_light_on = {
-    layer_name = 'background_highlights',
-    type = RESOURCE_TYPE_IMAGE,
-    x = 809.206401, y = 39.34005000000002,
-    width = 34.080002, height = 1201.3199,
-    resource_name = 'c01s04/c01s04_edificio_costado_light_on.png',
-    render_at_start = true,
-    renderPriority = 81,
+    renderPriority = 51,
   },
   
   c01s04_light_on = {
@@ -97,7 +67,7 @@ objects = {
     width = 729.73798, height = 913.34399,
     resource_name = 'c01s04/c01s04_light_on.png',
     render_at_start = true,
-    renderPriority = 91,
+    renderPriority = 61,
   },
   
   c01s04_walk_behind = {
@@ -107,7 +77,7 @@ objects = {
     width = 795.99866, height = 1280,
     resource_name = 'c01s04/c01s04_walk_behind.png',
     render_at_start = true,
-    renderPriority = 101,
+    renderPriority = 71,
   },
   
   c01s04_door_opened = {
@@ -117,7 +87,17 @@ objects = {
     width = 274.76999, height = 751.89001,
     resource_name = 'c01s04/c01s04_door_opened.png',
     render_at_start = true,
-    renderPriority = 111,
+    renderPriority = 81,
+  },
+  
+  c01s04_edificio_costado = {
+    layer_name = 'walk_behind',
+    type = RESOURCE_TYPE_IMAGE,
+    x = 876.0832300000001, y = 0.0,
+    width = 167.83366, height = 1280,
+    resource_name = 'c01s04/c01s04_edificio_costado.png',
+    render_at_start = true,
+    renderPriority = 91,
   },
   
   c01s04_walk_behind_light_on = {
@@ -126,6 +106,26 @@ objects = {
     x = -207.67999499999996, y = -24.004007,
     width = 794.48999, height = 1231.9919,
     resource_name = 'c01s04/c01s04_walk_behind_light_on.png',
+    render_at_start = true,
+    renderPriority = 101,
+  },
+  
+  c01s04_edificio_costado_light_on = {
+    layer_name = 'walk_behind_highlights',
+    type = RESOURCE_TYPE_IMAGE,
+    x = 809.206401, y = 39.34005000000002,
+    width = 34.080002, height = 1201.3199,
+    resource_name = 'c01s04/c01s04_edificio_costado_light_on.png',
+    render_at_start = true,
+    renderPriority = 111,
+  },
+  
+  c01s04_walk_behind_ambient_light = {
+    layer_name = 'walk_behind_highlights',
+    type = RESOURCE_TYPE_IMAGE,
+    x = 1.5000457999999526, y = -1.0,
+    width = 1917, height = 1278,
+    resource_name = 'c01s04/c01s04_walk_behind_ambient_light.png',
     render_at_start = true,
     renderPriority = 121,
   },

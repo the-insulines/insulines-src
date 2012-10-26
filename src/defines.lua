@@ -1030,26 +1030,23 @@ resources = {
   --
   -- ////////////////////////////////////////////////////////////
   
-  c01s03_background = {
-    type = RESOURCE_TYPE_IMAGE,
-    fileName = 'c01s03/c01s03_background.png',
-    width = 3999,
-    height = 3000,
+  c01s03_candle_light = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'c01s03/',
+    pivotX = 0,
+    pivotY = 0,
+    animations = {
+      c01s03_candlelight = {
+        fileName = 'c01s03_candle_light',
+        startFrame = 1,
+        frameCount = 6,
+        frameTime = 0.04,
+      },
+    },
+    width = 11, height = 16
   },
 
-  c01s03_background_trees = {
-    type = RESOURCE_TYPE_IMAGE,
-    fileName = 'c01s03/c01s03_arboles_fondo.png',
-    width = 4000,
-    height = 1673,
-  },
-  
-  c01s03_walkbehind_trees = {
-    type = RESOURCE_TYPE_IMAGE,
-    fileName = 'c01s03/c01s03_arboles_walk_behind.png',
-    width = 745,
-    height = 1137,
-  },
+
 }
 
 

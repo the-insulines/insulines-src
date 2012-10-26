@@ -4,6 +4,11 @@
 -- All Rights Reserved. 
 -- http://quov.is // http://theinsulines.com
 --==============================================================
+package.path = package.path .. ";src/rooms/?.lua"
+
+
+require 'c01s02_characters'
+
 
 c01s02 = room.new ( "c01s02" )
 

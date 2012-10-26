@@ -4,6 +4,12 @@
 -- All Rights Reserved. 
 -- http://quov.is // http://theinsulines.com
 --==============================================================
+package.path = package.path .. ";src/rooms/?.lua"
+
+
+require 'dialogs/c01s01_dialogs_definition'
+
+
 
 c01s01 = room.new ( "c01s01" )
 
@@ -16,6 +22,10 @@ c01s01.topCharacterZoomThreshold = -66
 
 c01s01.initialCameraPathNode = 'bed'
 c01s01.initialCharacterPathNode = 'movePoint'
+
+
+c01s01:loadConversations ( conversations )
+
 
 c01s01.characterMovement = false
 objects = {
