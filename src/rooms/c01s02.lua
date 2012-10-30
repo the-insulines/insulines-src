@@ -623,9 +623,8 @@ objects = {
             c01s02:stopRendering ( 'apartmentDoor' )
             c01s02:startRendering ( 'apartmentDoorOpened' )
             c01s02:unload ()
-            performWithDelay ( 100, game.loadScene, 1, game, c01s03 )
-            -- performWithDelay ( 100, game.loadScene, 1, game, thankYouScreen )
             
+            game:loadScene(map())
           end
           
         else
@@ -759,6 +758,7 @@ local path = {
   door = {
     position = point (-1538, -500),
     neighbors = { 'beforeDoor' },
+    offsets = { x = -850, y = 0, scl = 0.9 }
   },
   
   kitchenLeft = {

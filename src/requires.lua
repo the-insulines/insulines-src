@@ -28,6 +28,7 @@ require 'rooms/c01s01'
 require 'rooms/c01s02'
 require 'rooms/c01s03'
 require 'rooms/c01s04'
+require 'rooms/map'
 
 if DEBUG then
   require 'src/hud/debugHUD'

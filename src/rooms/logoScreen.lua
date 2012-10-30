@@ -21,7 +21,7 @@ function logoScreen ()
       onClick = function ()
         s:unload ()
         s.inputEnabled = false
-        performWithDelay ( 100, game.loadScene, 1, game, c01s01 )
+        game:loadScene(c01s01)
       end
     },
     

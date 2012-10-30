@@ -301,19 +301,15 @@ conversations = {
             "I guess.",
           },
           conditionsString = '',
+          userScript = function()
+            stateManager.dialogs.userVariables["SkipLoop"]= true
+          end,
           links = {
             {
               originConversationId = 1,
               destinationConversationId = 1,
               originDialogId = 12,
               destinationDialogId = 13,
-              isConnector = false,
-            },
-            {
-              originConversationId = 1,
-              destinationConversationId = 1,
-              originDialogId = 12,
-              destinationDialogId = 18,
               isConnector = false,
             },
           },
@@ -330,13 +326,6 @@ conversations = {
           },
           conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
           links = {
-            {
-              originConversationId = 1,
-              destinationConversationId = 1,
-              originDialogId = 13,
-              destinationDialogId = 3,
-              isConnector = true,
-            },
           },
         },
         dialog14 = {
