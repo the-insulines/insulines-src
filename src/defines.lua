@@ -12,7 +12,7 @@
 
 
 -- Enable sound
--- SOUND = true
+SOUND = true
 
 -- Locale
 LOCALE_LIST = {'es_AR', 'en_US'}
@@ -61,7 +61,7 @@ DIALOG_COLOR_FOR_CHARACTER = {
   main_character = { r = 0.36, g = 0.53, b = 0.77 },
   josh = { r = 0.36, g = 0.53, b = 0.77 },
   nancy = { r = 0.96, g = 0.52, b = 0.52 },
-  answering = { r = 0.52, g = 0.96, b = 0.52 },
+  ansaphone = { r = 0.52, g = 0.96, b = 0.52 },
   sonja = { r = 0.96, g = 0.52, b = 0.52 },
   klein = { r = 0.52, g = 0.96, b = 0.52 },
   paul = { r = 0.52, g = 0.96, b = 0.52 },

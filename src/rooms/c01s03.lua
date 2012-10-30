@@ -64,8 +64,6 @@ c01s03 = function ()
   
   c01s03_room:loadConversations ( conversations )
   
-  
-
   -- sounds = {
   -- }
   -- 

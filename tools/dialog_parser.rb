@@ -155,6 +155,7 @@ class DialogParser
     def updateUserScript(string)
     return '' if !string
     string.gsub!(/variable_(.*) =/, 'stateManager.dialogs.userVariables["\1"] =')
+    string.gsub!(/Variable\["(\w*)"\] /, 'stateManager.dialogs.userVariables["\1"]')
     string
   end
   

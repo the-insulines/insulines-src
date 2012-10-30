@@ -6,9 +6,8 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
-
 require 'c01s02_characters'
-
+require 'dialogs/c01s02_dialogs_definition'
 
 c01s02 = room.new ( "c01s02" )
 
@@ -23,7 +22,7 @@ c01s02.initialCharacterPathNode = 'joshDoor'
 
 c01s02.initialNancyPathNode = 'door'
 
-
+c01s01:loadConversations ( conversations )
 
 objects = {
   background = {
@@ -85,9 +84,6 @@ objects = {
     x = 1086,
     y = -427,
     render_at_start = true,
-    -- onClick = function ()
-    --   dialog:load('c01s02_tv')
-    -- end
   },
 
   television = {
@@ -100,7 +96,7 @@ objects = {
     priority = 10,
     highlight = true,
     onClick = function ()
-      dialog:load('c01s02_tv')
+      dialog:load('tv')
     end
   },
 
@@ -125,7 +121,7 @@ objects = {
       c01s02.objects.answering_machine.animation:stopCurrentAnimation()
       c01s02.objects.answering_machine.animation:startAnimation ( 'stopped' )
       c01s02.objects.answering_machine.answered = true
-      dialog:load("c01s02_answering_machine_message")
+      dialog:load("message")
     end
   },
   
@@ -153,7 +149,7 @@ objects = {
         -- Move character to bathroom
         c01s02:moveCharacterToNode('josh', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
       else
-        dialog:load('c01s02_bathroom_' .. math.random(2))
+        dialog:load('bathroom_' .. math.random(2))
       end
     end
   },
@@ -195,7 +191,7 @@ objects = {
     
       c01s02:stopRendering("bathroom_opened")
       c01s02:startRendering("bathroom_closed")
-      dialog:load('c01s02_leave_bathroom')
+      dialog:load('leave_bathroom')
       c01s02.inputEnabled = true
       c01s02.characterMovement = true
     end
@@ -359,7 +355,7 @@ objects = {
     hasWater = false,
     madeCoffee = false,
     onClick = function ()
-      dialog:load ( 'c01s02_coffee_maker' )
+      dialog:load ( 'coffeemaker' )
     end,
     prepareCoffee = function ( self )
       local fadeIn = function ()
@@ -393,7 +389,7 @@ objects = {
       end
       
       if item.key == 'coffeePotEmpty' then
-        dialog:load ( "c01s02_fill_coffee_pot_first" )
+        dialog:load ( "fill_coffee_pot_first" )
       end
       
       if item.key == 'coffeePotWater' then
@@ -489,7 +485,7 @@ objects = {
     y = 178,
     render_at_start = false,
     onClick = function ()
-      dialog:load('c01s02_coffee_pot_full')
+      dialog:load('cofeepot')
     end,
     renderPriority = 100
   },
@@ -503,7 +499,7 @@ objects = {
     render_at_start = false,
     
     onClick = function ()
-      dialog:load("c01s02_mug_full")
+      dialog:load("coffeemug")
       c01s02.objects.mug_full.animation:stopCurrentAnimation ()
       c01s02:stopRendering( 'mug_full' )
       c01s02:startRendering( 'mug_empty' )
@@ -518,7 +514,7 @@ objects = {
     y = 178,
     render_at_start = false,
     onClick = function ()
-      dialog:load("c01s02_stole_mug")
+      dialog:load("stole_mug")
     end
   },
   
@@ -551,7 +547,7 @@ objects = {
     
     onInteractionWith = function ( self, item )
       if c01s02.objects.coffeePotEmpty.water then
-        dialog:load("c01s02_coffee_pot_with_water")
+        dialog:load("coffee_pot_with_water")
       else
         
         if not c01s02.objects.sink.flowing then
@@ -614,7 +610,7 @@ objects = {
       c01s02:moveCharacterToNode('nancy', 'beforeDoor', c01s02.objects.apartmentDoor.closeDoor, c01s02)
       c01s02.objects.apartmentDoor.talkedToNancy = true
       
-      dialog:load('c01s02_nancy_intro')
+      dialog:load('nancy')
     end,
     onClick = function ()
       if c01s02.objects.apartmentDoor.pickedFlyer then
@@ -640,7 +636,7 @@ objects = {
         c01s02.objects.apartmentDoor.pickedFlyer = true
         c01s02:stopRendering('flyer')
         inventory:addItem('flyer', c01s02.objects.flyer)
-        dialog:load('c01s02_flyer')
+        dialog:load('flyer')
       end
     end,
     

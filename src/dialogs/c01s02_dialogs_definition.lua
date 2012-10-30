@@ -425,7 +425,7 @@ conversations = {
           },
           conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            Variable["SkipLoop"] = true
+            stateManager.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -452,7 +452,7 @@ conversations = {
           menuText = "",
           conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            Variable["SkipLoop"] = true
+            stateManager.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -501,7 +501,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            Variable["MessagePlayed"] = true
+            stateManager.dialogs.userVariables["MessagePlayed"]= true
           end,
           links = {
             {
@@ -588,7 +588,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            Variable["FreezerOptions"] = math.random(3)
+            stateManager.dialogs.userVariables["FreezerOptions"]= math.random(3)
           end,
           links = {
             {

@@ -232,8 +232,11 @@ function dialog:load ( conversationName )
     stateManager.dialogs[conversationName] = {}
   end
 
-  
-  self:loadDialogEntry(0)
+  if self.currentConversation then
+    self:loadDialogEntry(0)
+  else
+    print ("DIALOG MISSING: " .. conversationName)
+  end
 end
 
 

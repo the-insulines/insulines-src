@@ -6,13 +6,9 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
-
 require 'dialogs/c01s01_dialogs_definition'
 
-
-
 c01s01 = room.new ( "c01s01" )
-
 
 -- perspective attributes
 c01s01.frontCharacterZoom = 0.9
@@ -46,7 +42,7 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        dialog:load('c01s01_floyd')
+        dialog:load('spacestation')
       end
     end
   },
@@ -59,7 +55,7 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        dialog:load('c01s01_barbarullo')
+        dialog:load('barbarulo')
       end
     end
   },
@@ -242,7 +238,7 @@ objects = {
     y = -350,
     render_at_start = false,
     onClick = function ()
-      dialog:load("c01s01_laundry")
+      dialog:load("clothes")
     end
   },
   
@@ -254,7 +250,7 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        dialog:load("c01s01_never_sleeps")
+        dialog:load("window")
       end
     end
   },
@@ -267,7 +263,7 @@ objects = {
     render_at_start = true,
     onClick = function ()
       if c01s01.objects.cellphone.woke then
-        dialog:load('c01s01_duck')
+        dialog:load('duck')
       end
     end
   },
