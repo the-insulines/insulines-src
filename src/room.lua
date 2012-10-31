@@ -15,6 +15,8 @@ function new (name)
   room.useInventory = true
   room.useHighlights = true
   room.useDialogs = true
+  room.useMap = true
+  room.useCellphone = true
   room.fadeOnChange = true
   -- perspective attributes
   -- room.frontCharacterZoom = 0.8

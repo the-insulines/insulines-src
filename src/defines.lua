@@ -215,6 +215,18 @@ resources = {
   --   dpi = 160
   -- },
   
+  hud_map = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/map.png',
+    width = 89, height = 89,
+  },
+
+  hud_cellphone = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/cellphone.png',
+    width = 89, height = 89,
+  },
+
   inventory_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'hud/inventory_background.png', 

@@ -65,7 +65,7 @@ objects = {
       c01s01.initialCharacterPathNode = 'door'
       c01s01.initialCameraPathNode = 'door'
       
-      performWithDelay (100, game.loadScene, 1, game, c01s01)
+      game:loadScene(c01s01)
     end
   },
   
@@ -610,10 +610,11 @@ objects = {
       c01s02:moveCharacterToNode('nancy', 'beforeDoor', c01s02.objects.apartmentDoor.closeDoor, c01s02)
       c01s02.objects.apartmentDoor.talkedToNancy = true
       
+      stateManager.fair = true
       dialog:load('nancy')
     end,
     onClick = function ()
-      if c01s02.objects.apartmentDoor.pickedFlyer then
+      if stateManager.pickedFlyer then
         
         if c01s02.objects.bathroom_closed.visitedBathroom and c01s02.objects.coffeeMaker.hadCoffee then
         
@@ -632,9 +633,10 @@ objects = {
         end
       else
         -- pickup flyer
-        c01s02.objects.apartmentDoor.pickedFlyer = true
+        stateManager.pickedFlyer = true
         c01s02:stopRendering('flyer')
-        inventory:addItem('flyer', c01s02.objects.flyer)
+        mapHUD:show ()
+        -- inventory:addItem('flyer', c01s02.objects.flyer)
         dialog:load('flyer')
       end
     end,

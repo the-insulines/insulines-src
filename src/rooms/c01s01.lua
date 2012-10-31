@@ -100,7 +100,8 @@ objects = {
     
     wakingUp = function ()
       -- Get Cellphone
-      inventory:addItem ( "cellphone", c01s01.objects.cellphone )
+      stateManager.cellphonePicked = true
+      cellphoneHUD:show()
       c01s01:stopRendering ( "cellphone" )
       c01s01:startRendering ( "nightstand" )
       c01s01:stopRendering ( "josh_grabs_cellphone" )

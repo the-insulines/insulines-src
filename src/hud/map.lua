@@ -5,4 +5,54 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-module ( "map", package.seeall )
+module ( "mapHUD", package.seeall )
+
+layer = MOAILayer2D.new ()
+
+function mapHUD:initialize ( elements )
+  self.mapAsset = {} 
+  self.mapAsset.gfx = resource_cache.get ( 'hud_map' )
+  self.mapAsset.half_width = INVENTORY_BACKPACK_HALF_WIDTH
+  self.mapAsset.half_height = INVENTORY_BACKPACK_HALF_HEIGHT
+  self.mapAsset.gfx:setRect ( - self.mapAsset.half_width, - self.mapAsset.half_height, self.mapAsset.half_width, self.mapAsset.half_height)
+
+  -- Create prop
+  self.mapAsset.prop = MOAIProp2D.new ()
+  self.mapAsset.prop:setDeck ( self.mapAsset.gfx )
+  self.mapAsset.prop:setIndex ( 2 )
+  
+  -- We want to locate the icon 20px away top right corner, 64 is half the width of the icon.
+  self.mapAsset.x = INVENTORY_BACKPACK_POSITION_X - 3 * INVENTORY_BACKPACK_WIDTH - 60
+  self.mapAsset.y = INVENTORY_BACKPACK_POSITION_Y
+
+  self.mapAsset.prop:setLoc ( self.mapAsset.x, self.mapAsset.y )
+
+  if stateManager.flyerPicked then
+    self:show ()
+  end
+end
+
+function mapHUD:hide()
+  self.layer:removeProp ( self.mapAsset.prop )
+end
+
+function mapHUD:show()
+  self.layer:insertProp ( self.mapAsset.prop )
+end
+
+function mapHUD:onInput ()
+  local x, y = input_manager.getTouch ()
+    
+  if x and y then
+    x, y = self.layer:wndToWorld ( x, y )
+  end
+
+  if input_manager.down () then
+    -- If map was clicled open map
+    local mapX, mapY = self.mapAsset.prop:worldToModel ( x, y )
+    if (mapX >= -self.mapAsset.half_width) and (mapX <= self.mapAsset.half_width) and (mapY >= -self.mapAsset.half_height) and (mapY <= self.mapAsset.half_height) then
+      game:loadScene(map())
+      return true
+    end
+  end
+end

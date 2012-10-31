@@ -7,4 +7,4 @@
 
 module ( "stateManager", package.seeall )
 
-
+-- pickedFlyer = false

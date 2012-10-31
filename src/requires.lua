@@ -16,6 +16,8 @@ require 'characters'
 require 'hud/inventory'
 require 'hud/highlight'
 require 'hud/dialog'
+require 'hud/map'
+require 'hud/cellphone'
 require 'hud/hud'
 
 -- require 'dialogTree'

@@ -161,9 +161,7 @@ end
 
 
 function displayHUD ( self )
-  if not hud.initialized then
-    hud:initialize ()
-  end
+  hud:initialize ()
   
   for k, layer in pairs (hud.layers) do
     MOAIRenderMgr.removeRenderPass ( layer )
