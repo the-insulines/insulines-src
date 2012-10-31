@@ -39,21 +39,50 @@ c01s03 = function ()
   c01s03_room.hasExternalAssets = true
   
   
+  -- Room specific attributes
+  c01s03_room.lampLightOn = 5
+  c01s03_room.nextLampLight = -1
+  
+  
   -- Scene objects
+  c01s03_room:addObjects ( objects )
   
   externalObjects = {
-    c01s03_candle_light = {
+    c01s03_candle_light1 = {
+      externalAsset = true,
       resource_name = "c01s03_candle_light",
       layer_name = "objects",
-      x = 0,
-      y = 0,
+      x = 408,
+      y = 26,
       render_at_start = true,
       animated = true,
-    }
+      renderPriority = 100,
+    },
+    
+    c01s03_candle_light2 = {
+      externalAsset = true,
+      resource_name = "c01s03_candle_light",
+      layer_name = "objects",
+      x = 90,
+      y = -18,
+      render_at_start = true,
+      animated = true,
+      renderPriority = 100,
+    },
+    
+    c01s03_candle_light3 = {
+      externalAsset = true,
+      resource_name = "c01s03_candle_light",
+      layer_name = "objects",
+      x = 106,
+      y = -38,
+      render_at_start = true,
+      animated = true,
+      renderPriority = 100,
+    },
   }
   
-  c01s03_room:addObjects ( objects )
-  -- c01s03_room:addObjects ( externalObjects )
+  c01s03_room:addObjects ( externalObjects )
   
   
   -- Load path and place objects on it
@@ -91,10 +120,28 @@ c01s03 = function ()
     self.objects.paul:startAnimation ( 'stand' )
     self.objects.pete:startAnimation ( 'stand' )
     
-    -- self.objects.c01s03_candle_light:startAnimation ( 'c01s03_candlelight' )
+    self.objects.c01s03_candle_light1.animation:startAnimation ( 'c01s03_candlelight' )
+    self.objects.c01s03_candle_light2.animation:startAnimation ( 'c01s03_candlelight' )
+    self.objects.c01s03_candle_light3.animation:startAnimation ( 'c01s03_candlelight' )
   end
 
   function c01s03_room:afterInitialize ()
+    performWithDelay ( 50, self.lampsLightAnimation, 0, self )
+  end
+  
+  
+  function c01s03_room:lampsLightAnimation ()
+    self:stopRendering ( 'c01s03_lamp_piso_light' .. self.lampLightOn )
+    
+    self.lampLightOn = self.lampLightOn + self.nextLampLight
+    
+    self:startRendering ( 'c01s03_lamp_piso_light' .. self.lampLightOn )
+    
+    if self.lampLightOn == 1 then
+      self.nextLampLight = 1
+    elseif self.lampLightOn == 5 then
+      self.nextLampLight = -1
+    end
   end
   
   

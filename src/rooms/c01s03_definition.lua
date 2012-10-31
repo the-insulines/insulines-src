@@ -143,10 +143,10 @@ objects = {
   c01s03_lamp_5 = {
     layer_name = 'objects',
     type = RESOURCE_TYPE_IMAGE,
-    x = 753.0284750000001, y = -41.85991999999996,
+    x = 933.0284750000001, y = -51.85991999999996,
     width = 92.43615, height = 229.41406,
     resource_name = 'c01s03/c01s03_lamp_5.png',
-    render_at_start = false,
+    render_at_start = true,
     renderPriority = 141,
   },
   
@@ -226,7 +226,7 @@ objects = {
     x = 434.49437000000006, y = -360.27252,
     width = 113.03074, height = 195.40906,
     resource_name = 'c01s03/c01s03_lamp_piso_light1.png',
-    render_at_start = true,
+    render_at_start = false,
     renderPriority = 221,
   },
   
@@ -236,7 +236,7 @@ objects = {
     x = 490.65467, y = -388.362475,
     width = 147.03574, height = 186.78807,
     resource_name = 'c01s03/c01s03_lamp_piso_light2.png',
-    render_at_start = true,
+    render_at_start = false,
     renderPriority = 231,
   },
   
@@ -246,7 +246,7 @@ objects = {
     x = 571.93417, y = -423.19659999999993,
     width = 165.71454, height = 193.4933,
     resource_name = 'c01s03/c01s03_lamp_piso_light3.png',
-    render_at_start = true,
+    render_at_start = false,
     renderPriority = 241,
   },
   
@@ -256,7 +256,7 @@ objects = {
     x = 662.909195, y = -452.2053450000001,
     width = 207.86159, height = 189.18279,
     resource_name = 'c01s03/c01s03_lamp_piso_light4.png',
-    render_at_start = true,
+    render_at_start = false,
     renderPriority = 251,
   },
   
@@ -266,7 +266,7 @@ objects = {
     x = 758.6931950000001, y = -475.447635,
     width = 216.48259, height = 161.40407,
     resource_name = 'c01s03/c01s03_lamp_piso_light5.png',
-    render_at_start = true,
+    render_at_start = false,
     renderPriority = 261,
   },
   

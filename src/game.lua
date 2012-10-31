@@ -57,7 +57,8 @@ function initialize ( self )
   end
   
   self:loadScene ( logoScreen() )
-  --self:loadScene ( map() )
+  -- self:loadScene ( c01s01 )
+  -- self:loadScene ( c01s03() )
 end
 
 function game:sceneLoaded (scene)

@@ -116,7 +116,7 @@ function loadAllAnimationFrames ( allAnimationsLocation, allAnimationsAttributes
       animations[animationName] = animation
     end
   end
-
+  
   -- load sounds
   if allAnimationsAttributes.sounds then    
     for animationName, sounds in pairs ( allAnimationsAttributes.sounds ) do
@@ -133,7 +133,7 @@ end
 function loadAnimationFrames ( animationPath, animationAttributes, defaultAttributes )
   -- load either the animation-specific or default attributes
   local imageAttributes = animationAttributes
-
+  
   if imageAttributes.width == nil or imageAttributes.height == nil then
     imageAttributes = defaultAttributes
   end
