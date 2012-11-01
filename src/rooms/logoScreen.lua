@@ -18,13 +18,38 @@ function logoScreen ()
       x = 0,
       y = 0,
       render_at_start = true,
+      avoid_clicks = true,
+    },
+    
+    newGameButton = {
+      resource_name = 'mainScreenNewGameButton',
+      layer_name = 'objects',
+      x = -700,
+      y = 400,
+      render_at_start = true,
       onClick = function ()
+        if stateManager.state == nil then
+          stateManager:newState ()
+        end
         s:unload ()
         s.inputEnabled = false
         game:loadScene(c01s01)
-      end
+      end,
     },
     
+    continueButton = {
+      resource_name = 'mainScreenContinueButton',
+      layer_name = 'objects',
+      x = 700,
+      y = 400,
+      render_at_start = false,
+      onClick = function ()
+        stateManager:loadState ()
+        s:unload ()
+        s.inputEnabled = false
+        game:loadSceneNamed(stateManager.state.currentScene)
+      end,
+    },
     
   }
 
@@ -32,6 +57,10 @@ function logoScreen ()
 
   function s:beforeInitialize ()
     self:loadObjects ()
+    
+    if stateManager:savedStateExists () then
+      self:startRendering( 'continueButton' )
+    end
   end
 
   function s:afterInitialize ()

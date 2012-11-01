@@ -27,7 +27,7 @@ function cellphoneHUD:initialize ( elements )
 
   self.cellphoneAsset.prop:setLoc ( self.cellphoneAsset.x, self.cellphoneAsset.y )
 
-  if stateManager.cellphonePicked then
+  if stateManager.state.cellphonePicked then
     self:show ()
   end
 end

@@ -27,7 +27,7 @@ function mapHUD:initialize ( elements )
 
   self.mapAsset.prop:setLoc ( self.mapAsset.x, self.mapAsset.y )
 
-  if stateManager.flyerPicked then
+  if stateManager.state.flyerPicked then
     self:show ()
   end
 end

@@ -610,11 +610,11 @@ objects = {
       c01s02:moveCharacterToNode('nancy', 'beforeDoor', c01s02.objects.apartmentDoor.closeDoor, c01s02)
       c01s02.objects.apartmentDoor.talkedToNancy = true
       
-      stateManager.fair = true
+      stateManager.state.fair = true
       dialog:load('nancy')
     end,
     onClick = function ()
-      if stateManager.pickedFlyer then
+      if stateManager.state.pickedFlyer then
         
         if c01s02.objects.bathroom_closed.visitedBathroom and c01s02.objects.coffeeMaker.hadCoffee then
         
@@ -633,7 +633,7 @@ objects = {
         end
       else
         -- pickup flyer
-        stateManager.pickedFlyer = true
+        stateManager.state.pickedFlyer = true
         c01s02:stopRendering('flyer')
         mapHUD:show ()
         -- inventory:addItem('flyer', c01s02.objects.flyer)

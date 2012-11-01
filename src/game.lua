@@ -20,11 +20,38 @@ autoFollow = true
 
 gameRunning = true
 
-function game:loadScene ( scene )
+game.scenes = {
+  c01s01 = function ()
+    return c01s01
+  end,
+  c01s02 = function ()
+    return c01s02
+  end,
+  c01s03 = function ()
+    return c01s03()
+  end,
+  c01s04 = function ()
+    return c01s04()
+  end,
+}
 
+
+function game:loadSceneNamed ( sceneName )
+  self:loadScene ( self.scenes[sceneName]() )
+end
+
+
+function game:loadScene ( scene )
+  
   -- Cache scene
   self.currentScene = scene
-
+  
+  -- Save the current state when changing scenes, except the first one where the state hasn't yet been loaded
+  if scene.name ~= 'logoScreen' then
+    stateManager.state.currentScene = self.currentScene.name
+    stateManager:saveState ()
+  end
+  
   -- Show loading screen
   loadingScreen:setup(scene.objectsCount)
   coroutine.yield ()
@@ -120,7 +147,7 @@ function start ( self )
   -- self.cameraThread:run ( cameraAnimation )
   
   -- Game loop
-  -- If there is a scene loaded we gather input and update everyhing
+  -- If there is a scene loaded we gather input and update everything
   while self.gameRunning do
     local stopInput = false
 

@@ -51,7 +51,7 @@ conversations = {
             " I swear to God, I’m going to grab a pound of sugar and go all Tony Montana on your ass, you -",
             " Oh, it’s just you.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== false',
           links = {
             {
               originConversationId = 1,
@@ -302,7 +302,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.state.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -324,7 +324,7 @@ conversations = {
             "By all means, make yourself at home.",
             " There’s fresh coffee in the kitchen.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== true',
           links = {
           },
         },
@@ -412,9 +412,9 @@ conversations = {
           dialogueText = {
             "Hey, what's this?",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.state.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -439,9 +439,9 @@ conversations = {
           actor = 'ansaphone',
           conversant = 'josh',
           menuText = "",
-          conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.state.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -490,7 +490,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["MessagePlayed"]= true
+            stateManager.state.dialogs.userVariables["MessagePlayed"]= true
           end,
           links = {
             {
@@ -518,7 +518,7 @@ conversations = {
           dialogueText = {
             "Hmm...",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== false',
           links = {
           },
         },
@@ -531,7 +531,7 @@ conversations = {
           dialogueText = {
             "Anyway...",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== true',
           links = {
             {
               originConversationId = 2,
@@ -577,7 +577,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["FreezerOptions"]= math.random(3)
+            stateManager.state.dialogs.userVariables["FreezerOptions"]= math.random(3)
           end,
           links = {
             {
@@ -629,7 +629,7 @@ conversations = {
           dialogueText = {
             "This reminds me of a postcard from Siberia I saw once. But bleaker.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["FreezerOptions"]== 1',
+          conditionsString = 'stateManager.state.dialogs.userVariables["FreezerOptions"]== 1',
           links = {
           },
         },
@@ -642,7 +642,7 @@ conversations = {
           dialogueText = {
             "I may not be an expert, but I don’t think this is what they mean by “Insulin Dependency”.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["FreezerOptions"]== 2',
+          conditionsString = 'stateManager.state.dialogs.userVariables["FreezerOptions"]== 2',
           links = {
           },
         },
@@ -655,7 +655,7 @@ conversations = {
           dialogueText = {
             "The emptiest, saddest fridge I ever did see.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["FreezerOptions"]== 3',
+          conditionsString = 'stateManager.state.dialogs.userVariables["FreezerOptions"]== 3',
           links = {
           },
         },

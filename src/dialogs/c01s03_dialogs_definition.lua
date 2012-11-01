@@ -453,7 +453,7 @@ conversations = {
           dialogueText = {
             "Say, could you make a bottle that resembled a specific brand?",
           },
-          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus ~= "WasDisplayed" and stateManager.dialogs.userVariables["Janxx"]== true',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog19.SimStatus ~= "WasDisplayed" and stateManager.state.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 1,
@@ -1207,7 +1207,7 @@ conversations = {
           dialogueText = {
             "What can you tell me about That Ol’ Janxx Spirits?",
           },
-          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus ~= "WasDisplayed" and stateManager.dialogs.userVariables["Janxx"]== true',
+          conditionsString = 'dialog.currentConversation.dialogEntries.dialog22.SimStatus ~= "WasDisplayed" and stateManager.state.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 2,
@@ -3292,9 +3292,9 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc1"] = false
-stateManager.dialogs.userVariables["Desc2"] = false
-stateManager.dialogs.userVariables["Desc3"] = false
+            stateManager.state.dialogs.userVariables["Desc1"] = false
+stateManager.state.dialogs.userVariables["Desc2"] = false
+stateManager.state.dialogs.userVariables["Desc3"] = false
           end,
           links = {
             {
@@ -3355,7 +3355,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc1"] = true
+            stateManager.state.dialogs.userVariables["Desc1"] = true
           end,
           links = {
             {
@@ -3496,7 +3496,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc2"] = true
+            stateManager.state.dialogs.userVariables["Desc2"] = true
           end,
           links = {
             {
@@ -3657,7 +3657,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc3"] = true
+            stateManager.state.dialogs.userVariables["Desc3"] = true
           end,
           links = {
             {
@@ -3725,7 +3725,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           dialogueText = {
             "Ach! Doesn’t ring a bell, sorry.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== false or stateManager.dialogs.userVariables["Desc2"]== false or stateManager.dialogs.userVariables["Desc3"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Desc1"]== false or stateManager.state.dialogs.userVariables["Desc2"]== false or stateManager.state.dialogs.userVariables["Desc3"]== false',
           links = {
             {
               originConversationId = 4,
@@ -3747,7 +3747,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.",
             " Fortunately for us he seems to be absent today.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== true and stateManager.dialogs.userVariables["Desc2"]== true and stateManager.dialogs.userVariables["Desc3"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Desc1"]== true and stateManager.state.dialogs.userVariables["Desc2"]== true and stateManager.state.dialogs.userVariables["Desc3"]== true',
           links = {
             {
               originConversationId = 4,
@@ -3940,7 +3940,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Bottle"] = math.random(4)
+            stateManager.state.dialogs.userVariables["Bottle"] = math.random(4)
           end,
           links = {
             {
@@ -3984,7 +3984,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
             " A high-yield tetra-lampe, both stand and shade made from vintage red-wine tetra packs.",
             " Perfect for the avant-retro-kitsch deco scene connoisseur.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 1',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Bottle"]== 1',
           links = {
             {
               originConversationId = 4,
@@ -4004,7 +4004,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           dialogueText = {
             "Got anything with an Ol’ Janxx Spirits Bottle?",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Janxx"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Janxx"]== true',
           links = {
             {
               originConversationId = 4,
@@ -4439,7 +4439,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "Nothing says “class” like a fine champagne.",
             " Likewise, this 1978 Don Pomeranian bedside lamp is really the only choice if you are looking to jazz up your boudoir atmosphere.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 2',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Bottle"]== 2',
           links = {
             {
               originConversationId = 4,
@@ -4501,7 +4501,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "How about this inverted Lady Joanne Lamp-de-Pie?",
             " A handful of LEDs inside an upended 2 gallon amber glass jug, it provides a soft luminescence not unlike a fire in a dye warehouse.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 3',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Bottle"]== 3',
           links = {
             {
               originConversationId = 4,
@@ -4521,7 +4521,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           dialogueText = {
             "Show off your celtic heritage with this single-malt whiskey lamp, with matching sheepskin and tam-o-shanter shade!",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Bottle"]== 4',
+          conditionsString = 'stateManager.state.dialogs.userVariables["Bottle"]== 4',
           links = {
             {
               originConversationId = 4,

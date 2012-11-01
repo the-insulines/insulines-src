@@ -15,7 +15,7 @@ function dialog:loadConversations(conversations_definition)
   -- Load all user variables
   if self.conversations.userVariables then
     for name, info in pairs(self.conversations.userVariables) do
-      stateManager.dialogs.userVariables[name] = info.initialValue 
+      stateManager.state.dialogs.userVariables[name] = info.initialValue 
     end
   end
 end
@@ -34,8 +34,8 @@ function initialize ( self )
   end
   
   -- If there is no dialogs table in state manager, create it
-  if not stateManager.dialogs then 
-    stateManager.dialogs = {
+  if not stateManager.state.dialogs then
+    stateManager.state.dialogs = {
       userVariables = {}
     }
   end
@@ -228,8 +228,8 @@ function dialog:load ( conversationName )
   self.currentConversation = self.conversations[conversationName]
   
   -- If state manager didn't have the namespace for this conversation, create it.
-  if not stateManager.dialogs[conversationName] then
-    stateManager.dialogs[conversationName] = {}
+  if not stateManager.state.dialogs[conversationName] then
+    stateManager.state.dialogs[conversationName] = {}
   end
 
   if self.currentConversation then

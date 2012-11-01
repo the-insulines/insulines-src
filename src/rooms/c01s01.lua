@@ -100,7 +100,7 @@ objects = {
     
     wakingUp = function ()
       -- Get Cellphone
-      stateManager.cellphonePicked = true
+      stateManager.state.cellphonePicked = true
       cellphoneHUD:show()
       c01s01:stopRendering ( "cellphone" )
       c01s01:startRendering ( "nightstand" )
@@ -302,6 +302,7 @@ objects = {
         c01s02.initialCharacterPathNode = 'joshDoor'
 
         -- performWithDelay (100, game.loadScene, 1, game, c01s02)
+        
         game:loadScene(c01s02)     
       end
     end

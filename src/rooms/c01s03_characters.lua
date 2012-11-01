@@ -39,6 +39,7 @@ paul.pathNode = 'pete_and_paul'
 paul.avoid_clicks = false
 paul.onClick = function ()
   josh:lookAt ( paul:getPosition () )
+  paul:startAnimation ( 'blink' )
   dialog:load ( 'wardrobe' )
 end
 

@@ -6,8 +6,8 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
-stateManager.map = {}
-stateManager.map = { venue = false }
+stateManager.state.map = {}
+stateManager.state.map = { venue = false }
 
 map = function ()
   
@@ -36,13 +36,13 @@ map = function ()
   
   function map_room:afterInitialize ()
 
-    if stateManager.fair then
+    if stateManager.state.fair then
       self:startRendering('fair')
     else
       self:stopRendering('fair')
     end
 
-    if stateManager.venue then
+    if stateManager.state.venue then
       self:startRendering('venue')
     else
       self:stopRendering('venue')
