@@ -36,6 +36,7 @@ function game:loadScene ( scene )
     -- Reset scene
     scene:resetCamera ()
     scene:resetCharacter ()
+    scene:loadConversations ()
   end
   
   self:sceneLoaded (scene)

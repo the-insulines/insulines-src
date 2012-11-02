@@ -7,7 +7,14 @@
 package.path = package.path .. ";src/rooms/?.lua"
 
 require 'c01s02_characters'
-require 'dialogs/c01s02_dialogs_definition'
+
+if LANGUAGE=="es" then
+  require 'dialogs/c01s02_es_dialogs_definition'
+else  
+  require 'dialogs/c01s02_dialogs_definition'
+end
+
+
 
 c01s02 = room.new ( "c01s02" )
 
@@ -22,7 +29,7 @@ c01s02.initialCharacterPathNode = 'joshDoor'
 
 c01s02.initialNancyPathNode = 'door'
 
-c01s01:loadConversations ( conversations )
+c01s02:loadConversations ( conversations )
 
 objects = {
   background = {
@@ -191,7 +198,7 @@ objects = {
     
       c01s02:stopRendering("bathroom_opened")
       c01s02:startRendering("bathroom_closed")
-      dialog:load('leave_bathroom')
+      dialog:load('left_bathroom')
       c01s02.inputEnabled = true
       c01s02.characterMovement = true
     end
@@ -625,7 +632,8 @@ objects = {
             c01s02:startRendering ( 'apartmentDoorOpened' )
             c01s02:unload ()
             
-            game:loadScene(map())
+            --game:loadScene(map())
+            game:loadScene(thankYouScreen)
           end
           
         else
@@ -643,11 +651,11 @@ objects = {
     
     dialogRequirements = function ( self )
       if not c01s02.objects.bathroom_closed.visitedBathroom and not c01s02.objects.coffeeMaker.hadCoffee then
-        dialog:load('c01s02_bathroom_and_coffee')
+        dialog:load('bathroom_and_coffee')
       elseif not c01s02.objects.bathroom_closed.visitedBathroom then
-        dialog:load('c01s02_bathroom')
+        dialog:load('bathroom')
       else
-        dialog:load('c01s02_coffee')
+        dialog:load('coffee')
       end
     
     end
