@@ -9,7 +9,7 @@ DEFAULT_ASSETS_PATH = '../insulines-gfx/'
 -- SOUND_ENGINE = 'fmod'
 -- SOUND_ENGINE = 'untz'
 
-LANGUAGE = 'es'
+-- LANGUAGE = 'es'
 
 SCREEN_RESOLUTION_X = 960
 SCREEN_RESOLUTION_Y = 640

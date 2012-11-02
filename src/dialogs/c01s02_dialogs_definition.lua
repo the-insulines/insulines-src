@@ -47,9 +47,9 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "Bobby! You stood me up last night, you Jerk!",
-            " I swear to God, I’m going to grab a pound of sugar and go all Tony Montana on your ass, you -",
-            " Oh, it’s just you.",
+            "Bobby! You stood me up last night, you jerk!",
+            "I swear to God, I’m going to grab a pound of sugar and go all Tony Montana on your ass, you -",
+            "Oh, it’s just you.",
           },
           conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== false',
           links = {
@@ -69,7 +69,7 @@ conversations = {
           conversant = 'nancy',
           menuText = "",
           dialogueText = {
-            "Good Morning to you too, Nancy.",
+            "Good morning to you too, Nancy.",
           },
           conditionsString = '',
           links = {
@@ -155,7 +155,7 @@ conversations = {
           menuText = "",
           dialogueText = {
             "Please, spare me the drama.",
-            " I’m only looking for Bobby.",
+            "I’m only looking for Bobby.",
           },
           conditionsString = '',
           links = {
@@ -175,7 +175,7 @@ conversations = {
           conversant = 'nancy',
           menuText = "",
           dialogueText = {
-            "Well, he ain't here.",
+            "Well, he ain’t here.",
           },
           conditionsString = '',
           links = {
@@ -196,7 +196,7 @@ conversations = {
           menuText = "What’s this all about?",
           dialogueText = {
             "What’s this all about?",
-            " I thought you and Bob had a gig to go to last night.",
+            "I thought you and Bob had a gig to go to last night.",
           },
           conditionsString = 'dialog.currentConversation.dialogEntries.dialog7.SimStatus ~= "WasDisplayed"',
           links = {
@@ -217,8 +217,8 @@ conversations = {
           menuText = "",
           dialogueText = {
             "Not that it’s any of your business anymore, but yeah, we did.",
-            " At least until that insulin-dependant wetback friend of yours left me hangin mid concert.",
-            " Oh, he’s got another thing coming when I get my hands on him...",
+            "At least until that insulin-dependant wetback friend of yours left me hangin’ mid concert.",
+            "Oh, he’s got another thing coming when I get my hands on him...",
           },
           conditionsString = '',
           links = {
@@ -278,7 +278,7 @@ conversations = {
           conversant = 'nancy',
           menuText = "So you are just going to wait?",
           dialogueText = {
-            "So you are just going to wait him out? Here?",
+            "So you are just going to wait for him? Here?",
           },
           conditionsString = 'dialog.currentConversation.dialogEntries.dialog7.SimStatus == "WasDisplayed"',
           links = {
@@ -302,7 +302,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.dialogs.userVariables["SkipLoop"]= true;
           end,
           links = {
             {
@@ -322,7 +322,7 @@ conversations = {
           menuText = "",
           dialogueText = {
             "By all means, make yourself at home.",
-            " There’s fresh coffee in the kitchen.",
+            "There’s fresh coffee in the kitchen.",
           },
           conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
           links = {
@@ -356,7 +356,7 @@ conversations = {
           menuText = "",
           dialogueText = {
             "Oh, that’s so sweet of you Josh. Thanks!",
-            " You look like shit yourself, too.",
+            "You look like shit yourself, too.",
           },
           conditionsString = '',
           links = {
@@ -397,33 +397,10 @@ conversations = {
           menuText = "I'd love to stay, but...",
           dialogueText = {
             "Well, I’d love to stay and chat, but I’d rather chance I get run over by a bus.",
-            " Bye.",
+            "Bye.",
           },
           conditionsString = 'dialog.currentConversation.dialogEntries.dialog11.SimStatus == "WasDisplayed"',
           links = {
-          },
-        },
-        dialog18 = {
-          isRoot = false,
-          isGroup = false,
-          actor = 'nancy',
-          conversant = 'josh',
-          menuText = "",
-          dialogueText = {
-            "Hey, what's this?",
-          },
-          conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
-          userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
-          end,
-          links = {
-            {
-              originConversationId = 1,
-              destinationConversationId = 2,
-              originDialogId = 18,
-              destinationDialogId = 0,
-              isConnector = true,
-            },
           },
         },
     },
@@ -461,10 +438,10 @@ conversations = {
           menuText = "",
           dialogueText = {
             "This is a message for Mr. Sanchez from Dr. Porta’s office.",
-            " Mr. Sanchez has once again missed his appointment for his check-up this morning.",
-            " Please have him call us at his earliest convenience to reschedule.",
-            " I shouldn’t have to stress how important regular controls are for an individual with his condition,",
-            " so please contact Dr. Porta immediately.",
+            "Mr. Sanchez has once again missed his appointment for his check-up this morning.",
+            "Please have him call us at his earliest convenience to reschedule.",
+            "I shouldn’t have to stress how important regular controls are for an individual with his condition,",
+            "so please contact Dr. Porta immediately.",
           },
           conditionsString = '',
           links = {
@@ -485,8 +462,8 @@ conversations = {
           menuText = "",
           dialogueText = {
             "Wow, she sounds pretty steamed.",
-            " Then again, Bobby rarely bother to check his glucose levels before shooting up...",
-            " So why would I expect him to keep a doctor’s appointment?",
+            "Then again, Bobby rarely bothers to check his glucose levels before shooting up...",
+            "So why would I expect him to keep a doctor’s appointment?",
           },
           conditionsString = '',
           userScript = function()
@@ -690,7 +667,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "A Frozen, Barren Wasteland.",
+            "A frozen, barren wasteland.",
           },
           conditionsString = '',
           links = {
@@ -727,7 +704,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "The Finest and Least Expensive Coffee from the Nearest Convenience Store.",
+            "The finest and least expensive coffee from the nearest convenience store.",
           },
           conditionsString = '',
           links = {
@@ -764,8 +741,8 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "Ah, The Trusty Caffeinator 3000.",
-            " A wondrous device that magically transforms plain water and ground beans into liquid energy.",
+            "Ah, the trusty Caffeinator 3000.",
+            "A wondrous device that magically transforms plain water and ground beans into liquid energy.",
           },
           conditionsString = '',
           links = {
@@ -802,7 +779,7 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "A Pot of Bile-Tasting Sludge.",
+            "A pot of bile-tasting sludge.",
           },
           conditionsString = '',
           links = {
@@ -839,8 +816,8 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "That’s the nastiest Cup of Joe I’ve ever tasted.",
-            " And I’ve been to Europe.",
+            "That’s the nastiest cup of joe I’ve ever tasted.",
+            "And I’ve been to Europe.",
           },
           conditionsString = '',
           links = {
@@ -897,8 +874,8 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "I’ll have to give a stern talk to Bobby about proper Toilet Etiquette.",
-            " Again.",
+            "I’ll have to give a stern talk to Bobby about proper toilet etiquette.",
+            "Again.",
           },
           conditionsString = 'dialog.currentConversation.dialogEntries.dialog1.SimStatus == "WasDisplayed"',
           links = {
@@ -935,12 +912,419 @@ conversations = {
           conversant = 'josh',
           menuText = "",
           dialogueText = {
-            "“Yard Sale Fair at Town Square - Our junk could be your Treasure”.",
-            " I must have left this here to remember... Something.",
-            " Oh, that’s right!",
-            " The LPs Guy... What was his name?",
-            " Bah, I’ll find him here I guess.",
-            " Hey! It even has a small map of town with the Fair marked down!",
+            "“Yard sale fair at Town Square - Our junk could be your treasure”.",
+            "I must have left this here to remember... Something.",
+            "Oh, that’s right!",
+            "The LPs guy... What was his name?",
+            "Bah, I’ll find him here, I guess.",
+            "Hey! It even has a small map of town with the fair marked on it!",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  locked = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 11,
+              destinationConversationId = 11,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "It’s locked.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  tv = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 12,
+              destinationConversationId = 12,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "57 channels and nothing on.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  left_bathroom = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 13,
+              destinationConversationId = 13,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "Believe me, you didn’t want to see the inside of that.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  bathroom_1 = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 14,
+              destinationConversationId = 14,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "Once is plenty, thanks.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  bathroom_2 = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 15,
+              destinationConversationId = 15,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "I’ll have to give a stern talk to Bobby about toilet etiquette. Again.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  coffee_pot_with_water = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 16,
+              destinationConversationId = 16,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "I already filled the coffee pot.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  fill_coffee_pot_first = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 17,
+              destinationConversationId = 17,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "I should fill the coffee pot first.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  stole_mug = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 18,
+              destinationConversationId = 18,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "I sort of stole that mug from a random game development studio.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  bathroom = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 19,
+              destinationConversationId = 19,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "I’m not about to start my day with zombie breath. Nobody deserves something that bad.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  coffee = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 20,
+              destinationConversationId = 20,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "I don’t think I’m truly ready to face humanity unless I’ve had something to wake up fully.",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
+  bathroom_and_coffee = {
+    actor = 'josh',
+    conversant = 'josh',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 21,
+              destinationConversationId = 21,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "No toothbrush, no coffee... no morning. That’s the way it is.",
           },
           conditionsString = '',
           links = {
