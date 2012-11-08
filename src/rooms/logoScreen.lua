@@ -7,7 +7,7 @@
 
 function logoScreen ()
   local s = room.new ( "logoScreen" )
-  s.hud = false
+  s.shouldShowHud = false
   s.inputEnabled = true
   s.characterMovement = false
 
@@ -19,9 +19,8 @@ function logoScreen ()
       y = 0,
       render_at_start = true,
       onClick = function ()
-        s:unload ()
         s.inputEnabled = false
-        game:loadScene(c01s01)
+        game:switchToScene ( c01s01 )
       end
     },
     

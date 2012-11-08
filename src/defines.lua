@@ -1103,9 +1103,11 @@ function tabs (n)
   return result
 end
 
-function debug_line ()
+function debugLine ()
   print ('-------------------------------')
 end
+
+
 function performWithDelay ( delay, func, repeats, ... )
   local t = MOAITimer.new ()
   t:setSpan ( delay/100 )
@@ -1125,6 +1127,16 @@ function performWithDelay ( delay, func, repeats, ... )
   end
   )
   t:start ()
+end
+
+
+function sleepCoroutine ( time )
+  -- time is measured as hundredth of a second
+  
+  local timer = MOAITimer.new ()
+  timer:setSpan ( time/100 )
+  timer:start ()
+  MOAICoroutine.blockOnAction ( timer )
 end
 
 

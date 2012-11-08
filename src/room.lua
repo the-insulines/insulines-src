@@ -11,7 +11,7 @@ function new (name)
   local room = {}
   
   room.name = name
-  room.hud = true
+  room.shouldShowHud = true
   room.useInventory = true
   room.useHighlights = true
   room.useDialogs = true
@@ -343,13 +343,14 @@ function new (name)
 
   function room:fadeOut ( time )
     if not time then time = 1 end
-    for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
-      layer:seekColor ( 0, 0, 0, 0, time)
+    
+    for k, layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
+      layer:seekColor ( 0, 0, 0, 1, time/100 )
     end
   end
   
-
-  function room:fadeIn ( )
+  
+  function room:fadeIn ()
     for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
       layer:seekColor ( 1, 1, 1, 1, 1)
     end
@@ -396,16 +397,6 @@ function new (name)
       self.theme_song:stop ()
     end
   end  
-  
-  
-  function room:unload ()
-    if self.fadeOnChange then
-      self:fadeOut ()
-      performWithDelay ( 100, self.removeLayers, 1, self)
-    else
-      self:removeLayers ()
-    end
-  end
   
   
   function room:removeLayers ()

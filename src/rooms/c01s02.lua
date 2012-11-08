@@ -60,12 +60,10 @@ objects = {
     y = -10,
     render_at_start = true,
     onClick = function ()
-      c01s02:unload ()
-      
       c01s01.initialCharacterPathNode = 'door'
       c01s01.initialCameraPathNode = 'door'
       
-      game:loadScene(c01s01)
+      game:switchToScene ( c01s01 )
     end
   },
   
@@ -623,9 +621,8 @@ objects = {
           else
             c01s02:stopRendering ( 'apartmentDoor' )
             c01s02:startRendering ( 'apartmentDoorOpened' )
-            c01s02:unload ()
             
-            game:loadScene(map())
+            game:switchToScene ( map () )
           end
           
         else
