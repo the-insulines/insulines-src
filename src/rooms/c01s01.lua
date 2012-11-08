@@ -6,7 +6,11 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
-require 'dialogs/c01s01_dialogs_definition'
+if LANGUAGE=="es" then
+  require 'dialogs/c01s01_es_dialogs_definition'
+else  
+  require 'dialogs/c01s01_dialogs_definition'
+end
 
 c01s01 = room.new ( "c01s01" )
 
@@ -18,7 +22,6 @@ c01s01.topCharacterZoomThreshold = -66
 
 c01s01.initialCameraPathNode = 'bed'
 c01s01.initialCharacterPathNode = 'movePoint'
-
 
 c01s01:loadConversations ( conversations )
 

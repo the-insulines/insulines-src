@@ -207,7 +207,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Bobby! You stood me up last night, you jerk!|I swear to God, I’m going to grab a pound of sugar and go all Tony Montana on your ass, you -|Oh, it’s just you.</Value>
+                <Value>¡Bobby! ¡Me dejaste plantada anoche, imbécil!|Juro por Dios, tomaré un kilo de azúcar y lo usaré como lo haría Tony Montana, pedazo de -|Oh, sólo eres tú.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -256,7 +256,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Good morning to you too, Nancy.</Value>
+                <Value>Buenos días tengas tú también, Nancy.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -338,7 +338,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>What are you doing here? This isn’t your place anymore, remember?</Value>
+                <Value>¿Qué estás haciendo aquí? Esta ya no es tu casa, ¿recuerdas?</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -387,7 +387,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Please, spare me the drama.|I’m only looking for Bobby.</Value>
+                <Value>Por favor, ahórrame el drama.|Sólo estoy buscando a Bobby.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -436,7 +436,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Well, he ain’t here.</Value>
+                <Value>Bueno, pues no está aquí.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -485,7 +485,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>What’s this all about?|I thought you and Bob had a gig to go to last night.</Value>
+                <Value>¿De qué se trata todo esto?|Pensé que tú y Bob tenían una actuación a la que ir anoche.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -534,7 +534,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Not that it’s any of your business anymore, but yeah, we did.|At least until that insulin-dependant wetback friend of yours left me hangin’ mid concert.|Oh, he’s got another thing coming when I get my hands on him...</Value>
+                <Value>No es que sea de tu incumbencia ahora, pero sí, así fue.|Al menos hasta que ese insulinodependiente espalda mojada amigo tuyo me dejó plantada en medio del concierto.|Oh, no sabe lo que le espera cuando le ponga las manos encima...</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -583,7 +583,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>No wonder he bailed...</Value>
+                <Value>Con razón huyó...</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -632,7 +632,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I heard that!</Value>
+                <Value>¡Escuché eso!</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -681,7 +681,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>So you are just going to wait for him? Here?</Value>
+                <Value>¿Entonces simplemente vas a esperarlo? ¿Aquí?</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -730,7 +730,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I guess.</Value>
+                <Value>Supongo.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -749,7 +749,7 @@
               <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="12" DestinationDialogID="13" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString />
-            <UserScript>Variable["SkipLoop"] == true;</UserScript>
+            <UserScript>Variable["SkipLoop"] = true</UserScript>
           </DialogEntry>
           <DialogEntry ID="13" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
@@ -779,7 +779,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>By all means, make yourself at home.|There’s fresh coffee in the kitchen.</Value>
+                <Value>Desde ya, siéntete como en tu casa.|Hay café recién hecho en la cocina.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -826,7 +826,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Looking good, as usual.</Value>
+                <Value>Te ves bien, como de costumbre.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -875,7 +875,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Oh, that’s so sweet of you Josh. Thanks!|You look like shit yourself, too.</Value>
+                <Value>Oh, eso es muy dulce de tu parte, Josh. ¡Gracias!|Tú también te ves como la mierda.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -924,7 +924,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Gee, thanks.</Value>
+                <Value>Ay, gracias.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -973,7 +973,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Well, I’d love to stay and chat, but I’d rather chance I get run over by a bus.|Bye.</Value>
+                <Value>Bueno, me encantaría quedarme y charlar, pero prefiero arriesgarme a que me atropelle un autobús.|Adiós.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -991,6 +991,55 @@
             <OutgoingLinks />
             <ConditionsString>Dialog[11].SimStatus == "WasDisplayed"</ConditionsString>
             <UserScript />
+          </DialogEntry>
+          <DialogEntry ID="18" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
+            <Fields>
+              <Field Type="Text" Hint="The title of this dialogue.">
+                <Title>Title</Title>
+                <Value>New Dialogue</Value>
+              </Field>
+              <Field Type="Files" Hint="A collection of image files that represent this dialogue.">
+                <Title>Pictures</Title>
+                <Value>[]</Value>
+              </Field>
+              <Field Type="Text" Hint="A short description of what happens in this dialogue.">
+                <Title>Description</Title>
+                <Value />
+              </Field>
+              <Field Type="Actor" Hint="The actor who is talking.">
+                <Title>Actor</Title>
+                <Value>2</Value>
+              </Field>
+              <Field Type="Actor" Hint="The actor who is listening.">
+                <Title>Conversant</Title>
+                <Value>1</Value>
+              </Field>
+              <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
+                <Title>Menu Text</Title>
+                <Value />
+              </Field>
+              <Field Type="Localization" Hint="The text that is spoken by the actor.">
+                <Title>Dialogue Text</Title>
+                <Value>Oye, ¿qué es esto?</Value>
+              </Field>
+              <Field Type="Text" Hint="A description of what is going on during this dialogue.">
+                <Title>Parenthetical</Title>
+                <Value />
+              </Field>
+              <Field Type="Files" Hint="A collection of audio files that should be played during this dialogue.">
+                <Title>Audio Files</Title>
+                <Value>[]</Value>
+              </Field>
+              <Field Type="Text" Hint="A WMV video file to be played for this dialogue.">
+                <Title>Video File</Title>
+                <Value />
+              </Field>
+            </Fields>
+            <OutgoingLinks>
+              <Link OriginConvoID="1" DestinationConvoID="2" OriginDialogID="18" DestinationDialogID="0" IsConnector="true" />
+            </OutgoingLinks>
+            <ConditionsString>Variable["MessagePlayed"] == false</ConditionsString>
+            <UserScript>Variable["SkipLoop"] = true</UserScript>
           </DialogEntry>
         </DialogEntries>
       </Conversation>
@@ -1095,7 +1144,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>This is a message for Mr. Sanchez from Dr. Porta’s office.|Mr. Sanchez has once again missed his appointment for his check-up this morning.|Please have him call us at his earliest convenience to reschedule.|I shouldn’t have to stress how important regular controls are for an individual with his condition,|so please contact Dr. Porta immediately.</Value>
+                <Value>Este es un mensaje para el Sr. Sanchez de la oficina del Dr. Porta.|El Sr. Sanchez una vez más no ha asistido a la cita para su revisión esta mañana.|Por favor, que nos llame tan pronto como le sea posible para reprogramar la cita.|No necesito enfatizar cuán importantes son los controles regulares para un individuo con su condición,|así que por favor póngase en contacto con el Dr. Porta de inmediato.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1144,7 +1193,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Wow, she sounds pretty steamed.|Then again, Bobby rarely bothers to check his glucose levels before shooting up...|So why would I expect him to keep a doctor’s appointment?</Value>
+                <Value>Caramba, suena bastante alterada.|Por otra parte, Bobby rara vez se molesta en verificar su nivel de glucosa antes de inyectarse...|Así que ¿por qué habría yo de esperar que mantenga una cita con el doctor?</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1241,7 +1290,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Anyway...</Value>
+                <Value>En fin...</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1445,7 +1494,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>This reminds me of a postcard from Siberia I saw once. But bleaker.</Value>
+                <Value>Esto me recuerda a una postal de Siberia que vi una vez. Pero más lúgubre.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1492,7 +1541,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I may not be an expert, but I don’t think this is what they mean by “Insulin Dependency”.</Value>
+                <Value>Puede que no sea un experto, pero no creo que esto es lo que quieren decir con “insulinodependencia”.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1539,7 +1588,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>The emptiest, saddest fridge I ever did see.</Value>
+                <Value>La nevera más vacía y triste que he visto alguna vez.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1661,7 +1710,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>A frozen, barren wasteland.</Value>
+                <Value>Un yermo helado y desierto.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1783,7 +1832,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>The finest and least expensive coffee from the nearest convenience store.</Value>
+                <Value>El más selecto y menos costoso café de la tienda más cercana.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1905,7 +1954,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Ah, the trusty Caffeinator 3000.|A wondrous device that magically transforms plain water and ground beans into liquid energy.</Value>
+                <Value>Ah, la confiable Caffeinator 3000.|Un maravilloso artefacto que mágicamente transforma agua común y granos molidos en energía líquida.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2027,7 +2076,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>A pot of bile-tasting sludge.</Value>
+                <Value>Una olla de fango con sabor a bilis.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2149,7 +2198,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>That’s the nastiest cup of joe I’ve ever tasted.|And I’ve been to Europe.</Value>
+                <Value>Es la taza de café más asquerosa que he probado.|Y he estado en Europa.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2272,7 +2321,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Believe me, you didn’t want to see the inside of that.</Value>
+                <Value>Créeme, no querrías haber visto el interior de eso.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2319,7 +2368,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I’ll have to give a stern talk to Bobby about proper toilet etiquette.|Again.</Value>
+                <Value>Tendré que hablar severamente con Bobby acerca de la etiqueta apropiada en el cuarto de baño.|Otra vez.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2441,7 +2490,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>“Yard sale fair at Town Square - Our junk could be your treasure”.|I must have left this here to remember... Something.|Oh, that’s right!|The LPs guy... What was his name?|Bah, I’ll find him here, I guess.|Hey! It even has a small map of town with the fair marked on it!</Value>
+                <Value>“Feria de ventas en la plaza mayor - nuestra basura podría ser tu tesoro.”|Debo de haber dejado esto aquí para recordar... algo.|¡Oh, es cierto!|El tipo de los vinilos... ¿Cuál era su nombre?|Bah, supongo que lo encontraré aquí.|¡Eh! ¡Hasta tiene un pequeño mapa del pueblo con la feria marcada!</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2563,7 +2612,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>It’s locked.</Value>
+                <Value>Está cerrada con llave.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2685,7 +2734,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>57 channels and nothing on.</Value>
+                <Value>57 canales y nada para ver.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2807,7 +2856,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Believe me, you didn’t want to see the inside of that.</Value>
+                <Value>Créeme, no querrías haber visto el interior de eso.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -2929,7 +2978,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Once is plenty, thanks.</Value>
+                <Value>Con una vez sobra, gracias.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3051,7 +3100,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I’ll have to give a stern talk to Bobby about toilet etiquette. Again.</Value>
+                <Value>Tendré que hablar severamente con Bobby acerca de la etiqueta apropiada en el cuarto de baño. Otra vez.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3173,7 +3222,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I already filled the coffee pot.</Value>
+                <Value>Ya he llenado la jarra de café.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3295,7 +3344,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I should fill the coffee pot first.</Value>
+                <Value>Debería llenar la jarra de café antes.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3417,7 +3466,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I sort of stole that mug from a random game development studio.</Value>
+                <Value>Como que robé esa taza de un estudio de desarrollo de juegos al azar.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3539,7 +3588,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I’m not about to start my day with zombie breath. Nobody deserves something that bad.</Value>
+                <Value>No estoy dispuesto a comenzar mi día con aliento de zombi. Nadie se merece algo así de malo.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3661,7 +3710,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I don’t think I’m truly ready to face humanity unless I’ve had something to wake up fully.</Value>
+                <Value>No creo estar verdaderamente listo para enfrentar a la humanidad a menos que haya ingerido algo para despertar por completo.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -3783,7 +3832,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>No toothbrush, no coffee... no morning. That’s the way it is.</Value>
+                <Value>Sin cepillo de dientes y sin café no hay mañana. Así son las cosas.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>

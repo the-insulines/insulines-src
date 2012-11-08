@@ -186,7 +186,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>That’s a promotional poster for “Barbarullo”, based on the original 1967 script.|An Italian space opera about a heavily mustachioed amazon from the future in a mission to rekindle humanity’s sex drive.|The plot was heavily revised after the French co-producers signed on.</Value>
+                <Value>Eso es un afiche promocional de “Barbarullo”, basado en el guión original de 1967.|Una ópera espacial italiana acerca de una amazona del futuro con grueso bigote en una misión de reavivar la llama sexual de la humanidad.|La trama fue considerablemente modificada luego de incorporarse los co-productores franceses.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -308,7 +308,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>My signed print of the “Pink Side of the Space Station” cover art, a cult classic among synchronization enthusiasts everywhere.|Much better than that Rainbow nonsense.</Value>
+                <Value>Mi copia autografiada del arte de portada de “El Lado Rosa de la Estación Espacial”, un clásico de culto entre los entusiastas de la sincronización.|Mucho mejor que esa tontería del arcoíris.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -430,7 +430,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Yeah... I gave the laundry lady the year off.</Value>
+                <Value>Sí... le di el año libre a la lavandera.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -552,7 +552,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Out there, the city never sleeps -|Unfortunately, it's in a not-cool, more sleep-apnea like kind of way.</Value>
+                <Value>Ahí fuera, la ciudad nunca duerme -|Desafortunadamente es sin buena onda, más bien como con apnea del sueño.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -674,7 +674,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I wonder if it’s still anatidaephobia if you know for a fact you are being watched by a creepy, albeit rubber, duck.|It gives me the creeps.</Value>
+                <Value>Me pregunto si sigue siendo anatidaefobia si sabes a ciencia cierta que estás siendo observado por un pato espeluznante, aunque de goma.|Me da escalofríos.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -796,7 +796,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I should probably put some clothes on before that.</Value>
+                <Value>Probablemente debería ponerme algo de ropa antes de eso.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -918,7 +918,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>What would my mother say if she saw me like this?</Value>
+                <Value>¿Qué diría mi madre si me viera así?</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1040,7 +1040,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I know I’ve looked worse off, but this attire is not very engaging.</Value>
+                <Value>Sé que me he visto peor, pero este atuendo no es muy cautivador.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1162,7 +1162,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>I think “Sleepy, Wife-Beating Bum” went out of style this season. I should probably get changed.</Value>
+                <Value>Creo que “Vago Somnoliento Golpea-Esposas” pasó de moda esta temporada. Probablemente debería cambiarme de ropa.</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
