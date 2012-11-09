@@ -59,7 +59,10 @@ function game:loadScene ( scene )
   
   -- Cache scene
   self.currentScene = scene
-
+  
+  -- Initialize hud (must be done after loading a scene)
+  hud:initialize ()
+  
   -- Show loading screen
   loadingScreen:setup ( scene.objectsCount )
   -- coroutine.yield ()
@@ -93,12 +96,11 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( logoScreen() )
+  -- self:loadScene ( logoScreen() )
   -- self:loadScene ( c01s01 )
   -- self:loadScene ( c01s03() )
+  self:loadScene ( c01s04 () )
   
-  -- Initialize hud (must be done after loading a scene)
-  hud:initialize ()
   -- Debug
   if DEBUG then
     debugHUD:initialize ()
