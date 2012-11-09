@@ -302,7 +302,7 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]== true;
+            stateManager.dialogs.userVariables["SkipLoop"]= true;
           end,
           links = {
             {

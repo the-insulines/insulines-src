@@ -4,17 +4,17 @@ conversations = {
     Janxx = {
       initialValue = false,
     },
-    Desc1 = {
-      initialValue = false,
-    },
-    Desc2 = {
-      initialValue = false,
-    },
-    Desc3 = {
-      initialValue = false,
-    },
     Bottle = {
       initialValue = 1,
+    },
+    Dog = {
+      initialValue = false,
+    },
+    Weight = {
+      initialValue = false,
+    },
+    Smell = {
+      initialValue = false,
     },
   },
   
@@ -1013,7 +1013,7 @@ conversations = {
           menuText = "",
           dialogueText = {
             "I cannot fathom what could possibly be more menacing than that.",
-            "Actually, I don’t how I’ll manage to sleep tonight..",
+            "\nActually, I don’t how I’ll manage to sleep tonight..",
           },
           conditionsString = '',
           links = {
@@ -1936,6 +1936,9 @@ conversations = {
             "Ehrm... Hello?",
           },
           conditionsString = '',
+          userScript = function()
+            game.currentScene.objects.paul:startAnimation('blink')
+          end,
           links = {
             {
               originConversationId = 3,
@@ -2016,6 +2019,9 @@ conversations = {
             "Ehrm.. Guys?",
           },
           conditionsString = '',
+          userScript = function()
+            game.currentScene.objects.paul:startAnimation('blink')
+          end,
           links = {
             {
               originConversationId = 3,
@@ -3292,9 +3298,9 @@ conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc1"] = false
-stateManager.dialogs.userVariables["Desc2"] = false
-stateManager.dialogs.userVariables["Desc3"] = false
+            stateManager.dialogs.userVariables["Smell"]= false
+stateManager.dialogs.userVariables["Weight"]= false
+stateManager.dialogs.userVariables["Dog"]= false
           end,
           links = {
             {
@@ -3349,13 +3355,13 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Patchouli-Smelling,",
           dialogueText = {
             "Patchouli-Smelling,",
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc1"] = true
+            Variable ["Smell"] = true
           end,
           links = {
             {
@@ -3372,7 +3378,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Minty-Breathed,",
           dialogueText = {
             "Minty-Breathed,",
           },
@@ -3392,7 +3398,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Shifty-Looking,",
           dialogueText = {
             "Shifty-Looking,",
           },
@@ -3412,7 +3418,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Peg-Legged,",
           dialogueText = {
             "Peg-Legged,",
           },
@@ -3470,7 +3476,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Chubby",
           dialogueText = {
             "Chubby",
           },
@@ -3490,13 +3496,13 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Heavy-set",
           dialogueText = {
             "Heavy-set",
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc2"] = true
+            stateManager.dialogs.userVariables["Weight"]= true
           end,
           links = {
             {
@@ -3513,7 +3519,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Rotund",
           dialogueText = {
             "Rotund",
           },
@@ -3533,7 +3539,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "Slightly Overweight",
           dialogueText = {
             "Slightly Overweight",
           },
@@ -3611,7 +3617,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "a lisp.",
           dialogueText = {
             "a lisp.",
           },
@@ -3631,7 +3637,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "an eye patch.",
           dialogueText = {
             "an eye patch.",
           },
@@ -3651,13 +3657,13 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "an annoying pug.",
           dialogueText = {
             "an annoying pug.",
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["Desc3"] = true
+            stateManager.dialogs.userVariables["Dog"]= true
           end,
           links = {
             {
@@ -3674,7 +3680,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           isGroup = false,
           actor = 'josh',
           conversant = 'klein',
-          menuText = "",
+          menuText = "gout.",
           dialogueText = {
             "gout.",
           },
@@ -3725,7 +3731,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
           dialogueText = {
             "Ach! Doesn’t ring a bell, sorry.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== false or stateManager.dialogs.userVariables["Desc2"]== false or stateManager.dialogs.userVariables["Desc3"]== false',
+          conditionsString = 'stateManager.dialogs.userVariables["Smell"]== false or stateManager.dialogs.userVariables["Weight"]== false or stateManager.dialogs.userVariables["Dog"]== false',
           links = {
             {
               originConversationId = 4,
@@ -3747,7 +3753,7 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "\nIf you ask me, he has no business in this fine Flea Market. He’s a disgrace to yard salesmen everywhere.",
             " Fortunately for us he seems to be absent today.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["Desc1"]== true and stateManager.dialogs.userVariables["Desc2"]== true and stateManager.dialogs.userVariables["Desc3"]== true',
+          conditionsString = 'stateManager.dialogs.userVariables["Smell"]== true and stateManager.dialogs.userVariables["Weight"]== true and stateManager.dialogs.userVariables["Dog"]== true',
           links = {
             {
               originConversationId = 4,
@@ -3919,6 +3925,9 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "Got anything special?",
           },
           conditionsString = '',
+          userScript = function()
+            stateManager.dialogs.userVariables["Bottle"]= math.random(4)
+          end,
           links = {
             {
               originConversationId = 4,
@@ -3939,9 +3948,6 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "Let's see here...",
           },
           conditionsString = '',
-          userScript = function()
-            stateManager.dialogs.userVariables["Bottle"] = math.random(4)
-          end,
           links = {
             {
               originConversationId = 4,
@@ -4318,6 +4324,9 @@ stateManager.dialogs.userVariables["Desc3"] = false
             "No thanks. Anything else?",
           },
           conditionsString = '',
+          userScript = function()
+            stateManager.dialogs.userVariables["Bottle"]= math.random(4)
+          end,
           links = {
             {
               originConversationId = 4,

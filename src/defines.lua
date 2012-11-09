@@ -558,6 +558,25 @@ resources = {
         },
         startFrame = 1,
       },
+      blink = {
+        fileName = 'paul_blink',
+        frameCount = 9,
+        startFrame = 1,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 25},
+            {frame = 2, times = 3},
+            {frame = 3, times = 58},
+            {frame = 4, times = 3},
+            {frame = 5, times = 25},
+            {frame = 6, times = 3},
+            {frame = 7, times = 58},
+            {frame = 8, times = 3},
+            {frame = 9, times = 70},
+          },
+        },
+      },
     },
   },
   
