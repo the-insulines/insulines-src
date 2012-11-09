@@ -782,7 +782,7 @@
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>Where was it you sau Bobby last night?</Value>
+                <Value>Where was it you saw Bobby last night?</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -898,8 +898,7 @@
             <OutgoingLinks>
               <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="15" DestinationDialogID="16" IsConnector="false" />
             </OutgoingLinks>
-            <ConditionsString>Dialog[15].SimStatus ~= "WasDisplayed"
-Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
+            <ConditionsString>Dialog[15].SimStatus ~= "WasDisplayed" and Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
             <UserScript />
           </DialogEntry>
           <DialogEntry ID="16" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
@@ -1077,7 +1076,7 @@ Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
-                <Value>We're doing OK, I gues. How about you?| I've - I mean, the boys and I, we haven't herd much from you since... since...</Value>
+                <Value>We're doing OK, I guess. How about you?| I've - I mean, the boys and I, we haven't heard much from you since... since...</Value>
               </Field>
               <Field Type="Text" Hint="A description of what is going on during this dialogue.">
                 <Title>Parenthetical</Title>
@@ -1153,7 +1152,7 @@ Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value>Since my girlfriend dumped me and hooked up with my best friend and room mate?</Value>
+                <Value>Since my girlfriend hooked up with my best friend?</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -1202,7 +1201,7 @@ Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
               </Field>
               <Field Type="Text" Hint="The text that is displayd to the player in a list as a dialogue option.">
                 <Title>Menu Text</Title>
-                <Value>Since Bobby screwed me over, figuratively speaking, and screwed my girlfriend, literally speaking?</Value>
+                <Value>Since Bobby screwed me and my ex (literally)?</Value>
               </Field>
               <Field Type="Localization" Hint="The text that is spoken by the actor.">
                 <Title>Dialogue Text</Title>
@@ -1665,8 +1664,7 @@ Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
             <OutgoingLinks>
               <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="31" DestinationDialogID="32" IsConnector="false" />
             </OutgoingLinks>
-            <ConditionsString>Dialog[12].SimStatus == "WasDisplayed"
-Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
+            <ConditionsString>Dialog[12].SimStatus == "WasDisplayed" and Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
             <UserScript>Variable["backstage"] = true</UserScript>
           </DialogEntry>
           <DialogEntry ID="32" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
