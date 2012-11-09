@@ -44,18 +44,21 @@ function loadingScreen:show()
   table.insert ( currentRenderTable, self.layer )
   
   MOAIRenderMgr.setRenderTable ( currentRenderTable )
-  MOAICoroutine.blockOnAction ( self.layer:seekColor ( 1, 1, 1, 1, 1) )
+  
+  MOAICoroutine.blockOnAction ( self.layer:seekColor ( 1, 1, 1, 1, 1 ) )
   coroutine.yield ()
 end
 
-function loadingScreen:step()
+
+function loadingScreen:step ()
   self.currentStep = self.currentStep + 1
-  print(self.currentStep, self.steps)
+  print( self.currentStep, self.steps )
   coroutine.yield ()
 end
 
-function loadingScreen:hide()
-  MOAICoroutine.blockOnAction ( self.layer:seekColor ( 0, 0, 0, 0, 1) )
+
+function loadingScreen:hide ()
+  MOAICoroutine.blockOnAction ( self.layer:seekColor ( 0, 0, 0, 1, 1 ) )
 
   local currentRenderTable = MOAIRenderMgr.getRenderTable ()
 
@@ -64,6 +67,6 @@ function loadingScreen:hide()
       table.remove(currentRenderTable, k)
     end
   end
-
+  
   MOAIRenderMgr.setRenderTable(currentRenderTable)
 end

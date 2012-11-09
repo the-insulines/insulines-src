@@ -190,7 +190,7 @@ function dialog:setOption ( optionDefinition, dialogEntryId )
   for i, button in pairs( self.options.buttons ) do
     if not button.definition then
 
-      if not optionDefinition.menuText == '' then
+      if optionDefinition.menuText ~= '' then
         button:setString ( optionDefinition.menuText )
       else
         button:setString ( optionDefinition.dialogueText[1] )

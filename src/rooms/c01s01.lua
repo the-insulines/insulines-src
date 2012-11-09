@@ -224,7 +224,7 @@ objects = {
         c01s01.sounds.background:play ()
         c01s01.objects.clothes_on_heap.highlight = true
       end
-
+      
       if c01s01.objects.cellphone.woke then
         if not c01s01.objects.clothes_heap.dressed then
           c01s01:fadeOut ()
@@ -299,13 +299,11 @@ objects = {
     render_at_start = false,
     onClick = function ()
       if c01s01.objects.clothes_heap.dressed then
-        c01s01:unload ()
-
         c01s02.initialCameraPathNode = 'joshDoor'
         c01s02.initialCharacterPathNode = 'joshDoor'
 
         -- performWithDelay (100, game.loadScene, 1, game, c01s02)
-        game:loadScene(c01s02)     
+        game:switchToScene ( c01s02 )
       end
     end
   }

@@ -8,7 +8,7 @@
 thankYouScreen = room.new ( "thankYouScreen" )
 thankYouScreen.inputEnabled = true
 thankYouScreen.characterMovement = false
-thankYouScreen.hud = false
+thankYouScreen.shouldShowHud = false
 
 objects = {
   background_5 = {

@@ -20,14 +20,52 @@ autoFollow = true
 
 gameRunning = true
 
-function game:loadScene ( scene )
 
+sceneFadeOutTime = 200
+
+
+function game:switchToScene ( scene )
+  local shouldWaitFadeout = self.currentScene.fadeOnChange
+  
+  self:unloadCurrentScene ()
+  
+  -- If the current scene fades out the new one should be loaded after the fadeout delay
+  if shouldWaitFadeout then
+    sleepCoroutine ( self.sceneFadeOutTime )
+  end
+  
+  self:loadScene ( scene )
+end
+
+
+function game:unloadCurrentScene ()
+  -- Hide Hud
+  self:hideHUD ()
+  
+  if self.currentScene then
+    if self.currentScene.fadeOnChange then
+      self.currentScene:fadeOut ( self.sceneFadeOutTime )
+      performWithDelay ( self.sceneFadeOutTime, self.currentScene.removeLayers, 1, self.currentScene )
+    else
+      self.currentScene:removeLayers ()
+    end
+  end
+  
+  self.currentScene = nil
+end
+
+
+function game:loadScene ( scene )
+  
   -- Cache scene
   self.currentScene = scene
-
+  
+  -- Initialize hud (must be done after loading a scene)
+  hud:initialize ()
+  
   -- Show loading screen
-  loadingScreen:setup(scene.objectsCount)
-  coroutine.yield ()
+  loadingScreen:setup ( scene.objectsCount )
+  -- coroutine.yield ()
   
   if not scene.initialized then
     -- Initialize scene
@@ -39,12 +77,13 @@ function game:loadScene ( scene )
     scene:loadConversations ()
   end
   
-  self:sceneLoaded (scene)
+  self:sceneLoaded ( scene )
   
 end
 
 
 function initialize ( self )
+  
   -- Setup viewport
   viewport = MOAIViewport.new ()
   viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
@@ -57,29 +96,30 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( logoScreen() )
+  -- self:loadScene ( logoScreen() )
   -- self:loadScene ( c01s01 )
   -- self:loadScene ( c01s03() )
+  self:loadScene ( c01s04 () )
+  
+  -- Debug
+  if DEBUG then
+    debugHUD:initialize ()
+  end
 end
 
-function game:sceneLoaded (scene)
-  --MOAIRenderMgr.setRenderTable ( {} )
 
-  if scene.hud then
-    -- Load HUD
-    self:displayHUD ()
-    dialog:loadConversations(scene.conversations)
-  end
+function game:sceneLoaded ( scene )
+  --MOAIRenderMgr.setRenderTable ( {} )
   
-    -- Load all layers
+  -- Load all layers
   local renderTable = {}
   
-  for k, layer in pairs( scene:layers() ) do 
+  for k, layer in pairs( scene:layers() ) do
     layer:setViewport ( viewport )
     layer:setCamera ( self.camera )
-  
+    
     if scene.fadeOnChange then
-      layer:setColor(0,0,0,0)
+      layer:setColor(0,0,0,1)
     end
   
     table.insert(renderTable, layer)
@@ -100,7 +140,13 @@ function game:sceneLoaded (scene)
   loadingScreen:hide()
 
   if scene.fadeOnChange then
-    performWithDelay ( 50, scene.fadeIn, 1, scene)
+    performWithDelay ( 50, scene.fadeIn, 1, scene )
+  end
+  
+  if scene.shouldShowHud then
+    -- Load HUD
+    self:showHUD ()
+    dialog:loadConversations(scene.conversations)
   end
 
 end
@@ -162,18 +208,18 @@ function cameraAnimation ()
 end
 
 
-function displayHUD ( self )
-  hud:initialize ()
-  
+function showHUD ( self )
   for k, layer in pairs (hud.layers) do
     MOAIRenderMgr.removeRenderPass ( layer )
     layer:setViewport ( viewport )
     MOAIRenderMgr.pushRenderPass ( layer )
   end
-  
-  -- Debug
-  if DEBUG then
-    debugHUD:initialize ()
-  end
-
 end
+
+
+function hideHUD ( self )
+  for k, layer in pairs ( hud.layers ) do
+    MOAIRenderMgr.removeRenderPass ( layer )
+  end
+end
+

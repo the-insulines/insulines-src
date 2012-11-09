@@ -11,7 +11,7 @@ function new (name)
   local room = {}
   
   room.name = name
-  room.hud = true
+  room.shouldShowHud = true
   room.useInventory = true
   room.useHighlights = true
   room.useDialogs = true
@@ -42,10 +42,13 @@ function new (name)
     walk_behind_highlights = MOAILayer2D.new (),git
   }
   
-  room.layer_objects.background_highlights:setBlendMode(MOAIProp2D.BLEND_ADD)
-  room.layer_objects.background_shadows:setBlendMode(MOAIProp2D.BLEND_MULTIPLY)
-  room.layer_objects.walk_behind_highlights:setBlendMode(MOAIProp2D.BLEND_ADD)
-  room.layer_objects.walk_behind_shadows:setBlendMode(MOAIProp2D.BLEND_MULTIPLY)
+  room.blendingModes = {
+    background_highlights = MOAIProp2D.BLEND_ADD,
+    background_shadows = MOAIProp2D.BLEND_MULTIPLY,
+    walk_behind_highlights = MOAIProp2D.BLEND_ADD,
+    walk_behind_shadows = MOAIProp2D.BLEND_MULTIPLY,
+  }
+  
   
   room.initialized = false
   
@@ -186,7 +189,7 @@ function new (name)
         if object.renderPriority then
           object.prop:setPriority ( object.renderPriority )
         end
-
+        
         -- Load animations for animated prop
         if object.animated then
           if resource.type == RESOURCE_TYPE_ANIMATION_FRAMES then
@@ -195,12 +198,17 @@ function new (name)
             self:loadAnimations ( object.animation, object.animations )
           end
         end
-      
-        -- Add to layer
+        
+        -- Add to layer and inherit it's blending mode
         object.layer = self.layer_objects[object.layer_name]
-        object.prop:setAttrLink ( MOAIProp.ATTR_BLEND_MODE, object.layer, MOAIProp.ATTR_BLEND_MODE )
+        local layerBlendingMode = self.blendingModes[object.layer_name]
+        if layerBlendingMode then
+          print ('MOAIProp2D.BLEND_ADD = ', MOAIProp2D.BLEND_ADD, ' MOAIProp2D.BLEND_MULTIPLY = ', MOAIProp2D.BLEND_MULTIPLY)
+          print ('layer = ', object.layer_name, ' blendingMode = ', layerBlendingMode)
+          object.prop:setBlendMode ( layerBlendingMode )
+        end
         if object.render_at_start then
-          self:startRendering( k )
+          self:startRendering ( k )
         end
       
         -- Add dimensions
@@ -343,13 +351,14 @@ function new (name)
 
   function room:fadeOut ( time )
     if not time then time = 1 end
-    for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
-      layer:seekColor ( 0, 0, 0, 0, time)
+    
+    for k, layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
+      layer:seekColor ( 0, 0, 0, 1, time/100 )
     end
   end
   
-
-  function room:fadeIn ( )
+  
+  function room:fadeIn ()
     for k,layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
       layer:seekColor ( 1, 1, 1, 1, 1)
     end
@@ -396,16 +405,6 @@ function new (name)
       self.theme_song:stop ()
     end
   end  
-  
-  
-  function room:unload ()
-    if self.fadeOnChange then
-      self:fadeOut ()
-      performWithDelay ( 100, self.removeLayers, 1, self)
-    else
-      self:removeLayers ()
-    end
-  end
   
   
   function room:removeLayers ()

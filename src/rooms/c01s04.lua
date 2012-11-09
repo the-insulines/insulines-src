@@ -77,15 +77,6 @@ c01s04 = function ()
   
   
   function c01s04_room:afterInitialize ()
-    print ( '=========================================================' )
-    print (MOAIProp.ATTR_BLEND_MODE)
-    print (MOAIProp.BLEND_NORMAL)
-    print (MOAIProp.BLEND_ADD)
-    print ( self.objects.c01s04_light_on.prop:setAttr(MOAIProp.ATTR_BLEND_MODE, MOAIProp.BLEND_ADD) )
-    -- self.objects.c01s04_light_on.prop:setBlendMode(MOAIProp2D.BLEND_ADD)
-    print ( self.objects.c01s04_light_on.prop:getAttr(MOAIProp.ATTR_BLEND_MODE) )
-    print ( '=========================================================' )
-    
     self:turnAlleyLightOn ()
   end
   

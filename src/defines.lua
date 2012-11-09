@@ -64,7 +64,7 @@ DIALOG_COLOR_FOR_CHARACTER = {
   paul = { r = 0.52, g = 0.96, b = 0.52 },
   pete = { r = 0.52, g = 0.96, b = 0.52 },
   howard = { r = 0.52, g = 0.96, b = 0.52 },
-  moe = { r = 0.52, g = 0.96, b = 0.52 },
+  maureen = { r = 0.52, g = 0.96, b = 0.52 },
 }
 
 -- Inventory constants
@@ -594,6 +594,12 @@ resources = {
         frameTime = 0.04,
         startFrame = 1,
       },
+      blink = {
+        fileName = 'moe_blink',
+        frameCount = 25,
+        frameTime = 0.04,
+        startFrame = 1,
+      },
     },
   },
   
@@ -1096,9 +1102,11 @@ function tabs (n)
   return result
 end
 
-function debug_line ()
+function debugLine ()
   print ('-------------------------------')
 end
+
+
 function performWithDelay ( delay, func, repeats, ... )
   local t = MOAITimer.new ()
   t:setSpan ( delay/100 )
@@ -1118,6 +1126,16 @@ function performWithDelay ( delay, func, repeats, ... )
   end
   )
   t:start ()
+end
+
+
+function sleepCoroutine ( time )
+  -- time is measured as hundredth of a second
+  
+  local timer = MOAITimer.new ()
+  timer:setSpan ( time/100 )
+  timer:start ()
+  MOAICoroutine.blockOnAction ( timer )
 end
 
 

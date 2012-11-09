@@ -39,12 +39,21 @@
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter3018">
+       id="filter3870">
       <feBlend
          inkscape:collect="always"
-         mode="lighten"
+         mode="screen"
          in2="BackgroundImage"
-         id="feBlend3020" />
+         id="feBlend3872" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3874">
+      <feBlend
+         inkscape:collect="always"
+         mode="screen"
+         in2="BackgroundImage"
+         id="feBlend3876" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -55,10 +64,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.52162723"
-     inkscape:cx="1060.3511"
-     inkscape:cy="683.10424"
+     inkscape:cx="913.77724"
+     inkscape:cy="626.72313"
      inkscape:document-units="px"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="layer6"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="852"
@@ -143,7 +152,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="background_highlights"
-     style="display:inline;filter:url(#filter3509)">
+     style="display:inline;filter:url(#filter3874)">
     <image
        y="161.93614"
        x="1078.6078"
@@ -185,7 +194,7 @@
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="walk_behind_highlights"
-     style="display:inline;filter:url(#filter3018)">
+     style="display:inline;filter:url(#filter3870)">
     <image
        y="48.008057"
        x="355.07501"
