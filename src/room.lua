@@ -203,14 +203,12 @@ function new (name)
         object.layer = self.layer_objects[object.layer_name]
         local layerBlendingMode = self.blendingModes[object.layer_name]
         if layerBlendingMode then
-          print ('MOAIProp2D.BLEND_ADD = ', MOAIProp2D.BLEND_ADD, ' MOAIProp2D.BLEND_MULTIPLY = ', MOAIProp2D.BLEND_MULTIPLY)
-          print ('layer = ', object.layer_name, ' blendingMode = ', layerBlendingMode)
           object.prop:setBlendMode ( layerBlendingMode )
         end
         if object.render_at_start then
           self:startRendering ( k )
         end
-      
+        
         -- Add dimensions
         object.half_width = resource.width / 2 / SCREEN_TO_WORLD_RATIO
         object.half_height = resource.height / 2 / SCREEN_TO_WORLD_RATIO

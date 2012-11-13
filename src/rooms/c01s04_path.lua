@@ -17,7 +17,7 @@ path = {
   },
   
   alley_turn = {
-    position = point (296, -616),
+    position = point (362, -592),
     neighbors = {'turn_light_off_node', 'alley_shadow_on'},
     offsets = { x = 0, y = 0, scl = 1.0 },
   },
