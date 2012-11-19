@@ -10,6 +10,8 @@
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
 
+VIEWPORT_RESOLUTION_X = SCREEN_RESOLUTION_X
+VIEWPORT_RESOLUTION_Y = SCREEN_RESOLUTION_X * ( 320 / 480)
 
 -- Enable sound
 SOUND = true

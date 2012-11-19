@@ -86,7 +86,7 @@ function initialize ( self )
   
   -- Setup viewport
   viewport = MOAIViewport.new ()
-  viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
+  viewport:setSize ( VIEWPORT_RESOLUTION_X, VIEWPORT_RESOLUTION_Y )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
   
   if SOUND then
@@ -96,9 +96,9 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( logoScreen() )
+  -- self:loadScene ( logoScreen() )
   --self:loadScene ( c01s02 )
-  -- self:loadScene ( c01s03() )
+  self:loadScene ( c01s03() )
   -- self:loadScene ( c01s04 () )
   
   -- Debug

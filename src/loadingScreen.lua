@@ -16,7 +16,7 @@ end
 
 function loadingScreen:setupLayer ( )
   local viewport = MOAIViewport.new ()
-  viewport:setSize ( SCREEN_RESOLUTION_X, SCREEN_RESOLUTION_Y )
+  viewport:setSize ( VIEWPORT_RESOLUTION_X, VIEWPORT_RESOLUTION_Y )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
 
   self.layer:setViewport ( viewport )
