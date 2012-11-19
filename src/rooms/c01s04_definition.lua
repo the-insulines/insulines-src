@@ -113,7 +113,7 @@ objects = {
   c01s04_edificio_costado_light_on = {
     layer_name = 'walk_behind_highlights',
     type = RESOURCE_TYPE_IMAGE,
-    x = 809.206401, y = 39.34005000000002,
+    x = 809.206401, y = 13.34005000000002,
     width = 34.080002, height = 1201.3199,
     resource_name = 'c01s04/c01s04_edificio_costado_light_on.png',
     render_at_start = true,

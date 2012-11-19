@@ -39,21 +39,21 @@
     </filter>
     <filter
        inkscape:collect="always"
-       id="filter3870">
-      <feBlend
-         inkscape:collect="always"
-         mode="screen"
-         in2="BackgroundImage"
-         id="feBlend3872" />
-    </filter>
-    <filter
-       inkscape:collect="always"
        id="filter3874">
       <feBlend
          inkscape:collect="always"
          mode="screen"
          in2="BackgroundImage"
          id="feBlend3876" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3016">
+      <feBlend
+         inkscape:collect="always"
+         mode="screen"
+         in2="BackgroundImage"
+         id="feBlend3018" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -64,8 +64,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.52162723"
-     inkscape:cx="913.77724"
-     inkscape:cy="626.72313"
+     inkscape:cx="1448.642"
+     inkscape:cy="617.63355"
      inkscape:document-units="px"
      inkscape:current-layer="layer6"
      showgrid="false"
@@ -182,7 +182,7 @@
        height="751.89001"
        width="274.76999" />
     <image
-       style="display:inline;filter:url(#filter4326)"
+       style="filter:url(#filter4326)"
        y="0"
        x="1752.1664"
        id="image3250"
@@ -194,7 +194,7 @@
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="walk_behind_highlights"
-     style="display:inline;filter:url(#filter3870)">
+     style="display:inline;filter:url(#filter3016)">
     <image
        y="48.008057"
        x="355.07501"
@@ -204,14 +204,14 @@
        width="794.48999" />
     <image
        style="display:inline;filter:url(#filter3509)"
-       y="0"
+       y="26"
        x="1752.1664"
        id="image3721"
        xlink:href="file:///Users/pablodelsel/Documents/Development/the-insulines/insulines-gfx/c01s04/c01s04_edificio_costado_light_on.png"
        height="1201.3199"
        width="34.080002" />
     <image
-       style="display:inline;filter:url(#filter3509)"
+       style="filter:url(#filter3509)"
        y="2"
        x="3.0000458"
        id="image3502"

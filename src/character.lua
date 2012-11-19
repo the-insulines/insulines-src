@@ -108,12 +108,21 @@ function new ( name )
   
   function c:moveTo ( x, y, zoomFactor, time )
     self:stopCurrentAction ()
-
+    
     local direction, delta = self:directionTo ( point ( x, y ) )
     self.direction = direction
     
+    -- Adjust movement speed to horizontal or vertical movement
+    local movementSpeed = 0
+    if direction == DIRECTION_RIGHT or direction == DIRECTION_LEFT then
+      movementSpeed = MOVEMENT_PIXELS_PER_SECOND_HORIZONTAL
+    else
+      movementSpeed = MOVEMENT_PIXELS_PER_SECOND_VERTICAL
+    end
+    
+    -- Adjust the time of the displacement animation (distance / speed)
     if not time then
-      time = math.sqrt ( delta.x * delta.x + delta.y * delta.y ) / MOVEMENT_PIXELS_PER_SECOND
+      time = math.sqrt ( delta.x * delta.x + delta.y * delta.y ) / movementSpeed
     end
     -- If time == 0, moveLoc returns nil, which breaks the function
     if time == 0 then time = .001 end
@@ -138,7 +147,7 @@ function new ( name )
     -- increase it if the character is heading down (delta_y negative) and decrease it if he is heading up
     local zoom = zoomFactor * - delta.y
     self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
-
+    
     -- start
     self.currentAction:start ()
     return self.currentAction
