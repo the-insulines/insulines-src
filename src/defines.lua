@@ -61,11 +61,11 @@ DIALOG_COLOR_FOR_CHARACTER = {
   josh = { r = 0.36, g = 0.53, b = 0.77 },
   nancy = { r = 0.96, g = 0.52, b = 0.52 },
   ansaphone = { r = 0.52, g = 0.96, b = 0.52 },
-  sonja = { r = 0.96, g = 0.52, b = 0.52 },
-  klein = { r = 0.52, g = 0.96, b = 0.52 },
-  paul = { r = 0.52, g = 0.96, b = 0.52 },
-  pete = { r = 0.52, g = 0.96, b = 0.52 },
-  howard = { r = 0.52, g = 0.96, b = 0.52 },
+  sonja = { r = 0.88, g = 0.23, b = 0 },
+  klein = { r = 0.63, g = 0.36, b = 0 },
+  paul = { r = 0.62, g = 0.1, b = 1 },
+  pete = { r = 0.85, g = 0, b = 0.63 },
+  howard = { r = 0.2, g = 0.8, b = 0.5 },
   maureen = { r = 0.52, g = 0.96, b = 0.52 },
 }
 
