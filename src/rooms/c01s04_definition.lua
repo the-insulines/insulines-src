@@ -20,16 +20,6 @@ objects = {
     renderPriority = 11,
   },
   
-  c01s04_turpentine = {
-    layer_name = 'back_objects',
-    type = RESOURCE_TYPE_IMAGE,
-    x = 708.6966995, y = -20.866762000000023,
-    width = 67.307999, height = 94.146004,
-    resource_name = 'c01s04/c01s04_turpentine.png',
-    render_at_start = true,
-    renderPriority = 21,
-  },
-  
   c01s04_poster = {
     layer_name = 'back_objects',
     type = RESOURCE_TYPE_IMAGE,
@@ -37,7 +27,7 @@ objects = {
     width = 310.55399, height = 569.98798,
     resource_name = 'c01s04/c01s04_poster.png',
     render_at_start = true,
-    renderPriority = 31,
+    renderPriority = 21,
   },
   
   c01s04_sombra_light_off = {
@@ -47,7 +37,7 @@ objects = {
     width = 1047.8644, height = 1280,
     resource_name = 'c01s04/c01s04_sombra_light_off.png',
     render_at_start = true,
-    renderPriority = 41,
+    renderPriority = 31,
   },
   
   c01s04_sombra_light_on = {
@@ -57,7 +47,7 @@ objects = {
     width = 1433.6, height = 1280,
     resource_name = 'c01s04/c01s04_sombra_light_on.png',
     render_at_start = true,
-    renderPriority = 51,
+    renderPriority = 41,
   },
   
   c01s04_light_on = {
@@ -67,7 +57,7 @@ objects = {
     width = 729.73798, height = 913.34399,
     resource_name = 'c01s04/c01s04_light_on.png',
     render_at_start = true,
-    renderPriority = 61,
+    renderPriority = 51,
   },
   
   c01s04_walk_behind = {
@@ -77,7 +67,7 @@ objects = {
     width = 795.99866, height = 1280,
     resource_name = 'c01s04/c01s04_walk_behind.png',
     render_at_start = true,
-    renderPriority = 71,
+    renderPriority = 61,
   },
   
   c01s04_door_opened = {
@@ -87,7 +77,7 @@ objects = {
     width = 274.76999, height = 751.89001,
     resource_name = 'c01s04/c01s04_door_opened.png',
     render_at_start = true,
-    renderPriority = 81,
+    renderPriority = 71,
   },
   
   c01s04_edificio_costado = {
@@ -97,7 +87,7 @@ objects = {
     width = 167.83366, height = 1280,
     resource_name = 'c01s04/c01s04_edificio_costado.png',
     render_at_start = true,
-    renderPriority = 91,
+    renderPriority = 81,
   },
   
   c01s04_walk_behind_light_on = {
@@ -107,7 +97,7 @@ objects = {
     width = 794.48999, height = 1231.9919,
     resource_name = 'c01s04/c01s04_walk_behind_light_on.png',
     render_at_start = true,
-    renderPriority = 101,
+    renderPriority = 91,
   },
   
   c01s04_edificio_costado_light_on = {
@@ -117,7 +107,7 @@ objects = {
     width = 34.080002, height = 1201.3199,
     resource_name = 'c01s04/c01s04_edificio_costado_light_on.png',
     render_at_start = true,
-    renderPriority = 111,
+    renderPriority = 101,
   },
   
   c01s04_walk_behind_ambient_light = {
@@ -127,7 +117,7 @@ objects = {
     width = 1917, height = 1278,
     resource_name = 'c01s04/c01s04_walk_behind_ambient_light.png',
     render_at_start = true,
-    renderPriority = 121,
+    renderPriority = 111,
   },
   
 }

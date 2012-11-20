@@ -161,8 +161,6 @@ function new (name)
       loadingScreen:step()
       -- Load resource
       if v.resource_name then
-        print ('==============================')
-        print ('loading', v.resource_name)
         local resource
         if self.hasExternalAssets and not object.externalAsset then
           v.fileName = v.resource_name  -- TODO: THIS IS NOT GOOD, JUST FOR BACKWARD COMPATIBILITY
