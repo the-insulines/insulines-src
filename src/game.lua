@@ -96,8 +96,8 @@ function initialize ( self )
     end
   end
   
-  -- self:loadScene ( logoScreen () )
-  self:loadScene ( c01s01 () )
+  -- self:loadScene ( logoScreen() )
+  self:loadScene ( c01s01 )
   -- self:loadScene ( c01s03 () )
   -- self:loadScene ( c01s04 () )
   

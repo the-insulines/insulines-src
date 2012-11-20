@@ -161,6 +161,8 @@ function new (name)
       loadingScreen:step()
       -- Load resource
       if v.resource_name then
+        print ('==============================')
+        print ('loading', v.resource_name)
         local resource
         if self.hasExternalAssets and not object.externalAsset then
           v.fileName = v.resource_name  -- TODO: THIS IS NOT GOOD, JUST FOR BACKWARD COMPATIBILITY
@@ -348,7 +350,7 @@ function new (name)
 
 
   function room:fadeOut ( time )
-    if not time then time = 1 end
+    if not time then time = 100 end
     
     for k, layer in pairs ( MOAIRenderMgr.getRenderTable () ) do
       layer:seekColor ( 0, 0, 0, 1, time/100 )
