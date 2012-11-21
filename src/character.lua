@@ -33,6 +33,7 @@ function new ( name )
   c.render_at_start = true
   c.rendering = false
   c.avoid_clicks = true
+  c.avoid_zoom_factor = false
   
   
   -- methods
@@ -40,7 +41,7 @@ function new ( name )
   function c:setLoc ( x, y )
     self.prop:setLoc ( x, y )
   end
-
+  
   function c:setScl ( scaleX, scaleY )
     self.prop:setScl ( scaleX, scaleY )
   end
@@ -145,8 +146,10 @@ function new ( name )
     
     -- shift the value zoomFactor units
     -- increase it if the character is heading down (delta_y negative) and decrease it if he is heading up
-    local zoom = zoomFactor * - delta.y
-    self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
+    if not self.avoid_zoom_factor then
+      local zoom = zoomFactor * - delta.y
+      self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
+    end
     
     -- start
     self.currentAction:start ()

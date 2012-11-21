@@ -110,24 +110,13 @@ function new (name)
   end
   
   function room:resetCharacter ( )
-    if self.objects.josh then      
+    if self.objects.josh then
+      self.objects.josh.prop:setScl(1)
       self.layer_objects.character:insertProp ( self.objects.josh.prop )
     
       pos = self.path.graph[self.initialCharacterPathNode].position
       self.objects.josh:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
     
-      local scl = 1
-      scl = self.backCharacterZoom + (self.topCharacterZoomThreshold - pos.y) * self.perspectiveZoomFactor
-    
-      if pos.y <= self.bottomCharacterZoomThreshold then 
-        scl = self.frontCharacterZoom
-      end
-
-      if pos.y >= self.topCharacterZoomThreshold then
-        scl = self.backCharacterZoom
-      end
-    
-      self.objects.josh.prop:setScl ( scl )
       self.characterMovement = true
     end
   end
@@ -402,12 +391,33 @@ function new (name)
     if self.theme_song and self.theme_song:isPlaying () then
       self.theme_song:stop ()
     end
-  end  
+  end
   
   
   function room:removeLayers ()
     for k, layer in pairs ( self.layer_objects ) do
       MOAIRenderMgr.removeRenderPass ( layer )
+    end
+  end
+  
+  
+  function room:unload ()
+    self:removeLayers ()
+    
+    -- release objects
+    for k, obj in pairs ( self.objects ) do
+      -- check resource name (keeping compatibility with the old name convention)
+      if obj.resource_name then
+        local resource_name = nil
+        if self.hasExternalAssets and not object.externalAsset then
+          resource_name = k
+        else
+          resource_name = obj.resource_name
+        end
+      end
+      
+      print ('>> UNLOADING FROM CACHE: ', obj.resource_name)
+      resource_cache.unload(obj.resource_name)
     end
   end
   

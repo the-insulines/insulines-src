@@ -301,8 +301,7 @@ objects = {
       if c01s01.objects.clothes_heap.dressed then
         c01s02.initialCameraPathNode = 'joshDoor'
         c01s02.initialCharacterPathNode = 'joshDoor'
-
-        -- performWithDelay (100, game.loadScene, 1, game, c01s02)
+        MOAISim.forceGarbageCollection()
         game:switchToScene ( c01s02 )
       end
     end

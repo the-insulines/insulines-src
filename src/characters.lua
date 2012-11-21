@@ -6,6 +6,6 @@
 -- --==============================================================
 -- 
 
-josh = character.new ( 'josh' )
-josh.renderPriority = 200
+-- josh = character.new ( 'josh' )
+-- josh.renderPriority = 200
 

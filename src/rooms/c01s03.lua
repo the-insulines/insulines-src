@@ -18,10 +18,10 @@ c01s03 = function ()
   local c01s03_room = room.new ( "c01s03" )
   
   
-  c01s03_room.frontCharacterZoom = 1.3
+  c01s03_room.frontCharacterZoom = 1.0
   c01s03_room.bottomCharacterZoomThreshold = -542
 
-  c01s03_room.backCharacterZoom = 0.5
+  c01s03_room.backCharacterZoom = 0.4
   c01s03_room.topCharacterZoomThreshold = 74
 
   c01s03_room.initialCameraPathNode = 'start'

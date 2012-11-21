@@ -18,10 +18,10 @@ end
 
 c01s02 = room.new ( "c01s02" )
 
-c01s02.frontCharacterZoom = 0.9
+c01s02.frontCharacterZoom = 0.3
 c01s02.bottomCharacterZoomThreshold = -611
 
-c01s02.backCharacterZoom = 0.70
+c01s02.backCharacterZoom = 0.1
 c01s02.topCharacterZoomThreshold = 323
 
 c01s02.initialCameraPathNode = 'joshDoor'
@@ -719,6 +719,9 @@ function c01s02:afterInitialize ()
     c01s02.objects.bathroom_closed.visitedBathroom = true;
     c01s02.objects.coffeeMaker.hadCoffee = true;
     c01s02.objects.apartmentDoor.talkedToNancy = true;
+    stateManager.cellphonePicked = true
+    stateManager.fair = true
+    mapHUD:show ()
   end
   
 end

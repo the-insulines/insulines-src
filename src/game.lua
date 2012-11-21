@@ -45,9 +45,9 @@ function game:unloadCurrentScene ()
   if self.currentScene then
     if self.currentScene.fadeOnChange then
       self.currentScene:fadeOut ( self.sceneFadeOutTime )
-      performWithDelay ( self.sceneFadeOutTime, self.currentScene.removeLayers, 1, self.currentScene )
+      performWithDelay ( self.sceneFadeOutTime, self.currentScene.unload, 1, self.currentScene )
     else
-      self.currentScene:removeLayers ()
+      self.currentScene:unload ()
     end
   end
   
@@ -96,8 +96,8 @@ function initialize ( self )
     end
   end
   
-  -- self:loadScene ( logoScreen() )
-  self:loadScene ( c01s01 )
+  self:loadScene ( logoScreen() )
+  -- self:loadScene ( c01s02 )
   -- self:loadScene ( c01s03 () )
   -- self:loadScene ( c01s04 () )
   
