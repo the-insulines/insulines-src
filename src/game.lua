@@ -58,26 +58,26 @@ end
 function game:loadScene ( scene )
   
   -- Cache scene
-  self.currentScene = scene
+  self.currentScene = scene ()
   
   -- Initialize hud (must be done after loading a scene)
   hud:initialize ()
   
   -- Show loading screen
-  loadingScreen:setup ( scene.objectsCount )
+  loadingScreen:setup ( self.currentScene.objectsCount )
   -- coroutine.yield ()
   
-  if not scene.initialized then
+  if not self.currentScene.initialized then
     -- Initialize scene
-    scene:initialize ()
+    self.currentScene:initialize ()
   else
     -- Reset scene
-    scene:resetCamera ()
-    scene:resetCharacter ()
-    scene:loadConversations ()
+    self.currentScene:resetCamera ()
+    self.currentScene:resetCharacter ()
+    self.currentScene:loadConversations ()
   end
   
-  self:sceneLoaded ( scene )
+  self:sceneLoaded ( self.currentScene )
   
 end
 
@@ -96,7 +96,7 @@ function initialize ( self )
     end
   end
   
-  self:loadScene ( logoScreen() )
+  self:loadScene ( logoScreen )
   -- self:loadScene ( c01s02 )
   -- self:loadScene ( c01s03 () )
   -- self:loadScene ( c01s04 () )
