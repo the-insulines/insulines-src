@@ -372,6 +372,7 @@ function new (name)
   
   function room:loadObjectInteractions ( objectInteractions )
     for objectName, interactions in pairs ( objectInteractions ) do
+      print (objectName)
       for interactionName, interaction in pairs ( interactions ) do
         self.objects[objectName][interactionName] = interaction
       end
