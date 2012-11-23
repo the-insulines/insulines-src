@@ -7,55 +7,48 @@
 package.path = package.path .. ";src/rooms/?.lua"
 
 
-function c01s02 ()
+function c01s02 (initialCharacterPathNode, initialCameraPathNode)
+
   require 'c01s02_definition'
   require 'c01s02_interactions'
   require 'c01s02_characters'
   require 'c01s02_path'
-
-  if LANGUAGE=="es" then
-    require 'dialogs/c01s02_es_dialogs_definition'
-  else  
-    require 'dialogs/c01s02_dialogs_definition'
-  end
+  require 'c01s02_sounds'
+  -- require 'dialogs/c01s02_es_dialogs_definition'
+  require 'dialogs/c01s02_dialogs_definition'
 
 
   local c01s02 = room.new ( "c01s02" )
 
+  c01s02:loadConversations ( c01s02_conversations )
+  c01s02:addObjects ( c01s02_objects )
+  c01s02:loadObjectInteractions ( c01s02_objectInteractions )
+  c01s02:addSounds( c01s02_sounds )
+  c01s02:loadPath( c01s02_path )
+
+  -- perspective attributes
   c01s02.frontCharacterZoom = 0.3
   c01s02.bottomCharacterZoomThreshold = -611
 
   c01s02.backCharacterZoom = 0.1
   c01s02.topCharacterZoomThreshold = 323
 
-  c01s02.initialCameraPathNode = 'joshDoor'
-  c01s02.initialCharacterPathNode = 'joshDoor'
+  -- initial nodes
+  if not initialCameraPathNode then initialCameraPathNode = 'joshDoor' end
+  c01s02.initialCameraPathNode = initialCameraPathNode
+
+  if not initialCharacterPathNode then initialCharacterPathNode = 'joshDoor' end
+  c01s02.initialCharacterPathNode = initialCharacterPathNode
 
   c01s02.initialNancyPathNode = 'door'
 
-  c01s02:loadConversations ( conversations )
-  
-  c01s02:addObjects ( objects )
-
-  c01s02:loadObjectInteractions ( objectInteractions )
-
-
-  sounds = {
-  
-    sink_flowing = { resource_name = 'c01s02_sink_flowing' },
-  
-    toothbrush = { resource_name = 'c01s02_toothbrush' },
-
-    flush = { resource_name = 'c01s02_flush' },
-  }
-
-  c01s02:addSounds( sounds )
-
+  -- functions
   function c01s02:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
   
-    self:loadCharacter( josh )
+    self:loadCharacter( josh () )
+    
     self.objects.josh:setLoc(1120, -245)
     nancy = character.new ( 'nancy' )
     nancy.renderPriority = 100
@@ -77,11 +70,6 @@ function c01s02 ()
   
   end
 
-
-  -- Walk path
-  c01s02:loadPath(path)
-  
-  
   return c01s02
 end
 

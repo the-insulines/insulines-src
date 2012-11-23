@@ -1,5 +1,5 @@
 -- path nodes
-path = {
+c01s02_path = {
   livingNodeLeft = {
     position = point (-398, -340),
     neighbors = { 'beforeBobbyDoor', 'kitchenLeftOut' },

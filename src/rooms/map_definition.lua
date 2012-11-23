@@ -1,4 +1,4 @@
-objects = {
+map_objects = {
   
   map = {
     layer_name = 'background',

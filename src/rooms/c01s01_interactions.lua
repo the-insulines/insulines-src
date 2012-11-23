@@ -1,4 +1,4 @@
-objectInteractions = {
+c01s01_objectInteractions = {
   background = {
     avoid_clicks = true
   },
@@ -59,7 +59,6 @@ objectInteractions = {
 
   cellphone = {
     clicks = 0,
-    woke = false,
     calling = function ( self )
       self.animation:startAnimation ( 'calling' )
       game.currentScene.sounds.cellphone:play ()
@@ -126,7 +125,6 @@ objectInteractions = {
   },
 
   clothes_heap = {
-    dressed = false,
     onClick = function ()
 
       local fadeIn = function ()
@@ -147,10 +145,10 @@ objectInteractions = {
       end
       
       if stateManager.woke then
-        if not game.currentScene.objects.clothes_heap.dressed then
+        if not stateManager.dressed then
           game.currentScene:fadeOut ()
           performWithDelay (100, fadeIn, 1, game.currentScene)
-          game.currentScene.objects.clothes_heap.dressed = true
+          stateManager.dressed = true
         end
       end
     end
@@ -180,7 +178,7 @@ objectInteractions = {
 
   room_door = {
     onClick = function ()
-      if game.currentScene.objects.clothes_heap.dressed then
+      if stateManager.dressed then
         game.currentScene:stopRendering( "room_door" )
         game.currentScene:startRendering( "room_door_open" )
         game.currentScene.objects.room_door_open.onClick ()
@@ -194,10 +192,8 @@ objectInteractions = {
   
   room_door_open = {
     onClick = function ()
-      if game.currentScene.objects.clothes_heap.dressed then
-        c01s02.initialCameraPathNode = 'joshDoor'
-        c01s02.initialCharacterPathNode = 'joshDoor'
-        game:switchToScene ( c01s02 )
+      if stateManager.dressed then
+        game:switchToScene ( c01s02, 'joshDoor', 'joshDoor' )
       end
     end
   }

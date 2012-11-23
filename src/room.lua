@@ -268,7 +268,7 @@ function new (name)
           -- set the callback method when finished walking
           if type (object.onClick) == "function" then
             if self.characterMovement then
-              callback = { method = object.onClick }
+              callback = { method = object.onClick, parent = object }
             else
               object:onClick ()
             end
@@ -372,7 +372,6 @@ function new (name)
   
   function room:loadObjectInteractions ( objectInteractions )
     for objectName, interactions in pairs ( objectInteractions ) do
-      print (objectName)
       for interactionName, interaction in pairs ( interactions ) do
         self.objects[objectName][interactionName] = interaction
       end

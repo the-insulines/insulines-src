@@ -1,4 +1,4 @@
-objectInteractions = {
+c01s02_objectInteractions = {
 
   background = {
     avoid_clicks = true
@@ -12,10 +12,7 @@ objectInteractions = {
 
   bedroom_opened = {
     onClick = function ()
-      c01s01.initialCharacterPathNode = 'door'
-      c01s01.initialCameraPathNode = 'door'
-      
-      game:switchToScene ( c01s01 )
+      game:switchToScene ( c01s01, 'door', 'door' )
     end
   },
   
@@ -26,12 +23,10 @@ objectInteractions = {
   },
 
   answering_machine = {
-    answered = false,
-
-    onClick = function ()
-      c01s02.objects.answering_machine.animation:stopCurrentAnimation()
-      c01s02.objects.answering_machine.animation:startAnimation ( 'stopped' )
-      c01s02.objects.answering_machine.answered = true
+    onClick = function ( self )
+      self.animation:stopCurrentAnimation()
+      self.animation:startAnimation ( 'stopped' )
+      -- stateManager.answered = true
       dialog:load("message")
     end
   },
@@ -43,17 +38,17 @@ objectInteractions = {
   bathroom_closed = {
     visitedBathroom = false,
     onClick = function ()
-      if not c01s02.objects.bathroom_closed.visitedBathroom then
+      if not game.currentScene.objects.bathroom_closed.visitedBathroom then
         -- Avoid clicks
-        c01s02.inputEnabled = false
+        game.currentScene.inputEnabled = false
         
-        c01s02.objects.bathroom_closed.visitedBathroom = true
+        game.currentScene.objects.bathroom_closed.visitedBathroom = true
         
         -- Open bathroom door
-        c01s02:stopRendering('bathroom_closed')
-        c01s02:startRendering('bathroom_opened')
+        game.currentScene:stopRendering('bathroom_closed')
+        game.currentScene:startRendering('bathroom_opened')
         -- Move character to bathroom
-        c01s02:moveCharacterToNode('josh', 'bathroom', c01s02.objects.bathroom_opened.inBathroom, c01s02)
+        game.currentScene:moveCharacterToNode('josh', 'bathroom', game.currentScene.objects.bathroom_opened.inBathroom, game.currentScene)
       else
         dialog:load('bathroom_' .. math.random(2))
       end
@@ -64,22 +59,22 @@ objectInteractions = {
     inBathroom = function ( self )
 
       -- Close bathroom door
-      c01s02:stopRendering("josh")
-      c01s02:stopRendering("bathroom_opened")
-      c01s02:startRendering("bathroom_closed")
+      game.currentScene:stopRendering("josh")
+      game.currentScene:stopRendering("bathroom_opened")
+      game.currentScene:startRendering("bathroom_closed")
       
       if not inventory.opened then
         inventory:openInventory ()
       end
-      c01s02.inputEnabled = true      
+      game.currentScene.inputEnabled = true      
       performWithDelay(10, self.objects.bathroom_opened.addBathroomItems, 1, self)
 
     end,
     
     addBathroomItems = function ( self )
-      inventory:addItem( 'toothpaste', c01s02.objects.toothpaste )
-      inventory:addItem( 'toothbrush', c01s02.objects.toothbrush )
-      inventory:addItem( 'floss', c01s02.objects.floss )
+      inventory:addItem( 'toothpaste', game.currentScene.objects.toothpaste )
+      inventory:addItem( 'toothbrush', game.currentScene.objects.toothbrush )
+      inventory:addItem( 'floss', game.currentScene.objects.floss )
     end,
     
     leaveBathroom = function ( self )
@@ -89,11 +84,11 @@ objectInteractions = {
         inventory:closeInventory ()
       end
     
-      c01s02:stopRendering("bathroom_opened")
-      c01s02:startRendering("bathroom_closed")
+      game.currentScene:stopRendering("bathroom_opened")
+      game.currentScene:startRendering("bathroom_closed")
       dialog:load('left_bathroom')
-      c01s02.inputEnabled = true
-      c01s02.characterMovement = true
+      game.currentScene.inputEnabled = true
+      game.currentScene.characterMovement = true
     end
     
   },
@@ -109,24 +104,24 @@ objectInteractions = {
         inventory:removeItem ( self )
       end
     
-      inventory:addItem ( 'toothbrush_with_toothpaste', c01s02.objects.toothbrush_with_toothpaste )
+      inventory:addItem ( 'toothbrush_with_toothpaste', game.currentScene.objects.toothbrush_with_toothpaste )
       
-      c01s02.inputEnabled = false
+      game.currentScene.inputEnabled = false
       
-      performWithDelay ( 50, c01s02.sounds.toothbrush.play, 1, c01s02.sounds.toothbrush )
+      performWithDelay ( 50, game.currentScene.sounds.toothbrush.play, 1, game.currentScene.sounds.toothbrush )
 
-      performWithDelay ( 800, c01s02.sounds.flush.play, 1, c01s02.sounds.flush )
+      performWithDelay ( 800, game.currentScene.sounds.flush.play, 1, game.currentScene.sounds.flush )
       
       if inventory.opened then
         inventory:closeInventory ()
       end
       
-      c01s02.inputEnabled = false
+      game.currentScene.inputEnabled = false
 
-      performWithDelay ( 1150, c01s02.stopRendering, 1, c01s02, "bathroom_closed" )
-      performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "bathroom_opened" )
-      performWithDelay ( 1150, c01s02.startRendering, 1, c01s02, "josh" )
-      performWithDelay ( 1150, c01s02.moveCharacterToNode, 1, c01s02, 'josh', 'bathroomDoor', c01s02.objects.bathroom_opened.leaveBathroom, c01s02 )
+      performWithDelay ( 1150, game.currentScene.stopRendering, 1, game.currentScene, "bathroom_closed" )
+      performWithDelay ( 1150, game.currentScene.startRendering, 1, game.currentScene, "bathroom_opened" )
+      performWithDelay ( 1150, game.currentScene.startRendering, 1, game.currentScene, "josh" )
+      performWithDelay ( 1150, game.currentScene.moveCharacterToNode, 1, game.currentScene, 'josh', 'bathroomDoor', game.currentScene.objects.bathroom_opened.leaveBathroom, game.currentScene )
     end
     
   },
@@ -150,16 +145,16 @@ objectInteractions = {
   
   freezer_opened = {
     onClick = function ()
-      c01s02:stopRendering('freezer_opened')
-      c01s02:startRendering('freezer_closed')
-      -- c01s02:stopRendering('cube_tray')
+      game.currentScene:stopRendering('freezer_opened')
+      game.currentScene:startRendering('freezer_closed')
+      -- game.currentScene:stopRendering('cube_tray')
     end
   },
 
   fridge_opened = {
     onClick = function ()
-      c01s02:stopRendering('fridge_opened')
-      c01s02:startRendering('fridge_closed')
+      game.currentScene:stopRendering('fridge_opened')
+      game.currentScene:startRendering('fridge_closed')
     end
   },  
   
@@ -181,18 +176,18 @@ objectInteractions = {
     end,
     prepareCoffee = function ( self )
       local fadeIn = function ()
-        c01s02:fadeIn ()
+        game.currentScene:fadeIn ()
         self.animation:startAnimation ( 'coffeemaker_used' )
-        c01s02:stopRendering ( 'coffeePotEmpty' )
-        c01s02:startRendering ( "coffeePotFull" )
-        c01s02.objects.mug_full.animation:startAnimation ( 'mug_full_smoke' )
-        c01s02.objects.mug_full.highlight = true
-        c01s02:startRendering ( "mug_full" )
+        game.currentScene:stopRendering ( 'coffeePotEmpty' )
+        game.currentScene:startRendering ( "coffeePotFull" )
+        game.currentScene.objects.mug_full.animation:startAnimation ( 'mug_full_smoke' )
+        game.currentScene.objects.mug_full.highlight = true
+        game.currentScene:startRendering ( "mug_full" )
         self.madeCoffee = true
-        c01s02.objects.coffeeMaker.highlight = false
+        game.currentScene.objects.coffeeMaker.highlight = false
       end
       
-      c01s02:fadeOut ()
+      game.currentScene:fadeOut ()
       performWithDelay ( 100, fadeIn, 1, self )
     end,
     onInteractionWith = function ( self, item )
@@ -219,9 +214,9 @@ objectInteractions = {
         inventory:removeItem ( item )
         
         -- place the empty pot on the coffee maker
-        c01s02.objects.coffeePotEmpty.prop:setLoc ( self.x - 7, self.y - 78 )
-        c01s02.objects.coffeePotEmpty.onClick = nil
-        c01s02:startRendering ( 'coffeePotEmpty' )
+        game.currentScene.objects.coffeePotEmpty.prop:setLoc ( self.x - 7, self.y - 78 )
+        game.currentScene.objects.coffeePotEmpty.onClick = nil
+        game.currentScene:startRendering ( 'coffeePotEmpty' )
         
         if self.hasCoffee then
           self:prepareCoffee ()
@@ -232,23 +227,23 @@ objectInteractions = {
   
   pantry_closed = {
     onClick = function ()
-      c01s02:stopRendering ( 'pantry_closed' )
-      c01s02:startRendering ( 'pantry_opened' )
-      if not c01s02.objects.coffeePackage.pickedUp then
-        c01s02:startRendering ( 'coffeePackage' )
+      game.currentScene:stopRendering ( 'pantry_closed' )
+      game.currentScene:startRendering ( 'pantry_opened' )
+      if not game.currentScene.objects.coffeePackage.pickedUp then
+        game.currentScene:startRendering ( 'coffeePackage' )
       end
     end
   },
   
   pantry_opened = {
     onClick = function ()
-      if not c01s02.objects.coffeePackage.pickedUp then
-        c01s02:stopRendering ( 'coffeePackage' )
-        inventory:addItem ( "coffeePackage", c01s02.objects.coffeePackage )
-        c01s02.objects.coffeePackage.pickedUp = true
+      if not game.currentScene.objects.coffeePackage.pickedUp then
+        game.currentScene:stopRendering ( 'coffeePackage' )
+        inventory:addItem ( "coffeePackage", game.currentScene.objects.coffeePackage )
+        game.currentScene.objects.coffeePackage.pickedUp = true
       else
-        c01s02:stopRendering ( 'pantry_opened' )
-        c01s02:startRendering ( 'pantry_closed' )
+        game.currentScene:stopRendering ( 'pantry_opened' )
+        game.currentScene:startRendering ( 'pantry_closed' )
       end
       
     end
@@ -262,8 +257,8 @@ objectInteractions = {
   coffeePotEmpty = {
     water = false,
     onClick = function ()
-      inventory:addItem ( 'coffeePotEmpty', c01s02.objects.coffeePotEmpty)
-      c01s02:stopRendering('coffeePotEmpty')
+      inventory:addItem ( 'coffeePotEmpty', game.currentScene.objects.coffeePotEmpty)
+      game.currentScene:stopRendering('coffeePotEmpty')
     end,
   },
 
@@ -276,10 +271,10 @@ objectInteractions = {
   mug_full = {
     onClick = function ()
       dialog:load("coffeemug")
-      c01s02.objects.mug_full.animation:stopCurrentAnimation ()
-      c01s02:stopRendering( 'mug_full' )
-      c01s02:startRendering( 'mug_empty' )
-      c01s02.objects.coffeeMaker.hadCoffee = true
+      game.currentScene.objects.mug_full.animation:stopCurrentAnimation ()
+      game.currentScene:stopRendering( 'mug_full' )
+      game.currentScene:startRendering( 'mug_empty' )
+      game.currentScene.objects.coffeeMaker.hadCoffee = true
     end
   },
 
@@ -293,41 +288,41 @@ objectInteractions = {
     interactsWith = { 'coffeePotEmpty' },
     
     stopFlowing = function ()
-      c01s02.objects.sink.animation:startAnimation ( 'stopped' )
-      c01s02.objects.sink.flowing = false
+      game.currentScene.objects.sink.animation:startAnimation ( 'stopped' )
+      game.currentScene.objects.sink.flowing = false
     end,
     
     startFlowing = function ()
-      c01s02.objects.sink.animation:startAnimation ( 'flowing' )
-      c01s02.objects.sink.flowing = true
-      performWithDelay (450, c01s02.objects.sink.stopFlowing, 1)
-      c01s02.sounds.sink_flowing:play ()
+      game.currentScene.objects.sink.animation:startAnimation ( 'flowing' )
+      game.currentScene.objects.sink.flowing = true
+      performWithDelay (450, game.currentScene.objects.sink.stopFlowing, 1)
+      game.currentScene.sounds.sink_flowing:play ()
     end,
     
     onInteractionWith = function ( self, item )
-      if c01s02.objects.coffeePotEmpty.water then
+      if game.currentScene.objects.coffeePotEmpty.water then
         dialog:load("coffee_pot_with_water")
       else
         
-        if not c01s02.objects.sink.flowing then
-          c01s02.objects.sink.startFlowing ()
+        if not game.currentScene.objects.sink.flowing then
+          game.currentScene.objects.sink.startFlowing ()
         end
         
-        c01s02.objects.coffeePotEmpty.water = true
+        game.currentScene.objects.coffeePotEmpty.water = true
         inventory:removeItem(item)
-        inventory:addItem('coffeePotWater', c01s02.objects.coffeePotWater)
+        inventory:addItem('coffeePotWater', game.currentScene.objects.coffeePotWater)
       end
     end,
     
     flowing = false,
     
     onClick = function ()
-      c01s02.objects.sink.animation:stopCurrentAnimation ()
-      if c01s02.objects.sink.flowing then
-        c01s02.objects.sink.stopFlowing ()
-        c01s02.sounds.sink_flowing:stop ()
+      game.currentScene.objects.sink.animation:stopCurrentAnimation ()
+      if game.currentScene.objects.sink.flowing then
+        game.currentScene.objects.sink.stopFlowing ()
+        game.currentScene.sounds.sink_flowing:stop ()
       else
-        c01s02.objects.sink.startFlowing ()
+        game.currentScene.objects.sink.startFlowing ()
       end
     end
   },
@@ -344,25 +339,25 @@ objectInteractions = {
     pickedFlyer = false,
     talkedToNancy = false,
     closeDoor = function ()
-      c01s02:startRendering ( 'apartmentDoor' )
-      c01s02:stopRendering ( 'apartmentDoorOpened' )
+      game.currentScene:startRendering ( 'apartmentDoor' )
+      game.currentScene:stopRendering ( 'apartmentDoorOpened' )
       
       -- characters look at each other
-      c01s02.objects.josh:standLookingInDirection ( DIRECTION_RIGHT )
-      c01s02.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
+      game.currentScene.objects.josh:standLookingInDirection ( DIRECTION_RIGHT )
+      game.currentScene.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
     end,
     
     beginNancy = function ()
-      c01s02:stopRendering ( 'apartmentDoor' )
-      c01s02:startRendering ( 'apartmentDoorOpened' )
+      game.currentScene:stopRendering ( 'apartmentDoor' )
+      game.currentScene:startRendering ( 'apartmentDoorOpened' )
       
-      c01s02:loadCharacter ( nancy )
-      local pos = c01s02.path.graph[c01s02.initialNancyPathNode].position
-      c01s02.objects.nancy.prop:setLoc(pos.x, pos.y)
-      c01s02.objects.nancy:moveTo(pos.x, pos.y, c01s02.perspectiveZoomFactor, 0.00001)
-      c01s02:startRendering ( 'nancy' )
-      c01s02:moveCharacterToNode('nancy', 'beforeDoor', c01s02.objects.apartmentDoor.closeDoor, c01s02)
-      c01s02.objects.apartmentDoor.talkedToNancy = true
+      game.currentScene:loadCharacter ( nancy )
+      local pos = game.currentScene.path.graph[game.currentScene.initialNancyPathNode].position
+      game.currentScene.objects.nancy.prop:setLoc(pos.x, pos.y)
+      game.currentScene.objects.nancy:moveTo(pos.x, pos.y, game.currentScene.perspectiveZoomFactor, 0.00001)
+      game.currentScene:startRendering ( 'nancy' )
+      game.currentScene:moveCharacterToNode('nancy', 'beforeDoor', game.currentScene.objects.apartmentDoor.closeDoor, game.currentScene)
+      game.currentScene.objects.apartmentDoor.talkedToNancy = true
       
       stateManager.fair = true
       dialog:load('nancy')
@@ -370,34 +365,34 @@ objectInteractions = {
     onClick = function ()
       if stateManager.pickedFlyer then
         
-        if c01s02.objects.bathroom_closed.visitedBathroom and c01s02.objects.coffeeMaker.hadCoffee then
+        if game.currentScene.objects.bathroom_closed.visitedBathroom and game.currentScene.objects.coffeeMaker.hadCoffee then
         
-          if not c01s02.objects.apartmentDoor.talkedToNancy then
-            c01s02.objects.apartmentDoor.beginNancy ()
+          if not game.currentScene.objects.apartmentDoor.talkedToNancy then
+            game.currentScene.objects.apartmentDoor.beginNancy ()
           else
-            c01s02:stopRendering ( 'apartmentDoor' )
-            c01s02:startRendering ( 'apartmentDoorOpened' )
+            game.currentScene:stopRendering ( 'apartmentDoor' )
+            game.currentScene:startRendering ( 'apartmentDoorOpened' )
             
-            game:switchToScene ( thankYouScreen )
+            game:switchToScene ( map )
           end
           
         else
-          c01s02.objects.apartmentDoor:dialogRequirements ()
+          game.currentScene.objects.apartmentDoor:dialogRequirements ()
         end
       else
         -- pickup flyer
         stateManager.pickedFlyer = true
-        c01s02:stopRendering('flyer')
+        game.currentScene:stopRendering('flyer')
         mapHUD:show ()
-        -- inventory:addItem('flyer', c01s02.objects.flyer)
+        -- inventory:addItem('flyer', game.currentScene.objects.flyer)
         dialog:load('flyer')
       end
     end,
     
     dialogRequirements = function ( self )
-      if not c01s02.objects.bathroom_closed.visitedBathroom and not c01s02.objects.coffeeMaker.hadCoffee then
+      if not game.currentScene.objects.bathroom_closed.visitedBathroom and not game.currentScene.objects.coffeeMaker.hadCoffee then
         dialog:load('bathroom_and_coffee')
-      elseif not c01s02.objects.bathroom_closed.visitedBathroom then
+      elseif not game.currentScene.objects.bathroom_closed.visitedBathroom then
         dialog:load('bathroom')
       else
         dialog:load('coffee')
@@ -409,8 +404,8 @@ objectInteractions = {
   
   apartmentDoorOpened = {
     onClick = function ()
-      c01s02:stopRendering ( 'apartmentDoorOpened' )
-      c01s02:startRendering ( 'apartmentDoor' )
+      game.currentScene:stopRendering ( 'apartmentDoorOpened' )
+      game.currentScene:startRendering ( 'apartmentDoor' )
     end
   },
 

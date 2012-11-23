@@ -4,8 +4,8 @@
 -- All Rights Reserved. 
 -- http://quov.is // http://theinsulines.com
 --==============================================================
--- DEFAULT_ASSETS_PATH = '../insulines-gfx/'
-DEFAULT_ASSETS_PATH = '../insulines-hosts/scripts/assets/'
+DEFAULT_ASSETS_PATH = '../insulines-gfx/'
+-- DEFAULT_ASSETS_PATH = '../insulines-hosts/scripts/assets/'
 -- SOUND_ENGINE = 'fmod'
 -- SOUND_ENGINE = 'untz'
 

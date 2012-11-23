@@ -51,7 +51,7 @@ function mapHUD:onInput ()
     -- If map was clicled open map
     local mapX, mapY = self.mapAsset.prop:worldToModel ( x, y )
     if (mapX >= -self.mapAsset.half_width) and (mapX <= self.mapAsset.half_width) and (mapY >= -self.mapAsset.half_height) and (mapY <= self.mapAsset.half_height) then
-      game:loadScene(map())
+      game:loadScene(map)
       return true
     end
   end

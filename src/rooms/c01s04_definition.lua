@@ -1,4 +1,4 @@
-objects = {
+c01s04_objects = {
   
   c01s04_building = {
     layer_name = 'background',

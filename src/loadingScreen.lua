@@ -20,6 +20,7 @@ function loadingScreen:setupLayer ( )
   viewport:setScale ( WORLD_RESOLUTION_X, WORLD_RESOLUTION_Y )
 
   self.layer:setViewport ( viewport )
+  
   -- Make background
   self.background = {}
   self.background.gfx = resource_cache.get ( 'loadingScreen_background' )

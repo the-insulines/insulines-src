@@ -5,19 +5,23 @@
 -- http://quov.is // http://theinsulines.com
 --==============================================================
 
-function c01s01()
+function c01s01(initialCharacterPathNode, initialCameraPathNode)
   require 'c01s01_definition'
   require 'c01s01_interactions'
   require 'c01s01_path'
+  require 'c01s01_sounds'
 
-  if LANGUAGE=="es" then
-    require 'dialogs/c01s01_es_dialogs_definition'
-  else  
-    require 'dialogs/c01s01_dialogs_definition'
-  end
-
+  -- require 'dialogs/c01s01_es_dialogs_definition'
+  require 'dialogs/c01s01_dialogs_definition'
 
   local c01s01 = room.new ( "c01s01" )
+  
+  c01s01:loadConversations ( c01s01_conversations )
+  c01s01:addObjects ( c01s01_objects )
+  c01s01:loadObjectInteractions ( c01s01_objectInteractions )
+  c01s01:addSounds( c01s01_sounds )
+  c01s01:loadPath(c01s01_path)
+
 
   -- perspective attributes
   c01s01.frontCharacterZoom = 0.9
@@ -25,39 +29,22 @@ function c01s01()
   c01s01.backCharacterZoom = 0.85
   c01s01.topCharacterZoomThreshold = -66
 
-  c01s01.initialCameraPathNode = 'bed'
-  c01s01.initialCharacterPathNode = 'movePoint'
 
-  c01s01:loadConversations ( conversations )
+  -- initial nodes
+  if not initialCameraPathNode then initialCameraPathNode = 'bed' end
+  c01s01.initialCameraPathNode = initialCameraPathNode
+
+  if not initialCharacterPathNode then initialCharacterPathNode = 'movePoint' end
+  c01s01.initialCharacterPathNode = initialCharacterPathNode
 
   c01s01.characterMovement = false
 
-  c01s01:addObjects ( objects )
-  c01s01:loadObjectInteractions ( objectInteractions )
-  sounds = {
-    
-    ambient = {
-      resource_name = 'c01s01_ambient'
-    },
-    
-    cellphone = {
-      resource_name = 'c01s01_cellphone_ringtone'
-    },
-    
-    background = {
-      resource_name = 'c01s01_theme'
-    }
-    
-  }
 
-  c01s01:addSounds( sounds )
-
+  -- functions
   function c01s01:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
-    josh = character.new ( 'josh' )
-    josh.renderPriority = 200
-    self:loadCharacter( josh )
+    self:loadCharacter( josh () )
     self:stopRendering( 'josh' )
     self.characterMovement = false
   end
@@ -70,7 +57,5 @@ function c01s01()
   end
 
 
-  -- Walk path
-  c01s01:loadPath(path)
   return c01s01
 end

@@ -16,26 +16,31 @@ c01s03 = function ()
   
   
   local c01s03_room = room.new ( "c01s03" )
-  
-  
+
+  c01s03_room:addObjects ( c01s03_objects )
+  c01s03_room:loadPath ( c01s03_path )
+  c01s03_room:placeObjectsOnPath ( c01s03_objectPlacementOnPath )
+  c01s03_room:loadObjectInteractions ( c01s03_objectInteractions )
+  c01s03_room:loadConversations ( c01s03_conversations )
+
   c01s03_room.frontCharacterZoom = 1.0
   c01s03_room.bottomCharacterZoomThreshold = -542
-
-  c01s03_room.backCharacterZoom = 0.4
+  c01s03_room.backCharacterZoom = 0.2
   c01s03_room.topCharacterZoomThreshold = 74
 
   c01s03_room.initialCameraPathNode = 'start'
   
-  
   -- Character initial positions
   -- The pivot was subtracted to calculate the Y coordinate
   c01s03_room.initialCharacterPathNode = 'start'
-  c01s03_room.initialHowardPosition = point ( 330, 90 - 200 )
-  c01s03_room.initialKleinPosition = point ( 800, 0 - 300 )
-  c01s03_room.initialSonjaPosition = point ( -800, -200 - 400 )
-  c01s03_room.initialPaulPosition = point ( 120, 110 - 200 )
-  c01s03_room.initialPetePosition = point ( -20, 100 - 180 )
-
+  c01s03_room.initialPositions = {
+    howard = point ( 330, 90 - 200 ),
+    klein = point ( 800, 0 - 300 ),
+    sonja = point ( -800, -200 - 400 ),
+    paul = point ( 120, 110 - 200 ),
+    pete = point ( -20, 100 - 180 )
+  }
+  
   c01s03_room.hasExternalAssets = true
   
   
@@ -45,9 +50,7 @@ c01s03 = function ()
   
   
   -- Scene objects
-  c01s03_room:addObjects ( objects )
-  
-  externalObjects = {
+  c01s03_externalObjects = {
     c01s03_candle_light1 = {
       externalAsset = true,
       resource_name = "c01s03_candle_light",
@@ -82,43 +85,19 @@ c01s03 = function ()
     },
   }
   
-  c01s03_room:addObjects ( externalObjects )
+  c01s03_room:addObjects ( c01s03_externalObjects )
   
-  
-  -- Load path and place objects on it
-  c01s03_room:loadPath ( path )
-  c01s03_room:placeObjectsOnPath ( objectPlacementOnPath )
-  
-  c01s03_room:loadObjectInteractions ( objectInteractions )
-  
-  c01s03_room:loadConversations ( conversations )
-  
-  -- sounds = {
-  -- }
-  -- 
-  -- c01s03:addSounds( sounds )
-
   function c01s03_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
-    self:loadCharacter ( josh )
-    self:loadCharacter ( howard )
-    self:loadCharacter ( klein )
-    self:loadCharacter ( sonja )
-    self:loadCharacter ( paul )
-    self:loadCharacter ( pete )
-    
-    self.objects.howard:setLoc ( self.initialHowardPosition.x, self.initialHowardPosition.y )
-    self.objects.klein:setLoc ( self.initialKleinPosition.x, self.initialKleinPosition.y )
-    self.objects.sonja:setLoc ( self.initialSonjaPosition.x, self.initialSonjaPosition.y )
-    self.objects.paul:setLoc ( self.initialPaulPosition.x, self.initialPaulPosition.y )
-    self.objects.pete:setLoc ( self.initialPetePosition.x, self.initialPetePosition.y )
-    
-    self.objects.howard:startAnimation ( 'stand' )
-    self.objects.klein:startAnimation ( 'stand' )
-    self.objects.sonja:startAnimation ( 'stand' )
-    self.objects.paul:startAnimation ( 'stand' )
-    self.objects.pete:startAnimation ( 'stand' )
+
+    self:loadCharacter ( josh () )
+
+    for characterName, character in pairs(c01s03_characters) do
+      self:loadCharacter ( character () )
+      self.objects[characterName]:setLoc(self.initialPositions[characterName].x, self.initialPositions[characterName].y)
+      self.objects[characterName]:startAnimation ( 'stand' )
+    end
     
     self.objects.c01s03_candle_light1.animation:startAnimation ( 'c01s03_candlelight' )
     self.objects.c01s03_candle_light2.animation:startAnimation ( 'c01s03_candlelight' )
