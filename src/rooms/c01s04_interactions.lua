@@ -1,4 +1,4 @@
-objectInteractions = {
+c01s04_objectInteractions = {
   
   c01s04_door_closed = {
     onClick = function ()
