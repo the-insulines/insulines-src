@@ -14,12 +14,12 @@ c01s02_path = {
 
   bobbyDoor = {
     position = point (-690, -237),
-    neighbors = { 'beforeBobbyDoor' },
+    neighbors = { 'beforeBobbyDoor', 'carpet' },
   },
 
   carpet = {
     position = point (-873, -343),
-    neighbors = { 'beforeBobbyDoor', 'beforeAnswering' },
+    neighbors = { 'beforeBobbyDoor', 'beforeAnswering', 'bobbyDoor' },
   },
 
   beforeAnswering = {

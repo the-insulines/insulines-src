@@ -356,7 +356,7 @@ c01s02_objectInteractions = {
       game.currentScene.objects.nancy.prop:setLoc(pos.x, pos.y)
       game.currentScene.objects.nancy:moveTo(pos.x, pos.y, game.currentScene.perspectiveZoomFactor, 0.00001)
       game.currentScene:startRendering ( 'nancy' )
-      game.currentScene:moveCharacterToNode('nancy', 'beforeDoor', game.currentScene.objects.apartmentDoor.closeDoor, game.currentScene)
+      game.currentScene:moveCharacterToNode('nancy', game.currentScene.finalNancyPathNode, game.currentScene.objects.apartmentDoor.closeDoor, game.currentScene)
       game.currentScene.objects.apartmentDoor.talkedToNancy = true
       
       stateManager.fair = true

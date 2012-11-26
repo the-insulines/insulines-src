@@ -41,6 +41,7 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
   c01s02.initialCharacterPathNode = initialCharacterPathNode
 
   c01s02.initialNancyPathNode = 'door'
+  c01s02.finalNancyPathNode = 'bobbyDoor'
 
   -- functions
   function c01s02:beforeInitialize ()
@@ -55,12 +56,12 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
   function c01s02:afterInitialize ()  
     self.objects.answering_machine.animation:startAnimation ( 'blink' )
     self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )
-  
+    
     -- DEBUG MODE
     if DEBUG then
-      c01s02.objects.bathroom_closed.visitedBathroom = true;
-      c01s02.objects.coffeeMaker.hadCoffee = true;
-      -- c01s02.objects.apartmentDoor.talkedToNancy = true;
+      c01s02.objects.bathroom_closed.visitedBathroom = true
+      c01s02.objects.coffeeMaker.hadCoffee = true
+      -- c01s02.objects.apartmentDoor.talkedToNancy = true
       stateManager.cellphonePicked = true
       stateManager.fair = true
       mapHUD:show ()

@@ -81,4 +81,5 @@ c01s03_characters = {
   klein = klein, 
   sonja = sonja, 
   paul = paul, 
-  pete = pete }
+  pete = pete
+}
