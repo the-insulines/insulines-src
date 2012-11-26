@@ -25,6 +25,9 @@ sceneFadeOutTime = 200
 
 
 function game:switchToScene ( scene, initialCharacterPathNode, initialCameraPathNode )
+
+  self.switching = true
+  
   local shouldWaitFadeout = self.currentScene.fadeOnChange
   
   -- DEBUG
@@ -172,6 +175,7 @@ function game:sceneLoaded ( scene )
   -- print ( ' ---------------------------------- ')
   MOAISim.forceGarbageCollection ()
   -- MOAISim.reportHistogram ()
+  self.switching = false
 end
 
 function start ( self )
@@ -194,13 +198,18 @@ function start ( self )
   while self.gameRunning do
     local stopInput = false
 
-    -- Send input to HUD first
-    if hud.initialized then
-       stopInput = hud:onInput ()
-    end
+    -- Avoid input if we're switching scenes
+    if not self.switching then
     
-    if self.currentScene and not stopInput then
-      self.currentScene:onInput ()
+      -- Send input to HUD first
+      if hud.initialized then
+         stopInput = hud:onInput ()
+      end
+      
+      if self.currentScene and not stopInput then
+        self.currentScene:onInput ()
+      end
+    
     end
 
     coroutine.yield ()

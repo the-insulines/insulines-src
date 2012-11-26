@@ -33,26 +33,30 @@ function mapHUD:initialize ( elements )
 end
 
 function mapHUD:hide()
+  self.visible = false
   self.layer:removeProp ( self.mapAsset.prop )
 end
 
 function mapHUD:show()
+  self.visible = true
   self.layer:insertProp ( self.mapAsset.prop )
 end
 
 function mapHUD:onInput ()
-  local x, y = input_manager.getTouch ()
-    
-  if x and y then
-    x, y = self.layer:wndToWorld ( x, y )
-  end
+  if  self.visible then
+    local x, y = input_manager.getTouch ()
+      
+    if x and y then
+      x, y = self.layer:wndToWorld ( x, y )
+    end
 
-  if input_manager.down () then
-    -- If map was clicled open map
-    local mapX, mapY = self.mapAsset.prop:worldToModel ( x, y )
-    if (mapX >= -self.mapAsset.half_width) and (mapX <= self.mapAsset.half_width) and (mapY >= -self.mapAsset.half_height) and (mapY <= self.mapAsset.half_height) then
-      game:loadScene(map)
-      return true
+    if input_manager.down () then
+      -- If map was clicled open map
+      local mapX, mapY = self.mapAsset.prop:worldToModel ( x, y )
+      if (mapX >= -self.mapAsset.half_width) and (mapX <= self.mapAsset.half_width) and (mapY >= -self.mapAsset.half_height) and (mapY <= self.mapAsset.half_height) then
+        game:loadScene(map)
+        return true
+      end
     end
   end
 end
