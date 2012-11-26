@@ -351,7 +351,7 @@ c01s02_objectInteractions = {
       game.currentScene:stopRendering ( 'apartmentDoor' )
       game.currentScene:startRendering ( 'apartmentDoorOpened' )
       
-      game.currentScene:loadCharacter ( nancy )
+      game.currentScene:loadCharacter ( nancy () )
       local pos = game.currentScene.path.graph[game.currentScene.initialNancyPathNode].position
       game.currentScene.objects.nancy.prop:setLoc(pos.x, pos.y)
       game.currentScene.objects.nancy:moveTo(pos.x, pos.y, game.currentScene.perspectiveZoomFactor, 0.00001)

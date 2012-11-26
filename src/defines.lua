@@ -6,9 +6,9 @@
 --==============================================================
 
 -- Debugging
--- DEBUG = true
---MOAISim.setLeakTrackingEnabled(true)
-MOAISim.setHistogramEnabled (true)
+DEBUG = true
+-- MOAISim.setLeakTrackingEnabled(true)
+-- MOAISim.setHistogramEnabled (true)
 -- MOAISim.setLuaAllocLogEnabled(true)
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
@@ -123,6 +123,12 @@ DIALOG_WINDOW_HALF_HEIGHT = DIALOG_WINDOW_HEIGHT / 2
 -- Movement
 MOVEMENT_PIXELS_PER_SECOND_HORIZONTAL = 300 / SCREEN_TO_WORLD_RATIO
 MOVEMENT_PIXELS_PER_SECOND_VERTICAL = 140 / SCREEN_TO_WORLD_RATIO
+
+if DEBUG then
+  MOVEMENT_PIXELS_PER_SECOND_HORIZONTAL = 2000
+  MOVEMENT_PIXELS_PER_SECOND_VERTICAL = MOVEMENT_PIXELS_PER_SECOND_HORIZONTAL
+end
+
 MOVEMENT_SECONDS_PER_FRAME = 0.1
 
 -- Resources

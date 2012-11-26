@@ -17,12 +17,16 @@ c01s04 = function ()
   
   local c01s04_room = room.new ( "c01s04" )
   
+  c01s04_room:addObjects ( c01s04_objects )
+  c01s04_room:loadPath ( c01s04_path )
+  c01s04_room:loadObjectInteractions ( c01s04_objectInteractions )
+  c01s04_room:loadConversations ( c01s04_conversations )
   
-  c01s04_room.frontCharacterZoom = 1.0
+  c01s04_room.frontCharacterZoom = 1.3
   c01s04_room.bottomCharacterZoomThreshold = -542
   
-  c01s04_room.backCharacterZoom = 0.5
-  c01s04_room.topCharacterZoomThreshold = 74
+  c01s04_room.backCharacterZoom = 1.0
+  c01s04_room.topCharacterZoomThreshold = -100
   
   c01s04_room.initialCameraPathNode = 'start'
   
@@ -42,16 +46,7 @@ c01s04 = function ()
   c01s04_room.shadowColor = 0.3
   c01s04_room.shadowTransitionTime = 0.5 -- seconds
   c01s04_room.shadowAnimation = nil
-  
-  
-  c01s04_room:addObjects ( objects )
-  
-  -- Load path and place objects on it
-  c01s04_room:loadPath ( path )
-  -- c01s04_room:placeObjectsOnPath ( objectPlacementOnPath )
-  c01s04_room:loadObjectInteractions ( objectInteractions )
-  c01s04_room:loadConversations ( conversations )
-  
+    
   
   -- sounds = {
   -- }

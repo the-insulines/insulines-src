@@ -23,8 +23,6 @@ function logoScreen ()
         game:switchToScene ( c01s01 )
       end
     },
-    
-    
   }
 
   s:addObjects ( objects )

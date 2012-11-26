@@ -418,7 +418,7 @@ c01s02_conversations = {
           menuText = "",
           conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.dialogs.userVariables["SkipLoop"]= false
           end,
           links = {
             {
@@ -477,13 +477,6 @@ c01s02_conversations = {
               destinationDialogId = 3,
               isConnector = false,
             },
-            {
-              originConversationId = 2,
-              destinationConversationId = 2,
-              originDialogId = 2,
-              destinationDialogId = 4,
-              isConnector = false,
-            },
           },
         },
         dialog3 = {
@@ -495,28 +488,8 @@ c01s02_conversations = {
           dialogueText = {
             "Hmm...",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== false',
+          conditionsString = '',
           links = {
-          },
-        },
-        dialog4 = {
-          isRoot = false,
-          isGroup = false,
-          actor = 'josh',
-          conversant = 'josh',
-          menuText = "",
-          dialogueText = {
-            "Anyway...",
-          },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
-          links = {
-            {
-              originConversationId = 2,
-              destinationConversationId = 1,
-              originDialogId = 4,
-              destinationDialogId = 0,
-              isConnector = true,
-            },
           },
         },
     },

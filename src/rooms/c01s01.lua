@@ -24,10 +24,10 @@ function c01s01(initialCharacterPathNode, initialCameraPathNode)
 
 
   -- perspective attributes
-  c01s01.frontCharacterZoom = 0.9
-  c01s01.bottomCharacterZoomThreshold = -500
-  c01s01.backCharacterZoom = 0.85
-  c01s01.topCharacterZoomThreshold = -66
+  c01s01.frontCharacterZoom = 1
+  c01s01.bottomCharacterZoomThreshold = -430
+  c01s01.backCharacterZoom = 0.9
+  c01s01.topCharacterZoomThreshold = -47
 
 
   -- initial nodes

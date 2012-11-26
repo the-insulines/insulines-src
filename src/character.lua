@@ -147,8 +147,15 @@ function new ( name )
     -- shift the value zoomFactor units
     -- increase it if the character is heading down (delta_y negative) and decrease it if he is heading up
     if not self.avoid_zoom_factor then
-      local zoom = zoomFactor * - delta.y
-      self.currentAction:addChild ( self.prop:moveScl ( zoom, zoom, time, MOAIEaseType.LINEAR ) )
+      local finalScale = 1
+      if y >= game.currentScene.topCharacterZoomThreshold then
+        finalScale = game.currentScene.backCharacterZoom
+      elseif y <= game.currentScene.bottomCharacterZoomThreshold then
+        finalScale = game.currentScene.frontCharacterZoom
+      else
+        finalScale = game.currentScene.backCharacterZoom + (y - game.currentScene.topCharacterZoomThreshold) * -zoomFactor
+      end
+      self.currentAction:addChild ( self.prop:seekScl ( finalScale, finalScale, time, MOAIEaseType.LINEAR ) )
     end
     
     -- start

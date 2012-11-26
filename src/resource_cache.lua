@@ -204,7 +204,7 @@ function load ( key )
     cache[key] = resource
     
     if DEBUG then
-      print ( "Loaded " .. key, subkey )
+      print ( "CACHE: Loaded " .. key )
     end
   end
 end

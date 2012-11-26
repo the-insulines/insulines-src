@@ -27,11 +27,11 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
   c01s02:loadPath( c01s02_path )
 
   -- perspective attributes
-  c01s02.frontCharacterZoom = 0.3
-  c01s02.bottomCharacterZoomThreshold = -611
+  c01s02.frontCharacterZoom = 0.9
+  c01s02.bottomCharacterZoomThreshold = -442
 
-  c01s02.backCharacterZoom = 0.1
-  c01s02.topCharacterZoomThreshold = 323
+  c01s02.backCharacterZoom = 0.7
+  c01s02.topCharacterZoomThreshold = -71
 
   -- initial nodes
   if not initialCameraPathNode then initialCameraPathNode = 'joshDoor' end
@@ -50,8 +50,6 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     self:loadCharacter( josh () )
     
     self.objects.josh:setLoc(1120, -245)
-    nancy = character.new ( 'nancy' )
-    nancy.renderPriority = 100
   end
 
   function c01s02:afterInitialize ()  
@@ -62,7 +60,7 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     if DEBUG then
       c01s02.objects.bathroom_closed.visitedBathroom = true;
       c01s02.objects.coffeeMaker.hadCoffee = true;
-      c01s02.objects.apartmentDoor.talkedToNancy = true;
+      -- c01s02.objects.apartmentDoor.talkedToNancy = true;
       stateManager.cellphonePicked = true
       stateManager.fair = true
       mapHUD:show ()

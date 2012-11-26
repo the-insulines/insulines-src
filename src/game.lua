@@ -27,7 +27,17 @@ sceneFadeOutTime = 200
 function game:switchToScene ( scene, initialCharacterPathNode, initialCameraPathNode )
   local shouldWaitFadeout = self.currentScene.fadeOnChange
   
+  -- DEBUG
+  -- debugLine ()
+  -- dump ( MOAISim.getHistogram () )
+  -- MOAISim.reportLeaks ()
+  
   self:unloadCurrentScene ()
+  
+  -- DEBUG
+  -- debugLine ()
+  -- dump ( MOAISim.getHistogram () )
+  -- MOAISim.reportLeaks ()
   
   -- If the current scene fades out the new one should be loaded after the fadeout delay
   if shouldWaitFadeout then
@@ -35,6 +45,12 @@ function game:switchToScene ( scene, initialCharacterPathNode, initialCameraPath
   end
   
   self:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode  )
+  
+  -- DEBUG
+  -- debugLine ()
+  -- dump ( MOAISim.getHistogram () )
+  -- MOAISim.reportLeaks ()
+  
 end
 
 
@@ -97,6 +113,7 @@ function initialize ( self )
   end
   
   self:loadScene ( logoScreen )
+  -- self:loadScene ( c01s01 )
   -- self:loadScene ( c01s02 )
   -- self:loadScene ( c01s03 )
   -- self:loadScene ( c01s04 )

@@ -23,10 +23,10 @@ c01s03 = function ()
   c01s03_room:loadObjectInteractions ( c01s03_objectInteractions )
   c01s03_room:loadConversations ( c01s03_conversations )
 
-  c01s03_room.frontCharacterZoom = 1.0
-  c01s03_room.bottomCharacterZoomThreshold = -542
-  c01s03_room.backCharacterZoom = 0.2
-  c01s03_room.topCharacterZoomThreshold = 74
+  c01s03_room.frontCharacterZoom = 1.3
+  c01s03_room.bottomCharacterZoomThreshold = -400
+  c01s03_room.backCharacterZoom = 0.5
+  c01s03_room.topCharacterZoomThreshold = 40
 
   c01s03_room.initialCameraPathNode = 'start'
   

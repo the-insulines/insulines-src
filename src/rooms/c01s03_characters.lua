@@ -7,7 +7,7 @@ function howard ()
   howard.avoid_clicks = false
   howard.avoid_zoom_factor = true
   howard.onClick = function ()
-    josh:lookAt ( howard:getPosition () )
+    game.currentScene.objects.josh:lookAt ( howard:getPosition () )
     dialog:load ( 'foam_and_lather' )
   end
   return howard
@@ -22,7 +22,7 @@ function klein ()
   klein.avoid_clicks = false
   klein.avoid_zoom_factor = true
   klein.onClick = function ()
-    josh:lookAt ( klein:getPosition () )
+    game.currentScene.objects.josh:lookAt ( klein:getPosition () )
     dialog:load ( 'klein' )
   end
   return klein
@@ -38,7 +38,7 @@ function sonja ()
   sonja.avoid_clicks = false
   sonja.avoid_zoom_factor = true
   sonja.onClick = function ()
-    josh:lookAt ( sonja:getPosition () )
+    game.currentScene.objects.josh:lookAt ( sonja:getPosition () )
     dialog:load ( 'glasworks' )
   end
   return sonja
@@ -54,7 +54,7 @@ function paul ()
   paul.avoid_clicks = false
   paul.avoid_zoom_factor = true
   paul.onClick = function ()
-    josh:lookAt ( paul:getPosition () )
+    game.currentScene.objects.josh:lookAt ( paul:getPosition () )
     dialog:load ( 'wardrobe' )
   end
   return paul
@@ -70,7 +70,7 @@ function pete ()
   pete.avoid_clicks = false
   pete.avoid_zoom_factor = true
   pete.onClick = function ()
-    josh:lookAt ( pete:getPosition () )
+    game.currentScene.objects.josh:lookAt ( pete:getPosition () )
     dialog:load ( 'wardrobe' )
   end
   return pete

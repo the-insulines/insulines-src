@@ -194,6 +194,7 @@ c01s01_objectInteractions = {
     onClick = function ()
       if stateManager.dressed then
         game:switchToScene ( c01s02, 'joshDoor', 'joshDoor' )
+        -- game:switchToScene ( c01s01 )
       end
     end
   }
