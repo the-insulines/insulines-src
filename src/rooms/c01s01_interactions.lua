@@ -39,7 +39,6 @@ c01s01_objectInteractions = {
       stateManager.cellphonePicked = true
 
       print (" MOVE THIS TO A GENERIC POLLING THAT RENDERS THE HUD IF STATE MANAGER IS CHANGED ")
-      cellphoneHUD:show()
       
       game.currentScene:stopRendering ( "cellphone" )
       game.currentScene:startRendering ( "nightstand" )

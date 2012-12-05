@@ -8,6 +8,7 @@
 module ( "cellphoneHUD", package.seeall )
 
 layer = MOAILayer2D.new ()
+hidden = true
 
 function cellphoneHUD:initialize ( elements )
   self.cellphoneAsset = {} 
@@ -33,11 +34,17 @@ function cellphoneHUD:initialize ( elements )
 end
 
 function cellphoneHUD:hide()
-  self.layer:removeProp ( self.cellphoneAsset.prop )
+  if not self.hidden then
+    self.hidden = true
+    self.layer:removeProp ( self.cellphoneAsset.prop )
+  end
 end
 
 function cellphoneHUD:show()
-  self.layer:insertProp ( self.cellphoneAsset.prop )
+  if self.hidden then
+    self.hidden = false
+    self.layer:insertProp ( self.cellphoneAsset.prop )
+  end
 end
 
 function cellphoneHUD:onInput ()
