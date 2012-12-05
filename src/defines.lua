@@ -736,9 +736,7 @@ resources = {
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 
-    -- width = 1920,
-    -- height = 1080
-    width = 2276,
+    width = 2276, 
     height = 1280
   },
 

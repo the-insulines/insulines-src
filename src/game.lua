@@ -197,7 +197,8 @@ function start ( self )
   -- If there is a scene loaded we gather input and update everyhing
   while self.gameRunning do
     local stopInput = false
-
+    hud:update()
+    
     -- Avoid input if we're switching scenes
     if not self.switching then
     

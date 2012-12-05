@@ -2,7 +2,11 @@ c01s01_path = {
   bed = {
     position = point (-170, -50),
     neighbors = { 'bedBack', 'carpetPoint', 'dodgeBedPoint' },
+<<<<<<< HEAD
     offsets = { x = -190, y = 0 }-- , scl = 0.8 }
+=======
+    offsets = { x = -190, y = 0, scl = 1 }
+>>>>>>> 23e5ab3e2526a25c5fad3e4285349a1dbfd18c28
   },
 
   bedBack = {
@@ -37,7 +41,11 @@ c01s01_path = {
   door = {
     position = point (-788, -120),
     neighbors = { 'dodgeBedPoint' },
+<<<<<<< HEAD
     offsets = { x = -190, y = 0 }-- , scl = 0.8 }
+=======
+    offsets = { x = -190, y = 0, scl = 1 }
+>>>>>>> 23e5ab3e2526a25c5fad3e4285349a1dbfd18c28
   },
 
   window = {

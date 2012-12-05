@@ -47,6 +47,22 @@ function hud:initialize ( )
   
 end
 
+function hud:update ()
+  
+  if stateManager.cellphonePicked then
+    cellphoneHUD:show()  
+  else
+    mapHUD:hide ()
+  end
+  
+  if stateManager.pickedFlyer then
+    mapHUD:show ()
+  else
+    mapHUD:hide ()
+  end
+
+end
+
 function hud:onInput ()
     local stopInput = false
 

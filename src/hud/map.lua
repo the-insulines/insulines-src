@@ -8,7 +8,7 @@
 module ( "mapHUD", package.seeall )
 
 layer = MOAILayer2D.new ()
-
+hidden = true
 function mapHUD:initialize ( elements )
   self.mapAsset = {} 
   self.mapAsset.gfx = resource_cache.get ( 'hud_map' )
@@ -33,13 +33,17 @@ function mapHUD:initialize ( elements )
 end
 
 function mapHUD:hide()
-  self.visible = false
-  self.layer:removeProp ( self.mapAsset.prop )
+  if not self.hidden then
+    self.visible = false
+    self.layer:removeProp ( self.mapAsset.prop )
+  end
 end
 
 function mapHUD:show()
-  self.visible = true
-  self.layer:insertProp ( self.mapAsset.prop )
+  if self.hidden then
+    self.visible = true
+    self.layer:insertProp ( self.mapAsset.prop )
+  end
 end
 
 function mapHUD:onInput ()

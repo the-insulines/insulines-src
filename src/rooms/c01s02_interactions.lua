@@ -385,8 +385,6 @@ c01s02_objectInteractions = {
         -- pickup flyer
         stateManager.pickedFlyer = true
         game.currentScene:stopRendering('flyer')
-        mapHUD:show ()
-        -- inventory:addItem('flyer', game.currentScene.objects.flyer)
         dialog:load('flyer')
       end
     end,
