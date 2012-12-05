@@ -83,7 +83,9 @@ c01s02_objectInteractions = {
       if inventory.opened then
         inventory:closeInventory ()
       end
-    
+      
+      game.currentScene.objects.josh:standLookingInDirection ( DIRECTION_FRONT )
+      
       game.currentScene:stopRendering("bathroom_opened")
       game.currentScene:startRendering("bathroom_closed")
       dialog:load('left_bathroom')

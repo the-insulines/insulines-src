@@ -76,7 +76,7 @@ function pete ()
   return pete
 end
 
-c01s03_characters = { 
+c01s03_characters = {
   howard = howard, 
   klein = klein, 
   sonja = sonja, 
