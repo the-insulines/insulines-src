@@ -25,7 +25,7 @@ c01s01_objectInteractions = {
   
   josh_wakes_up = {
     avoid_clicks = true,
-    onEnd = function () 
+    onEnd = function ()
       game.currentScene.inputEnabled = true
     end
   },
@@ -182,7 +182,7 @@ c01s01_objectInteractions = {
         game.currentScene:startRendering( "room_door_open" )
         game.currentScene.objects.room_door_open.onClick ()
       else
-        if stateManager.woke then 
+        if stateManager.woke then
           dialog:load('c01s01_put_clothes_' .. math.random(4))
         end
       end

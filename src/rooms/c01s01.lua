@@ -50,10 +50,30 @@ function c01s01(initialCharacterPathNode, initialCameraPathNode)
   end
 
   function c01s01:afterInitialize ()
-    self.objects.cellphone:calling ()
-    self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
-    self:stopRendering( 'josh' )
-    self.characterMovement = false
+    if stateManager.dressed then
+      -- wake up
+      self:stopRendering ( 'cellphone' )
+      self:stopRendering ( "josh_sleeping" )
+      self.objects.josh_sleeping.animation:stopCurrentAnimation ()
+      self.objects.window.highlight = true
+      self.objects.barbarullo.highlight = true
+      self.objects.floyd.highlight = true
+      self.objects.walk_behind.highlight = true
+      
+      -- dress
+      self:stopRendering ( "clothes_heap" )
+      self:startRendering ( "clothes_on_heap" )
+      self:startRendering ( "josh" )
+      self:resetCharacter ()
+      self.objects.josh:startAnimation ( 'stand_front' )
+      self.sounds.background:play ()
+      self.objects.clothes_on_heap.highlight = true
+    else
+      self.objects.cellphone:calling ()
+      self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
+      self:stopRendering( 'josh' )
+      self.characterMovement = false
+    end
   end
 
 

@@ -6,7 +6,7 @@
 --==============================================================
 
 -- Debugging
--- DEBUG = true
+--DEBUG = true
 -- MOAISim.setLeakTrackingEnabled(true)
 -- MOAISim.setHistogramEnabled (true)
 -- MOAISim.setLuaAllocLogEnabled(true)
@@ -614,7 +614,8 @@ resources = {
   moe = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/moe/',
-    width = 455, height = 700,
+--    width = 455, height = 700,
+    width = 280, height = 630,
     
     pivotX = 0,
     pivotY = -350,
@@ -622,14 +623,14 @@ resources = {
     animations = {
       stand = {
         fileName = 'moe_stand',
-        frameCount = 25,
-        frameTime = 0.04,
+        frameCount = 12,
+        frameTime = 1.0 / 12,
         startFrame = 1,
       },
       blink = {
         fileName = 'moe_blink',
-        frameCount = 25,
-        frameTime = 0.04,
+        frameCount = 12,
+        frameTime = 1.0 / 12,
         startFrame = 1,
       },
     },
@@ -649,12 +650,12 @@ resources = {
     pivotY = 0,
     animations = {
       sleeps = {
-        fileName = 'josh_sleeping',
+        fileName = 'josh_sleep',
         startFrame = 1,
         -- frameCount = 75,
-        frameCount = 10,
+        frameCount = 16,
         frameTime = DEFAULT_ANIMATION_SPEED,
-        width = 800, height = 500
+        width = 225, height = 204
         -- width = 80, height = 50
       },
     },
@@ -673,31 +674,31 @@ resources = {
     pivotY = 0,
     animations = {
       grabs_cellphone = {
-        fileName = 'josh_grabs_cellphone',
+        fileName = 'josh_grab',
         startFrame = 1,
-        frameCount = 30,
+        frameCount = 6,
         frameTime = JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME,
         mode = MOAITimer.NORMAL
       },
       
       grabs_cellphone_loop = {
-        parentAnimationName = 'grabs_cellphone',
-        startFrame = 6,
-        frameCount = 24,
+        fileName = 'josh_grab_loop',
+        startFrame = 1,
+        frameCount = 12,
         frameTime = JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME,
         mode = MOAITimer.NORMAL
       },
       
       still = {
-        parentAnimationName = 'grabs_cellphone',
-        startFrame = 30,
+        parentAnimationName = 'grabs_cellphone_loop',
+        startFrame = 12,
         frameCount = 1,
         frameTime = JOSH_GRABS_CELLPHONE_SECONDS_PER_FRAME,
         mode = MOAITimer.NORMAL
       },
     
     },
-    width = 920, height = 420
+    width = 237, height = 277
   },
 
   josh_wakes_up = {
@@ -736,7 +737,7 @@ resources = {
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 
-    width = 2276, 
+    width = 2276,
     height = 1280
   },
 
@@ -753,7 +754,7 @@ resources = {
     loop = true,
     volume = 0.2
   },
-    
+  
   c01s01_cellphone = {
     type = RESOURCE_TYPE_TILED_IMAGE, 
     fileName = 'c01s01/cellphone/cellphone_ring.png', 
@@ -771,61 +772,62 @@ resources = {
   c01s01_nightstand = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/nightstand.png', 
-    width = 163, height = 173
+    width = 194, height = 206
   },
   
   c01s01_clothes_heap = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/clothes_heap.png', 
-    width = 477, height = 273
+    width = 566, height = 325
   },
 
   c01s01_clothes_on_heap = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/clothes_on_heap.png', 
-    width = 220,
-    height = 273
+    width = 325,
+    height = 325
   },
   
   c01s01_window = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/window.png', 
-    width = 481, 
-    height = 895
+    width = 571, 
+    height = 1061
   },
   
   c01s01_room_door = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/room_door.png', 
-    width = 182, 
-    height = 608
+    width = 201, 
+    height = 722
   },
 
   c01s01_room_door_open = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/room_door_open.png', 
-    width = 173, 
-    height = 641
+    width = 206, 
+    height = 761
   },
   
   c01s01_walk_behind = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_walk_behind_B.png', 
-    width = 977, 
-    height = 308
+    width = 1159, 
+    height = 366
   },
   
   c01s01_poster_barbarullo = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_poster_barbarullo.png', 
-    width = 180, 
-    height = 200
+    width = 215, 
+    height = 238
   },
+  
   c01s01_poster_star_floyd = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_poster_star_floyd.png', 
-    width = 219, 
-    height = 302
+    width = 265, 
+    height = 370
   },
   
   -- /////////////////////////////////////////////////////////////

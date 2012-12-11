@@ -36,7 +36,7 @@ c01s04 = function ()
   -- Character initial positions
   -- The pivot was subtracted to calculate the Y coordinate
   c01s04_room.initialCharacterPathNode = 'start'
-  c01s04_room.initialMoePosition = point ( -235, -74 - 350 )
+  c01s04_room.initialMoePosition = point ( -170, -130 - 315 )
   
   
   -- Room specific attributes
