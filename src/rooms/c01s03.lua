@@ -35,9 +35,17 @@ c01s03 = function ()
   c01s03_room.initialPositions = {
     howard = point ( 330, 90 - 200 ),
     klein = point ( 800, 0 - 300 ),
-    sonja = point ( -800, -200 - 400 ),
+    klein_eyes = point ( 766, 165 ),
+    klein_mouth = point ( 756, 104 ),
     paul = point ( 120, 110 - 200 ),
-    pete = point ( -20, 100 - 180 )
+    paul_eyes = point ( 105, 232 ),
+    paul_mouth = point ( 108, 192 ),
+    pete = point ( -20, 100 - 180 ),
+    pete_eyes = point ( 0, 155 ),
+    pete_mouth = point ( -10, 140 ),
+    sonja = point ( -800, -200 - 400 ),
+    sonja_eyes = point ( -797, -62 ),
+    sonja_mouth = point ( -800, -102 ),
   }
   
   c01s03_room.hasExternalAssets = true
