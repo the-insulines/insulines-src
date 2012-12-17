@@ -4550,4 +4550,82 @@ stateManager.dialogs.userVariables["Dog"]= false
     },
   },
   
+  moe_sms = {
+    actor = 'josh',
+    conversant = 'maureen',
+    dialogEntries = {
+        dialog0 = {
+          isRoot = true,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'maureen',
+          menuText = "",
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 5,
+              destinationConversationId = 5,
+              originDialogId = 0,
+              destinationDialogId = 1,
+              isConnector = false,
+            },
+          },
+        },
+        dialog1 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'maureen',
+          menuText = "",
+          dialogueText = {
+            "Hmm... A message from Moe..",
+          },
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 5,
+              destinationConversationId = 5,
+              originDialogId = 1,
+              destinationDialogId = 2,
+              isConnector = false,
+            },
+          },
+        },
+        dialog2 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'maureen',
+          conversant = 'josh',
+          menuText = "",
+          dialogueText = {
+            "Hey Joshua! I have a small favor to ask...",
+            "Could you meet me outside The Molten Pit? It'd be just a minute. Thanks!",
+          },
+          conditionsString = '',
+          links = {
+            {
+              originConversationId = 5,
+              destinationConversationId = 5,
+              originDialogId = 2,
+              destinationDialogId = 3,
+              isConnector = false,
+            },
+          },
+        },
+        dialog3 = {
+          isRoot = false,
+          isGroup = false,
+          actor = 'josh',
+          conversant = 'maureen',
+          menuText = "",
+          dialogueText = {
+            "Why do I have a strange feeling about this?",
+          },
+          conditionsString = '',
+          links = {
+          },
+        },
+    },
+  },
+  
 }
