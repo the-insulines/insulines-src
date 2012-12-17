@@ -1665,7 +1665,7 @@
               <Link OriginConvoID="1" DestinationConvoID="1" OriginDialogID="31" DestinationDialogID="32" IsConnector="false" />
             </OutgoingLinks>
             <ConditionsString>Dialog[12].SimStatus == "WasDisplayed" and Dialog[31].SimStatus ~= "WasDisplayed"</ConditionsString>
-            <UserScript>Variable["backstage"] = true</UserScript>
+            <UserScript>Variable["ribbon"] = true</UserScript>
           </DialogEntry>
           <DialogEntry ID="32" ConversationID="1" IsRoot="false" IsGroup="false" NodeColor="White" DelaySimStatus="false" FalseCondtionAction="Block" ConditionPriority="Normal">
             <Fields>
