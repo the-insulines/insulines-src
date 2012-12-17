@@ -68,12 +68,16 @@ function hud:onInput ()
 
     if not dialog.opened then
       stopInput = inventory:onInput ()
-
+    
       if not stopInput then
         stopInput = highlight:onInput ()
 
         if not stopInput then
           stopInput = mapHUD:onInput ()
+
+          if not stopInput then
+            stopInput = cellphoneHUD:onInput ()
+          end
         end
       end
     else

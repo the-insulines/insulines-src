@@ -6,12 +6,13 @@
 --==============================================================
 
 -- Debugging
---DEBUG = true
+DEBUG = true
 -- MOAISim.setLeakTrackingEnabled(true)
 -- MOAISim.setHistogramEnabled (true)
 -- MOAISim.setLuaAllocLogEnabled(true)
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.PROP_MODEL_BOUNDS )
 -- MOAIDebugLines.showStyle ( MOAIDebugLines.TEXT_BOX )
+
 
 VIEWPORT_RESOLUTION_X = SCREEN_RESOLUTION_X
 VIEWPORT_RESOLUTION_Y = SCREEN_RESOLUTION_X * ( 320 / 480)
@@ -70,6 +71,7 @@ DIALOG_COLOR_FOR_CHARACTER = {
   pete = { r = 0.85, g = 0, b = 0.63 },
   howard = { r = 0.2, g = 0.8, b = 0.5 },
   maureen = { r = 0.52, g = 0.96, b = 0.52 },
+  bouncer = { r = 0.2, g = 0.9, b = 0.2 }
 }
 
 -- Inventory constants
@@ -233,6 +235,11 @@ resources = {
     width = 89, height = 89,
   },
 
+  hud_cellphone_message_received = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/hud_1_msg.png',
+    width = 35, height = 35,
+  },
   inventory_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'hud/inventory_background.png', 

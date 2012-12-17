@@ -14,7 +14,6 @@ c01s03 = function ()
   require 'c01s03_interactions'
   require 'c01s03_characters'
   
-  
   local c01s03_room = room.new ( "c01s03" )
 
   c01s03_room:addObjects ( c01s03_objects )
@@ -123,6 +122,14 @@ c01s03 = function ()
     end
   end
   
+  function c01s03_room:cellphoneMessage ()
+    cellphoneHUD:messageArrived(self.moesMessage, self)
+  end
+  
+  function c01s03_room:moesMessage ()
+    print ("Load message...")
+    stateManager.venue = true
+  end
   
   return c01s03_room
   

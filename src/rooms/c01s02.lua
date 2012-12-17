@@ -62,9 +62,6 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
       c01s02.objects.bathroom_closed.visitedBathroom = true
       c01s02.objects.coffeeMaker.hadCoffee = true
       -- c01s02.objects.apartmentDoor.talkedToNancy = true
-      stateManager.cellphonePicked = true
-      stateManager.fair = true
-      mapHUD:show ()
     end
   
   end

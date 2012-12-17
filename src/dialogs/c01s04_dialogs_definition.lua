@@ -730,7 +730,7 @@ c01s04_conversations = {
           },
           conditionsString = 'dialog.currentConversation.dialogEntries.dialog12.SimStatus == "WasDisplayed" and dialog.currentConversation.dialogEntries.dialog31.SimStatus ~= "WasDisplayed"',
           userScript = function()
-            stateManager.dialogs.userVariables["backstage"]= true
+            stateManager.dialogs.userVariables["ribbon"]= true
           end,
           links = {
             {

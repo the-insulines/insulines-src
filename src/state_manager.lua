@@ -9,4 +9,12 @@ module ( "stateManager", package.seeall )
 
 cellphoneClicks = 0
 
--- pickedFlyer = false
+pickedFlyer = false
+cellphonePicked = false
+fair = false
+
+if DEBUG then
+  pickedFlyer = true
+  cellphonePicked = true
+  fair = true
+end

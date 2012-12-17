@@ -3364,7 +3364,7 @@ stateManager.dialogs.userVariables["Dog"]= false
           },
           conditionsString = '',
           userScript = function()
-            Variable ["Smell"] = true
+            stateManager.dialogs.userVariables["Smell"]= true
           end,
           links = {
             {
