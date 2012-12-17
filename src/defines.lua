@@ -820,6 +820,56 @@ resources = {
     },
   },
   
+  pete_eyes = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/pete/',
+    width = 38, height = 24,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'pete_eyes',
+        frameCount = 2,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 30},
+            {frame = 2, times = 30},
+          },
+        },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  pete_mouth = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/pete/',
+    width = 37, height = 27,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'pete_mouth',
+        frameCount = 4,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 30},
+            {frame = 2, times = 30},
+            {frame = 3, times = 30},
+            {frame = 4, times = 30},
+          },
+        },
+        startFrame = 1,
+      },
+    },
+  },
+  
   moe = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/moe/',
