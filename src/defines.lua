@@ -6,7 +6,7 @@
 --==============================================================
 
 -- Debugging
--- DEBUG = true
+DEBUG = true
 -- MOAISim.setLeakTrackingEnabled(true)
 -- MOAISim.setHistogramEnabled (true)
 -- MOAISim.setLuaAllocLogEnabled(true)
@@ -488,8 +488,13 @@ resources = {
     animations = {
       stand = {
         fileName = 'howard_stand',
-        frameCount = 124,
-        frameTime = 0.04,
+        frameCount = 21,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 21, times = 4},
+          },
+        },
         startFrame = 1,
       },
     },
@@ -506,23 +511,83 @@ resources = {
     animations = {
       stand = {
         fileName = 'klein_stand',
-        frameCount = 55,
+        frameCount = 24,
         frameTime = {
           baseTime = 0.04,
           multipliers = {
             {frame = 1, times = 38},
-            {frame = 12, times = 6},
-            {frame = 13, times = 15},
-            {frame = 25, times = 25},
-            {frame = 26, times = 6},
-            {frame = 27, times = 30},
-            {frame = 39, times = 8},
-            {frame = 40, times = 6},
-            {frame = 41, times = 23},
-            {frame = 42, times = 16},
-            {frame = 53, times = 6},
-            {frame = 54, times = 6},
-            {frame = 55, times = 21},
+            {frame = 6, times = 6},
+            {frame = 7, times = 15},
+            {frame = 12, times = 25},
+            {frame = 13, times = 6},
+            {frame = 14, times = 30},
+            {frame = 19, times = 8},
+            {frame = 20, times = 6},
+            {frame = 21, times = 23},
+            {frame = 22, times = 16},
+            {frame = 23, times = 6},
+            {frame = 24, times = 21},
+            -- {frame = 1, times = 38},
+            -- {frame = 12, times = 6},
+            -- {frame = 13, times = 15},
+            -- {frame = 25, times = 25},
+            -- {frame = 26, times = 6},
+            -- {frame = 27, times = 30},
+            -- {frame = 39, times = 8},
+            -- {frame = 40, times = 6},
+            -- {frame = 41, times = 23},
+            -- {frame = 42, times = 16},
+            -- {frame = 53, times = 6},
+            -- {frame = 54, times = 6},
+            -- {frame = 55, times = 21},
+          },
+        },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  klein_eyes = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/klein/',
+    width = 97, height = 63,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'klein_eyes',
+        frameCount = 2,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 30},
+            {frame = 2, times = 5},
+          },
+        },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  klein_mouth = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/klein/',
+    width = 60, height = 59,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'klein_mouth',
+        frameCount = 2,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 30},
+            {frame = 2, times = 5},
           },
         },
         startFrame = 1,
@@ -541,14 +606,64 @@ resources = {
     animations = {
       stand = {
         fileName = 'sonja_stand',
-        frameCount = 75,
+        frameCount = 19,
         frameTime = {
             baseTime = 0.04,
             multipliers = {
               {frame = 1, times = 5},
               {frame = 2, times = 21},
-              {frame = 48, times = 2},
-              {frame = 49, times = 26},
+              {frame = 17, times = 2},
+              {frame = 19, times = 26},
+            },
+          },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  sonja_eyes = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/sonja/',
+    width = 89, height = 67,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'sonja_eyes',
+        frameCount = 3,
+        frameTime = {
+            baseTime = 0.04,
+            multipliers = {
+              {frame = 1, times = 20},
+              {frame = 2, times = 20},
+              {frame = 3, times = 20},
+            },
+          },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  sonja_mouth = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/sonja/',
+    width = 72, height = 71,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'sonja_mouth',
+        frameCount = 3,
+        frameTime = {
+            baseTime = 0.04,
+            multipliers = {
+              {frame = 1, times = 20},
+              {frame = 2, times = 20},
+              {frame = 3, times = 20},
             },
           },
         startFrame = 1,
@@ -567,35 +682,68 @@ resources = {
     animations = {
       stand = {
         fileName = 'paul_stand',
-        frameCount = 120,
+        frameCount = 24,
         frameTime = {
           baseTime = 0.04,
           multipliers = {
             {frame = 1, times = 3},
             {frame = 2, times = 2},
-            {frame = 119, times = 2},
+            {frame = 23, times = 2},
           },
         },
         startFrame = 1,
       },
-      blink = {
-        fileName = 'paul_blink',
-        frameCount = 9,
-        startFrame = 1,
+    },
+  },
+  
+  paul_eyes = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/paul/',
+    width = 55, height = 54,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'paul_eyes',
+        frameCount = 3,
         frameTime = {
           baseTime = 0.04,
           multipliers = {
-            {frame = 1, times = 25},
-            {frame = 2, times = 3},
-            {frame = 3, times = 58},
-            {frame = 4, times = 3},
-            {frame = 5, times = 25},
-            {frame = 6, times = 3},
-            {frame = 7, times = 58},
-            {frame = 8, times = 3},
-            {frame = 9, times = 70},
+            {frame = 1, times = 3},
+            {frame = 2, times = 2},
+            {frame = 3, times = 2},
           },
         },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  paul_mouth = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/paul/',
+    width = 33, height = 33,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'paul_mouth',
+        frameCount = 5,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 3},
+            {frame = 2, times = 2},
+            {frame = 3, times = 2},
+            {frame = 4, times = 2},
+            {frame = 5, times = 2},
+          },
+        },
+        startFrame = 1,
       },
     },
   },
@@ -611,8 +759,58 @@ resources = {
     animations = {
       stand = {
         fileName = 'pete_stand',
-        frameCount = 124,
+        frameCount = 24,
         frameTime = 0.04,
+        startFrame = 1,
+      },
+    },
+  },
+  
+  pete_eyes = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/pete/',
+    width = 38, height = 24,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'pete_eyes',
+        frameCount = 2,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 30},
+            {frame = 2, times = 30},
+          },
+        },
+        startFrame = 1,
+      },
+    },
+  },
+  
+  pete_mouth = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'characters/pete/',
+    width = 37, height = 27,
+    
+    pivotX = 0,
+    pivotY = 0,
+    
+    animations = {
+      stand = {
+        fileName = 'pete_mouth',
+        frameCount = 4,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 30},
+            {frame = 2, times = 30},
+            {frame = 3, times = 30},
+            {frame = 4, times = 30},
+          },
+        },
         startFrame = 1,
       },
     },
