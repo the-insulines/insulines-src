@@ -2548,7 +2548,7 @@ c01s03_conversations = {
           menuText = "",
           dialogueText = {
             "This place is my dream come true, man!",
-            " Pete &amp; Paul’s Wondrous Wardrobe is the place in town for our queer Bros and Brosettes to shop for tasteful and tantalizing apparel.",
+            " Pete & Paul’s Wondrous Wardrobe is the place in town for our queer Bros and Brosettes to shop for tasteful and tantalizing apparel.",
           },
           conditionsString = '',
           links = {
