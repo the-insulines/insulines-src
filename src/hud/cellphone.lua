@@ -41,7 +41,7 @@ function cellphoneHUD:initialize ( elements )
   self.messagesIcon.prop:setDeck ( self.messagesIcon.gfx )
   self.messagesIcon.prop:setLoc ( self.cellphoneAsset.x + self.cellphoneAsset.half_width/2, self.cellphoneAsset.y - self.cellphoneAsset.half_height )
   self.messagesIcon.prop:setPriority(100)
-  if stateManager.cellphonePicked then
+  if stateManager.c01s01.cellphonePicked then
     self:show ()
   end
 end

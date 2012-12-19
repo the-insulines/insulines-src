@@ -54,16 +54,29 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
   end
 
   function c01s02:afterInitialize ()  
-    self.objects.answering_machine.animation:startAnimation ( 'blink' )
-    self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )
     
-    -- DEBUG MODE
-    if DEBUG then
-      c01s02.objects.bathroom_closed.visitedBathroom = true
-      c01s02.objects.coffeeMaker.hadCoffee = true
-      -- c01s02.objects.apartmentDoor.talkedToNancy = true
+    -- Setup scene using state manager
+    if stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee then
+      game.currentScene.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_loaded' )
     end
-  
+    
+    if stateManager.c01s02.hasWater and not stateManager.c01s02.madeCoffee then
+      game.currentScene.objects.coffeePotEmpty.prop:setLoc ( game.currentScene.objects.coffeeMaker.x - 7, game.currentScene.objects.coffeeMaker.y - 78 )
+      game.currentScene.objects.coffeePotEmpty.onClick = nil
+      game.currentScene:startRendering ( 'coffeePotEmpty' )
+    end
+
+    if (stateManager.c01s02.hasWater and stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee) or stateManager.c01s02.madeCoffee then
+      game.currentScene.objects.coffeeMaker:prepareCoffee()
+    end
+    
+    if stateManager.c01s02.hadCoffee then
+      game.currentScene.objects.coffeeMaker:prepareCoffee()
+    end
+    
+    -- self.objects.answering_machine.animation:startAnimation ( 'blink' )
+    -- self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )
+    
   end
 
   return c01s02

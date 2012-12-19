@@ -49,13 +49,13 @@ end
 
 function hud:update ()
   
-  if stateManager.cellphonePicked then
+  if stateManager.c01s01.cellphonePicked then
     cellphoneHUD:show()  
   else
     mapHUD:hide ()
   end
   
-  if stateManager.pickedFlyer then
+  if stateManager.c01s02.pickedFlyer then
     mapHUD:show ()
   else
     mapHUD:hide ()

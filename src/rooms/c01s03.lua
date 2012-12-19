@@ -136,7 +136,7 @@ c01s03 = function ()
   
   function c01s03_room:moesMessage ()
     dialog:load('moe_sms')
-    stateManager.venue = true
+    stateManager.map.venue = true
   end
   
   return c01s03_room

@@ -6,7 +6,7 @@
 --==============================================================
 
 -- Debugging
-DEBUG = true
+-- DEBUG = true
 -- MOAISim.setLeakTrackingEnabled(true)
 -- MOAISim.setHistogramEnabled (true)
 -- MOAISim.setLuaAllocLogEnabled(true)

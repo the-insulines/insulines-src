@@ -5,7 +5,7 @@ c01s01_objectInteractions = {
   
   floyd = {
     onClick = function ()
-      if stateManager.woke then
+      if stateManager.c01s01.woke then
         dialog:load('spacestation')
       end
     end
@@ -13,7 +13,7 @@ c01s01_objectInteractions = {
   
   barbarullo = {
     onClick = function ()
-      if stateManager.woke then
+      if stateManager.c01s01.woke then
         dialog:load('barbarulo')
       end
     end
@@ -36,7 +36,7 @@ c01s01_objectInteractions = {
     end,
     wakingUp = function ()
       -- Get Cellphone
-      stateManager.cellphonePicked = true
+      stateManager.c01s01.cellphonePicked = true
 
       print (" MOVE THIS TO A GENERIC POLLING THAT RENDERS THE HUD IF STATE MANAGER IS CHANGED ")
       
@@ -65,14 +65,14 @@ c01s01_objectInteractions = {
     end,
     
     onClick = function ( self )
-      if not stateManager.woke then
-        if stateManager.cellphoneClicks < 2 then
-          if stateManager.cellphoneClicks == 0 then
+      if not stateManager.c01s01.woke then
+        if stateManager.c01s01.cellphoneClicks < 2 then
+          if stateManager.c01s01.cellphoneClicks == 0 then
             self:firstClickReaction ()
           else
             self:secondClickReaction ()
           end
-          stateManager.cellphoneClicks = stateManager.cellphoneClicks + 1
+          stateManager.c01s01.cellphoneClicks = stateManager.c01s01.cellphoneClicks + 1
         else
           self:wakeUp ()
         end
@@ -115,7 +115,7 @@ c01s01_objectInteractions = {
       game.currentScene.objects.clothes_heap.highlight = true
       local anim = game.currentScene.objects.josh_grabs_cellphone.animation:startAnimation ( 'grabs_cellphone_loop' )
       anim:setListener ( MOAITimer.EVENT_TIMER_END_SPAN, game.currentScene.objects.josh_grabs_cellphone.wakingUp )
-      stateManager.woke = true
+      stateManager.c01s01.woke = true
       game.currentScene.objects.window.highlight = true
       game.currentScene.objects.barbarullo.highlight = true
       game.currentScene.objects.floyd.highlight = true
@@ -143,11 +143,11 @@ c01s01_objectInteractions = {
         game.currentScene.objects.clothes_on_heap.highlight = true
       end
       
-      if stateManager.woke then
-        if not stateManager.dressed then
+      if stateManager.c01s01.woke then
+        if not stateManager.c01s01.dressed then
           game.currentScene:fadeOut ()
           performWithDelay (100, fadeIn, 1, game.currentScene)
-          stateManager.dressed = true
+          stateManager.c01s01.dressed = true
         end
       end
     end
@@ -161,7 +161,7 @@ c01s01_objectInteractions = {
   
   window = {
     onClick = function ()
-      if stateManager.woke then
+      if stateManager.c01s01.woke then
         dialog:load("window")
       end
     end
@@ -169,7 +169,7 @@ c01s01_objectInteractions = {
 
   walk_behind = {
     onClick = function ()
-      if stateManager.woke then
+      if stateManager.c01s01.woke then
         dialog:load('duck')
       end
     end
@@ -177,12 +177,12 @@ c01s01_objectInteractions = {
 
   room_door = {
     onClick = function ()
-      if stateManager.dressed then
+      if stateManager.c01s01.dressed then
         game.currentScene:stopRendering( "room_door" )
         game.currentScene:startRendering( "room_door_open" )
         game.currentScene.objects.room_door_open.onClick ()
       else
-        if stateManager.woke then
+        if stateManager.c01s01.woke then
           dialog:load('c01s01_put_clothes_' .. math.random(4))
         end
       end
@@ -191,7 +191,7 @@ c01s01_objectInteractions = {
   
   room_door_open = {
     onClick = function ()
-      if stateManager.dressed then
+      if stateManager.c01s01.dressed then
         game:switchToScene ( c01s02, 'joshDoor', 'joshDoor' )
         -- game:switchToScene ( c01s01 )
       end

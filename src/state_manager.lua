@@ -7,14 +7,30 @@
 
 module ( "stateManager", package.seeall )
 
-cellphoneClicks = 0
 
-pickedFlyer = false
-cellphonePicked = false
-fair = false
+c01s01 = {
+  cellphoneClicks = 0,
+  woke = false,
+  cellphonePicked = false,
+  dressed = false
+}
 
-if DEBUG then
-  pickedFlyer = true
-  cellphonePicked = true
-  fair = true
-end
+c01s02 = {
+  bathroom = false,
+  
+  coffeePickedUp = false,
+  hasCoffee = false,
+  hasWater = false,
+  madeCoffee = false,
+  hadCoffee = false,
+  
+  answered = false,
+  pickedFlyer = false,
+  talkedToNancy = false
+  
+}
+
+map = {
+  fair = false,
+  venue = false
+}

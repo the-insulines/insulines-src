@@ -50,7 +50,7 @@ function c01s01(initialCharacterPathNode, initialCameraPathNode)
   end
 
   function c01s01:afterInitialize ()
-    if stateManager.dressed then
+    if stateManager.c01s01.dressed then
       -- wake up
       self:stopRendering ( 'cellphone' )
       self:stopRendering ( "josh_sleeping" )
@@ -69,10 +69,22 @@ function c01s01(initialCharacterPathNode, initialCameraPathNode)
       self.sounds.background:play ()
       self.objects.clothes_on_heap.highlight = true
     else
-      self.objects.cellphone:calling ()
-      self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
       self:stopRendering( 'josh' )
       self.characterMovement = false
+
+      if not stateManager.c01s01.woke then
+        self.objects.cellphone:calling ()
+        self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
+      else
+        self.objects.window.highlight = true
+        self.objects.barbarullo.highlight = true
+        self.objects.floyd.highlight = true
+        self.objects.walk_behind.highlight = true
+      
+        self:stopRendering ( "josh_sleeping" )
+        self.objects.josh_sleeping.animation:stopCurrentAnimation ()
+        self.objects.cellphone:wakeUp ()
+      end
     end
   end
 
