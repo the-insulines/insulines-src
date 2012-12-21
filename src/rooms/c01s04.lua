@@ -18,6 +18,9 @@ c01s04 = function ()
   local c01s04_room = room.new ( "c01s04" )
   
   c01s04_room:addObjects ( c01s04_objects )
+  
+  c01s04_room.objects['wristband'] = { inventory_resource_name = "inventory_wristband", render_at_start = false }
+  
   c01s04_room:loadPath ( c01s04_path )
   c01s04_room:loadObjectInteractions ( c01s04_objectInteractions )
   c01s04_room:loadConversations ( c01s04_conversations )

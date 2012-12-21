@@ -36,8 +36,8 @@ c01s01_objects = {
     resource_name = "josh_wakes_up",
     layer_name = "back_objects",
     animated = true,
-    x = -313,
-    y = 183,
+    x = -400,
+    y = 212,
     render_at_start = false,
   },
 

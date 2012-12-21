@@ -303,6 +303,12 @@ resources = {
     fileName = 'hud/inventory_coffee.png',
     width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
   },
+
+  inventory_wristband = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'hud/inventory_wristband.png',
+    width = INVENTORY_ITEM_WIDTH, height = INVENTORY_ITEM_HEIGHT,
+  },
   
   inventory_toothbrush_with_toothpaste = {
     type = RESOURCE_TYPE_IMAGE,
@@ -989,7 +995,7 @@ resources = {
       },
     },
     
-    width = 700, height = 600
+    width = 800, height = 750
     
   },
 
