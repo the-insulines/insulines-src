@@ -79,7 +79,7 @@ function AnimatedProp:addAnimation ( name, startFrame, frameCount, frameTime, an
     -- set the base time
     baseTime = frameTime.baseTime
     
-    -- ollect the multiplier of each frame on a table
+    -- collect the multiplier of each frame on a table
     for k, frameMultiplier in pairs ( frameTime.multipliers ) do
       frameTimeMultiplier[frameMultiplier.frame] = frameMultiplier.times
     end
@@ -168,9 +168,31 @@ end
 function AnimatedProp.updateFrame ( anim, keyframe, timesExecuted, time, value )
   self = anim.animatedProp
   self.prop:setDeck ( anim.frames[value] )
+  
   if anim.frames.sounds and anim.frames.sounds[value] then
     anim.frames.sounds[value]:play ()
   end
+  
+  if anim.listener then
+    anim.listener ( anim.name, value )
+  end
+end
+
+
+---------------------------------
+-- configuration of animations --
+---------------------------------
+
+function AnimatedProp:setAnimationListener ( animationName, listener )
+  anim = self.animations[animationName]
+  if anim then
+    anim.listener = listener
+  end
+end
+
+
+function AnimatedProp:clearAnimationListener ( animationName )
+  self.animations[animationName].listener = nil
 end
 
 

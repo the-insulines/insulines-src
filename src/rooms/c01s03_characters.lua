@@ -25,6 +25,45 @@ function klein ()
     game.currentScene.objects.josh:lookAt ( klein:getPosition () )
     dialog:load ( 'klein' )
   end
+  
+  -- set up face animations
+  local eyeKeyframes = {}
+  eyeKeyframes[1] = point(757, 165)
+  eyeKeyframes[2] = point(758, 165)
+  eyeKeyframes[3] = point(760, 165)
+  eyeKeyframes[4] = point(762, 165)
+  eyeKeyframes[5] = point(764, 165)
+  eyeKeyframes[6] = point(765, 165)
+  eyeKeyframes[9] = point(764, 165)
+  eyeKeyframes[10] = point(762, 165)
+  eyeKeyframes[11] = point(760, 165)
+  eyeKeyframes[12] = point(758, 165)
+  
+  local mouthKeyframes = {}
+  mouthKeyframes[1] = point(748, 104)
+  mouthKeyframes[2] = point(749, 104)
+  mouthKeyframes[3] = point(750, 104)
+  mouthKeyframes[4] = point(752, 104)
+  mouthKeyframes[5] = point(754, 104)
+  mouthKeyframes[6] = point(755, 104)
+  mouthKeyframes[9] = point(754, 104)
+  mouthKeyframes[10] = point(752, 104)
+  mouthKeyframes[11] = point(750, 104)
+  mouthKeyframes[12] = point(749, 104)
+  
+  function kleinFacePosition ( animName, frame )
+    local pos = eyeKeyframes[frame]
+    if pos then
+      game.currentScene:moveEyesTo ( klein, pos )
+    end
+    
+    pos = mouthKeyframes[frame]
+    if pos then
+      game.currentScene:moveMouthTo ( klein, pos )
+    end
+  end
+  klein.animation:setAnimationListener ( 'stand', kleinFacePosition )
+  
   return klein
 end
 
@@ -61,6 +100,39 @@ function paul ()
     game.currentScene.objects.josh:lookAt ( paul:getPosition () )
     dialog:load ( 'wardrobe' )
   end
+  
+  -- set up face animations
+  local eyeKeyframes = {}
+  eyeKeyframes[1] = point(106, 232)
+  eyeKeyframes[17] = point(103, 232)
+  eyeKeyframes[18] = point(99, 232)
+  eyeKeyframes[19] = point(100, 232)
+  eyeKeyframes[20] = point(102, 232)
+  eyeKeyframes[21] = point(104, 232)
+  eyeKeyframes[22] = point(106, 232)
+  
+  local mouthKeyframes = {}
+  mouthKeyframes[1] = point(108, 192)
+  mouthKeyframes[17] = point(105, 192)
+  mouthKeyframes[18] = point(101, 192)
+  mouthKeyframes[19] = point(102, 192)
+  mouthKeyframes[20] = point(104, 192)
+  mouthKeyframes[21] = point(106, 192)
+  mouthKeyframes[22] = point(108, 192)
+  
+  function paulFacePosition ( animName, frame )
+    local pos = eyeKeyframes[frame]
+    if pos then
+      game.currentScene:moveEyesTo ( paul, pos )
+    end
+    
+    pos = mouthKeyframes[frame]
+    if pos then
+      game.currentScene:moveMouthTo ( paul, pos )
+    end
+  end
+  paul.animation:setAnimationListener ( 'stand', paulFacePosition )
+  
   return paul
 end
 

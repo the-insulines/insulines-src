@@ -22,7 +22,7 @@ function new ( name )
   c.animation:setDeck ( c.gfx )
   
   for animName, anim in pairs ( resource.animations ) do
-    c.animation:addAnimation ( animName, anim.startFrame, anim.frameCount, anim.frameTime, anim.mode )
+    c.animation:addAnimation ( animName, anim.startFrame, anim.frameCount, anim.frameTime, anim.mode, anim.parentAnimationName )
   end
   
   -- initialize prop

@@ -6,7 +6,7 @@
 --==============================================================
 
 -- Debugging
-DEBUG = true
+-- DEBUG = true
 -- MOAISim.setLeakTrackingEnabled(true)
 -- MOAISim.setHistogramEnabled (true)
 -- MOAISim.setLuaAllocLogEnabled(true)
@@ -385,24 +385,28 @@ resources = {
         frameCount = 1,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
+        mode = MOAITimer.NORMAL,
       },
       stand_front = {
         fileName = 'josh_stand_front',
         frameCount = 1,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
+        mode = MOAITimer.NORMAL,
       },
       stand_left = {
         fileName = 'josh_stand_side_flip',
         frameCount = 1,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
+        mode = MOAITimer.NORMAL,
       },
       stand_right = {
         fileName = 'josh_stand_side',
         frameCount = 1,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
+        mode = MOAITimer.NORMAL,
       },
       
     },
@@ -422,41 +426,6 @@ resources = {
         frameCount = 8,
         frameTime = MOVEMENT_SECONDS_PER_FRAME,
         startFrame = 1,
-      },
-      walk_left = {
-        fileName = 'nancy_walk_cycle_side',
-        frameCount = 8,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
-        startFrame = 1,
-      },
-      walk_front = {
-        fileName = 'nancy_walk_cycle_side',
-        frameCount = 8,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
-        startFrame = 1,
-      },
-      walk_back = {
-        fileName = 'nancy_walk_cycle_side',
-        frameCount = 8,
-        frameTime = MOVEMENT_SECONDS_PER_FRAME,
-        startFrame = 1,
-      },
-      stand_right = {
-        fileName = 'nancy_stand_right',
-        frameCount = 30,
-        frameTime = {
-          baseTime = HALF_FRAME_RATE_SPEED,
-          multipliers = {
-            {frame = 1, times = 21},
-            {frame = 10, times = 8},
-            {frame = 11, times = 4},
-            {frame = 12, times = 8},
-            {frame = 17, times = 28},
-            {frame = 30, times = 31},
-          },
-        },
-        startFrame = 1,
-        width = 266, height = 451,
       },
       stand_left = {
         fileName = 'nancy_stand_left',
@@ -496,7 +465,9 @@ resources = {
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
-            {frame = 21, times = 4},
+            {frame = 1, times = 30},
+            {frame = 9, times = 10},
+            {frame = 17, times = 10},
           },
         },
         startFrame = 1,
@@ -515,35 +486,12 @@ resources = {
     animations = {
       stand = {
         fileName = 'klein_stand',
-        frameCount = 24,
+        frameCount = 12,
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
-            {frame = 1, times = 38},
-            {frame = 6, times = 6},
-            {frame = 7, times = 15},
-            {frame = 12, times = 25},
-            {frame = 13, times = 6},
-            {frame = 14, times = 30},
-            {frame = 19, times = 8},
-            {frame = 20, times = 6},
-            {frame = 21, times = 23},
-            {frame = 22, times = 16},
-            {frame = 23, times = 6},
-            {frame = 24, times = 21},
-            -- {frame = 1, times = 38},
-            -- {frame = 12, times = 6},
-            -- {frame = 13, times = 15},
-            -- {frame = 25, times = 25},
-            -- {frame = 26, times = 6},
-            -- {frame = 27, times = 30},
-            -- {frame = 39, times = 8},
-            -- {frame = 40, times = 6},
-            -- {frame = 41, times = 23},
-            -- {frame = 42, times = 16},
-            -- {frame = 53, times = 6},
-            -- {frame = 54, times = 6},
-            -- {frame = 55, times = 21},
+            {frame = 1, times = 10},
+            {frame = 7, times = 25},
           },
         },
         startFrame = 1,
@@ -686,16 +634,22 @@ resources = {
     animations = {
       stand = {
         fileName = 'paul_stand',
-        frameCount = 24,
+        frameCount = 22,
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
             {frame = 1, times = 3},
             {frame = 2, times = 2},
-            {frame = 23, times = 2},
           },
         },
         startFrame = 1,
+      },
+      blink = {
+        parentAnimationName = 'stand',
+        startFrame = 1,
+        frameCount = 1,
+        frameTime = HALF_FRAME_RATE_SPEED,
+        mode = MOAITimer.NORMAL
       },
     },
   },
@@ -715,12 +669,19 @@ resources = {
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
-            {frame = 1, times = 3},
+            {frame = 1, times = 5},
             {frame = 2, times = 2},
-            {frame = 3, times = 2},
+            {frame = 3, times = 12},
           },
         },
         startFrame = 1,
+      },
+      blink = {
+        parentAnimationName = 'stand',
+        startFrame = 1,
+        frameCount = 2,
+        frameTime = HALF_FRAME_RATE_SPEED,
+          mode = MOAITimer.NORMAL
       },
     },
   },
@@ -748,6 +709,13 @@ resources = {
           },
         },
         startFrame = 1,
+      },
+      blink = {
+        parentAnimationName = 'stand',
+        startFrame = 4,
+        frameCount = 1,
+        frameTime = HALF_FRAME_RATE_SPEED,
+          mode = MOAITimer.NORMAL
       },
     },
   },
@@ -873,7 +841,6 @@ resources = {
   moe = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/moe/',
---    width = 455, height = 700,
     width = 280, height = 630,
     
     pivotX = 0,
@@ -911,11 +878,9 @@ resources = {
       sleeps = {
         fileName = 'josh_sleep',
         startFrame = 1,
-        -- frameCount = 75,
         frameCount = 16,
         frameTime = DEFAULT_ANIMATION_SPEED,
         width = 225, height = 204
-        -- width = 80, height = 50
       },
     },
     sounds = {
@@ -1141,18 +1106,21 @@ resources = {
         startFrame = 1,
         frameCount = 1,
         frameTime = DEFAULT_ANIMATION_SPEED,
+        mode = MOAITimer.NORMAL,
       },
       coffeemaker_loaded = {
         fileName = 'c01s02_coffeemaker_coffee',
         startFrame = 1,
         frameCount = 1,
         frameTime = DEFAULT_ANIMATION_SPEED,
+        mode = MOAITimer.NORMAL,
       },
       coffeemaker_used = {
         fileName = 'c01s02_coffeemaker_closed',
         startFrame = 1,
         frameCount = 1,
         frameTime = DEFAULT_ANIMATION_SPEED,
+        mode = MOAITimer.NORMAL,
       },
     },
     
