@@ -6,9 +6,6 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
-stateManager.map = {}
-stateManager.map = { venue = false }
-
 map = function ()
   
   require 'map_definition'
@@ -30,23 +27,11 @@ map = function ()
 
   function map_room:beforeInitialize ()
     self:loadObjects ()
+    dump ( stateManager.map )
   end
   
   
   function map_room:afterInitialize ()
-
-    if stateManager.fair then
-      self:startRendering('fair')
-    else
-      self:stopRendering('fair')
-    end
-
-    if stateManager.venue then
-      self:startRendering('venue')
-    else
-      self:stopRendering('venue')
-    end
-
   end
   
   return map_room

@@ -142,6 +142,7 @@ class DialogParser
     return '' if !string
     string.gsub!(/\n/, "\\n")
     string.gsub!('"', '\"')
+    string.gsub!('&amp;', '&')
     string
   end
   

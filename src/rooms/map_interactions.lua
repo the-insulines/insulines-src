@@ -2,6 +2,7 @@ map_objectInteractions = {
   
   fair = {
     highlight = true,
+    render_at_start = stateManager.map.fair,
     onClick = function ()
       game:loadScene( c01s03 )
     end
@@ -9,6 +10,7 @@ map_objectInteractions = {
 
   venue = {
     highlight = true,
+    render_at_start = stateManager.map.venue,
     onClick = function ()
       game:loadScene( c01s04 )
     end

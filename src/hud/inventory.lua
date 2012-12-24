@@ -214,6 +214,7 @@ function inventory:droppedCurrentItem ()
   
 end
 
+
 function inventory:toggleInventory ()
 
   if self.currentAction then
@@ -245,17 +246,20 @@ function inventory:openInventory ()
 end
 
 function inventory:closeInventory ()
-  if self.currentAction then self.currentAction:stop () end
-  self.currentAction = self.closeAction
+  if self.opened then
+    if self.currentAction then self.currentAction:stop () end
+    self.currentAction = self.closeAction
   
-  game.currentScene.inputEnabled = false
-  MOAICoroutine.blockOnAction ( self.currentAction:start () )
-  game.currentScene.inputEnabled = true
+    game.currentScene.inputEnabled = false
+    MOAICoroutine.blockOnAction ( self.currentAction:start () )
+    game.currentScene.inputEnabled = true
     
-  self.opened = false
+    self.opened = false
+  end
 end
 
 function inventory:addItem ( key, object )
+
   local item = { key = key, object = object, backProp = MOAIProp2D.new () }
 
   -- Create prop
