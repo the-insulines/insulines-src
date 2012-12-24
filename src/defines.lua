@@ -569,9 +569,8 @@ resources = {
             baseTime = HALF_FRAME_RATE_SPEED,
             multipliers = {
               {frame = 1, times = 5},
-              {frame = 2, times = 21},
-              {frame = 17, times = 2},
-              {frame = 19, times = 26},
+              {frame = 4, times = 11},
+              {frame = 13, times = 8},
             },
           },
         startFrame = 1,
@@ -595,7 +594,7 @@ resources = {
             baseTime = HALF_FRAME_RATE_SPEED,
             multipliers = {
               {frame = 1, times = 20},
-              {frame = 2, times = 20},
+              {frame = 2, times = 9},
               {frame = 3, times = 20},
             },
           },
@@ -619,9 +618,9 @@ resources = {
         frameTime = {
             baseTime = HALF_FRAME_RATE_SPEED,
             multipliers = {
-              {frame = 1, times = 20},
-              {frame = 2, times = 20},
-              {frame = 3, times = 20},
+              {frame = 1, times = 15},
+              {frame = 2, times = 22},
+              {frame = 3, times = 18},
             },
           },
         startFrame = 1,
@@ -644,8 +643,9 @@ resources = {
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
-            {frame = 1, times = 3},
+            {frame = 1, times = 18},
             {frame = 2, times = 2},
+            {frame = 20, times = 7},
           },
         },
         startFrame = 1,
@@ -709,9 +709,9 @@ resources = {
           multipliers = {
             {frame = 1, times = 3},
             {frame = 2, times = 2},
-            {frame = 3, times = 2},
+            {frame = 3, times = 4},
             {frame = 4, times = 2},
-            {frame = 5, times = 2},
+            {frame = 5, times = 3},
           },
         },
         startFrame = 1,
@@ -738,7 +738,13 @@ resources = {
       stand = {
         fileName = 'pete_stand',
         frameCount = 24,
-        frameTime = HALF_FRAME_RATE_SPEED,
+        frameTime = {
+          baseTime = HALF_FRAME_RATE_SPEED,
+          multipliers = {
+            {frame = 1, times = 19},
+            {frame = 15, times = 9},
+          },
+        },
         startFrame = 1,
       },
     },
@@ -759,8 +765,8 @@ resources = {
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
-            {frame = 1, times = 30},
-            {frame = 2, times = 30},
+            {frame = 1, times = 27},
+            {frame = 2, times = 18},
           },
         },
         startFrame = 1,
@@ -783,60 +789,10 @@ resources = {
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
-            {frame = 1, times = 30},
-            {frame = 2, times = 30},
-            {frame = 3, times = 30},
-            {frame = 4, times = 30},
-          },
-        },
-        startFrame = 1,
-      },
-    },
-  },
-  
-  pete_eyes = {
-    type = RESOURCE_TYPE_ANIMATION_FRAMES,
-    location = 'characters/pete/',
-    width = 38, height = 24,
-    
-    pivotX = 0,
-    pivotY = 0,
-    
-    animations = {
-      stand = {
-        fileName = 'pete_eyes',
-        frameCount = 2,
-        frameTime = {
-          baseTime = 0.04,
-          multipliers = {
-            {frame = 1, times = 30},
-            {frame = 2, times = 30},
-          },
-        },
-        startFrame = 1,
-      },
-    },
-  },
-  
-  pete_mouth = {
-    type = RESOURCE_TYPE_ANIMATION_FRAMES,
-    location = 'characters/pete/',
-    width = 37, height = 27,
-    
-    pivotX = 0,
-    pivotY = 0,
-    
-    animations = {
-      stand = {
-        fileName = 'pete_mouth',
-        frameCount = 4,
-        frameTime = {
-          baseTime = 0.04,
-          multipliers = {
-            {frame = 1, times = 30},
-            {frame = 2, times = 30},
-            {frame = 3, times = 30},
-            {frame = 4, times = 30},
+            {frame = 1, times = 5},
+            {frame = 2, times = 5},
+            {frame = 3, times = 8},
+            {frame = 4, times = 3},
           },
         },
         startFrame = 1,
