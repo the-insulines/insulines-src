@@ -537,19 +537,6 @@ resources = {
             {frame = 22, times = 16},
             {frame = 23, times = 6},
             {frame = 24, times = 21},
-            -- {frame = 1, times = 38},
-            -- {frame = 12, times = 6},
-            -- {frame = 13, times = 15},
-            -- {frame = 25, times = 25},
-            -- {frame = 26, times = 6},
-            -- {frame = 27, times = 30},
-            -- {frame = 39, times = 8},
-            -- {frame = 40, times = 6},
-            -- {frame = 41, times = 23},
-            -- {frame = 42, times = 16},
-            -- {frame = 53, times = 6},
-            -- {frame = 54, times = 6},
-            -- {frame = 55, times = 21},
           },
         },
         startFrame = 1,
@@ -734,8 +721,8 @@ resources = {
   paul_mouth = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/paul/',
-    width = 33, height = 33,
-    
+    width = 33, 
+    height = 33,
     pivotX = 0,
     pivotY = 0,
     
@@ -879,7 +866,6 @@ resources = {
   moe = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'characters/moe/',
---    width = 455, height = 700,
     width = 280, height = 630,
     
     pivotX = 0,
@@ -917,11 +903,9 @@ resources = {
       sleeps = {
         fileName = 'josh_sleep',
         startFrame = 1,
-        -- frameCount = 75,
         frameCount = 16,
         frameTime = DEFAULT_ANIMATION_SPEED,
         width = 225, height = 204
-        -- width = 80, height = 50
       },
     },
     sounds = {
@@ -999,6 +983,55 @@ resources = {
     
   },
 
+  main_screen = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'main_screen/',
+    pivotX = 0,
+    pivotY = 0,
+    width = WORLD_RESOLUTION_X,
+    height = WORLD_RESOLUTION_Y,
+
+    animations = {
+      intro = {
+        fileName = 'main_screen_menu',
+        startFrame = 1,
+        frameCount = 12,
+        frameTime = DEFAULT_ANIMATION_SPEED,
+        mode = MOAITimer.LOOP
+      },
+    },    
+  },
+  
+  main_screen_play = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_play.png', 
+    width = 737,
+    height = 182
+  },
+  
+  main_screen_continue = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_continue.png', 
+    width = 924,
+    height = 182
+  },
+  
+  main_screen_credits = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_credits.png', 
+    width = 1078,
+    height = 182
+  },
+  
+  
+  sugar_free = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'sugarfree.mp3', 
+    loop = true,
+    volume = 0.6
+  },
+  
+  
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 

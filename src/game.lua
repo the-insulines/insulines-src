@@ -75,7 +75,7 @@ end
 
 
 function game:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode )
-  
+
   -- Cache scene
   self.currentScene = scene (initialCharacterPathNode, initialCameraPathNode )
   
@@ -115,7 +115,7 @@ function initialize ( self )
     end
   end
   
-  -- self:loadScene ( logoScreen )
+  self:loadScene ( mainScreen )
   -- self:loadScene ( c01s01 )
   -- self:loadScene ( c01s02 )
   -- self:loadScene ( c01s03 )
