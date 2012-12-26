@@ -440,15 +440,14 @@ resources = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
             {frame = 1, times = 21},
-            {frame = 10, times = 8},
+            {frame = 9, times = 8},
             {frame = 11, times = 4},
             {frame = 12, times = 8},
             {frame = 17, times = 28},
-            {frame = 30, times = 31},
           },
         },
         startFrame = 1,
-        width = 266, height = 451,
+        width = 228, height = 432,
       },
       
     },

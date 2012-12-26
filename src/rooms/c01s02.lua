@@ -53,7 +53,13 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     self.objects.josh:setLoc(1120, -245)
   end
 
-  function c01s02:afterInitialize ()  
+  function c01s02:afterInitialize ()
+    -- stateManager.c01s02.coffeePickedUp = true
+    -- stateManager.c01s02.hasCoffee = true
+    -- stateManager.c01s02.hasWater = true
+    -- stateManager.c01s02.bathroom = true
+    -- stateManager.c01s02.pickedFlyer = true
+    stateManager.c01s02.talkedToNancy = true
     
     -- Setup scene using state manager
     if stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee then
@@ -65,7 +71,7 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
       game.currentScene.objects.coffeePotEmpty.onClick = nil
       game.currentScene:startRendering ( 'coffeePotEmpty' )
     end
-
+    
     if (stateManager.c01s02.hasWater and stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee) or stateManager.c01s02.madeCoffee then
       game.currentScene.objects.coffeeMaker:prepareCoffee()
     end
@@ -73,6 +79,25 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     if stateManager.c01s02.hadCoffee then
       game.currentScene.objects.coffeeMaker:prepareCoffee()
     end
+    
+    if stateManager.c01s02.pickedFlyer then
+      game.currentScene:stopRendering ( 'flyer' )
+    end
+    
+    -- load Nancy
+    if stateManager.c01s02.talkedToNancy then
+      if not game.currentScene.objects.nancy then
+        game.currentScene:loadCharacter ( nancy () )
+      end
+      
+      local pos = game.currentScene.path.graph[game.currentScene.finalNancyPathNode].position
+      game.currentScene.objects.nancy.prop:setLoc(pos.x, pos.y)
+      game.currentScene.objects.nancy:moveTo(pos.x, pos.y, game.currentScene.perspectiveZoomFactor, 0.00001)
+      game.currentScene:startRendering ( 'nancy' )
+      game.currentScene.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
+      -- game.currentScene:moveCharacterToNode('nancy', game.currentScene.finalNancyPathNode, game.currentScene.objects.apartmentDoor.closeDoor, game.currentScene)
+    end
+    
     
     -- self.objects.answering_machine.animation:startAnimation ( 'blink' )
     -- self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )
