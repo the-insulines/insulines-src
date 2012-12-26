@@ -35,10 +35,10 @@ c01s03 = function ()
   c01s03_room.initialPositions = {
     howard = point ( 330, 90 - 200 ),
     klein = point ( 800, 0 - 300 ),
-    klein_eyes = point ( 766, 165 ),
+    klein_eyes = point ( 765, 165 ),
     klein_mouth = point ( 756, 104 ),
     paul = point ( 120, 110 - 200 ),
-    paul_eyes = point ( 105, 232 ),
+    paul_eyes = point ( 106, 232 ),
     paul_mouth = point ( 108, 192 ),
     pete = point ( -20, 100 - 180 ),
     pete_eyes = point ( 0, 155 ),
@@ -94,6 +94,7 @@ c01s03 = function ()
   
   c01s03_room:addObjects ( c01s03_externalObjects )
   
+  
   function c01s03_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
@@ -110,9 +111,26 @@ c01s03 = function ()
     self.objects.c01s03_candle_light2.animation:startAnimation ( 'c01s03_candlelight' )
     self.objects.c01s03_candle_light3.animation:startAnimation ( 'c01s03_candlelight' )
   end
-
+  
+  
   function c01s03_room:afterInitialize ()
     performWithDelay ( 50, self.lampsLightAnimation, 0, self )
+  end
+  
+  
+  -- face animations
+  function c01s03_room:moveEyesTo ( char, eyesPosition )
+    eyes = self.objects[char.name .. '_eyes']
+    if eyes then
+      eyes:setLoc ( eyesPosition.x, eyesPosition.y )
+    end
+  end
+  
+  function c01s03_room:moveMouthTo ( char, mouthPosition )
+    mouth = self.objects[char.name .. '_mouth']
+    if mouth then
+      mouth:setLoc ( mouthPosition.x, mouthPosition.y )
+    end
   end
   
   
