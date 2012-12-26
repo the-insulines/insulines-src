@@ -447,7 +447,7 @@ resources = {
           },
         },
         startFrame = 1,
-        width = 228, height = 432,
+        width = 266, height = 451,
       },
       
     },
