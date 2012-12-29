@@ -54,13 +54,6 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
   end
 
   function c01s02:afterInitialize ()
-    -- stateManager.c01s02.coffeePickedUp = true
-    -- stateManager.c01s02.hasCoffee = true
-    -- stateManager.c01s02.hasWater = true
-    -- stateManager.c01s02.bathroom = true
-    -- stateManager.c01s02.pickedFlyer = true
-    stateManager.c01s02.talkedToNancy = true
-    
     -- Setup scene using state manager
     if stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee then
       game.currentScene.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_loaded' )

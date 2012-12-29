@@ -166,7 +166,7 @@ end
 
 
 function AnimatedProp.updateFrame ( anim, keyframe, timesExecuted, time, value )
-  self = anim.animatedProp
+  local self = anim.animatedProp
   self.prop:setDeck ( anim.frames[value] )
   
   if anim.frames.sounds and anim.frames.sounds[value] then

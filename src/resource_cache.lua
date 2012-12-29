@@ -9,7 +9,7 @@ module ("resource_cache", package.seeall)
 ----------------------------------------------------------------
 -- variables
 
-local cache = {}
+cache = {}
 
 
 ----------------------------------------------------------------
@@ -138,7 +138,7 @@ function loadAnimationFrames ( animationPath, animationAttributes, defaultAttrib
     imageAttributes = defaultAttributes
   end
   
-  animationFrames = {}
+  local animationFrames = {}
   
   -- load the image corresponding to each frame of the animation
   for frameIndex = 1, animationAttributes.frameCount do

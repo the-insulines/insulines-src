@@ -242,11 +242,13 @@ function new (name)
 
   function room:loadSounds ()
     for k, v in pairs (self.sounds) do
-      self.sounds[k] = resource_cache.get(v.resource_name)
+      local resource_name = v.resource_name
+      self.sounds[k] = resource_cache.get(resource_name)
+      self.sounds[k].resource_name = resource_name
     end
   end
   
-    
+  
   function room:onInput ( )
     if self.inputEnabled then
       if input_manager.down () then
@@ -418,6 +420,12 @@ function new (name)
       
       print ('>> UNLOADING FROM CACHE: ', obj.resource_name)
       resource_cache.unload(obj.resource_name)
+    end
+    
+    -- release sounds
+    for k, v in pairs (self.sounds) do
+      print ('>> UNLOADING (SOUND) FROM CACHE: ', v.resource_name)
+      resource_cache.unload(v.resource_name)
     end
   end
   

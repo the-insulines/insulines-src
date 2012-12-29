@@ -11,7 +11,7 @@ layer = MOAILayer2D.new ()
 hidden = true
 
 function cellphoneHUD:initialize ( elements )
-  self.cellphoneAsset = {} 
+  self.cellphoneAsset = {}
   self.cellphoneAsset.gfx = resource_cache.get ( 'hud_cellphone' )
   self.cellphoneAsset.half_width = INVENTORY_BACKPACK_HALF_WIDTH
   self.cellphoneAsset.half_height = INVENTORY_BACKPACK_HALF_HEIGHT
@@ -36,6 +36,12 @@ function cellphoneHUD:initialize ( elements )
   self.messagesIcon.half_height = 35 / 2
   self.messagesIcon.gfx:setRect ( - self.messagesIcon.half_width, - self.messagesIcon.half_height, self.messagesIcon.half_width, self.messagesIcon.half_height)
 
+  -- Moe's message (this shouldn't be here but otherwise it makes it really hard to store the function on a file)
+  self.message = function ()
+    dialog:load('moe_sms')
+    stateManager.map.venue = true
+  end
+  
   -- Create prop
   self.messagesIcon.prop = MOAIProp2D.new ()
   self.messagesIcon.prop:setDeck ( self.messagesIcon.gfx )
@@ -70,9 +76,8 @@ function cellphoneHUD:showMessages ()
   end
 end
 
-function cellphoneHUD:messageArrived (method, parent)
+function cellphoneHUD:messageArrived ()
   stateManager.hasMessages = true
-  self.message = { method = method, parent = parent }
   self:showMessages ()
 end
 
@@ -91,10 +96,11 @@ function cellphoneHUD:onInput ()
       if stateManager.hasMessages then
         stateManager.hasMessages = false
         self:showMessages ()
-        self.message.method (self.message.parent)
+        self.message ()
         self.message = nil
       end
       return true
     end
   end
 end
+

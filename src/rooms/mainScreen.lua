@@ -11,7 +11,7 @@ function mainScreen ()
   s.inputEnabled = true
   s.characterMovement = false
 
-  mainScreen_objects = {
+  local mainScreen_objects = {
     background = {
       resource_name = "main_screen",
       layer_name = "background",
@@ -30,7 +30,7 @@ function mainScreen ()
       y = 450,
       onClick = function ()
         game.currentScene.sounds.background:stop ()
-        game:loadScene ( c01s01 )
+        game:switchToScene ( c01s01 )
       end
     },
     
@@ -54,7 +54,7 @@ function mainScreen ()
     
   }
   
-  mainScreen_sounds = {
+  local mainScreen_sounds = {
 
     background = {
       resource_name = 'sugar_free'

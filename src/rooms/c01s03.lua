@@ -149,12 +149,7 @@ c01s03 = function ()
   end
   
   function c01s03_room:cellphoneMessage ()
-    cellphoneHUD:messageArrived(self.moesMessage, self)
-  end
-  
-  function c01s03_room:moesMessage ()
-    dialog:load('moe_sms')
-    stateManager.map.venue = true
+    cellphoneHUD:messageArrived ()
   end
   
   return c01s03_room
