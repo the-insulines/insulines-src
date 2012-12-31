@@ -166,6 +166,18 @@ resources = {
     fileName = 'logoScreen_background.png', 
     width = 1920, height = 1280, 
   },
+  
+  mainScreenNewGameButton = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'main_screen/new_game_button.png',
+    width = 500, height = 200,
+  },
+  
+  mainScreenContinueButton = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'main_screen/continue_button.png',
+    width = 500, height = 200,
+  },
 
   thankYouScreen_background = {
     type = RESOURCE_TYPE_IMAGE, 
@@ -723,7 +735,25 @@ resources = {
             {frame = 5, times = 3},
           },
         },
+      },
+      blink = {
+        fileName = 'paul_blink',
+        frameCount = 11,
         startFrame = 1,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 25},
+            {frame = 2, times = 3},
+            {frame = 3, times = 58},
+            {frame = 4, times = 3},
+            {frame = 5, times = 25},
+            {frame = 6, times = 3},
+            {frame = 8, times = 58},
+            {frame = 9, times = 3},
+            {frame = 11, times = 70},
+          },
+        },
       },
       blink = {
         parentAnimationName = 'stand',

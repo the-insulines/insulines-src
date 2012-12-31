@@ -51,7 +51,7 @@ c01s02_es_conversations = {
             "Juro por Dios, tomaré un kilo de azúcar y lo usaré como lo haría Tony Montana, pedazo de -",
             "Oh, sólo eres tú.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== false',
           links = {
             {
               originConversationId = 1,
@@ -302,7 +302,7 @@ c01s02_es_conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.state.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -324,7 +324,7 @@ c01s02_es_conversations = {
             "Desde ya, siéntete como en tu casa.",
             "Hay café recién hecho en la cocina.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== true',
           links = {
           },
         },
@@ -412,9 +412,9 @@ c01s02_es_conversations = {
           dialogueText = {
             "Oye, ¿qué es esto?",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.state.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -439,9 +439,9 @@ c01s02_es_conversations = {
           actor = 'ansaphone',
           conversant = 'josh',
           menuText = "",
-          conditionsString = 'stateManager.dialogs.userVariables["MessagePlayed"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["MessagePlayed"]== false',
           userScript = function()
-            stateManager.dialogs.userVariables["SkipLoop"]= true
+            stateManager.state.dialogs.userVariables["SkipLoop"]= true
           end,
           links = {
             {
@@ -490,7 +490,7 @@ c01s02_es_conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["MessagePlayed"]= true
+            stateManager.state.dialogs.userVariables["MessagePlayed"]= true
           end,
           links = {
             {
@@ -518,7 +518,7 @@ c01s02_es_conversations = {
           dialogueText = {
             "Hmm...",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== false',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== false',
           links = {
           },
         },
@@ -531,7 +531,7 @@ c01s02_es_conversations = {
           dialogueText = {
             "En fin...",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["SkipLoop"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["SkipLoop"]== true',
           links = {
             {
               originConversationId = 2,
@@ -577,7 +577,7 @@ c01s02_es_conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["FreezerOptions"]= math.random(3)
+            stateManager.state.dialogs.userVariables["FreezerOptions"]= math.random(3)
           end,
           links = {
             {
@@ -629,7 +629,7 @@ c01s02_es_conversations = {
           dialogueText = {
             "Esto me recuerda a una postal de Siberia que vi una vez. Pero más lúgubre.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["FreezerOptions"]== 1',
+          conditionsString = 'stateManager.state.dialogs.userVariables["FreezerOptions"]== 1',
           links = {
           },
         },
@@ -642,7 +642,7 @@ c01s02_es_conversations = {
           dialogueText = {
             "Puede que no sea un experto, pero no creo que esto es lo que quieren decir con “insulinodependencia”.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["FreezerOptions"]== 2',
+          conditionsString = 'stateManager.state.dialogs.userVariables["FreezerOptions"]== 2',
           links = {
           },
         },
@@ -655,7 +655,7 @@ c01s02_es_conversations = {
           dialogueText = {
             "La nevera más vacía y triste que he visto alguna vez.",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["FreezerOptions"]== 3',
+          conditionsString = 'stateManager.state.dialogs.userVariables["FreezerOptions"]== 3',
           links = {
           },
         },

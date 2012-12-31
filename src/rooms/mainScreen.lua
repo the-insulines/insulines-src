@@ -29,6 +29,12 @@ function mainScreen ()
       x = 595,
       y = 450,
       onClick = function ()
+        -- when a new game is started, create the new state of the game
+        if stateManager.state == nil then
+          stateManager:newState ()
+        end
+        
+        s.inputEnabled = false
         game.currentScene.sounds.background:stop ()
         game:switchToScene ( c01s01 )
       end
@@ -37,9 +43,14 @@ function mainScreen ()
     continue = {
       resource_name = "main_screen_continue",
       layer_name = "objects",
-      render_at_start = true,
+      render_at_start = stateManager:savedStateExists (),
       x = 500,
       y = 200,
+      onClick = function ()
+        stateManager:loadState ()
+        s.inputEnabled = false
+        game:switchToScene ( game:sceneNamed ( stateManager.state.currentScene ) )
+      end,
     },
     
     credits = {

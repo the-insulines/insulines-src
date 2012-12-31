@@ -2,24 +2,24 @@ map_objectInteractions = {
   
   fair = {
     highlight = true,
-    render_at_start = stateManager.map.fair,
+    render_at_start = stateManager.state.map.fair,
     onClick = function ()
-      game:loadScene( c01s03 )
+      game:switchToScene( c01s03 )
     end
   },
 
   venue = {
     highlight = true,
-    render_at_start = stateManager.map.venue,
+    render_at_start = stateManager.state.map.venue,
     onClick = function ()
-      game:loadScene( c01s04 )
+      game:switchToScene( c01s04 )
     end
   },
 
   home  = {
     highlight = true,
     onClick = function ()
-      game:loadScene(c01s02, 'door', 'door')
+      game:switchToScene(c01s02, 'door', 'door')
     end
   },
   

@@ -6,6 +6,9 @@
 --==============================================================
 package.path = package.path .. ";src/rooms/?.lua"
 
+stateManager.state.map = {}
+stateManager.state.map = { venue = false }
+
 map = function ()
   
   require 'map_definition'
@@ -24,10 +27,10 @@ map = function ()
   map_room.useMap = false
   map_room.useCellphone = false
   
-
+  
   function map_room:beforeInitialize ()
     self:loadObjects ()
-    dump ( stateManager.map )
+    dump ( stateManager.state.map )
   end
   
   

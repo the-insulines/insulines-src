@@ -39,7 +39,7 @@ function cellphoneHUD:initialize ( elements )
   -- Moe's message (this shouldn't be here but otherwise it makes it really hard to store the function on a file)
   self.message = function ()
     dialog:load('moe_sms')
-    stateManager.map.venue = true
+    stateManager.state.map.venue = true
   end
   
   -- Create prop
@@ -47,7 +47,7 @@ function cellphoneHUD:initialize ( elements )
   self.messagesIcon.prop:setDeck ( self.messagesIcon.gfx )
   self.messagesIcon.prop:setLoc ( self.cellphoneAsset.x + self.cellphoneAsset.half_width/2, self.cellphoneAsset.y - self.cellphoneAsset.half_height )
   self.messagesIcon.prop:setPriority(100)
-  if stateManager.c01s01.cellphonePicked then
+  if stateManager.state.c01s01.cellphonePicked then
     self:show ()
   end
 end
@@ -69,7 +69,7 @@ function cellphoneHUD:show()
 end
 
 function cellphoneHUD:showMessages ()
-  if stateManager.hasMessages then
+  if stateManager.state.hasMessages then
     self.layer:insertProp ( self.messagesIcon.prop )
   else
     self.layer:removeProp ( self.messagesIcon.prop )
@@ -77,7 +77,7 @@ function cellphoneHUD:showMessages ()
 end
 
 function cellphoneHUD:messageArrived ()
-  stateManager.hasMessages = true
+  stateManager.state.hasMessages = true
   self:showMessages ()
 end
 
@@ -93,8 +93,8 @@ function cellphoneHUD:onInput ()
     local cellphoneX, cellphoneY = self.cellphoneAsset.prop:worldToModel ( x, y )
 
     if (cellphoneX >= -self.cellphoneAsset.half_width) and (cellphoneX <= self.cellphoneAsset.half_width) and (cellphoneY >= -self.cellphoneAsset.half_height) and (cellphoneY <= self.cellphoneAsset.half_height) then
-      if stateManager.hasMessages then
-        stateManager.hasMessages = false
+      if stateManager.state.hasMessages then
+        stateManager.state.hasMessages = false
         self:showMessages ()
         self.message ()
         self.message = nil

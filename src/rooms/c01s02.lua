@@ -55,30 +55,30 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
 
   function c01s02:afterInitialize ()
     -- Setup scene using state manager
-    if stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee then
+    if stateManager.state.c01s02.hasCoffee and not stateManager.state.c01s02.madeCoffee then
       game.currentScene.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_loaded' )
     end
     
-    if stateManager.c01s02.hasWater and not stateManager.c01s02.madeCoffee then
+    if stateManager.state.c01s02.hasWater and not stateManager.state.c01s02.madeCoffee then
       game.currentScene.objects.coffeePotEmpty.prop:setLoc ( game.currentScene.objects.coffeeMaker.x - 7, game.currentScene.objects.coffeeMaker.y - 78 )
       game.currentScene.objects.coffeePotEmpty.onClick = nil
       game.currentScene:startRendering ( 'coffeePotEmpty' )
     end
     
-    if (stateManager.c01s02.hasWater and stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee) or stateManager.c01s02.madeCoffee then
+    if (stateManager.state.c01s02.hasWater and stateManager.state.c01s02.hasCoffee and not stateManager.state.c01s02.madeCoffee) or stateManager.state.c01s02.madeCoffee then
       game.currentScene.objects.coffeeMaker:prepareCoffee()
     end
     
-    if stateManager.c01s02.hadCoffee then
+    if stateManager.state.c01s02.hadCoffee then
       game.currentScene.objects.coffeeMaker:prepareCoffee()
     end
     
-    if stateManager.c01s02.pickedFlyer then
+    if stateManager.state.c01s02.pickedFlyer then
       game.currentScene:stopRendering ( 'flyer' )
     end
     
     -- load Nancy
-    if stateManager.c01s02.talkedToNancy then
+    if stateManager.state.c01s02.talkedToNancy then
       if not game.currentScene.objects.nancy then
         game.currentScene:loadCharacter ( nancy () )
       end
