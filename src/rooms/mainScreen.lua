@@ -49,6 +49,7 @@ function mainScreen ()
       onClick = function ()
         stateManager:loadState ()
         s.inputEnabled = false
+        game.currentScene.sounds.background:stop ()
         game:switchToScene ( game:sceneNamed ( stateManager.state.currentScene ) )
       end,
     },
