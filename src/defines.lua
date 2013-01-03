@@ -1454,6 +1454,7 @@ end
 
 local collect = collectgarbage
 local lastCheck = {sysMem = 0}
+
 function checkMem (say)
    collect()
    local sysMem = collect("count") * .001

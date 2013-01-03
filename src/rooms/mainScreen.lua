@@ -29,13 +29,9 @@ function mainScreen ()
       x = 595,
       y = 450,
       onClick = function ()
-        -- when a new game is started, create the new state of the game
-        if stateManager.state == nil then
-          stateManager:newState ()
-        end
-        
         s.inputEnabled = false
         game.currentScene.sounds.background:stop ()
+        stateManager:startAutoSave ()
         game:switchToScene ( c01s01 )
       end
     },
@@ -50,6 +46,7 @@ function mainScreen ()
         stateManager:loadState ()
         s.inputEnabled = false
         game.currentScene.sounds.background:stop ()
+        stateManager:startAutoSave ()
         game:switchToScene ( game:sceneNamed ( stateManager.state.currentScene ) )
       end,
     },

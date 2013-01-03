@@ -44,35 +44,13 @@ stateManager.saveDirectory = MOAIFileSystem.getWorkingDirectory ()
 stateManager.saveFile = stateManager.saveDirectory .. 'game.save'
 
 
-function stateManager:newState ()
-  -- set the initial state
-  self.state = {
-    c01s01 = {
-      cellphoneClicks = 0,
-      woke = false,
-      cellphonePicked = false,
-      dressed = false
-    },
+function stateManager:startAutoSave ()
+  performWithDelay ( 400, self.autoSave, 0, self )
+end
 
-    c01s02 = {
-      bathroom = false,
 
-      coffeePickedUp = false,
-      hasCoffee = false,
-      hasWater = false,
-      madeCoffee = false,
-      hadCoffee = false,
-
-      answered = false,
-      pickedFlyer = false,
-      talkedToNancy = false
-    },
-
-    map = {
-      fair = false,
-      venue = false
-    },
-  }
+function stateManager:autoSave ()
+  stateManager:saveState ()
 end
 
 
