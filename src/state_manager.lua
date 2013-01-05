@@ -40,7 +40,15 @@ stateManager.state = {
   },
 }
 
-stateManager.saveDirectory = MOAIFileSystem.getWorkingDirectory ()
+stateManager.saveDirectory = MOAIEnvironment.documentDirectory
+-- if iOS
+if stateManager.saveDirectory then
+  stateManager.saveDirectory = stateManager.saveDirectory .. '/'
+-- else (if OSX)
+else
+  stateManager.saveDirectory = MOAIFileSystem.getWorkingDirectory ()
+end
+
 stateManager.saveFile = stateManager.saveDirectory .. 'game.save'
 
 
@@ -55,6 +63,9 @@ end
 
 
 function stateManager:saveState ()
+  -- update the inventory items to be stored as part of the state
+  self.state.inventoryItems = inventory.items
+  
   local stream = MOAIFileStream.new ()
   if stream:open ( self.saveFile, MOAIFileStream.READ_WRITE_AFFIRM ) then
     print ( 'saving game state on ' .. self.saveFile .. '...' )
@@ -77,6 +88,9 @@ function stateManager:loadState ()
     self.state = MOAIJsonParser.decode ( json_encoded_state )
     
     stream:close ()
+    
+    -- load the inventory from the state
+    inventory:loadFromState ( self.state.inventoryItems )
     
   else
     print ( 'failed to load game state on ' .. self.saveFile )

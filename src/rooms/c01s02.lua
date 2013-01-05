@@ -59,6 +59,11 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
       game.currentScene.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_loaded' )
     end
     
+    -- hide the coffee pot
+    if stateManager.state.c01s02.coffeePotPickedUp and not stateManager.state.c01s02.hasWater then
+      game.currentScene:stopRendering ( 'coffeePotEmpty' )
+    end
+    
     if stateManager.state.c01s02.hasWater and not stateManager.state.c01s02.madeCoffee then
       game.currentScene.objects.coffeePotEmpty.prop:setLoc ( game.currentScene.objects.coffeeMaker.x - 7, game.currentScene.objects.coffeeMaker.y - 78 )
       game.currentScene.objects.coffeePotEmpty.onClick = nil

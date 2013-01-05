@@ -23,6 +23,7 @@ hidden = true
 
 highlightingInteractions = false
 
+
 function inventory:initialize ( elements )
   
   if DEBUG then
@@ -101,8 +102,17 @@ function inventory:initializeHud ()
   
 end
 
+
+function inventory:loadFromState ( stateItems )
+  for i, item in pairs ( stateItems ) do
+    self:addItem ( item.key, item.object )
+  end
+end
+
+
 function inventory:show ()
 end
+
 
 function inventory:onInput ()
     local x, y = input_manager.getTouch ()

@@ -264,6 +264,7 @@ c01s02_objectInteractions = {
     onClick = function ()
       inventory:addItem ( 'coffeePotEmpty', game.currentScene.objects.coffeePotEmpty)
       game.currentScene:stopRendering('coffeePotEmpty')
+      stateManager.state.c01s02.coffeePotPickedUp = true
     end,
   },
 
