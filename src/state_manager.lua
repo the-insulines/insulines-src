@@ -7,11 +7,6 @@
 
 module ( "stateManager", package.seeall )
 
-print ( 'docs = ', MOAIEnvironment.documentDirectory )
-print ( 'resources = ', MOAIEnvironment.resourceDirectory )
-print ( 'cache = ', MOAIEnvironment.cacheDirectory )
-print ( 'current = ', MOAIFileSystem.getWorkingDirectory() )
-
 stateManager.state = {
   c01s01 = {
     cellphoneClicks = 0,
