@@ -55,7 +55,8 @@ c01s02_objectInteractions = {
   
   bathroom_opened = {
     inBathroom = function ( self )
-
+      stateManager.state.c01s02.inBathroom = true
+      
       -- Close bathroom door
       game.currentScene:stopRendering("josh")
       game.currentScene:stopRendering("bathroom_opened")
@@ -65,7 +66,7 @@ c01s02_objectInteractions = {
         inventory:openInventory ()
       end
 
-      game.currentScene.inputEnabled = true      
+      game.currentScene.inputEnabled = true
       performWithDelay(10, self.objects.bathroom_opened.addBathroomItems, 1, self)
 
     end,
@@ -90,7 +91,6 @@ c01s02_objectInteractions = {
       dialog:load('left_bathroom')
       game.currentScene.inputEnabled = true
       game.currentScene.characterMovement = true
-      stateManager.state.c01s02.bathroom = true
     end
     
   },
@@ -98,7 +98,9 @@ c01s02_objectInteractions = {
   toothpaste = {
     interactsWith = { 'toothbrush' },
     onInteractionWith = function ( self, item )
-    
+      stateManager.state.c01s02.inBathroom = false
+      stateManager.state.c01s02.bathroom = true
+      
       inventory:removeItem ( item )
       if self.invTarget then
         inventory:removeItem ( self.invTarget )
@@ -370,7 +372,7 @@ c01s02_objectInteractions = {
       if stateManager.state.c01s02.pickedFlyer then
         
         if stateManager.state.c01s02.bathroom and stateManager.state.c01s02.hadCoffee then
-        
+          
           if not stateManager.state.c01s02.talkedToNancy then
             game.currentScene.objects.apartmentDoor.beginNancy ()
           else

@@ -51,8 +51,14 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     self:loadCharacter( josh () )
     
     self.objects.josh:setLoc(1120, -245)
+    
+    -- load camera position depending on the state of the bathroom puzzle
+    if stateManager.state.c01s02.inBathroom then
+      self.initialCharacterPathNode = 'bathroom'
+      self.initialCameraPathNode = 'lamp'
+    end
   end
-
+  
   function c01s02:afterInitialize ()
     -- Setup scene using state manager
     if stateManager.state.c01s02.hasCoffee and not stateManager.state.c01s02.madeCoffee then
@@ -71,15 +77,26 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     end
     
     if (stateManager.state.c01s02.hasWater and stateManager.state.c01s02.hasCoffee and not stateManager.state.c01s02.madeCoffee) or stateManager.state.c01s02.madeCoffee then
-      game.currentScene.objects.coffeeMaker:prepareCoffee()
+      game.currentScene.objects.coffeeMaker:prepareCoffee ()
     end
     
     if stateManager.state.c01s02.hadCoffee then
-      game.currentScene.objects.coffeeMaker:prepareCoffee()
+      game.currentScene.objects.coffeeMaker:prepareCoffee ()
     end
     
     if stateManager.state.c01s02.pickedFlyer then
       game.currentScene:stopRendering ( 'flyer' )
+    end
+    
+    -- load Bathroom puzzle
+    if stateManager.state.c01s02.inBathroom then
+      -- remove the previous items, they will be added again by the function
+      inventory:findAndRemoveItem ( 'toothbrush' )
+      inventory:findAndRemoveItem ( 'toothpaste' )
+      inventory:findAndRemoveItem ( 'floss' )
+      game.currentScene.objects.bathroom_opened.inBathroom ( game.currentScene )
+    else
+      inventory:findAndRemoveItem ( 'toothbrush_with_toothpaste' )
     end
     
     -- load Nancy
