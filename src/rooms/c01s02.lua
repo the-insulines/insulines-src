@@ -108,9 +108,10 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
       local pos = game.currentScene.path.graph[game.currentScene.finalNancyPathNode].position
       game.currentScene.objects.nancy.prop:setLoc(pos.x, pos.y)
       game.currentScene.objects.nancy:moveTo(pos.x, pos.y, game.currentScene.perspectiveZoomFactor, 0.00001)
+      game.currentScene.objects.nancy.prop:setScl ( 0.8, 0.8 )
       game.currentScene:startRendering ( 'nancy' )
+      
       game.currentScene.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
-      -- game.currentScene:moveCharacterToNode('nancy', game.currentScene.finalNancyPathNode, game.currentScene.objects.apartmentDoor.closeDoor, game.currentScene)
     end
     
     

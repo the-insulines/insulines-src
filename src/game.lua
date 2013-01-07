@@ -29,6 +29,7 @@ game.scenes = {
   c01s02 = function () return c01s02 end,
   c01s03 = function () return c01s03 end,
   c01s04 = function () return c01s04 end,
+  map = function () return map end,
 }
 
 
