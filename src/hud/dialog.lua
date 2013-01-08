@@ -15,7 +15,9 @@ function dialog:loadConversations(conversations_definition)
   -- Load all user variables
   if self.conversations.userVariables then
     for name, info in pairs(self.conversations.userVariables) do
-      stateManager.state.dialogs.userVariables[name] = info.initialValue 
+      if stateManager.state.dialogs.userVariables[name] == nil then
+        stateManager.state.dialogs.userVariables[name] = info.initialValue
+      end
     end
   end
 end

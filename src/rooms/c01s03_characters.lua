@@ -53,12 +53,12 @@ function klein ()
   
   function kleinFacePosition ( animName, frame )
     local pos = eyeKeyframes[frame]
-    if pos then
+    if pos and game.currentScene then
       game.currentScene:moveEyesTo ( klein, pos )
     end
     
     pos = mouthKeyframes[frame]
-    if pos then
+    if pos and game.currentScene then
       game.currentScene:moveMouthTo ( klein, pos )
     end
   end
@@ -122,12 +122,12 @@ function paul ()
   
   function paulFacePosition ( animName, frame )
     local pos = eyeKeyframes[frame]
-    if pos then
+    if pos and game.currentScene then
       game.currentScene:moveEyesTo ( paul, pos )
     end
     
     pos = mouthKeyframes[frame]
-    if pos then
+    if pos and game.currentScene then
       game.currentScene:moveMouthTo ( paul, pos )
     end
   end

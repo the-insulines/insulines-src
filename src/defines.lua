@@ -725,6 +725,7 @@ resources = {
       stand = {
         fileName = 'paul_mouth',
         frameCount = 5,
+        startFrame = 1,
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
@@ -1439,6 +1440,8 @@ function performWithDelay ( delay, func, repeats, ... )
   end
   )
   t:start ()
+  
+  return t
 end
 
 

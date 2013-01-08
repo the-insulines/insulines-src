@@ -403,7 +403,20 @@ function new (name)
   end
   
   
+  function room:stopJosh ()
+    if self.objects.josh then
+      self.objects.josh:stopCurrentAction ()
+    end
+  end
+  
+  
   function room:unload ()
+    self:stopJosh ()
+    -- unload specific room animations
+    if self.stopAnimations then
+      self:stopAnimations ()
+    end
+    
     self:removeLayers ()
     
     -- release objects
