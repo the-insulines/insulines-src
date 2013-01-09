@@ -26,11 +26,11 @@ require 'input_manager'
 
 require 'rooms/mainScreen'
 require 'rooms/creditsScreen'
-require 'rooms/thankYouScreen'
 require 'rooms/c01s01'
 require 'rooms/c01s02'
 require 'rooms/c01s03'
 require 'rooms/c01s04'
+require 'rooms/final'
 require 'rooms/map'
 
 if DEBUG then

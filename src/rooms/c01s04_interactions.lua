@@ -13,5 +13,9 @@ c01s04_objectInteractions = {
     end,
     priority = 1,
   },
-  
+  c01s04_door_opened = {
+    onClick = function ()
+      game:switchToScene( final )
+    end
+  }
 }

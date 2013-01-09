@@ -5,3 +5,4 @@ hosts/ios/moai.xcodeproj/xcuserdata
 hosts/ios/moai.xcodeproj/xcshareddata/
 *.swp
 *.un~
+game.save
