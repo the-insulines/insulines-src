@@ -140,12 +140,12 @@ function initialize ( self )
     end
   end
   
-  -- self:loadScene ( mainScreen )
+  self:loadScene ( mainScreen )
   -- self:loadScene ( c01s01 )
   -- self:loadScene ( c01s02 )
   -- self:loadScene ( c01s03 )
   -- self:loadScene ( c01s04 )
-  self:loadScene ( final )
+  -- self:loadScene ( final )
   
   -- Debug
   if DEBUG then
