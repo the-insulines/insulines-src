@@ -867,6 +867,82 @@ resources = {
   
   -- /////////////////////////////////////////////////////////////
   --
+  -- Main screen
+  --
+  -- ////////////////////////////////////////////////////////////
+
+  main_screen = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'main_screen/',
+    pivotX = 0,
+    pivotY = 0,
+    width = WORLD_RESOLUTION_X,
+    height = WORLD_RESOLUTION_Y,
+
+    animations = {
+      intro = {
+        fileName = 'main_screen_menu',
+        startFrame = 1,
+        frameCount = 12,
+        frameTime = DEFAULT_ANIMATION_SPEED,
+        mode = MOAITimer.LOOP
+      },
+    },    
+  },
+  
+  main_screen_play = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_play.png', 
+    width = 737,
+    height = 182
+  },
+  
+  main_screen_continue = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_continue.png', 
+    width = 924,
+    height = 182
+  },
+  
+  main_screen_credits = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_credits.png', 
+    width = 1078,
+    height = 182
+  },
+  
+  
+  sugar_free = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'sugarfree.mp3', 
+    loop = true,
+    volume = 0.6
+  },
+  
+  
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- Credits screen
+  --
+  -- ////////////////////////////////////////////////////////////
+  
+  credits_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'credits/background.png',
+    width = WORLD_RESOLUTION_X,
+    height = WORLD_RESOLUTION_Y
+  },
+  
+  credits_back_button = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'credits/credits_back_button.png',
+    width = 351,
+    height = 182
+  },
+  
+  
+  -- /////////////////////////////////////////////////////////////
+  --
   -- c01s01
   --
   -- ////////////////////////////////////////////////////////////
@@ -960,55 +1036,7 @@ resources = {
     
   },
 
-  main_screen = {
-    type = RESOURCE_TYPE_ANIMATION_FRAMES,
-    location = 'main_screen/',
-    pivotX = 0,
-    pivotY = 0,
-    width = WORLD_RESOLUTION_X,
-    height = WORLD_RESOLUTION_Y,
 
-    animations = {
-      intro = {
-        fileName = 'main_screen_menu',
-        startFrame = 1,
-        frameCount = 12,
-        frameTime = DEFAULT_ANIMATION_SPEED,
-        mode = MOAITimer.LOOP
-      },
-    },    
-  },
-  
-  main_screen_play = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'main_screen/main_screen_btn_play.png', 
-    width = 737,
-    height = 182
-  },
-  
-  main_screen_continue = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'main_screen/main_screen_btn_continue.png', 
-    width = 924,
-    height = 182
-  },
-  
-  main_screen_credits = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'main_screen/main_screen_btn_credits.png', 
-    width = 1078,
-    height = 182
-  },
-  
-  
-  sugar_free = {
-    type = RESOURCE_TYPE_SOUND, 
-    fileName = 'sugarfree.mp3', 
-    loop = true,
-    volume = 0.6
-  },
-  
-  
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 

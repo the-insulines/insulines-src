@@ -25,6 +25,7 @@ sceneFadeOutTime = 200
 
 game.scenes = {
   mainScreen = function () return mainScreen end,
+  creditsScreen = function () return creditsScreen end,
   c01s01 = function () return c01s01 end,
   c01s02 = function () return c01s02 end,
   c01s03 = function () return c01s03 end,
@@ -90,8 +91,13 @@ end
 
 
 function game:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode )
+  self:showScene ( scene (initialCharacterPathNode, initialCameraPathNode ) )
+end
+
+
+function game:showScene ( scene )
   -- Cache scene
-  self.currentScene = scene (initialCharacterPathNode, initialCameraPathNode )
+  self.currentScene = scene
   
   -- Save the current state when changing scenes, except the first one where the state hasn't yet been loaded
   if self.currentScene.name ~= 'mainScreen' then
@@ -117,7 +123,6 @@ function game:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode
   end
   
   self:sceneLoaded ( self.currentScene )
-  
 end
 
 
