@@ -1,7 +1,7 @@
 c01s04_objectInteractions = {
   c01s04_door_closed = {
     onClick = function ()
-      if stateManager.dialogs.userVariables["backstage"] then
+      if stateManager.state.dialogs.userVariables["backstage"] then
         local scene = game.currentScene
         scene:stopRendering ( 'c01s04_door_closed' )
         

@@ -51,28 +51,69 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
     self:loadCharacter( josh () )
     
     self.objects.josh:setLoc(1120, -245)
-  end
-
-  function c01s02:afterInitialize ()  
     
+    -- load camera position depending on the state of the bathroom puzzle
+    if stateManager.state.c01s02.inBathroom then
+      self.initialCharacterPathNode = 'bathroom'
+      self.initialCameraPathNode = 'lamp'
+    end
+  end
+  
+  function c01s02:afterInitialize ()
     -- Setup scene using state manager
-    if stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee then
+    if stateManager.state.c01s02.hasCoffee and not stateManager.state.c01s02.madeCoffee then
       game.currentScene.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_loaded' )
     end
     
-    if stateManager.c01s02.hasWater and not stateManager.c01s02.madeCoffee then
+    -- hide the coffee pot
+    if stateManager.state.c01s02.coffeePotPickedUp and not stateManager.state.c01s02.hasWater then
+      game.currentScene:stopRendering ( 'coffeePotEmpty' )
+    end
+    
+    if stateManager.state.c01s02.hasWater and not stateManager.state.c01s02.madeCoffee then
       game.currentScene.objects.coffeePotEmpty.prop:setLoc ( game.currentScene.objects.coffeeMaker.x - 7, game.currentScene.objects.coffeeMaker.y - 78 )
       game.currentScene.objects.coffeePotEmpty.onClick = nil
       game.currentScene:startRendering ( 'coffeePotEmpty' )
     end
-
-    if (stateManager.c01s02.hasWater and stateManager.c01s02.hasCoffee and not stateManager.c01s02.madeCoffee) or stateManager.c01s02.madeCoffee then
-      game.currentScene.objects.coffeeMaker:prepareCoffee()
+    
+    if (stateManager.state.c01s02.hasWater and stateManager.state.c01s02.hasCoffee and not stateManager.state.c01s02.madeCoffee) or stateManager.state.c01s02.madeCoffee then
+      game.currentScene.objects.coffeeMaker:prepareCoffee ()
     end
     
-    if stateManager.c01s02.hadCoffee then
-      game.currentScene.objects.coffeeMaker:prepareCoffee()
+    if stateManager.state.c01s02.hadCoffee then
+      game.currentScene.objects.coffeeMaker:prepareCoffee ()
     end
+    
+    if stateManager.state.c01s02.pickedFlyer then
+      game.currentScene:stopRendering ( 'flyer' )
+    end
+    
+    -- load Bathroom puzzle
+    if stateManager.state.c01s02.inBathroom then
+      -- remove the previous items, they will be added again by the function
+      inventory:findAndRemoveItem ( 'toothbrush' )
+      inventory:findAndRemoveItem ( 'toothpaste' )
+      inventory:findAndRemoveItem ( 'floss' )
+      game.currentScene.objects.bathroom_opened.inBathroom ( game.currentScene )
+    else
+      inventory:findAndRemoveItem ( 'toothbrush_with_toothpaste' )
+    end
+    
+    -- load Nancy
+    if stateManager.state.c01s02.talkedToNancy then
+      if not game.currentScene.objects.nancy then
+        game.currentScene:loadCharacter ( nancy () )
+      end
+      
+      local pos = game.currentScene.path.graph[game.currentScene.finalNancyPathNode].position
+      game.currentScene.objects.nancy.prop:setLoc(pos.x, pos.y)
+      game.currentScene.objects.nancy:moveTo(pos.x, pos.y, game.currentScene.perspectiveZoomFactor, 0.00001)
+      game.currentScene.objects.nancy.prop:setScl ( 0.8, 0.8 )
+      game.currentScene:startRendering ( 'nancy' )
+      
+      game.currentScene.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
+    end
+    
     
     -- self.objects.answering_machine.animation:startAnimation ( 'blink' )
     -- self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )

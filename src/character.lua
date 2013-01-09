@@ -193,7 +193,7 @@ function new ( name )
   
 
   function c.stopMove ( action )
-    self = action.character
+    local self = action.character
     if self.currentWalkAnimation then
       self.currentWalkAnimation:pause ()
     end

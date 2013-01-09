@@ -25,6 +25,7 @@ require 'hud/hud'
 require 'input_manager'
 
 require 'rooms/mainScreen'
+require 'rooms/creditsScreen'
 require 'rooms/thankYouScreen'
 require 'rooms/c01s01'
 require 'rooms/c01s02'

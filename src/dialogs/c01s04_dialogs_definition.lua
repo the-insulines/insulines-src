@@ -730,7 +730,7 @@ c01s04_conversations = {
           },
           conditionsString = 'dialog.currentConversation.dialogEntries.dialog12.SimStatus == "WasDisplayed" and dialog.currentConversation.dialogEntries.dialog31.SimStatus ~= "WasDisplayed"',
           userScript = function()
-            stateManager.dialogs.userVariables["ribbon"]= true
+            stateManager.state.dialogs.userVariables["ribbon"]= true
           end,
           links = {
             {
@@ -1396,7 +1396,7 @@ c01s04_conversations = {
           },
           conditionsString = '',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1509,9 +1509,9 @@ c01s04_conversations = {
           dialogueText = {
             "Forty-Two?",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["password"]== 1',
+          conditionsString = 'stateManager.state.dialogs.userVariables["password"]== 1',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1552,9 +1552,9 @@ c01s04_conversations = {
           dialogueText = {
             "It's \"banana\", isn't it?",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["password"]== 2',
+          conditionsString = 'stateManager.state.dialogs.userVariables["password"]== 2',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1575,9 +1575,9 @@ c01s04_conversations = {
           dialogueText = {
             "Supercalifragilisticexpialidocious!",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["password"]== 3',
+          conditionsString = 'stateManager.state.dialogs.userVariables["password"]== 3',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1598,9 +1598,9 @@ c01s04_conversations = {
           dialogueText = {
             "12345",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["password"]== 4',
+          conditionsString = 'stateManager.state.dialogs.userVariables["password"]== 4',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1621,9 +1621,9 @@ c01s04_conversations = {
           dialogueText = {
             "Open, Sesame!",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["password"]== 5',
+          conditionsString = 'stateManager.state.dialogs.userVariables["password"]== 5',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1644,9 +1644,9 @@ c01s04_conversations = {
           dialogueText = {
             "JOSHUA",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["password"]== 6',
+          conditionsString = 'stateManager.state.dialogs.userVariables["password"]== 6',
           userScript = function()
-            stateManager.dialogs.userVariables["password"]= math.random(6)
+            stateManager.state.dialogs.userVariables["password"]= math.random(6)
           end,
           links = {
             {
@@ -1702,9 +1702,9 @@ c01s04_conversations = {
           dialogueText = {
             "No, but I have this fancy-looking paper wristband. Good enough?",
           },
-          conditionsString = 'stateManager.dialogs.userVariables["ribbon"]== true',
+          conditionsString = 'stateManager.state.dialogs.userVariables["ribbon"]== true',
           userScript = function()
-            stateManager.dialogs.userVariables["backstage"]= true
+            stateManager.state.dialogs.userVariables["backstage"]= true
           end,
           links = {
             {

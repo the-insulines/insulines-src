@@ -50,7 +50,7 @@ function c01s01(initialCharacterPathNode, initialCameraPathNode)
   end
 
   function c01s01:afterInitialize ()
-    if stateManager.c01s01.dressed then
+    if stateManager.state.c01s01.dressed then
       -- wake up
       self:stopRendering ( 'cellphone' )
       self:stopRendering ( "josh_sleeping" )
@@ -72,7 +72,7 @@ function c01s01(initialCharacterPathNode, initialCameraPathNode)
       self:stopRendering( 'josh' )
       self.characterMovement = false
 
-      if not stateManager.c01s01.woke then
+      if not stateManager.state.c01s01.woke then
         self.objects.cellphone:calling ()
         self.objects.josh_sleeping.animation:startAnimation ( 'sleeps' )
       else

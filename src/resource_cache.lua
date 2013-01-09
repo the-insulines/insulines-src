@@ -9,7 +9,7 @@ module ("resource_cache", package.seeall)
 ----------------------------------------------------------------
 -- variables
 
-local cache = {}
+cache = {}
 
 
 ----------------------------------------------------------------
@@ -45,7 +45,11 @@ function loadUntzSound ( fileUrl, loop, volume, sound )
   function sound:play ()
     self.file:play ()
   end
-
+  
+  function sound:isPlaying ()
+    return self.file:isPlaying ()
+  end
+  
   function sound:stop ()
     self.file:stop ()
   end
@@ -64,16 +68,23 @@ function loadFmodExSound ( fileUrl, loop, volume, sound )
   sound.loop = loop
   sound.channel:setVolume ( volume )
   sound.channel:setLooping ( loop )
-
+  sound.playing = false
+  
   function sound:play ()
+    sound.playing = true
     self.channel:setVolume( self.volume )
     local loops = 0
     if self.loop then loops = -1 end
     self.channel:play (self.file, loops)
   end
-
+  
+  function sound:isPlaying ()
+    return self.playing
+  end
+  
   function sound:stop ()
     self.channel:stop ()
+    sound.playing = false
   end
   
   function sound:seekVolume( volume, time, mode)
@@ -87,6 +98,7 @@ function loadSound ( fileUrl, loop, volume )
   local sound = {}
   function sound:play () end
   function sound:stop () end
+  function sound:isPlaying () end
   
   if SOUND then
     if SOUND_ENGINE == 'untz' then
@@ -138,7 +150,7 @@ function loadAnimationFrames ( animationPath, animationAttributes, defaultAttrib
     imageAttributes = defaultAttributes
   end
   
-  animationFrames = {}
+  local animationFrames = {}
   
   -- load the image corresponding to each frame of the animation
   for frameIndex = 1, animationAttributes.frameCount do
@@ -213,6 +225,7 @@ end
 function unload ( key )
   if key then
     cache[key] = nil
+    print ( "CACHE: Unloaded " .. key )
   end
   
   return true

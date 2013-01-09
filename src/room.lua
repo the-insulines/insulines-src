@@ -98,9 +98,9 @@ function new (name)
   function room:resetCamera ( )
     if self.path then
       local offset = self.path.graph[self.initialCameraPathNode].offsets
-      camX = offset.x / SCREEN_TO_WORLD_RATIO 
-      camY = offset.y / SCREEN_TO_WORLD_RATIO
-      camScl = offset.scl
+      local camX = offset.x / SCREEN_TO_WORLD_RATIO
+      local camY = offset.y / SCREEN_TO_WORLD_RATIO
+      local camScl = offset.scl
       game.camera:seekLoc (camX, camY, 0.001, MOAIEaseType.FLAT)
       game.camera:seekScl (camScl, camScl, 0.001, MOAIEaseType.FLAT)
     else
@@ -113,8 +113,8 @@ function new (name)
     if self.objects.josh then
       self.objects.josh.prop:setScl(1)
       self.layer_objects.character:insertProp ( self.objects.josh.prop )
-    
-      pos = self.path.graph[self.initialCharacterPathNode].position
+      
+      local pos = self.path.graph[self.initialCharacterPathNode].position
       self.objects.josh:moveTo(pos.x, pos.y, self.perspectiveZoomFactor, 0.00001)
     
       self.characterMovement = true
@@ -242,11 +242,13 @@ function new (name)
 
   function room:loadSounds ()
     for k, v in pairs (self.sounds) do
-      self.sounds[k] = resource_cache.get(v.resource_name)
+      local resource_name = v.resource_name
+      self.sounds[k] = resource_cache.get(resource_name)
+      self.sounds[k].resource_name = resource_name
     end
   end
   
-    
+  
   function room:onInput ( )
     if self.inputEnabled then
       if input_manager.down () then
@@ -401,7 +403,20 @@ function new (name)
   end
   
   
+  function room:stopJosh ()
+    if self.objects.josh then
+      self.objects.josh:stopCurrentAction ()
+    end
+  end
+  
+  
   function room:unload ()
+    self:stopJosh ()
+    -- unload specific room animations
+    if self.stopAnimations then
+      self:stopAnimations ()
+    end
+    
     self:removeLayers ()
     
     -- release objects
@@ -409,7 +424,7 @@ function new (name)
       -- check resource name (keeping compatibility with the old name convention)
       if obj.resource_name then
         local resource_name = nil
-        if self.hasExternalAssets and not object.externalAsset then
+        if self.hasExternalAssets and not obj.externalAsset then
           resource_name = k
         else
           resource_name = obj.resource_name
@@ -418,6 +433,12 @@ function new (name)
       
       print ('>> UNLOADING FROM CACHE: ', obj.resource_name)
       resource_cache.unload(obj.resource_name)
+    end
+    
+    -- release sounds
+    for k, v in pairs (self.sounds) do
+      print ('>> UNLOADING (SOUND) FROM CACHE: ', v.resource_name)
+      resource_cache.unload(v.resource_name)
     end
   end
   

@@ -54,6 +54,7 @@ c01s03 = function ()
   -- Room specific attributes
   c01s03_room.lampLightOn = 5
   c01s03_room.nextLampLight = -1
+  c01s03_room.lampsLightAnimation = nil
   
   
   -- Scene objects
@@ -114,7 +115,18 @@ c01s03 = function ()
   
   
   function c01s03_room:afterInitialize ()
-    performWithDelay ( 50, self.lampsLightAnimation, 0, self )
+    self.lampsLightAnimation = performWithDelay ( 50, self.lampsLightAnimationAction, 0, self )
+  end
+  
+  
+  function c01s03_room:stopAnimations ()
+    -- remove face animations
+    self.objects.klein.animation:clearAnimationListener ( 'stand' )
+    self.objects.paul.animation:clearAnimationListener ( 'stand' )
+    
+    if self.lampsLightAnimation then
+      self.lampsLightAnimation:stop ()
+    end
   end
   
   
@@ -134,7 +146,7 @@ c01s03 = function ()
   end
   
   
-  function c01s03_room:lampsLightAnimation ()
+  function c01s03_room:lampsLightAnimationAction ()
     self:stopRendering ( 'c01s03_lamp_piso_light' .. self.lampLightOn )
     
     self.lampLightOn = self.lampLightOn + self.nextLampLight
@@ -149,12 +161,7 @@ c01s03 = function ()
   end
   
   function c01s03_room:cellphoneMessage ()
-    cellphoneHUD:messageArrived(self.moesMessage, self)
-  end
-  
-  function c01s03_room:moesMessage ()
-    dialog:load('moe_sms')
-    stateManager.map.venue = true
+    cellphoneHUD:messageArrived ()
   end
   
   return c01s03_room

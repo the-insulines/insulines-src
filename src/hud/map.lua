@@ -27,7 +27,7 @@ function mapHUD:initialize ( elements )
 
   self.mapAsset.prop:setLoc ( self.mapAsset.x, self.mapAsset.y )
 
-  if stateManager.c01s02.pickedFlyer then
+  if stateManager.state.c01s02.pickedFlyer then
     self:show ()
   end
 end
@@ -58,7 +58,7 @@ function mapHUD:onInput ()
       -- If map was clicled open map
       local mapX, mapY = self.mapAsset.prop:worldToModel ( x, y )
       if (mapX >= -self.mapAsset.half_width) and (mapX <= self.mapAsset.half_width) and (mapY >= -self.mapAsset.half_height) and (mapY <= self.mapAsset.half_height) then
-        game:loadScene(map)
+        game:switchToScene ( map )
         return true
       end
     end

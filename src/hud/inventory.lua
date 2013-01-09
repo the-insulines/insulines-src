@@ -23,6 +23,7 @@ hidden = true
 
 highlightingInteractions = false
 
+
 function inventory:initialize ( elements )
   
   if DEBUG then
@@ -32,7 +33,7 @@ function inventory:initialize ( elements )
   if elements then
     self.elements = elements
   end
-
+  
   -- Initialize HUD
   self:initializeHud ()
 end
@@ -45,7 +46,7 @@ function inventory:initializeHud ()
   
   -- ICON
   if not self.icon then
-    self.icon = {} 
+    self.icon = {}
     self.icon.gfx = resource_cache.get ( 'inventory_backpack' )
     self.icon.half_width = INVENTORY_BACKPACK_HALF_WIDTH
     self.icon.half_height = INVENTORY_BACKPACK_HALF_HEIGHT
@@ -101,8 +102,17 @@ function inventory:initializeHud ()
   
 end
 
+
+function inventory:loadFromState ( stateItems )
+  for i, item in pairs ( stateItems ) do
+    self:addItem ( item.key, item.object )
+  end
+end
+
+
 function inventory:show ()
 end
+
 
 function inventory:onInput ()
     local x, y = input_manager.getTouch ()

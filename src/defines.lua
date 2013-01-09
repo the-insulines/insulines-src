@@ -166,6 +166,18 @@ resources = {
     fileName = 'logoScreen_background.png', 
     width = 1920, height = 1280, 
   },
+  
+  mainScreenNewGameButton = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'main_screen/new_game_button.png',
+    width = 500, height = 200,
+  },
+  
+  mainScreenContinueButton = {
+    type = RESOURCE_TYPE_IMAGE,
+    fileName = 'main_screen/continue_button.png',
+    width = 500, height = 200,
+  },
 
   thankYouScreen_background = {
     type = RESOURCE_TYPE_IMAGE, 
@@ -440,11 +452,10 @@ resources = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
             {frame = 1, times = 21},
-            {frame = 10, times = 8},
+            {frame = 9, times = 8},
             {frame = 11, times = 4},
             {frame = 12, times = 8},
             {frame = 17, times = 28},
-            {frame = 30, times = 31},
           },
         },
         startFrame = 1,
@@ -714,6 +725,7 @@ resources = {
       stand = {
         fileName = 'paul_mouth',
         frameCount = 5,
+        startFrame = 1,
         frameTime = {
           baseTime = HALF_FRAME_RATE_SPEED,
           multipliers = {
@@ -724,7 +736,25 @@ resources = {
             {frame = 5, times = 3},
           },
         },
+      },
+      blink = {
+        fileName = 'paul_blink',
+        frameCount = 11,
         startFrame = 1,
+        frameTime = {
+          baseTime = 0.04,
+          multipliers = {
+            {frame = 1, times = 25},
+            {frame = 2, times = 3},
+            {frame = 3, times = 58},
+            {frame = 4, times = 3},
+            {frame = 5, times = 25},
+            {frame = 6, times = 3},
+            {frame = 8, times = 58},
+            {frame = 9, times = 3},
+            {frame = 11, times = 70},
+          },
+        },
       },
       blink = {
         parentAnimationName = 'stand',
@@ -837,6 +867,82 @@ resources = {
   
   -- /////////////////////////////////////////////////////////////
   --
+  -- Main screen
+  --
+  -- ////////////////////////////////////////////////////////////
+
+  main_screen = {
+    type = RESOURCE_TYPE_ANIMATION_FRAMES,
+    location = 'main_screen/',
+    pivotX = 0,
+    pivotY = 0,
+    width = WORLD_RESOLUTION_X,
+    height = WORLD_RESOLUTION_Y,
+
+    animations = {
+      intro = {
+        fileName = 'main_screen_menu',
+        startFrame = 1,
+        frameCount = 12,
+        frameTime = DEFAULT_ANIMATION_SPEED,
+        mode = MOAITimer.LOOP
+      },
+    },    
+  },
+  
+  main_screen_play = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_play.png', 
+    width = 737,
+    height = 182
+  },
+  
+  main_screen_continue = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_continue.png', 
+    width = 924,
+    height = 182
+  },
+  
+  main_screen_credits = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'main_screen/main_screen_btn_credits.png', 
+    width = 1078,
+    height = 182
+  },
+  
+  
+  sugar_free = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'sugarfree.mp3', 
+    loop = true,
+    volume = 0.6
+  },
+  
+  
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- Credits screen
+  --
+  -- ////////////////////////////////////////////////////////////
+  
+  credits_background = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'credits/background.png',
+    width = WORLD_RESOLUTION_X,
+    height = WORLD_RESOLUTION_Y
+  },
+  
+  credits_back_button = {
+    type = RESOURCE_TYPE_IMAGE, 
+    fileName = 'credits/credits_back_button.png',
+    width = 351,
+    height = 182
+  },
+  
+  
+  -- /////////////////////////////////////////////////////////////
+  --
   -- c01s01
   --
   -- ////////////////////////////////////////////////////////////
@@ -930,55 +1036,7 @@ resources = {
     
   },
 
-  main_screen = {
-    type = RESOURCE_TYPE_ANIMATION_FRAMES,
-    location = 'main_screen/',
-    pivotX = 0,
-    pivotY = 0,
-    width = WORLD_RESOLUTION_X,
-    height = WORLD_RESOLUTION_Y,
 
-    animations = {
-      intro = {
-        fileName = 'main_screen_menu',
-        startFrame = 1,
-        frameCount = 12,
-        frameTime = DEFAULT_ANIMATION_SPEED,
-        mode = MOAITimer.LOOP
-      },
-    },    
-  },
-  
-  main_screen_play = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'main_screen/main_screen_btn_play.png', 
-    width = 737,
-    height = 182
-  },
-  
-  main_screen_continue = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'main_screen/main_screen_btn_continue.png', 
-    width = 924,
-    height = 182
-  },
-  
-  main_screen_credits = {
-    type = RESOURCE_TYPE_IMAGE, 
-    fileName = 'main_screen/main_screen_btn_credits.png', 
-    width = 1078,
-    height = 182
-  },
-  
-  
-  sugar_free = {
-    type = RESOURCE_TYPE_SOUND, 
-    fileName = 'sugarfree.mp3', 
-    loop = true,
-    volume = 0.6
-  },
-  
-  
   c01s01_background = {
     type = RESOURCE_TYPE_IMAGE, 
     fileName = 'c01s01/c01s01_background_B.png', 
@@ -1410,6 +1468,8 @@ function performWithDelay ( delay, func, repeats, ... )
   end
   )
   t:start ()
+  
+  return t
 end
 
 
@@ -1425,6 +1485,7 @@ end
 
 local collect = collectgarbage
 local lastCheck = {sysMem = 0}
+
 function checkMem (say)
    collect()
    local sysMem = collect("count") * .001

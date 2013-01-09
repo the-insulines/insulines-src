@@ -11,7 +11,7 @@ layer = MOAILayer2D.new ()
 hidden = true
 
 function cellphoneHUD:initialize ( elements )
-  self.cellphoneAsset = {} 
+  self.cellphoneAsset = {}
   self.cellphoneAsset.gfx = resource_cache.get ( 'hud_cellphone' )
   self.cellphoneAsset.half_width = INVENTORY_BACKPACK_HALF_WIDTH
   self.cellphoneAsset.half_height = INVENTORY_BACKPACK_HALF_HEIGHT
@@ -36,12 +36,18 @@ function cellphoneHUD:initialize ( elements )
   self.messagesIcon.half_height = 35 / 2
   self.messagesIcon.gfx:setRect ( - self.messagesIcon.half_width, - self.messagesIcon.half_height, self.messagesIcon.half_width, self.messagesIcon.half_height)
 
+  -- Moe's message (this shouldn't be here but otherwise it makes it really hard to store the function on a file)
+  self.message = function ()
+    dialog:load('moe_sms')
+    stateManager.state.map.venue = true
+  end
+  
   -- Create prop
   self.messagesIcon.prop = MOAIProp2D.new ()
   self.messagesIcon.prop:setDeck ( self.messagesIcon.gfx )
   self.messagesIcon.prop:setLoc ( self.cellphoneAsset.x + self.cellphoneAsset.half_width/2, self.cellphoneAsset.y - self.cellphoneAsset.half_height )
   self.messagesIcon.prop:setPriority(100)
-  if stateManager.c01s01.cellphonePicked then
+  if stateManager.state.c01s01.cellphonePicked then
     self:show ()
   end
 end
@@ -63,16 +69,15 @@ function cellphoneHUD:show()
 end
 
 function cellphoneHUD:showMessages ()
-  if stateManager.hasMessages then
+  if stateManager.state.hasMessages then
     self.layer:insertProp ( self.messagesIcon.prop )
   else
     self.layer:removeProp ( self.messagesIcon.prop )
   end
 end
 
-function cellphoneHUD:messageArrived (method, parent)
-  stateManager.hasMessages = true
-  self.message = { method = method, parent = parent }
+function cellphoneHUD:messageArrived ()
+  stateManager.state.hasMessages = true
   self:showMessages ()
 end
 
@@ -88,13 +93,14 @@ function cellphoneHUD:onInput ()
     local cellphoneX, cellphoneY = self.cellphoneAsset.prop:worldToModel ( x, y )
 
     if (cellphoneX >= -self.cellphoneAsset.half_width) and (cellphoneX <= self.cellphoneAsset.half_width) and (cellphoneY >= -self.cellphoneAsset.half_height) and (cellphoneY <= self.cellphoneAsset.half_height) then
-      if stateManager.hasMessages then
-        stateManager.hasMessages = false
+      if stateManager.state.hasMessages then
+        stateManager.state.hasMessages = false
         self:showMessages ()
-        self.message.method (self.message.parent)
+        self.message ()
         self.message = nil
       end
       return true
     end
   end
 end
+

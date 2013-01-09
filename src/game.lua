@@ -20,8 +20,23 @@ autoFollow = true
 
 gameRunning = true
 
-
 sceneFadeOutTime = 200
+
+
+game.scenes = {
+  mainScreen = function () return mainScreen end,
+  creditsScreen = function () return creditsScreen end,
+  c01s01 = function () return c01s01 end,
+  c01s02 = function () return c01s02 end,
+  c01s03 = function () return c01s03 end,
+  c01s04 = function () return c01s04 end,
+  map = function () return map end,
+}
+
+
+function game:sceneNamed ( sceneName )
+  return self.scenes[sceneName]()
+end
 
 
 function game:switchToScene ( scene, initialCharacterPathNode, initialCameraPathNode )
@@ -37,15 +52,16 @@ function game:switchToScene ( scene, initialCharacterPathNode, initialCameraPath
   
   self:unloadCurrentScene ()
   
-  -- DEBUG
-  -- debugLine ()
-  -- dump ( MOAISim.getHistogram () )
-  -- MOAISim.reportLeaks ()
-  
   -- If the current scene fades out the new one should be loaded after the fadeout delay
   if shouldWaitFadeout then
     sleepCoroutine ( self.sceneFadeOutTime )
   end
+  
+  -- DEBUG
+  -- debugLine ()
+  -- MOAISim.forceGarbageCollection ()
+  -- MOAISim.reportLeaks ()
+  -- dump ( MOAISim.getHistogram () )
   
   self:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode  )
   
@@ -75,9 +91,19 @@ end
 
 
 function game:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode )
+  self:showScene ( scene (initialCharacterPathNode, initialCameraPathNode ) )
+end
 
+
+function game:showScene ( scene )
   -- Cache scene
-  self.currentScene = scene (initialCharacterPathNode, initialCameraPathNode )
+  self.currentScene = scene
+  
+  -- Save the current state when changing scenes, except the first one where the state hasn't yet been loaded
+  if self.currentScene.name ~= 'mainScreen' then
+    stateManager.state.currentScene = self.currentScene.name
+    stateManager:saveState ()
+  end
   
   -- Initialize hud (must be done after loading a scene)
   hud:initialize ()
@@ -97,7 +123,6 @@ function game:loadScene ( scene, initialCharacterPathNode, initialCameraPathNode
   end
   
   self:sceneLoaded ( self.currentScene )
-  
 end
 
 
@@ -194,7 +219,7 @@ function start ( self )
   -- self.cameraThread:run ( cameraAnimation )
   
   -- Game loop
-  -- If there is a scene loaded we gather input and update everyhing
+  -- If there is a scene loaded we gather input and update everything
   while self.gameRunning do
     local stopInput = false
     hud:update()
