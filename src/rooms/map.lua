@@ -27,11 +27,22 @@ map = function ()
 
   function map_room:beforeInitialize ()
     self:loadObjects ()
-    dump ( stateManager.map )
   end
   
   
   function map_room:afterInitialize ()
+    if stateManager.map.venue then
+      self:startRendering('venue')
+    else
+      self:stopRendering('venue')
+    end
+
+    if stateManager.map.fair then
+      self:startRendering('fair')
+    else
+      self:stopRendering('fair')
+    end
+
   end
   
   return map_room

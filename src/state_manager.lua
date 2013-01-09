@@ -10,27 +10,27 @@ module ( "stateManager", package.seeall )
 
 c01s01 = {
   cellphoneClicks = 0,
-  woke = false,
-  cellphonePicked = false,
-  dressed = false
+  woke = DEBUG,
+  cellphonePicked = DEBUG,
+  dressed = DEBUG
 }
 
 c01s02 = {
-  bathroom = false,
+  bathroom = DEBUG,
   
-  coffeePickedUp = false,
-  hasCoffee = false,
-  hasWater = false,
-  madeCoffee = false,
-  hadCoffee = false,
+  coffeePickedUp = DEBUG,
+  hasCoffee = DEBUG,
+  hasWater = DEBUG,
+  madeCoffee = DEBUG,
+  hadCoffee = DEBUG,
   
-  answered = false,
-  pickedFlyer = false,
-  talkedToNancy = false
+  answered = DEBUG,
+  pickedFlyer = DEBUG,
+  talkedToNancy = DEBUG
   
 }
 
 map = {
-  fair = false,
-  venue = false
+  fair = DEBUG,
+  venue = DEBUG
 }
