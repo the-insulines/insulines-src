@@ -4,7 +4,11 @@ final_objectInteractions = {
     highlight = true,
     onClick = function ()
       game.currentScene.sounds.background:seekVolume (0, 2, MOAIEaseType.LINEAR)
-      game:switchToScene ( mainScreen )
+      game:switchToScene ( creditsScreen )
+
+      local s = mainScreen ()
+      game.currentScene.backScreen = s
+      
     end
   },
   
