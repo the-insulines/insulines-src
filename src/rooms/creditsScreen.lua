@@ -25,7 +25,7 @@ function creditsScreen ()
       resource_name = "credits_back_button",
       layer_name = "objects",
       render_at_start = true,
-      x = 595,
+      x = 795,
       y = 450,
       onClick = function ()
         s.inputEnabled = false
