@@ -30,7 +30,8 @@ function mainScreen ()
       y = 450,
       onClick = function ()
         s.inputEnabled = false
-        game.currentScene.sounds.background:stop ()
+        game.currentScene.sounds.background:seekVolume (0, 2, MOAIEaseType.LINEAR)
+        -- game.currentScene.sounds.background:stop ()
         stateManager:startAutoSave ()
         game:switchToScene ( c01s01 )
       end
@@ -45,6 +46,7 @@ function mainScreen ()
       onClick = function ()
         stateManager:loadState ()
         s.inputEnabled = false
+        game.currentScene.sounds.background:seekVolume (0, 2, MOAIEaseType.LINEAR)
         game.currentScene.sounds.background:stop ()
         stateManager:startAutoSave ()
         game:switchToScene ( game:sceneNamed ( stateManager.state.currentScene ) )
@@ -84,10 +86,11 @@ function mainScreen ()
   end
   
   function s:afterInitialize ()
-    dump (game.currentScene.sounds.background)
+
     if not game.currentScene.sounds.background:isPlaying () then
       game.currentScene.sounds.background:play ()
     end
+
     self.objects.background.animation:startAnimation('intro')
   end
   

@@ -145,6 +145,7 @@ function initialize ( self )
   -- self:loadScene ( c01s02 )
   -- self:loadScene ( c01s03 )
   -- self:loadScene ( c01s04 )
+  -- self:loadScene ( final )
   
   -- Debug
   if DEBUG then
