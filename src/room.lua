@@ -440,6 +440,8 @@ function new (name)
       print ('>> UNLOADING (SOUND) FROM CACHE: ', v.resource_name)
       resource_cache.unload(v.resource_name)
     end
+    
+    collectgarbage ()
   end
   
   
