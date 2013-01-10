@@ -13,11 +13,13 @@ c01s04 = function ()
   require 'dialogs/c01s04_dialogs_definition'
   require 'c01s04_interactions'
   require 'c01s04_characters'
+  require 'c01s04_sounds'
   
   
   local c01s04_room = room.new ( "c01s04" )
   
   c01s04_room:addObjects ( c01s04_objects )
+  c01s04_room:addSounds( c01s04_sounds )
   
   c01s04_room.objects['wristband'] = { inventory_resource_name = "inventory_wristband", render_at_start = false }
   
@@ -51,12 +53,6 @@ c01s04 = function ()
   c01s04_room.shadowAnimation = nil
     
   
-  -- sounds = {
-  -- }
-  -- 
-  -- c01s04:addSounds( sounds )
-  
-  
   function c01s04_room:beforeInitialize ()
     self:loadObjects ()
     self:loadSounds ()
@@ -75,6 +71,7 @@ c01s04 = function ()
   
   
   function c01s04_room:afterInitialize ()
+    self.sounds.background:play ()
     self:turnAlleyLightOn ()
   end
   

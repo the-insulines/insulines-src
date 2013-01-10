@@ -192,6 +192,9 @@ c01s01_objectInteractions = {
   room_door_open = {
     onClick = function ()
       if stateManager.state.c01s01.dressed then
+        if game.currentScene.sounds.background:isPlaying () then
+          game.currentScene.sounds.background:stop ()
+        end
         game:switchToScene ( c01s02, 'joshDoor', 'joshDoor' )
         -- game:switchToScene ( c01s01 )
       end

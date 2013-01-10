@@ -114,6 +114,7 @@ function c01s02 (initialCharacterPathNode, initialCameraPathNode)
       game.currentScene.objects.nancy:standLookingInDirection ( DIRECTION_LEFT )
     end
     
+    self.sounds.background:play ()
     
     -- self.objects.answering_machine.animation:startAnimation ( 'blink' )
     -- self.objects.coffeeMaker.animation:startAnimation ( 'coffeemaker_empty' )

@@ -13,6 +13,7 @@ c01s03 = function ()
   require 'dialogs/c01s03_dialogs_definition'
   require 'c01s03_interactions'
   require 'c01s03_characters'
+  require 'c01s03_sounds'
   
   local c01s03_room = room.new ( "c01s03" )
 
@@ -21,6 +22,7 @@ c01s03 = function ()
   c01s03_room:placeObjectsOnPath ( c01s03_objectPlacementOnPath )
   c01s03_room:loadObjectInteractions ( c01s03_objectInteractions )
   c01s03_room:loadConversations ( c01s03_conversations )
+  c01s03_room:addSounds( c01s03_sounds )
 
   c01s03_room.frontCharacterZoom = 1.3
   c01s03_room.bottomCharacterZoomThreshold = -400
@@ -115,6 +117,7 @@ c01s03 = function ()
   
   
   function c01s03_room:afterInitialize ()
+    self.sounds.background:play ()
     self.lampsLightAnimation = performWithDelay ( 50, self.lampsLightAnimationAction, 0, self )
   end
   

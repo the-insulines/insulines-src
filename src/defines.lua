@@ -1389,6 +1389,13 @@ resources = {
   --
   -- ////////////////////////////////////////////////////////////
   
+  c01s03_theme = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s03/c01s03_song.mp3',
+    loop = true,
+    volume = 0.6
+  },
+  
   c01s03_candle_light = {
     type = RESOURCE_TYPE_ANIMATION_FRAMES,
     location = 'c01s03/',
@@ -1404,11 +1411,22 @@ resources = {
     },
     width = 11, height = 16
   },
-
-
+  
+  
+  -- /////////////////////////////////////////////////////////////
+  --
+  -- c01s04
+  --
+  -- ////////////////////////////////////////////////////////////
+  
+  c01s04_theme = {
+    type = RESOURCE_TYPE_SOUND, 
+    fileName = 'c01s04/c01s04_song.mp3',
+    loop = true,
+    volume = 0.6
+  },
+  
 }
-
-
 
 
 -- function used to dump tables to screen

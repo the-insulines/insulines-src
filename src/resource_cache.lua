@@ -98,7 +98,7 @@ function loadSound ( fileUrl, loop, volume )
   local sound = {}
   function sound:play () end
   function sound:stop () end
-  function sound:isPlaying () end
+  function sound:isPlaying () return false end
   
   if SOUND then
     if SOUND_ENGINE == 'untz' then

@@ -12,6 +12,9 @@ c01s02_objectInteractions = {
 
   bedroom_opened = {
     onClick = function ()
+      if game.currentScene.sounds.background:isPlaying () then
+        game.currentScene.sounds.background:stop ()
+      end
       game:switchToScene ( c01s01, 'door', 'door' )
     end
   },
@@ -379,6 +382,9 @@ c01s02_objectInteractions = {
             game.currentScene:stopRendering ( 'apartmentDoor' )
             game.currentScene:startRendering ( 'apartmentDoorOpened' )
             
+            if game.currentScene.sounds.background:isPlaying () then
+              game.currentScene.sounds.background:stop ()
+            end
             game:switchToScene ( map )
           end
           

@@ -58,6 +58,9 @@ function mapHUD:onInput ()
       -- If map was clicled open map
       local mapX, mapY = self.mapAsset.prop:worldToModel ( x, y )
       if (mapX >= -self.mapAsset.half_width) and (mapX <= self.mapAsset.half_width) and (mapY >= -self.mapAsset.half_height) and (mapY <= self.mapAsset.half_height) then
+        if game.currentScene.sounds.background:isPlaying () then
+          game.currentScene.sounds.background:stop ()
+        end
         game:switchToScene ( map )
         return true
       end

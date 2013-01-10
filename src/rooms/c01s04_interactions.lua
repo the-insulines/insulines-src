@@ -15,6 +15,9 @@ c01s04_objectInteractions = {
   },
   c01s04_door_opened = {
     onClick = function ()
+      if game.currentScene.sounds.background:isPlaying () then
+        game.currentScene.sounds.background:stop ()
+      end
       game:switchToScene( final )
     end
   }
